@@ -14,10 +14,72 @@
 % ----------------------------------------------------------------------
 
 \section{Neutrinos}
-Neutrinos are a spin-$\dfrac{1}{2}$ particles that are pretty cool.
-\subsection{Solar Neutrinos}
+Neutrinos were first hyptothesized by Wolfgang Pauli in 1930.
+The motivation for the proposal the apparent violation of energy
+conservation in $\beta$ decay \citep{pauli_letter}.
+Several years after Pauli's somewhat speculative proposal Enrico Fermi offered
+a more thorough model of beta decay that conserved energy using the neutrino
+\citep{fermi_beta_decay}.
+Fermi's model predicted such a small cross-section for the neutrino that some
+doubted it would ever be observed \citep{bethe_impossible_to_observe}.
+However, roughly two decades after its initial proposal, Frederick Reines \&
+Clyde Cowan performed an experiment that involved bombarding a tank of cadmium
+doped water with anti-neutrinos from nuclear reactor.
+Doing this they were able to observe the rate and energy of inverse $\beta$
+decays that ocurred.
+The results were consitent with Fermi's model of $\beta$ decay and were
+considered a confirmation of the neutrino's existence.
+
+\subsection{Neutrino Flavor}
+The first experimental evidence for neutrino flavor came in 1962 from an
+experiment \citep{lederman_muon_flavor} that observed the interactions of
+neutrinos that came from muon decay, and the interactions of neutrinos emitted
+from beta decay.
+The experiment observed that neutrinos from came from muon decay would produce
+muons upon interacting in a detector.
+And neutrinos produced from $\beta$ decay would create electrons in the
+detector.
+This lead to the conclusion that there are two different varieties of neutrino,
+the $\nu_e$ and the $\nu_{\mu}$, and the idea that lepton flavor is conserved.
+The third lepton generation, the tau and the $\nu_{\tau}$ was discovered 13
+years later in 1975 \citep{tau_discovery}.
+% It's worth noting that lepton flavor conservation was not predicted or required
+% by the standard model, for that reason it's known as an 'accidental symmetry'.
+% ^^^^Not true??? Lepton number is an accidental symmetry, idk about lepton
+% flavor Also the definition of accidental symmetry has to do with term in the
+% lagrangian being to high dimensional (according to wikipedia) not what I
+% said....though they might be the same somehow
+
 \subsection{Neutrino Oscillations}
-\subsubsection{Vacuume Oscillations}
+Neutrino oscillation is the idea that a neutrino created as a $\nu_e$ can be
+detected and a $\nu_\mu$ or a $nu_\tau$.
+Oscillation occurs because the eigenstates of the neutrino's Hamiltonian in a
+vaccume is different from from the weak interaction eigenstates.
+More succinctly put, the neutrinos mass states are not the same as the its weak
+states.
+The mathematical description of this is as follows.
+Starting with the claim that weak states and mass states are related to
+each other via a rotation matrix.
+\begin{equation}
+    \ket{\nu_{i}} = U_{i\ell}\ket{\nu_\ell}
+\end{equation}
+Where $\ket{nu_\ell}$ represents the neutrino weak states, $\ket{nu_i}$
+represents the mass states, and $U_{i\ell}$ describes the mixing of these
+states.
+In the simplest case where the weak states and the mass states are the same
+$U_{i\ell}$ would just be the identity matrix.
+Additionally $U_{i\ell}$ must be unitary to conserve probability.
+% TODO^^^Improve that, maybe not give a full proof but at least better wording
+The mass states are defined such that
+
+\begin{equation}
+    H \ket{\nu_i} = m_i \ket{\nu_i}
+\end{equation}
+
+You can claim there are three mass states that are eigenstates of this
+hamiltonian.
+
+\subsection{Solar Neutrinos}
 \subsubsection{The MSW Effect}
 \subsection{Neutrino Experiments}
 \subsubsection{Solar Experiments}
@@ -26,13 +88,6 @@ Neutrinos are a spin-$\dfrac{1}{2}$ particles that are pretty cool.
 % ----------------------------------------------------------------------
 % ----------------------- Detector Chapter -----------------------------
 % ----------------------------------------------------------------------
-
-\section{The SNO+ Detector}
-\subsection{The Detector in Brief}
-It's a big ole ball of glowing goo
-\subsection{Electronics And DAQ}
-\subsection{Scintillator}
-Its just magic.
 
 % ----------------------------------------------------------------------
 % ----------------------- Signal Extraction Chapter --------------------

@@ -1,0 +1,55 @@
+
+%: ----------------------- detector file header -----------------------
+\chapter{Detector}
+
+% the code below specifies where the figures are stored
+\ifpdf
+    \graphicspath{{detector/figures/PNG/}{detector/figures/PDF/}{detector/figures/}}
+\else
+    \graphicspath{{detector/figures/EPS/}{detector/figures/}}
+\fi
+
+
+% ----------------------------------------------------------------------
+% ----------------------- Detector Chapter -----------------------------
+% ----------------------------------------------------------------------
+
+\section{The SNO+ Detector}
+\subsection{The Detector in Brief}
+The SNO+ detector can be mostly simply described as a large volume of some
+target material that is deep underground and is observed with an array of
+roughly 9500 Photomultiplier Tubes (PMTs).
+Changing the target material can change what sort of physical processes is
+observable with the detector.
+Previously the volume was filled with ultra pure water (UPW), allowing for
+observation of, among other things, high energy solar neutrinos.
+For the majority of this work the target material being considered is liquid
+scintillator, specifically LAB-PPO (Linear Alkylbenzene with PPO?).
+The target volume is encapsulate within a 6-meter radius acrylic sphere,
+which is held suspended in a large cavity filled with UPW.
+Surrounding the acrylic vessel (AV) is a large array of PMTs nearly all of
+which are pointing inward.
+The structure holding these PMTs is referred to as the PMT Support Structure
+(PSUP).
+There are roughly 100 PMTs on the PSUP that point outward, toward the cavity
+walls.
+These outward facing tubes are called OWLs and are for the purpose of identifying
+interactions that occurred outside the PSUP.
+There are an additional three tubes mounted at the top of the neck of the AV,
+these are referred to as NECK tubes.
+
+\subsection{Electronics And DAQ}
+The SNO+ data acquisition (DAQ) inherit much of their design and components from
+SNO.
+There are a few notable upgrades that were made for the purpose of handling the
+higher light yield and event rate that SNO+ has compared to SNO.
+The DAQ hardware can be described as two separate systems, the trigger system,
+and the readout system.
+The goal of the trigger system is to decide when an interesting interaction
+within the detector has occurred, and to start the readout process when such an
+interaction has occurred.
+It does so by summing up analog pulses from each PMT.
+
+\subsection{Scintillator}
+Its just magic.
+
