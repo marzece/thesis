@@ -13,27 +13,29 @@
 % ----------------------------------------------------------------------
 % ----------------------- Detector Chapter -----------------------------
 % ----------------------------------------------------------------------
-
+% 9385 PMTs comes from doing the following SQL query on DB
+%select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
 \section{The SNO+ Detector}
 \subsection{The Detector in Brief}
 The SNO+ detector can be mostly simply described as a large volume of some
 target material that is deep underground and is observed with an array of
-roughly 9500 Photomultiplier Tubes (PMTs).
+9385  photomultiplier tubes (PMTs).
 Changing the target material can change what sort of physical processes is
 observable with the detector.
-Previously the volume was filled with ultra pure water (UPW), allowing for
-observation of, among other things, high energy solar neutrinos.
-For the majority of this work the target material being considered is liquid
-scintillator, specifically LAB-PPO (Linear Alkylbenzene with PPO?).
-The target volume is encapsulate within a 6-meter radius acrylic sphere,
+The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or $\ce{D_{2}O}$)
+target, the upgrades for SNO+ were done in expectation of a tellurium doped
+scintillator target.
+For this thesis the target material is ultra-pure water (\ce{H_{2}O}).
+
+The target volume is encapsulated within a 6-meter radius acrylic sphere,
 which is held suspended in a large cavity filled with UPW.
-Surrounding the acrylic vessel (AV) is a large array of PMTs nearly all of
-which are pointing inward.
+Surrounding the acrylic vessel (AV) is an  array of inward pointing PMTs
+arranged in a geodesic pattern.
 The structure holding these PMTs is referred to as the PMT Support Structure
 (PSUP).
-There are roughly 100 PMTs on the PSUP that point outward, toward the cavity
+There are roughly 90 PMTs on the PSUP that point outward, toward the cavity
 walls.
-These outward facing tubes are called OWLs and are for the purpose of identifying
+These outward facing tubes are called OWLs and are for the purpose of tagging
 interactions that occurred outside the PSUP.
 There are an additional three tubes mounted at the top of the neck of the AV,
 these are referred to as NECK tubes.
@@ -48,7 +50,78 @@ and the readout system.
 The goal of the trigger system is to decide when an interesting interaction
 within the detector has occurred, and to start the readout process when such an
 interaction has occurred.
-It does so by summing up analog pulses from each PMT.
+
+The trigger system takes place in a few stages.
+First, signals from PMTs are recieved by an interface board that
+removes the signal from the 2\,kV power.
+That signal is compared to a threshold, if the signal is over threshold a "hit"
+has occurred.
+At the time of the threshold crossing the following processes occur, the name for each is given
+in parenthesis:
+a 100ns long square pulse is created (N100), a 20ns square pulse is created (N20),
+a high gain copy of the signal is created (ESUMH), a low gain copy of the signal
+is created (ESUML), a linear voltage ramp begins (TAC ramp), the signal is integrated for
+50\,ns with high gain (QHS), the signal is integrate for up to 400ns with high gain (QHL),
+and the singal is integrated for 50ns with a low gain (QLX).
+
+The results of the latter 4 process are recorded in analog memory cells,
+if readout signal is sent to this channel within $\approx$400\,ns of the
+signal crossing the values will be readout and digitized.
+The first 4 signals are all combined with similar signals from
+other PMT channels across the detector, \it{i.e.} the N100 signals
+from all channels with be combined and seperately all the
+N20 signals will be combined, \it{etc}.
+The signals are combined through analog summation.
+The summing is done with three different gains on all
+four available signals, resulting in twelve signals.
+Each of the tweve signals are seperately compared to a threshold;
+each of the twelve thresholds are independent from each other.
+This threshold is called the "trigger threshold".
+
+The different gains are in place due to the practicle difficulty of maintaining
+a good signal-to-noise ratio (SNR) without limiting the range of the
+system.
+For example, if there exists 10\,mV of noise in the system a 20\,mV pulse
+would give a 2:1 SNR, however this would mean if 5000 PMT hits ocurred simultaneously
+the signal would be 100\,V in size.
+It is not practicle to have a system with 100+\,V range and 20\,mV resoultion,
+so the three different gain paths allow for three different trade-offs between
+SNR/resolution and range.
+The highest gain signal has the best SNR, but the smallest range, and so usually
+the highest gain signal has the lowest effective threshold.
+The reason being that it's more important to have single hit resolution at a threshold
+of 8-hits than it is at a threshold 25 hits.
+The different gains on each signal are therefore labelled by their threshold (not their gain), e.g.
+the high, medium and low gain paths for the N100 signal are respectively called
+N100 Low (N100L), N100 Medium (N100M), and N100 High (N100H).
+And although there are twelve signal-gain combinations available only seven are
+used: N100-Low, N100-Med., N100-High, N20-Low, N20-Med (also called just N20), ESUMH-Low, and ESUML-Low.
+Since the ESUMH and ESUML each only have one gain path available they're usually
+referred to simply as ESUMH and ESUML with their gain path understoond to be
+the high gain path.
+
+Whenver a trigger signal goes over its threshold a 20\,ns digital pulse is
+emitted for that signal. This pulse is called a "raw-trigger" and there is
+one for each of the seven trigger signals.
+Finally, each of these seven raw-trigger signals can be masked in or masked out.
+If a raw-trigger is masked out, nothing happens when it fires,
+If it is masked in, then a "global-trigger" signal is created.
+The global trigger signal is sent to each channel in the detector and
+causes them to digitize and readout their stored analog values (QHS, QHL, QLX and TAC).
+Only channels that have been hit within the last $\approx$ 400\,ns will readout
+anything, channels that were not hit will mostly ignore the global trigger signal.
+Each channel, regardless of if it has recieved a hit or not, increments
+a counter whenever it receieves a global trigger signal.
+For channels that were hit the value of that counter is readout
+along with the hit information.
+This is the only means of synchronization across the detector.
+
+
+
+
+
+
+
 
 \subsection{Scintillator}
 Its just magic.
