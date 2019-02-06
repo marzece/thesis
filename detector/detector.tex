@@ -52,7 +52,7 @@ within the detector has occurred, and to start the readout process when such an
 interaction has occurred.
 
 The trigger system takes place in a few stages.
-First, signals from PMTs are recieved by an interface board that
+First, signals from PMTs are received by an interface board that
 removes the signal from the 2\,kV power.
 That signal is compared to a threshold, if the signal is over threshold a "hit"
 has occurred.
@@ -68,23 +68,25 @@ The results of the latter 4 process are recorded in analog memory cells,
 if readout signal is sent to this channel within $\approx$400\,ns of the
 signal crossing the values will be readout and digitized.
 The first 4 signals are all combined with similar signals from
-other PMT channels across the detector, \it{i.e.} the N100 signals
-from all channels with be combined and seperately all the
-N20 signals will be combined, \it{etc}.
-The signals are combined through analog summation.
-The summing is done with three different gains on all
+other PMT channels across the detector, \textit{i.e.} the N100 signals
+from all channels with be combined and separately all the
+N20 signals will be combined, \textit{etc}.
+The signals are combined through analog summation, the N100 signals
+from all channels are summed together, and the N20 signals from all channels are
+summed together, so on and so forth.
+The summing is done with three different gains on each of the
 four available signals, resulting in twelve signals.
-Each of the tweve signals are seperately compared to a threshold;
+Each of the twelve signals are separately compared to a threshold;
 each of the twelve thresholds are independent from each other.
 This threshold is called the "trigger threshold".
 
-The different gains are in place due to the practicle difficulty of maintaining
+The different gains are in place due to the practical difficulty of maintaining
 a good signal-to-noise ratio (SNR) without limiting the range of the
 system.
 For example, if there exists 10\,mV of noise in the system a 20\,mV pulse
-would give a 2:1 SNR, however this would mean if 5000 PMT hits ocurred simultaneously
+would give a 2:1 SNR, however this would mean if 5000 PMT hits occurred simultaneously
 the signal would be 100\,V in size.
-It is not practicle to have a system with 100+\,V range and 20\,mV resoultion,
+It is not practical to have a system with 100+\,V range and 20\,mV resolution,
 so the three different gain paths allow for three different trade-offs between
 SNR/resolution and range.
 The highest gain signal has the best SNR, but the smallest range, and so usually
@@ -100,29 +102,112 @@ Since the ESUMH and ESUML each only have one gain path available they're usually
 referred to simply as ESUMH and ESUML with their gain path understood to be
 the high gain path.
 
-Whenever a trigger signal goes over its threshold a 20\,ns digital pulse is
+When a trigger signal goes over its threshold a 20\,ns digital pulse is
 emitted for that signal. This pulse is called a "raw-trigger" and there is
 one for each of the seven trigger signals.
 Finally, each of these seven raw-trigger signals can be masked in or masked out.
 If a raw-trigger is masked out, nothing happens when it fires,
 If it is masked in, then a "global-trigger" signal is created.
+The raw-trigger signal that caused the global trigger, as well as any other
+raw-trigger signals that were high within a 20ns window of the global trigger,
+are recorded and readout, this is know as the "trigger word".
+
 The global trigger signal is sent to each channel in the detector and
 causes them to digitize and readout their stored analog values (QHS, QHL, QLX and TAC).
 Only channels that have been hit within the last $\approx$ 400\,ns will readout
 anything, channels that were not hit will mostly ignore the global trigger signal.
-Each channel, regardless of if it has recieved a hit or not, increments
-a counter whenever it receieves a global trigger signal.
+Each channel, regardless of if it has received a hit or not, increments
+a counter whenever it receives a global trigger signal.
 For channels that were hit the value of that counter is readout
 along with the hit information.
 This is the only means of synchronization across the detector.
 
+Data, once readout, is is processed by an algorithm that uses the
+the value of the global trigger counter to associate PMT hits with
+each other and, with their corresponding trigger word. 
+This forms the data that is used to reconstruct information
+about the event that produced the light that was observed.
 
+There are a few ancillary systems within the DAQ electronics
+that require description. The first is the CAEN v1720, commonly
+referred to as just ``CAEN'', which is a 12-bit digitizer board.
+The CAEN is used to digitize and readout the trigger signals.
+It has 8 available input channels that it can digitize, however,
+typically only three signals are actually used: ESUMH, N20L, and
+N100L. The CAEN's digitization window and sampling rate can be varied,
+most commonly the digitization window is 420\,ns and the sample width
+is 4\,ns. The CAEN recieves a copy of the global trigger allowing it's
+data to later be synchronized with the PMT data.
 
+The input voltage range for the CAEN is an adjustable 2\,V window.
+The voltage range for the trigger signals is 10\,V wide,
+necessitating some way of reducing the range of the trigger signals
+before they're plugged into the CAEN.
+The simplest way of reducing the voltage range is to use a voltage
+divider to attenuate the signal by a factor of 5.
+Attenuation has a few undesirable effects though.
+The full range of the trigger signal is 10V, but the vast
+majority of events will only use a small fraction of that range.
+So for events that use a small amount of the available 10V a factor
+of 5 attenuation will make the signal much small than it needs to be,
+resulting in loss of information because the signal will be smaller than
+the analog noise, or from the digitization process itself.
+And for the purpose of most analyses that use the data from the CAEN
+it's more important to be able to resolve a single hit than to resolve
+the height of the full pulse.
 
+So a different scheme was put in place for fitting the trigger signal
+into the CAEN's available range. The trigger signal is clipped within
+the first 2\,V, thereby retaining full resolution for small signals,
+but losing resolution for signals that go over 2\,V.
+The board that was created to perform this dynamic range reduction
+was designed to optionally clip the signal or attenuate it, but
+for the vast majority of data taking the signal was clipped.
 
+The board that reduces the signal is the Trigger Utility Board Mark II (TUBII),
+it plays a significant role in the SNO+ DAQ at large.
+It's significance comes primarily from the fact that it acts as a secondary
+digital trigger board. It can receive raw-trigger pulses and put them
+through customizable trigger logic and emit it's own raw-trigger pulses.
+TUBII also receives the global trigger signal and produces its own trigger
+word based upon which raw trigger pulses it had received. The TUBII trigger
+word is synchronized with the rest of the data for each event through it's own
+global trigger counter.
 
+TUBII is used as interface board for some of the detector calibration systems.
+These systems emit light into the detector and usually need to be
+synchronized with the trigger system. This synchronization requires
+a variety of pulses and delays to be tuned to account for the time it
+takes for signals and light propagate throughout the detector and DAQ
+system; TUBII provides those pulses and delays.
 
+As was alluded to earlier TUBII also has customizable complex trigger logic that
+allows it to create trigger pulses from its inputs.
+The input trigger signals are fed into a Xilinx MicroZed, which is an FPGA and
+micro-controller.
+The MicroZed allows for nearly any logical combination of trigger signals including
+using previous trigger signals to inform the current trigger logic.
 
-\subsection{Scintillator}
-Its just magic.
+Something like this is desirable for identifying and ensuring the detector will
+be sensitive to time correlated events. An example of this would be that
+the decay chain of Bi214 -> Po214 -> Pb212, this decay chain is referred to as BiPo214. %TODO This chain is wrong, look it up idiot
+The signature of this decay is an electron from $\beta$ decay, followed, with a half
+life of 4\,$\mu$s, by an $\alpha$ decay.
+It's very important that the $\alpha$ decay is detected so that the $\beta$-$\alpha$
+decays can be identified as likely from a BiPo. If the $\alpha$ is not observed
+the $\beta$ can be mis-identified and potentially leak into a signal region.
+TUBII is able to mitigate this risk by having a trigger that is particularly
+sensitive to the initial $\beta$ decay and can trigger off a lower
+threshold input for a short time after the $\beta$ trigger; ensuring that
+the $\alpha$ is detected.
+
+TUBII also provides general purpose and ``glue'' functionality,
+allowing different circuits from different boards in the DAQ to communicate.
+An example of this is that the CAEN requires the global trigger and
+other synchronization pulses be sent to it using Low-Voltage Differential
+Signaling (LVDS), but the global trigger is created using Emitter Coupled
+Logic (ECL).
+And so TUBII provides translation between these two digital signaling protocols,
+allowing the CAEN to remain synchronized.
+
 
