@@ -16,6 +16,65 @@
 % 9385 PMTs comes from doing the following SQL query on DB
 %select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
 \section{The SNO+ Detector}
+\subsection{Detection Mechanism}
+
+The primary neutrino interaction that SNO+ is sensitive to is elastic scattering
+off electrons, 
+$\nu_{x} + e^{-} \arrowright \nu_{x} + e^{-}$ 
+where $x=e$,$\mu$, $\tau$.
+For $x=e$ there exists a neutral current and a charged current channel,
+for $x=\mu$ or $x=\tau$ there exists only the neutral current channel.
+% TODO try and remember what actually I mean here
+Nuclear interactions occur as well with the oxygen in the water,
+however these are rare and difficult to identify, and so are ignored typically.
+The elastic scattering cross-section is given by
+\begin{equation}
+cross section
+\end{equation}
+This can also be expressed as it's differential cross-section as a function
+of energy
+\begin{equation}
+dsimga/dTe
+\end{equation}
+and of scattering angle
+\begin{equation}
+dsigma/dtheta
+\end{equation}
+These cross sections are shown in figure blah.
+The relevant points are that the angular cross section is peaked in
+the forward direction, meaning that information about the neutrino direction
+is maintained in the interaction.
+But the differential cross-section for recoil energy is nearly flat below the
+end point. Meaning relatively little information about the incoming neutrino energy
+is preserved by the interaction.
+For the SNO+ water-phase the scattered electron generates light via Cherenkov radiation,
+assuming it's above Cherenkov threshold for water which is $XXX$\,MeV.
+If it is above the Cherenkov threshold the electron will generate photons that
+travel at approximtely a 42$\deg$ to the direction of the electron, azimuthally symmetric.
+%%% TODO it'd be dank to have a chapter discussing Cherenkov radiation and deriving
+%%% the wavelenght and angular distribution
+\includegraphs{cherenkov_radiation_cone_pictures}
+The photons can the be detected by the SNO+ PMT array, and the pattern
+of hits analyzed to determine the electron direction, energy, and position.
+
+SNO+ has $XXX$ inward looking PMTs all mounted on a geodesic spere referred to as
+the PMT support structure (PSUP). The PMTs are at an average radius of 8.4\,m from
+the center of the detector.
+Mounted on the outside of the PSUP are 90 outward looking (OWL) PMTs.
+These serve to reject interactions in the outer volume from cosmic muons.
+All PMTs are Hammatsu R1408 8-inch PMTs, which have typical quantum efficiency
+of  $XXX$\%.
+
+The inward looking PMTs are all housed within a plastic casette.
+Each PMT is also $XXX$collared$XXX$ by an array of reflective
+petals which serve to increase the effective photo-sensitive area
+of the PMT.
+The geometric coverage of the PMTs is $XXX$. % TODO, see if you can get the effective coverage
+
+
+
+
+
 \subsection{The Detector in Brief}
 The SNO+ detector can be mostly simply described as a large volume of some
 target material that is deep underground and is observed with an array of
