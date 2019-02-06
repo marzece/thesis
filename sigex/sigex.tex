@@ -14,8 +14,26 @@
 % ----------------------------------------------------------------------
 
 \section{Signal Extraction}
+Solar neutrino events are simulated using ``RAT'', a Geant-4 based
+simulation and analysis toolkit.
+RAT simulates all effects after the initial interaction, including photon
+propagation and detection, and particle scattering.
+Beyond the photon and physics simulation RAT also simluates the SNO+ DAQ and trigger electronics,
+allowing the effects of digitization and electronics noise to be simulated.
+
+A solar neutrino production rate is an input to the simulation.
+A cross-section model take from \cite{bahcall} and \cite{lookitup}
+is used to estimate the elastic scattering interaction rate.
+RAT provides an accurate model of the detector response for each interaction.
+
+Solar neutrino simulation is done on run-by-run basis with a fixed, artificially
+enhanced, rate. Each run's simulation is matched to the detector trigger and
+daq settings for that run.
+
+The simlated events are histogrammed to estimate the underlying PDFs
+of observable reconstructed energy and event direction. Cut's are placed
+on each event to 
+
 \subsection{Data Cleaning}
 \subsubsection{CAEN Cut}
-\subsubsection{Getting rid of  flashers in scintillator}
-It was really EZ
 
