@@ -51,26 +51,91 @@ years later in 1975 \citep{tau_discovery}.
 % said....though they might be the same somehow
 
 \subsection{Neutrino Oscillations}
-Neutrino oscillation is the idea that a neutrino created as a $\nu_e$ can be
-detected and a $\nu_\mu$ or a $\nu_\tau$.
-Oscillation occurs because the eigenstates of the neutrino's Hamiltonian in a
-vaccume is different from the weak interaction eigenstates.
-More succinctly put, the neutrinos mass states are not the same as
-the weak states.
-The mathematical description of this is as follows.
-Starting with the claim that weak states and mass states are related to
-each other via a rotation matrix.
+Neutrino oscillation is a result of the fact that neutrino flavors do not have
+well defined masses, instead neutrino flavor states are composed of a mixture
+of mass states, and vice-versa.
+This can be stated more preciesly as
 \begin{equation}
     \ket{\nu_{i}} = U_{i\ell}\ket{\nu_\ell}
 \end{equation}
-Where $\ket{\nu_\ell}$ represents the neutrino weak states, $\ket{nu_i}$
+Where $\ket{\nu_\ell}$ represents the neutrino flavor states, $\ket{nu_i}$
 represents the mass states, and $U_{i\ell}$ describes the mixing of these
-states.
+states. $U_{i\ell}$ is known as the Pontecorvo–Maki–Nakagawa–Sakata (PMNS) matrix,
+and it is exactly analogous to the Cabibbo–Kobayashi–Maskawa (CKM) matrix used
+to describe quark mixing.
 In the simplest case where the weak states and the mass states are the same
-$U_{i\ell}$ would just be the identity matrix.
-Additionally $U_{i\ell}$ must be unitary to conserve probability.
-% TODO^^^Improve that, maybe not give a full proof but at least better wording
-The mass states are defined such that
+$U_{i\ell}$ would just be the identity matrix;
+$U_{i\ell}$ must be unitary so that the probability of observing
+a neutrino in any state is 1.
+
+It is typical to characterize $U_{i\ell}$ with three angles
+($\theta_{12}$, $\theta_{13}$, $theta_{23}$) and a complex
+phase $\delta_{cp}$. Doing so allows for the SU(3) matrix to
+be decomposed into 3 SU(2) matrices,
+$$U_{12} =
+\begin{bmatrix}
+    \cos\theta_{12} & \sin\theta_{12} & 0  \\
+    -\sin\theta_{12}& \cos\theta_{12} & 0  \\
+    0 & 0 & 0  \\
+\end{bmatrix}
+$$,
+$$
+U_{13} =
+\begin{bmatrix}
+    \cos\theta_{13} & 0 & \sin\theta_{13}e^{-i\delta_{cp}}\\
+    0 & 0 & 0  \\
+    -\sin\theta_{13} e^{-i\delta_{cp}} & 0 & \cos\theta_{13}  \\
+\end{bmatrix}
+$$,
+$$
+U_{23} =
+\begin{bmatrix}
+    0 & 0 & 0  \\
+    0 & \cos\theta_{23} & \sin\theta_{23} \\
+    0 & -\sin\theta_{23} & \cos\theta_{23}   \\
+\end{bmatrix}
+$$.
+These matrices can be multplied to produce the full mixing matrix
+$U_{i\ell} = U_{23}U_{13}U_{12}$
+
+The mixed nature of neutrino flavor and mass states gives rise to oscillations
+in the flavor content of propagating neutrinos.
+The Hamiltonian for a neutrino propagating in vaccume is
+$H = -im\textbf{p}^2 $.
+Using Schrodinger's equation,
+$H\ket{\Psi}$ = $E\ket{\Psi}$
+gives the differential equation
+$\textbf{p} \ket{\Psi} = imE\ket{\Psi}$.
+Applying the position operator to this yields
+$\dfrac{d}{d\textbf{x}} \Psi(x) = imE\Psi(x)$.
+Solving this equation for $\Psi(x)$,
+$\Psi = e^{i\dfrac({E}{m}}$.
+
+This shows that not only are neutrino flavor states
+composed of mass states, that composition results
+in flavor oscillation over time.
+
+When neutrino propagate through matter this oscillation is altered.
+The local density of other particles modifies the vaccume Hamiltonian,
+adding a weak interaction potential.
+This interaction comes from a neutral current interaction of the form
+shown in $TODO$, or a flavor depedent charge current interction with the
+leptons around the neutrino.
+Since nearly all matter contains a much higher density of electrons
+than the other flavors of charged lepton, the charged current reaction
+modifies the electron neutrino potential and not the potential for the muon
+or tau neutrion.
+The result is that the electron density through which a neutrino propagates
+can modify the effective mass-splitting and mixing angle for the electron
+neutrino.
+For a given neutrino energy $E_{\nu}$ there exists an electron density for which
+the effective mixing angle is maximal, this is known as the resonant density.
+
+
+The masses of the neutrino mass states are not known, there are limits placed
+on the sum of the neutrino masses from observations of tritium decay, and
+from astronomical considerations. % TODO add citation.
+
 
 \begin{equation}
     H \ket{\nu_i} = m_i \ket{\nu_i}
