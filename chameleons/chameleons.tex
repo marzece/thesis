@@ -13,4 +13,178 @@
 % ----------------------- chameleons content -------------------------
 % ----------------------------------------------------------------------
 
+The observed discrepancy in $\Deltam^{2}_{21}$ has motivated a number
+of theories that modify solar neutrinos oscillation from the standard
+MSW-LMA hypothesis described in section $XXX$.
+Here I'll describe a few of those theories and introduce a novel theory
+that modifies the potential the neutrino experiences as it travels in
+vacuume between the Sun and Earth.
+
+\subsection{Non-Standard Interactions}
+Solar neutrino moving through the core of the sun is one of the few sources
+of neutrinos that experience oscillations that are significantly modified by
+the ambient electron density.
+In princible neutrino mixing could be modified by neutrino-nuclear interactions
+as well, however standard nuclear interactions for the neutrino are either
+not flavor sensitive. Or are the result of incoherent neutrino scattering, which
+in most cases has a much smaller  cross-section than coherent or electron scattering.
+
+
+But their potential sensitivity to nuclear or modified electron scattering
+means they can be used to probe into our understanding of how neutrinos
+interact with matter.
+If there exists neutrino-nucleus or neutrino-electron interactions that are
+not accounted for within the standard model those interactions could be visible
+in how they modify the oscillations of solar neutrinos.
+
+
+It's common to parameterize these modified interactions in a general manner,
+without tieing it to particular theory of modified interactions. As show in
+figure XXX, which shows a possible survival probability curves for a modified
+up or down quark-neutrino interaction\ldots TODO.\@
+
+\subsection{MaVaNs}
+It was originally proposed in XXX that the cosmological acceleron theory for dark
+energy might lead to a neutrino's mass being modified by the local neutrino density.
+This in turn can modify neutrino mixing in the core of the sun where the neutrino
+propagates significant distances in areas of high neutrino density.
+
+
+\subsection{Chameleons}
+It was proposed in XXX that the observed expansion
+of the universe could be explained by introducing a 5th force that is weak
+in areas of high matter density. Such a force would be difficult to detect
+in most experiments because its effects would be small compared to standard
+forces. But at cosmological distance scales where the matter density is near
+zero, the force could be much stronger. This force is referred to as a ``hameleon''
+force, because it is affected by it's surrounding and can ``blend in'' to avoid
+detection.
+
+It could be the case that this force couples to neutrinos such that the coupling
+is sensitive to either neutrino flavor, or the mass. If so it's expected that the
+neutrino's mixing would be modified by the prescesce of a chameleon field.
+And that the chameleon-modified mixing would be only significant in areas of very
+low matter density.
+Solar neutrinos would provide almost unique sensitivity to this sort of modified
+vacuum mixing, because they're by far the most abundant and easily detectable source
+of neutrinos that travel a significant distance in areas of near-zero matter
+density, \it i.e.\ between the Sun and Earth.
+
+This idea is the phenomonlogical basis for the idea of modified vacuum mixing.
+To explore this idea I developed a simulation of neutrino mixing in the sun and in
+the vacuum. Typical calculations of the neutrino survival probability from
+the sun are able to take advantage of the fact that the neutrino travels adiabatically
+through the varying mass density of the sun. This means that the neutrino is
+created in a mixture of mass states, the exact composition depending on the local
+electron density, and the neutrino stays in that same mixture of mass states
+as it exits the sun. The flavor composition of each mass state however changes,
+meaning that the flavor composition of the neutrino state changes, even though
+it's mass-state composition does not.
+This means that practically all one needs to do is calculate the composition
+of mass states that corresponds to an electron type neutrino, and then calculate
+the flavor content of that composition in vacuume, and that flavor content
+tells you the survival probability and trasition probability. One is able to
+ignore all oscillations that may occur within the sun and simply calculate
+quantities for when the neutrino is created and when it is detected.
+
+This simplification is not necessarily valid depending on how the neutrino
+exits the sun and how quickly the modified vacuum potential becomes significant.
+While the matter density is low but non-zero the neutrino will experience standard
+vaccuum mixing. If the neutrino changes from low to zero matter density over
+a distance much shorter than the oscillation length of the neutrino, the
+transition from standard to modified vacuum mixing potential may not be adiabatic.
+In which case the exact state of the neutrino at the point of the transition
+will determine how the flavor state of the neutrino changes as it propagates.
+
+To allow for this the simulation for modified vacuum mixing simulates the full
+neutrino state as it propagate through the sun. The equation
+\begin{equation}
+    \label{eqn:mixing_schrodinger}
+    i\frac{d\Psi}{dx} = H\Psi %TODO
+\end{equation}
+is evaluated numerically using the Runge-Kutta method of numerical integration.
+This cannot be easily evaluated analytically due to the varying density in the
+core of the sun.
+
+Performing this simulation for many neutrino energies at many different starting
+radii gives an representation of possible neutrino states for solar neutrino.
+The density profile for the sun is taken from XXX.%todo
+
+The standard solar survival probability can be calculated by taking calcuating
+$|\bra{\nu_{e}}\ket{\Psi_{\nu}}|^{2}$ for each simulated neutrino and appropriatly
+averaging over energies and production radii.
+Since neutrino states are simulated by linearly sampling starting radii and logarithmically
+sampling neutrino energies, states must be weighted by the relevant production
+PDFs in energy and radius.
+
+The simulation of neutrinos this way is computationally expensive. A few methods
+were explored for ensuring this simulation could be performed in a reasonable
+amount of time. The method that was used for nearly all of the results here was
+to perform the Runge-Kutta integration on a GPU, which each thread corresponding
+to a single sample in energy and production radius.
+
+% TODO need typical radii/energy sample counts
+However, even using GPU acceleration the simulation is still very time consuming,
+a simulation of XXX energy samples and XXX production radius samples requires
+roughly 2000\,gpu-hours. Performing this simulation as part of a fit to data would
+require potentially hundreds or thousands of iteration. So it is not possible to
+perform the full simulation in a fit.
+
+Fortunately, by construction the solar simulation is not effected by modified
+vacuum potential; the main inputs to the solar simulation are the standard model
+mixing parameters and the solar density profile. So, standard model mixing parameters
+taken from KamLAND and other non-solar neutrino experiments can be used for
+the solar simulation.
+
+The result of the solar simulation is the neutrino state at 5000 samples
+closest to the exit of the sun. Depending on the energy of the neutrino this
+corresponds to state the neutrino is in in the final  150 to 500 km of
+the Sun, this corresponds to \numrange{0.2}{0.7}\% of the solar radius ($R_{odot}$).
+And the sample-to-sample distance is \numrange{30}{100} meters.
+Production radii samples are XXX\,m from each other, meaning that
+the \numrange{150}{500}\,km samples taken at the end of the simulation
+overlap with samples taken one production radius step further.
+This provides a useful check of the simulation, the difference between two
+samples which have travelled the same distance within the sun should only depend
+on the difference in electron density where they were produced.
+Figure shows that correlation\ldots.%TODO!(maybe, not that important)
+
+Once  monte-carlo samples of neutrino states produced by the Sun is calculated, these
+states are used as inputs to a simulation of the modified vacuum potential.
+This simulation is in princible the same as the solar simulation,
+it simply involve evaluting Eqn.~\ref{eqn:mixing_schrodinger}, where $H$ now
+corresponds to the modified vacuum Hamiltonian.
+Unlike the solar simulation though the value of $H$ is not expected to change
+as the neutrino propages; Equation~\ref{eqn:mixing_schrodinger} can be evaluated analytically
+between the Sun and Earth.
+
+The final step of the calculation is to evolve the sampled neutrino states through
+the Earth, to the detector.
+This is done similarly to the simulation of neutrino propagation through the
+Sun.
+The calculation for this is done for only a ``day'' path through the earth
+and a ``night'' path. The ``day'' path simulates the neutrino only travelling
+through the crust of the Earth. The ``night'' path simulates the neutrino
+travelling through the Earth, including the high density ``core'' region.
+The Earth density profile is take from PREM XXX% \refXXX.\@%todo.
+This results in an simulation of the day-night effect for neutrino
+oscillation.
+
+The final result of this chain of simulation steps is monte-carlo samples
+of neutrino flavor states. The survival probability can be calculated by calculating
+$P_{ee}(\Psi_{nu}) = |\bra{\nu_{e}}\ket{\Psi_{nu}}|^2$ for each neutrino state.
+Performing an average of states and binning in neutrino energy gives the survival
+probability as a function of energy $P_{ee}(E_{\nu})$.
+
+Since neutrino states are monte-carlo sampled to calculate $P_{ee}(E_{\nu})$
+each value has statistical uncertainty from the number of samples used.
+This problem was somewhat exacerbated by the distributions of some of the
+solar neutrino energy PDFs having small values in areas that are important for
+comparing to solar neutrino data. For example the low energy portion of the
+$\ce{^{8}B}$ solar neutrino flux is very important for solar neutrino experiments,
+but makes up a relatively small portion of the full $\ce{^{8}B}$ neutrino flux.
+To mitigate the problem of large sampling uncertainty for important regions in
+solar neutrino energy, energies were sampled according to a flat distribution
+and according to the PDFs for each solar neutrino flux. These two methods of sampling
+were performed in equal proportions for each flux type.
 
