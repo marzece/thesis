@@ -1,0 +1,12 @@
+Add results and figures for kamland
+Add results and figures for SNO
+Add results and figures for SuperK
+Add results and figures for Borexino
+Add dscription of radio-chemical experiments + results
+
+Find NSI paper and get equation for modified potential
+(and description). And figures
+
+Give solar production and density profile sources and figures
+Need number of energy and radii samples in simulation
+
