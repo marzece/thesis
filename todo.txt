@@ -10,3 +10,11 @@ Find NSI paper and get equation for modified potential
 Give solar production and density profile sources and figures
 Need number of energy and radii samples in simulation
 
+Talk a little bit about front-end calibration [ECA/ECALs]
+
+For a 10 MeV neutrino at wat matter density is the
+resonane and at that radius
+
+Also what is the maximum electron density within the sun?
+And below what energy will a neutrino never experience an
+MSW resonance?
