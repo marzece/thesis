@@ -14,7 +14,7 @@
 % ----------------------------------------------------------------------
 
 \section{Signal Extraction}
-Solar neutrino events are simulated using ``RAT'', a Geant-4 based
+Solar neutrino events are monte-carlo simulated using ``RAT'', a Geant-4 based
 simulation and analysis toolkit.
 RAT simulates all effects after the initial interaction, including photon
 propagation and detection, and particle scattering.
@@ -26,9 +26,65 @@ A cross-section model take from \cite{bahcall} and \cite{lookitup}
 is used to estimate the elastic scattering interaction rate.
 RAT provides an accurate model of the detector response for each interaction.
 
-Solar neutrino simulation is done on run-by-run basis with a fixed, artificially
-enhanced, rate. Each run's simulation is matched to the detector trigger and
-daq settings for that run.
+Solar neutrino events are simulated on run-by-run basis with a fixed average rate
+of interactions.
+Each run's simulation is matched to the detector trigger and
+daq settings for that run. To ensure adequate monte-carlo statistics the
+rate of solar $\nu_{e}$ and $\nu_{\mu\text{,\,}tau}$ interactions is artificially
+enhanced by a factor of XXX and XXX; the enhanced rate is later removed as a correction
+to the normalization of the PDFs created from the monte-carlo simulation. 
+
+$\theta_{sun}$ is defined by 
+\begin{equation}
+\cos\theta_{sun} = \vec{d}\cdot\vec{d_{sun}}\text{, }
+\end{equation}
+where $\vec{d_{e}}$ represents the reconstructed direction of an event and
+$\vec{d_{sun}}$ is the direction vector pointing from the center of the sun to
+the reconstructed position of the event.
+$\vec{d_{sun}}$ estimates the direction the neutrino was travelling when it interacted
+within the detector, $\vec{d_{\nu}}$; it is assumed the neutrino travelled directly 
+from the center of the sun without scattering off anything while it travelled.
+This is a good assumption because the neutrino cross-section is small that it's very
+unlikely the neutrino will interact with anything before interacting in the detector.
+Assuming the neutrino comes from the center of the sun is a poor assumption for an individual
+neutrino, but averaged over many neutrinos it is a good assumption.
+Additionally, correcting for the radius the neutrino is produced at would only adjust
+the direction by at most $0.1\deg$.
+Figure XXX shows the angle between $d_{sun}$ and $d_{\nu}$ for simulated solar neutrino
+events.
+
+Figure XXX shows why $\theta_{sun}$ is a useful variable for a solar neutrino analysis.
+By comparing the rates of events with different values for $\theta_{sun}$ one can
+extract a background rate and a solar rate.
+
+\subsection{Reconstruction}
+A series of reconstruction algorithms are ran over all events that pass data cleaning.
+These algorithms estimate the position, time, direction, and energy of the event.
+All events are reconstructed under the hypothesis that the PMT hits are from cherekov radiation
+produced by a single electron.
+The direction ($\vec{d}$), time ($\t_{0}$), and position ($\vec{p}$) are determined simultaneosly by performing a likelihood
+fit to the time and position of PMT hits.
+The algorithm evaluates the likelihood of a hypothesized event position and time by
+calculating the time residual for each hit PMT,
+\begin{equation}
+\t_{res} = t_{PMT} - t_{transit} - t_{0}
+\end{equation}
+and using a PDF for $\t_{res}$ determined from simulation.
+The algorithm uses only the events in the prompt time window to ensure only light
+that travelled directly from the event origin is used.
+
+\subsection{Calibration}
+
+
+Since the cross-section for neutrino elastic scattering is highly peaked in the forward
+direction one expects the $\vec{d_{e}}
+
+
+of a vector pointing from the center of the sun at the time of the event, to the reconstructed position of the event.
+
+
+Simulated events are used to estimate the distribution of events in $\cos\theta_{sun}$ and
+electron recoil energy $T_{e}$. 
 
 The simlated events are histogrammed to estimate the underlying PDFs
 of observable reconstructed energy and event direction. Cut's are placed
