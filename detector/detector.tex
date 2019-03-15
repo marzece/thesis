@@ -92,7 +92,7 @@ Changing the target material can change what sort of physical processes is
 observable with the detector.
 The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or $\ce{D_{2}O}$)
 target, the upgrades for SNO+ were done in expectation of a tellurium doped
-scintillator target.
+scintillator target, more information on this can be found in Sec.~\ref{sec:upgrades}.
 For this thesis the target material is ultra-pure water (\ce{H_{2}O}).
 
 The target volume is encapsulated within a 6-meter radius acrylic sphere,
@@ -119,11 +119,8 @@ high voltage (HV) supply to the PMT input pins and routes the PMT return signal 
 HV supply cable.
 
 
-
-
-
 \subsection{Electronics And DAQ}
-The SNO+ data acquisition (DAQ) inherit much of their design and components from
+The SNO+ data acquisition (DAQ) inherit much of its design and components from
 SNO.
 There are a few notable upgrades that were made for the purpose of handling the
 higher light yield and event rate that SNO+ has compared to SNO.
@@ -139,36 +136,36 @@ PMT signal is recorded such that offline analysis is possible.
 
 The first step of the PMT interface system is the PMT base. The base is responsible
 for fanning-out the supplied HV to the PMT dynode pins and connecting the PMT output
-to the PMT cable. The PMT base is housed within a water-tight cassette.
-The PMT cables pass penetrations in the cavity ceiling where they then connect
+to a PMT cable. The PMT base is housed within a water-tight cassette.
+The PMT cables pass through penetrations in the cavity ceiling where they then connect
 to the rest of the electronics. The PMT cable connects first to a PMT interface
 board (PMTIC). The physical connection occurs on a daughter card, called a ``paddle card'',
 that accomadates up to eight PMT cables; Each PMTIC hosts four paddle cards.
 The PMTIC is responsible for fanning out the PMT high voltage
 to each PMT and providing channel level adjustment to the voltage
 each PMT receives; the voltage adjustment is done with a series of
-replaceable resistors.
-The PMTIC is also responsible for separating the PMT signal from the HV
-supply, this is achieved with a capacitative decoupling circuit.
+swappable resistors.
+The PMTIC is also responsible for separating the PMT signal from the supplied
+HV, this is achieved with a capacitative decoupling circuit.
 Once the two signals are separated the PMTIC sends the PMT signal to
 a front end card (FEC) via a board-to-board connector, where it enters
 the readout and trigger system.
 
-The FEC sends each PMT signal to one of four mounted daughter boards
-(DB). Each DB compares the PMT signal to a threshold to decide if a "hit" has
-occurred or not; thresholds are set on a channel-by-channel basis.
-When a hit occurs a number of processes take place to record information and
-provide inputs to the trigger system.
-The inputs to the trigger system are four separate analog current pulses:
-N100, N20, energy sum high (ESUMH) , and energy sum low (ESUML).
-The N100 and N20 are fixed height square pulses that have different widths.
-The N100 is near 100\,ns wide, the N20 is nominally 20\,ns wide but for nearly
-all of the data taken with detector it was changed to be 40\,ns wide.
-The ESUMH and ESUML pulses are copies of the original PMT pulse, with different
-gains applied - ESUMH having a larger gain than ESUML.
+%The FEC sends each PMT signal to one of four mounted daughter boards
+%(DB). Each DB compares the PMT signal to a voltage threshold to decide if a "hit" has
+%occurred or not; thresholds are set on a channel-by-channel basis.
+%When a hit occurs a number of processes take place to record information and
+%provide inputs to the trigger system.
+%The inputs to the trigger system are four separate analog current pulses:
+%N100, N20, energy sum high (ESUMH) , and energy sum low (ESUML).
+%The N100 and N20 are fixed height square pulses that have different widths.
+%The N100 is near 100\,ns wide, the N20 is nominally 20\,ns wide but for nearly
+%all of the data taken with detector it was changed to be 40\,ns wide.
+%The ESUMH and ESUML pulses are copies of the original PMT pulse, with different
+%gains applied - ESUMH having a larger gain than ESUML.
 
 That signal is compared to a threshold, if the signal is over threshold a "hit"
-has occurred - this threshold is often called the ``channel threshold''.
+has occurred\,-\,this threshold is often called the ``channel threshold''.
 At the time of the channel threshold crossing the following processes occur, the name for each is given
 in parenthesis:
 a 100\,ns long fixed-height square pulse is created (N100), a 20\,ns fixed height square pulse is created (N20),
@@ -186,20 +183,21 @@ other PMT channels across the detector, \textit{i.e.} the N100 signals
 from all channels with be combined and separately all the
 N20 signals will be combined, \textit{etc}.
 The signals are combined through analog summation, summing is done on a few different
-cards within the detector.
-The FEC sums the top and bottom sixteen channels separtely, the the crate
+circuit boards within the detector.
+The FEC sums the top and bottom sixteen channels separately, the crate
 trigger card (CTC) sums the signals from the sixteen
 FECs that are in each electronics crate.
 The signals from each of the nineteen CTCs are all summed on the
-Master Trigger Card - Anlog (MTCA+). The SNO+ MTCA+ is an upgraded
-version of the SNO MTCA.
+Master Trigger Card - Analog (MTCA+). The SNO+ MTCA+ is an upgraded
+version of the SNO MTCAr; more information about the MTCA+ is available in
+Sec.\,\ref{sec:mtcap}.
 
-Separate but identical MTCA+s are used for each of the four trigger signals.
+Separate, but identical, MTCA+s are used for each of the four trigger signals.
 Each MTCA+ performs the analog summation with three different gains,
 resulting in a total of twelve signals spread across four different boards.
 Each of the twelve signals are separately compared to a threshold;
 each of the twelve thresholds are independent from each other.
-This threshold is called the "trigger threshold".
+These thresholds are called "trigger thresholds".
 
 The different gains are in place due to the practical difficulty of maintaining
 a good signal-to-noise ratio (SNR) without limiting the range of the
@@ -217,9 +215,10 @@ of 8-hits than it is at a threshold 25 hits.
 The different gains on each signal are therefore labelled by their threshold (not their gain), e.g.
 the high, medium and low gain paths for the N100 signal are respectively called
 N100 Low (N100L), N100 Medium (N100M), and N100 High (N100H).
-And although there are twelve signal-gain combinations available only seven are
+
+Although there are twelve signal-gain combinations available only seven are
 used: N100-Low, N100-Med., N100-High, N20-Low, N20-Med (also called just N20), ESUMH-Low, and ESUML-Low.
-Since the ESUMH and ESUML each only have one gain path available they're usually
+Since the ESUMH and ESUML each only use one gain path, they're usually
 referred to simply as ESUMH and ESUML with their gain path understood to be
 the high gain path.
 
@@ -231,74 +230,113 @@ Card - Digital (MTCD).
 Finally, each of these seven raw-trigger signals can be masked in or masked out on
 the MTCD;
 if a raw-trigger is masked out, nothing happens when it fires,
-if it is masked in, then a "global-trigger" (GT) signal is created when
-the raw-trigger signal that caused the global trigger, as well as any other
-raw-trigger signals that were high within a 20ns window of the global trigger,
-are recorded and readout, this is know as the "trigger word".
+if it is masked in, then the raw trigger creates a "global-trigger" (GT) signal.
+That global trigger signal is fanned out to all the data crates which
+in turn sends the GT to all front end cards and daughter boards.
+As the GT signal is created the MTCD also generates a signal
+called Lockout (LO). Lockout is typically a 420\,ns long pulse and while
+the signal is high the MTCD will not create any more global triggers.
+
 Once the global trigger is created the trigger cycle is complete and
-the readout begins.
+the readout process begins.
+The raw-trigger signal that caused the global trigger, as well as any other
+raw-trigger signals that were high within a 20\,ns window of the global trigger,
+are recorded and readout, this is know as the "trigger word".
+When the GT is created a counter, called the global trigger identifier (GTID) is incremented
+and readout along with the trigger word.
 
 The four values that are created by the PMT signal crossing
-the channel threhsold (TAC, QHS, QHL, QLX) are stored in anaalog memory
+the channel threshold (TAC, QHS, QHL, QLX) are stored in analog memory
 cells on the daughter boards.
-They are stored for a length of time known as ``GT VALID'', if
-the GT signal 
-The results of the latter 4 process are recorded in analog memory cells,
-if a readout signal is sent to this channel within $\approx$400\,ns of the
-signal crossing the values will be readout and digitized.
+They are stored for a length of time known as ``GT\_VALID'', if
+a GT does not arrive before GT\_VALID expires the TAC, QHS, QHL, \& QLX values
+are discarded. A typical value for GT\_VALID is $400\,ns$, although
+there exists some channel\,-\,to\,-\,channel variation.
+If a GT signal does arrive at the channel before GT\_VALID expires the
+values in the memory cells are digitized and readout to a memory buffer
+on the FEC.
+The TAC ramp starts when the PMT signal crosses channel threshold
+and stops when the GT signal arrives at the channel.
+Since the TAC voltage ramp is linear over time the value of the TAC
+indicates when the hit occurred relative to the GT signal.
 
-The global trigger signal is sent to each channel in the detector and
-causes them to digitize and readout their stored analog values (QHS, QHL, QLX and TAC).
-Only channels that have been hit within the last $\approx$ 400\,ns will readout
-anything, channels that were not hit will mostly ignore the global trigger signal.
-Each channel, regardless of if it has received a hit or not, increments
-a counter whenever it receives a global trigger signal.
-For channels that were hit the value of that counter is readout
-along with the hit information.
-This is the only means of synchronization across the detector.
+The FEC stores those values and adds information to identify which
+channel's data is stored, it also records the value of its own GTID.
+Each FEC keeps a counter that is incremented every time it recieves a global
+trigger signal, in princible the value of this counter will always be the same
+as the MTCD GTID, and the same as the counter in every other FEC in the detector.
+The GTID counter is our only way of associating recorded hit data with each other
+and with the trigger word.
 
-The readout and trigger processes are performed across
-a handful of custom boards. The first of these boards is the PMT-base which
-is responsible for fanning out each PMT's HV supply to the input supply
-pins and connecting the PMT return signal to the PMT cable that connects to
-the DAQ electronics.
-The physical interface for electronics to connect to the PMT cable is a
-small daughter card, called a ``paddle card'', that recieves up to eight PMT cables.
-Four paddle cards are mounted on a PMT interface card (PMTIC) 
+In practice it's possible for a channel's GTID to become out of sync with the GTIDs of
+all other channels.
+This can result in the hits on a particular channel being associated with
+the wrong event.
+To mitigate this problem every $2^{16}$th and $2^{24}$th GT respectively creates a $SYNC$ and
+$SYNC24$ signal, those signals are sent by the MTCD to each FEC \& DB.
+If a FEC or DB receives either of these synchronization pulses but its own GTID counter is not
+at an increment of $2^{16}$ or $2^{24}$ then the channel is identified as out of sync.
+If this happens, the GTID counter is adjusted to the correct value and the next hit to read out from the out of sync channel(s) is accompanied
+by a flag to indicate that it was out of sync.
+This system ensures a channel is never out of sync for more than $65536$ events.
 
-Data, once readout, is is processed by an algorithm that uses the
-the value of the global trigger counter to associate PMT hits with
-each other and, with their corresponding trigger word.
-This forms the data that is used to reconstruct information
-about the event that produced the light that was observed.
+A short while after the data and the associated identifying information and status flags are buffered
+in FEC memory, the data is readout by a create level readout card,
+the ``XL3''.
+The XL3 is new to SNO+; it replaces the XL1 and XL2 from SNO, more will be said about the
+XL3 in Sec.\,\ref{sec:xl3}.
+The XL3 reads out each FEC in sequence across the VME-like ``SNOBUS'' backplane.
+The XL3 stores data in it's own memory until eventually reading it out over
+ethernet to data-server process running on a near by computer.
 
-There are a few ancillary systems within the DAQ electronics.
+Each data crate has its own XL3, all XL3 read out and serve data asynchronously.
+The data-server process receives data from each XL3 and relays that data to
+any clients that have subscribed to the PMT data feed.
+A similar process is done for the trigger word data. The MTCD sends trigger data
+to the data-server, the data-server relays that data to any clients that have subscribed
+clients.
+
+The primary client to the data server is what's known as the ``Event Builder'', sometimes
+called the EB or just the ``Builder''. The Builder receieves data from the data-server and
+uses GTID information to associate trigger words and hits with each other.
+Once all the hits for an event have been associated wiht their trigger word the event
+has been ``built'' it is written to disk and the read out process for that event is complete.
+Data is typically taken in hour long chunks referred to as a ``run'';
+every run has an unique number associated with it and a ``run type'' number that
+gives basic context to the detector circumstances and settings in which the data was taken.
+The Builder, in addition to building events, is reponsible for associating
+events with their run number and run type.
+
+There are a few ancillary systems within the DAQ electronics, all
+of which are new to SNO+.
 The first is the CAEN v1720, commonly
 referred to as just ``CAEN'', which is a 12-bit digitizer board.
 The CAEN is used to digitize and readout the trigger signals.
-It has 8 available input channels that it can digitize, however,
-typically only three signals are actually used: ESUMH, N20L, and
+It has eight available input channels that it can digitize, however,
+typically only three signals are actually used, those channels digitize ESUMH, N20L, and
 N100L. The CAEN's digitization window and sampling rate can be varied,
 most commonly the digitization window is 420\,ns and the sample width
-is 4\,ns. The CAEN recieves a copy of the global trigger allowing it's
-data to later be synchronized with the PMT data.
+is 4\,ns. The CAEN receives a copy of the global trigger allowing and
+it keeps it's own GTID counter so its data can later be associated
+with the appropriate hit and trigger data. It also receives a copy of the
+SYNC and SYNC24 signal so it's synchronization can be ensured.
 
 The input voltage range for the CAEN is an adjustable 2\,V window.
-The voltage range for the trigger signals is 10\,V wide,
-necessitating some way of reducing the range of the trigger signals
-before they're plugged into the CAEN.
+The voltage range for the trigger signals is 10\,V.
+The difference in ranges necessitates some way of reducing the range of the trigger signals
+before they're sent to the CAEN.
 The simplest way of reducing the voltage range is to use a voltage
 divider to attenuate the signal by a factor of 5.
 Attenuation has a few undesirable effects though.
-The full range of the trigger signal is 10V, but the vast
+The full range of the trigger signal is 10\,V, but the vast
 majority of events will only use a small fraction of that range.
-So for events that use a small amount of the available 10V a factor
+So for events that use a small amount of the available 10\,V a factor
 of 5 attenuation will make the signal much small than it needs to be,
 resulting in loss of information because the signal will be smaller than
-the analog noise, or from the digitization process itself.
+the analog noise, or from the noise digitization process itself.
 And for the purpose of most analyses that use the data from the CAEN
 it's more important to be able to resolve a single hit than to resolve
-the height of the full pulse.
+the height of the full pulse if the pulse is very large.
 
 So a different scheme was put in place for fitting the trigger signal
 into the CAEN's available range. The trigger signal is clipped within
@@ -308,16 +346,43 @@ The board that was created to perform this dynamic range reduction
 was designed to optionally clip the signal or attenuate it, but
 for the vast majority of data taking the signal was clipped.
 
-The board that reduces the signal is the Trigger Utility Board Mark II (TUBII),
-it plays a significant role in the SNO+ DAQ at large.
-It's significance comes primarily from the fact that it acts as a secondary
-digital trigger board. It can receive raw-trigger pulses and put them
-through customizable trigger logic and emit it's own raw-trigger pulses.
+The board that was designed, in part, for this purpose is the Trigger Utility
+Board Mark\,-\,II (TUBII).
+Beyond modifying the trigger signals for the CAEN TUBII plays a significant
+role as part of the trigger and data readout systems as well.
+It's significance comes primarily from the fact that it acts as an auxiliary
+digital trigger board. It can receive raw-trigger pulses from the MTCA+s and apply
+customizable trigger logic to them and emit it's own raw-trigger pulses which are
+sent to the MTCD.
 TUBII also receives the global trigger signal and produces its own trigger
 word based upon which raw trigger pulses it had received. The TUBII trigger
 word is synchronized with the rest of the data for each event through it's own
-global trigger counter.
+global trigger counter and through the SYNC/SYNC24 signals. More information about
+TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
+\subsection{Electronics Upgrades}
+\label{sec:upgrades}
+SN
+\subsubsection{XL3}
+\label{sec:xl3}
+The SNO system used a centralized serial readout system, where each crate of
+electronics was readout in sequence.
+As part of the electronics upgrade from SNO to SNO+ this system was changed to
+an asynchronous, parallel readout system.
+The board responsible for this is the XL3, it hosts a Xilinx ML403
+FPGA and micro-processor (XXX TODO is that the write naem??).
+The ML403 reads outs out each front-end card serially and stores data
+in local memory buffers before reading them out to a dedicated
+data server.
+\subsubsection{MTCA+}
+\label{sec:mtcap}
+The SNO MTCA was not expected to be able to operate stably at the expected
+hit rate and occupancy of SNO+. For this reason the MTCA+ was developed,
+it performs the analog multiplicity sum using a series of operational
+amplifiers. The gain of the three different analog
+
+\subsubsection{TUBII}
+\label{sec:tubii}
 TUBII is used as interface board for some of the detector calibration systems.
 These systems emit light into the detector and usually need to be
 synchronized with the trigger system. This synchronization requires
@@ -325,12 +390,12 @@ a variety of pulses and delays to be tuned to account for the time it
 takes for signals and light propagate throughout the detector and DAQ
 system; TUBII provides those pulses and delays.
 
-As was alluded to earlier TUBII also has customizable complex trigger logic that
+TUBII's customizable complex trigger logic
 allows it to create trigger pulses from its inputs.
 The input trigger signals are fed into a Xilinx MicroZed, which is an FPGA and
 micro-controller.
 The MicroZed allows for nearly any logical combination of trigger signals including
-using previous trigger signals to inform the current trigger logic.
+using recent trigger signals to inform the current trigger logic.
 
 Something like this is desirable for identifying and ensuring the detector will
 be sensitive to time correlated events. An example of this would be that
@@ -346,27 +411,14 @@ threshold input for a short time after the $\beta$ trigger; ensuring that
 the $\alpha$ is detected.
 
 TUBII also provides general purpose and ``glue'' functionality,
-allowing different circuits from different boards in the DAQ to communicate.
+facilitating different circuits from different boards in the DAQ to communicate.
 An example of this is that the CAEN requires the global trigger and
 other synchronization pulses be sent to it using Low-Voltage Differential
 Signaling (LVDS), but the global trigger is created using Emitter Coupled
 Logic (ECL).
 And so TUBII provides translation between these two digital signaling protocols,
 allowing the CAEN to remain synchronized.
+TUBII also accepts analog signal and can apply an MTCA\,-\,like threshold
+discrimination and it contains logic for creating raw-trigger pulses the
+same as the MTCA+.
 
-\subsubsection{XL3}
-The SNO system used a centralized serial readout system, where each crate of
-electronics was readout in sequence.
-As part of the electronics upgrade from SNO to SNO+ this system was changed to
-an asynchronous, parallel readout system.
-The board responsible for this is the XL3, it hosts a Xilinx ML403
-FPGA and micro-processor (XXX TODO is that the write naem??).
-The ML403 readsouts out each front-end card serially and stores data
-in local memory buffers before reading them out to a dedicated
-data server. 
-\subsubsection{MTCA+}
-The SNO MTCA was not expected to be able to operate stably at the expected
-hit rate and occupancy of SNO+. For this reason the MTCA+ was developed,
-it performs the analog multiplicity sum using a series of operational
-amplifiers. The gain of the three different analog sm
-oper
