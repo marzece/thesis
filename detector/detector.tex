@@ -422,3 +422,85 @@ TUBII also accepts analog signal and can apply an MTCA\,-\,like threshold
 discrimination and it contains logic for creating raw-trigger pulses the
 same as the MTCA+.
 
+\subsection{Electronics Calibration}
+There are three primary calibrations performed for electronics to ensure that the
+detector behaves in a predictable way and that readout values can be interpreted
+for a physics analysis. The first calibration is the ECAL (Electronics Calibration),
+the next is the ECA (also Electronics Calibration), and the final one is the PCA (PMT
+Calibration).
+
+Both the ECA and ECAL use the PEDESTAL and PULSE\_GT signals. Both signals
+are produced on the MTCD by a pulser.
+The PULSE\_GT simply produces GT signals at a fixed rate.
+The PEDESTAL signal is sent to the FECs and they fake a PMT hit occurring,
+\textit{i.e.} a hit occurs in the electronics regardless of if the PMT has
+produced a signal or not.
+The channels that do or do not receive the PEDESTAL can be arbitrarily chosen.
+Since the PEDESTAL signal does not change the PMT signal that is measured the
+QHS, QHL, and QLX will always read out with the same value. The same is true
+for the TAC, the PEDESTAL is always emitted a fixed time before the PULSE\_GT
+signal, meaning the time between the PEDESTAL hit and the GT readout will always
+be the same.
+The time delay between the PEDESTAL and PULSE\_GT can be adjusted from
+XXX\,ns to XXX\,ns.
+%\numrange[range-phrase=--]{10}{10}.
+
+
+The goal of an ECAL is to provide settings for each channel that will result in a uniform
+detector response. Put differently, the ECAL attempts to minimize channel-to-channel variation
+across the detector.
+A number of factors need to be accounted for to produce a uniform detector response for example,
+the slope at which the time it takes for the TAC ramp to complete, the value for the
+channel threshold, the length of the GT\_VALID signal, \textit{etc}.
+The ECAL does this through a suite of separate tests and calibrations.
+ECALs are only ran as needed and typically an ECAL is only need after a board within the
+detector is replaced or repaired.
+
+The ECA is generally used for determining how values from the detector map to absolute
+physical values.
+There are two varieties of ECA,  PDST and  TSLP.
+The PDST ECA consists of sending many PEDESTAL signals to each channel in the detector and
+measuring the distribution of charge values (QHS, QHL, and QLX) from each channel.
+This provides a determination of which values of each charge correspond to zero PMT
+signal and how much those values can vary.
+This zero-point measurement is where the PEDESTAL signal derives its name; it measures
+the charge pedestal upon which the PMT signal sits, so to speak.
+
+The TSLP calibration follows a similar procedure, but varies the delay between
+the PEDESTAL and PULSE\_GT.
+The result is a precise determination of the mapping between time (in ns) and
+TAC value.
+Beyond providing a mapping between physical values and recorded values the ECA
+also provides information about which electronics channels are working reliably
+and which are not capable of producing useful data.
+Channels that cannot produce useful data are removed in later analysis but are
+typically not modified within the electronics, except in the case where they
+can be repaired or replaced.
+Both varieties of ECA are ran on an approximately weekly basis to account for
+variations that may occur with time in the read out values and to quickly
+identify when a channel becomes unreliable.
+
+The final electronics calibration, the PCA, is the only one to make use of the PMTs.
+The PCA is used for identifying the charge associated with the detection of a single
+photon by each PMT. There exists some variation in that value from differences in the
+electronics and the PMTs themselves, the PCA attempts to measure those variations.
+For SNO+ there exists two ways of performing a PCA, the first is with a deployed light
+source called the ``laserball''. 
+More information about the laserball can be found in Ref~\cite{XXX}.
+The laserball is typically placed within the center of the
+detector and emits light isotropically. For a typical laserball PCA the amount of light emitted
+is very small, such that only a few PMTs detect anything in a single event;
+this ensures that no PMT is likely to observe more than a single photon.
+Data are taken this way for a long period of time so that every PMT is hit many times over
+many events. The data is later analyzed to extract how much charge corresponds to a single
+photon for each channel.
+
+%TODO need ELLIE/TELLIE/SMELLIE reference.
+For SNO+ a similar procedure can be done using a newly installed laser/LED system
+mounted on the PSUP called ELLIE (Embedded Laser/LED Light Injection Entity).
+The ELLIE system consists of a number of fibres that project light from one
+side of the PSUP, across the detector, to the PMTs on the other side.
+The fibres are placed at a number of different positions around the PSUP.
+ELLIE can be used for a number of calibration purposes, including playing a
+similar role to the laserball for a PCA.
+
