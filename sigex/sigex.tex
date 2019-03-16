@@ -65,7 +65,7 @@ Additionally, the reconstruction algorithms use only the hits in the prompt time
 that travelled directly from the event origin is used.
 The same reconstruction algorithms are used on both simulated and detected events.
 
-The direction ($\vec{d}$), time ($\t_{0}$), and poition ($\vec{p}$) are determined by performing a likelihood
+The direction ($\vec{d}$), time ($t_{0}$), and poition ($\vec{p}$) are determined by performing a likelihood
 fit to the time and position of PMT hits.
 The algorithm evaluates the likelihood of a hypothesized event position and time by
 calculating the time residual for each hit PMT,
@@ -73,7 +73,7 @@ calculating the time residual for each hit PMT,
     \label{eqn:tres}
 t^{res} = t_{PMT} - t_{transit} - t_{0}
 \end{equation}
-and using a PDF for $\t^{res}$ determined from simulation, $P(t^{res})$.
+and using a PDF for $t^{res}$ determined from simulation, $P(t^{res})$.
 The position and time that minimize the quantity
 \begin{equation}
 \sum_{i=0}^{N_{PMT}} (P_{t^{res}_{i}})
@@ -82,7 +82,7 @@ is used as the event position and time.
 The direction is determined by evaluating $\theta_{PMT}$ for each hit where
 $\theta_{PMT}$ is defined by,
 \begin{equation}
-$\cos\theta_{PMT}$ = \vec{d}\cdot\left(\vec{P_{PMT}} - \vec{p}\right)\text{.}
+\cos\theta_{PMT} = \vec{d}\cdot\left(\vec{P_{PMT}} - \vec{p}\right)\text{.}
 \end{equation}
 The likelihood, $P(\theta_{PMT})$, is determined from simulation, the direction
 that minimizes
@@ -101,23 +101,23 @@ analytic calculation and monte-carlo simulation.
 A look up table is used to estimate the most likely electron
 kinetic energy that would produce the determined number of photons.
 
-\subsubsectin{ITR}
+\subsubsection{ITR}
 The time residual, defined in equation{eqn:tres} for a PMT hit is an extremely useful quantity because in
 general light that travels directly from an interaction will have a very small
 time residual.
 Light that is produced by another source, or reflects off of a detector component
 between production and detection will have a larger time residual.
 
-The fraction of hits that have $-4 \gt t_{res} \lt 9$ %TODO CHECK VALUES
+The fraction of hits that have $-4 > t_{res} < 9$ %TODO CHECK VALUES
 is known as the ``In-time ratio'' (ITR).
 The expected distrubtion in ITR for electrons is shown in figure XXX.
 
-\subsubsectin{$\Beta_{14}$}
-The quantity $\Beta_{14}$ is used to quantify how isotropic the hits
+\subsubsection{$\beta_{14}$}
+The quantity $\beta_{14}$ is used to quantify how isotropic the hits
 in an event is. It is defined as
 % TODO check this is correct
 \begin{equation}
-    \Beta_{14} = \sum_{j=0}^{i}\sum_{i=0}^{i=N_{PMT}} P_{1}(\cos(\theta_{ij})) + P_{4}(\cos(\theta_{ij}))
+    \beta_{14} = \sum_{j=0}^{i}\sum_{i=0}^{i=N_{PMT}} P_{1}(\cos(\theta_{ij})) + P_{4}(\cos(\theta_{ij}))
 \end{equation}
 
 % TODO, check this as well
@@ -125,7 +125,7 @@ The quantity $\theta_{ij}$ is the angle subtended by the vectors pointing
 from the reconstructed position of the event to the $i^{\text{th}}$ and
 $j^{\text{th}}$ hit PMT.
 
-The expected distribution of $\Beta_{14}$ for electron events within the
+The expected distribution of $\beta_{14}$ for electron events within the
 detector volume is shown in Figure XXX.
 
 %The fraction of hits that appear in a very prompt time window is a useful
@@ -141,15 +141,15 @@ For this analysis was an $\ce{^{16}N}$ source was used.
 
 The $\ce{^{16}N}$ source was developed by $SNO$, it uses a commercial
 deuterium and tritium generator (DT-generator) to produce gaseous $\ce{^{16}N}$.
-The gas is pumped into the deployed source where it can undergo $\Beta$-decay
+The gas is pumped into the deployed source where it can undergo $\beta$-decay
 to an exciteed state of $\ce{^{16}O}$, the $\ce{^{16}O}$ will then de-excite
 and typically emit a $XXX$\,MeV gamma particle. Higher energy gammas are emitted
 at a lower rate, the branching ratios for the de-excitation gammas are shown in
 figure XXX.
 
 A small block of plastic scintillator, observed by a PMT, is embedded within the
-source cannister. That PMT can detect the $\Beta$ from the initial
-$\ce{^{16}N} \arrowright \ce{^{16}O}$ decay. That PMT signal is used as a
+source cannister. That PMT can detect the $\beta$ from the initial
+$\ce{^{16}N} \rightarrow \ce{^{16}O}$ decay. That PMT signal is used as a
 tag in the detector DAQ to identify events from the deployed source.
 
 The source position within the AV was varied in a 3-dimensional
