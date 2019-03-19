@@ -151,19 +151,6 @@ Once the two signals are separated the PMTIC sends the PMT signal to
 a front end card (FEC) via a board-to-board connector, where it enters
 the readout and trigger system.
 
-%The FEC sends each PMT signal to one of four mounted daughter boards
-%(DB). Each DB compares the PMT signal to a voltage threshold to decide if a "hit" has
-%occurred or not; thresholds are set on a channel-by-channel basis.
-%When a hit occurs a number of processes take place to record information and
-%provide inputs to the trigger system.
-%The inputs to the trigger system are four separate analog current pulses:
-%N100, N20, energy sum high (ESUMH) , and energy sum low (ESUML).
-%The N100 and N20 are fixed height square pulses that have different widths.
-%The N100 is near 100\,ns wide, the N20 is nominally 20\,ns wide but for nearly
-%all of the data taken with detector it was changed to be 40\,ns wide.
-%The ESUMH and ESUML pulses are copies of the original PMT pulse, with different
-%gains applied - ESUMH having a larger gain than ESUML.
-
 That signal is compared to a threshold, if the signal is over threshold a "hit"
 has occurred\,-\,this threshold is often called the ``channel threshold''.
 At the time of the channel threshold crossing the following processes occur, the name for each is given
