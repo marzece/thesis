@@ -373,6 +373,118 @@ hit rate and occupancy of SNO+. For this reason the MTCA+ was developed,
 it performs the analog multiplicity sum using a series of operational
 amplifiers. The gain of the three different analog
 
+One of the most transformitive changes that the MTCA+ introduces into
+the SNO+ trigger system is its baseline restoration circuitry.
+The baseline of the each trigger signal is the voltage observed
+when there are zero hits in the analog sum.
+The baselines are sensitive to a number of known factors such as the
+ambient temperature, the PMT noise environment, and settings
+on the front-end.
+There are also a number of factors that effect that are more difficult
+to identify, such as transistors on the CTC performing poorly due to
+age or other unknown factors.
+These factors lead to the baseline for any trigger signal varying
+by upto a few hits over the course of a few hours.
+%When a CTC breaks this baseline can change up by to a few hundred of hits worth.
+
+In SNO this sort of variation in the baseline could be tolerated because
+the threshold was far from the baseline, so variations of a few hits
+did not have a very large effect.
+In SNO+, due to many of the upgrades, a significantly lower threshold was achieved,
+so a variation a few hits causes a much larger change in the trigger rate, which
+can be higher than the maximum possible readout rate.
+
+The MTCA+ provides two ways to mitigate baseline variations.
+The first is that the MTCA+ provides a relay to dynamically enable or disable each
+crates participation in the trigger sum.
+This is useful when a CTC fails, its trigger sums can be disabled to prevent it from
+pulling up/down the entire trigger sum to the point that stable triggering is no
+longer possible.
+
+The second is baseline resotoration circuit on the MTCA+. At the final
+stage of each analog sum the output sum is fed through a long-pass
+filter to extract the average voltage over an $\approx$1\,s period.
+That voltage is buffered and fed back into the non-inverting input
+of the operational amplifier used for the final stage of the
+of the analog sum.
+The effect of this feedback loop is to subtract any long term
+voltage offsets from the trigger sum.
+
+Using the long term average of the trigger sum is a good way of
+determining the sum baseline in the limit that variations from
+PMT hits have a small effect on the average.
+Since the average is performed over a period of $\approx$1\,s
+and the trigger signals are $\approx$100\,ns wide, then a hit
+rate of $\approx 10^7$\,hits/second is required for a significant
+effect on the average trigger signal.
+Since there are $\approx10^4$ PMTs participating in the trigger sum
+at any time, and each has a typical dark rate of $\approx1$\,kHz, the
+criteria of $10^7$\,hits/second is met.
+This means the baseline will be adjusted to account for the dark-rate hits.
+The PMT dark rate is the dominant source of hits for the detector when it has
+a water target, it's suspected, but not known, that this will still be true for
+a scintillator target as well.
+
+Since typical variations in the baseline from thermal and other environmental
+effects occur on the $\approx1$\,hour timescale the 1\,s time scale for the
+baseline restoration provides adequate correction for those sort of effects.
+
+
+\subsubsection{Dropout}
+There exists one other significant source of variation for the trigger baseline, typically
+called ``dropout''.
+Dropout comes from a error in the design of one of the
+ASICs on the DB; the error results in the N100 and N20 trigger pulses from
+a channel being much longer than they should be, \textit{e.g.} 1\,ms wide
+instead of 100\,ns.
+Since the width of the pulse is then $\approx10^-3$ if the rate of dropout is
+less than $\approx 1$\,kHz, then dropout will not effect the applied baseline
+correction significantly.
+But for almost any non-zero rate of dropout  the trigger itself will be effected;
+a single channel dropping out can be thought of as lowering effective threshold
+by a single hit.
+So dropout effects our ability to predict which events will or will not
+trigger our detector.
+
+Since dropout is the result of a design error in the trigger system, the readout system
+is not sensitive to it, so there is no straight forward way of measuring how many
+or which channels are dropped out at any time.
+Using the data recorded by the CAEN I was able to develop a method for determining
+how many channels are dropped out during certain triggered events.
+Using that measurement I was able to estimate the rate of channels dropping out
+in the detector as a whole.
+This information is included in our simulation of the detector DAQ system to improve
+our model of the detector response. More will be said about the trigger and DAQ simulation
+in Sec.\ref{XXX}.
+
+I developed a method for extracting the dropout from the CAEN data
+recorded by the detector.
+The method is to measure the baseline of the CAEN recorded N100-Lo and N20-Lo
+trigger signals.
+The measured baseline is histogrammed and then the function
+\begin{equation}
+    Pr(x) = \sum_{k=0}^{\infty} Pr(x | k)Pr(k) = \sum_{k=0}^{\infty} \dfrac{1}{\sqrt{2 \pi \sigma^2}} e^{-\dfrac{(x - (S*k + C))^2}{2 \sigma^2}} e^{-\lambda}\dfrac{\lambda^{k}}{k!}
+    \label{dropout_model}
+\end{equation}
+is fit to the histogram. Eqn.~\ref{dropout_model} describes a series of Gaussians
+distributions each with width $\sigma$ and separation $S$, and an overall shift $C$.
+The normalization of the $k^{\text{th}}$ Gaussian is given by the value of the Poisson
+distribution for an average rate $\lambda$.
+The parameter $\lambda$ corresponds the average dropout for the detector, all
+other parameters are treated as nuisance parameters.
+
+Figure XXXa and XXXb show the measured dropout for two different runs, between
+the two runs the channel thresholds were raised across the detector. This shows
+that a lower channel threshold can cause a significant change in the rate of
+dropout. It also shows that model can match data from the detector well for high
+and low amounts of dropout.
+
+For each run a dropout measurement is performed, the resulting dropout rate
+is later used in simulation as part of the DAQ simulation.
+As shown in Fig~\ref{XXX}, the accurate dropout simulation improves agreement between simulation and recorded
+data.
+
+
 \subsubsection{TUBII}
 \label{sec:tubii}
 TUBII is used as interface board for some of the detector calibration systems.
