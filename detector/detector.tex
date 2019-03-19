@@ -298,6 +298,8 @@ There are a few ancillary systems within the DAQ electronics, all
 of which are new to SNO+.
 The first is the CAEN v1720, commonly
 referred to as just ``CAEN'', which is a 12-bit digitizer board.
+It's role follows from the Analog Measurment Board (AMB) used in
+SNO.
 The CAEN is used to digitize and readout the trigger signals.
 It has eight available input channels that it can digitize, however,
 typically only three signals are actually used, those channels digitize ESUMH, N20L, and
@@ -356,11 +358,14 @@ The SNO system used a centralized serial readout system, where each crate of
 electronics was readout in sequence.
 As part of the electronics upgrade from SNO to SNO+ this system was changed to
 an asynchronous, parallel readout system.
-The board responsible for this is the XL3, it hosts a Xilinx ML403
-FPGA and micro-processor (XXX TODO is that the write naem??).
-The ML403 reads outs out each front-end card serially and stores data
-in local memory buffers before reading them out to a dedicated
-data server.
+The board responsible for this is the XL3 which hosts a Xilinx ML403
+Evaluation platform.
+The ML403 uses a Xilinx Vertex-4 FPGA as its primary logic chip and has
+64-MB of supporting SDRAM and persitent memory provided by a CompactFlash
+card reader.
+The XL3 \& ML403 interface with the FECs in a crate through VME-like communication
+accross the SNOBUS backplane.
+
 \subsubsection{MTCA+}
 \label{sec:mtcap}
 The SNO MTCA was not expected to be able to operate stably at the expected
