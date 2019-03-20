@@ -217,7 +217,28 @@ these events from the dataset.
 These algorithms are said to ``clean'' the data by removing events
 of instrumental origin.
 
-\subsubsection{Flashers}
+Events of instrumental origin are not well modeled within our simulation,
+so it is not used for evaluating the efficiencies and sacrifices of
+data cleaning cuts.
+Instead a data-driven approach is used that relies primarily on calibration
+data from the $\ce{^{16}N}$ source.
+
+\subsection{Ped Cut}
+During normal detector operations there are a few trigger calibration
+tests that are periodically ran.
+These tests use the PEDESTAL signal to inject a certain amount of fake hits
+into the detector, and events with those hits are inspected to evaluate the efficiency and
+quality of the trigger response.
+It's very important that these events are clearly identified and removed from the
+dataset so that the fake PEDESTAL hits are not confused for a real signal.
+Additionally, the trigger calibration processes usually include changing settings
+related to the PEDESTAL signal on the FEC, there's reason to believe these sort
+of changes can introduce noise to the front-end.
+So an aggressive approach of cutting all events that are within one second of
+a pedestal event is used.
+This not only cuts events but introduces a dead time into the dataset,
+this deadtime is subtracted from the overall livetime.
+\subsection{Flashers}
 The primary type of instrumental event that must be removed is ``flashers'' and
 ``shark-fin'' events.
 Both of these result from charge build-up on the PMT-base causing a
