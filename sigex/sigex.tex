@@ -203,6 +203,7 @@ on each event to
 \section{Data Selection}
 \subsection{Run Selection}
 \subsection{Event Selection}
+
 \subsection{Hit Cleaning}
 
 \section{Livetime}
@@ -356,3 +357,53 @@ The 99\% criteria was chosen arbitarily to ensure that the fraction of
 cleaning cuts.
 Figure~\ref{XXX} shows how the ESUMH CAEN trace integral is distributed
 in the two calibration datasets and for standard physics data taking.
+
+\section{Systematics}
+Systematics associated with event reconstruction, livetime, mixing parameters,
+and trigger efficiency are considered for this analysis.
+The event reconstruction systematics are uncertainties on the energy reconstruction
+scale and resolution, position reconstruction resolution and scale, and the
+resolution of the direction reconstruction.
+
+These systematics are generally treated in the same, or a similar, way, to evaluate
+the effect they have on the flux result.
+The uncertainties on each quantity are determined from a separate analysis, \textit{e.g.}
+from an analysis $\ce{^{16}N}$ data.
+Those uncertainties are propagated through the analysis by modifying the relevant quantities
+according to the one-$\sigma$ uncertainty.
+The PDFs that result from the modified events are used in the analysis to extract
+a modified result, that modified result is taken as the one-$\sigma$ effect of the
+systematic on the result.
+This process is detailed more for each considered uncertainty below.
+
+\subsection{Energy Resolution}
+The energy resolution uncertainty is determined primarily from the $\ce{16}N$ analysis.
+The resolution was determined to be XXX. %TODO
+The reconstructed energy of the MC simulated events is mapped to a Gaussian distribution with a variance given
+by
+\begin{equation}
+  \sigma^{2} = \sigma_{E}^{2}\left(\left(1 + \delta_{E}\right)^2 - 1\right)\text{.}
+  \label{eqn:systmatic_esmear}
+\end{equation}
+This process of mapping a single energy value to a Gaussian distribution is referred to as ``smearing''.
+Here $\sigma_{E}$ is given by $\sqrt{E}$ to match the functional form used in the fit for the systematics,
+Eqn~\ref{XXX}.
+The idea behind this smearing is to compensate for the possibility that our monte-carlo simulation could have
+a systematically smaller energy resolution than occurs in real data.
+So by applying a smearing the monte-carlo energy resolution is artificially deteriorated, and the uncertainty
+on the resolution is accounted for.
+A similar process does not exists to account for the possibility that the monte-carlo simulation has a poorer
+energy resolution than data taken from the real detector; there's no way to ``un-smear'' the reconstructed MC
+event energy.
+So, to account the effect of an over-estimated energy resolution the error on the result is assumed to be symmetric.
+As a penalty for this assumption the larger uncertainty between the positive and negative uncertainty on the
+energy resolution is used.
+
+\subsection{Energy Scale}
+The energy scale systematic uncertainty
+\subsection{Fiducial Volume}
+Uncertainty on the fiducial
+\subsection{Angular Resolution}
+\subsection{Mixing Parameters}
+\subsection{Trigger Efficiency}
+\subsection{Livetime}
