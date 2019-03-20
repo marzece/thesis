@@ -12,7 +12,6 @@
 % ----------------------- sigex content -------------------------
 % ----------------------------------------------------------------------
 
-\section{Signal Extraction}
 Solar neutrino events are monte-carlo simulated using ``RAT'', a Geant-4 based
 simulation and analysis toolkit.
 RAT simulates all effects after the initial interaction, including photon
@@ -56,7 +55,7 @@ Figure XXX shows why $\theta_{sun}$ is a useful variable for a solar neutrino an
 By comparing the rates of events with different values for $\theta_{sun}$ one can
 extract a background rate and a solar rate.
 
-\subsection{Reconstruction}
+\section{Reconstruction}
 A series of reconstruction algorithms are ran over all events that pass data cleaning.
 These algorithms estimate the position, time, direction, and energy of the event.
 All events are reconstructed under the hypothesis that the PMT hits are from cherekov radiation
@@ -71,23 +70,23 @@ The algorithm evaluates the likelihood of a hypothesized event position and time
 calculating the time residual for each hit PMT,
 \begin{equation}
     \label{eqn:tres}
-t^{res} = t_{PMT} - t_{transit} - t_{0}
+t_{res} = t_{PMT} - t_{transit} - t_{0}
 \end{equation}
-and using a PDF for $t^{res}$ determined from simulation, $P(t^{res})$.
+and using a PDF for $t_{res}$ determined from simulation, $P(t_{res})$.
 The position and time that minimize the quantity
 \begin{equation}
-\sum_{i=0}^{N_{PMT}} (P_{t^{res}_{i}})
+\sum_{i=0}^{N_{PMT}} P(t_{res}) % TODO need to refactor this to include the index i
 \end{equation}
 is used as the event position and time.
 The direction is determined by evaluating $\theta_{PMT}$ for each hit where
 $\theta_{PMT}$ is defined by,
 \begin{equation}
-\cos\theta_{PMT} = \vec{d}\cdot\left(\vec{P_{PMT}} - \vec{p}\right)\text{.}
+    \cos\theta_{PMT} = \vec{d}\cdot\left(\vec{p}_{PMT} - \vec{p}\right)\text{.}
 \end{equation}
 The likelihood, $P(\theta_{PMT})$, is determined from simulation, the direction
 that minimizes
 \begin{equation}
-\sum_{i=0}^{N_{PMT}} (P_{\theta_{PMT}})
+\sum_{i=0}^{N_{PMT}} P(\theta_{PMT})
 \end{equation}
 is used as the reconstructed event direction.
 
@@ -101,18 +100,21 @@ analytic calculation and monte-carlo simulation.
 A look up table is used to estimate the most likely electron
 kinetic energy that would produce the determined number of photons.
 
-\subsubsection{ITR}
+\subsection{ITR}
 The time residual, defined in equation{eqn:tres} for a PMT hit is an extremely useful quantity because in
 general light that travels directly from an interaction will have a very small
 time residual.
 Light that is produced by another source, or reflects off of a detector component
 between production and detection will have a larger time residual.
 
-The fraction of hits that have $-4 > t_{res} < 9$ %TODO CHECK VALUES
+The fraction of hits that satisify
+\begin{equation}
+    -4 > t_{res} < 9 %TODO CHECK VALUES
+\end{equation}
 is known as the ``In-time ratio'' (ITR).
 The expected distrubtion in ITR for electrons is shown in figure XXX.
 
-\subsubsection{$\beta_{14}$}
+\subsection{$\beta_{14}$}
 The quantity $\beta_{14}$ is used to quantify how isotropic the hits
 in an event is. It is defined as
 % TODO check this is correct
@@ -134,7 +136,7 @@ detector volume is shown in Figure XXX.
 %that has a longer time profile is unlikely to be from a Cherenkov process.
 %This is quantified using the ``In-time ratio'' (ITR) for an event.
 %ITR is the fraction of light with a time residual.
-\subsection{Calibration}
+\section{Calibration}
 The accuracy of simulated events is evaluated with data taken while a
 radioactive source was deployed within the detector volume.
 For this analysis was an $\ce{^{16}N}$ source was used.
@@ -159,19 +161,19 @@ but inside the PSUP, as well.
 Scanning many positions allowed for a position dependent evaluation of
 systematics.
 
-\subsection{Simulation}
-\subsubsection{RAT}
+\section{Simulation}
+\subsection{RAT}
 A monte-carlo simulation of particle interactions in the detector is used
 for predicting detector observables for events.
 The simulation pacakage used is called RAT, it is a Geant4-based simulation that
 contains a detector and DAQ simulation in addition to simulation of particle
 interactions and photon propagation.
 
-\subsubsection{Solar Neutrino Fluxes}
+\subsection{Solar Neutrino Fluxes}
 The expected spectral shape and normalization for the solar neutrino signal is
 taken from the BS05(OP) standard solar model.
 
-\subsubsection{Solar Neutrino Cross-sections}
+\subsection{Solar Neutrino Cross-sections}
 The rate of solar neutrino for a given flux follows from the cross-section for
 interaction. The only interaction relevant for the SNO+ detector is the
 neutrino-electron elastic scattering interaction.
@@ -183,7 +185,7 @@ The cross-section for the elastic-scattering interaction is take from
 XXX.
 XXX Something about radiative corrections
 
-\subsubsection{Survival Probability Simulation}
+\subsection{Survival Probability Simulation}
 A simulation of the expected solar survival probability curve for any set of mixing
 parameters was used. The survival probability is calculated using a
 3-flavor adiabatic calculation. The calculation was developed by the
@@ -198,12 +200,13 @@ electron recoil energy $T_{e}$.
 The simlated events are histogrammed to estimate the underlying PDFs
 of observable reconstructed energy and event direction. Cut's are placed
 on each event to
-\subsection{Data Selection}
-\subsubsection{Run Selection}
-\subsubsection{Event Selection}
-\subsubsection{Hit Cleaning}
+\section{Data Selection}
+\subsection{Run Selection}
+\subsection{Event Selection}
+\subsection{Hit Cleaning}
 
-\subsection{Data Cleaning}
+\section{Livetime}
+\section{Data Cleaning}
 There are a number of instrumental effects that can cause an event
 to be recorded by the detector, these events typically have some
 sort of distinguishing feature or features that set them apart
@@ -236,7 +239,7 @@ to a wide range of energies and possibly contiminate a signal region.
 So many of the data cleaning cuts are designed to ensure that all
 flasher events are identfied and removed from the dataset.
 
-\subsubsection{ZeroZero Cut}
+\subsection{ZeroZero Cut}
 The GTID for the FEC is stored in a ripple counter, it's often the case that
 when the bottom two bits of the counter rollover the event that gets recorded in
 the FEC memory gets corrupted.
@@ -247,13 +250,21 @@ for events that have a GTID with $00$ in the bottom two bits.
 Rather than correct for this inefficiecy in reconstruction, events with GTID
 ending in $00$ are discarded. This corresponds to a random pre-scale
 on our by a factor of $\frac{1}{256}$.
-\subsubsection{Crate Isotropy Cut}
-The Crate Isotropy Cut is designed to remove events that originate
-from noise
-\subsubsection{Flasher Geometry Cut}
-\subsubsection{ITC Timespread Cut}
-\subsubsection{Missed Muon Follower Cut}
-\subsubsection{CAEN Cut}
+\subsection{Crate Isotropy Cut}
+The Crate Isotropy Cut is designed to remove events that are isolated
+in one or a few electronics crates.
+Events originating from light within the detector are unlikely to have any
+preference in electronics space.
+However hits caused by electrical noise that was created near the electronics
+can show a very distinct preference for one crate.
+The criteria for this cut is that fraction of hits in any single
+is greater that $70\%$ and that the fractions of hits within
+that crate are either $80\%$ within adjacent FECs or $70\%$ within
+adjacent channels.
+\subsection{Flasher Geometry Cut}
+\subsection{ITC Timespread Cut}
+\subsection{Missed Muon Follower Cut}
+\subsection{CAEN Cut}
 I developed a new data cleaning cut, called the ``CAEN Cut'', that follows from
 the AMB Cut from SNO.
 The AMB Cut attempted to remove events from flashers the dataset by requiring
