@@ -161,6 +161,38 @@ but inside the PSUP, as well.
 Scanning many positions allowed for a position dependent evaluation of
 systematics.
 
+\subsection{Energy Calibration}
+
+The relative energy scale $\delta_E$ and detector energy resolution $\sigma$
+are determined by fitting the reconstructed energy spectrum $P(T_\mathrm{e})$
+with the predicted apparent energy spectrum $P_\mathrm{source}(T_e)$ convolved
+with a Gaussian~\cite{Dunford:2006qb}:
+\begin{equation}
+  P(T_\mathrm{e}) = N \int P_\mathrm{source}(T_e)\frac{1}{\sqrt{2\pi}\sigma}e^-{\frac{((1+\delta_E)T_\mathrm{e}-T\prime_{e})^2}{2\sigma^2}}dT\prime_{e}.%-\Delta E
+\label{eq:convolution}
+\end{equation}
+Here, $\sigma$ is the detector-only resolution, which excludes the contribution
+from Cherenkov photo-statistics and the production of electrons from the initial
+$\gamma$'s, because these are accounted for in $P_\mathrm{source}(T_e)$.  The
+detector resolution is expected to be dominated by a $\sqrt{E}$ term, owing to
+variations in light collection and photo-electron production among PMTs,
+yielding $\sigma(E) = b\sqrt{E}$, where $b$ is to be fit.  Other terms are
+expected to contribute much less to the resolution, and for robustness, it is
+preferred to have only one parameter to fit.  Fortunately, the choice of terms
+in the resolution expression has little impact on the fit results.  An energy
+offset or bias is not considered in the fit because
+%all components of the energy reconstruction are multiplicative, and
+it is assumed that there is no significant background contribution to the
+measured signals.  The determination of $P_\mathrm{source}(T_{e})$ is discussed in
+the next section.
+
+
+
+
+Figure~\ref{XXX} shows the  distribution of EnergyRSP reconstructed energy for
+$\ce{^{16}}$ events, both simulated and detected.
+\subsection{Direction Calibration}
+\subsection{Position Calibration}
 \section{Simulation}
 \subsection{RAT}
 A monte-carlo simulation of particle interactions in the detector is used
