@@ -1,0 +1,158 @@
+\section{Data Selection}
+\subsection{Run Selection}
+\subsection{Event Selection}
+
+\subsection{Hit Cleaning}
+
+\section{Livetime}
+\section{Data Cleaning}
+There are a number of instrumental effects that can cause an event
+to be recorded by the detector, these events typically have some
+sort of distinguishing feature or features that set them apart
+from events that originate from particle interactions within the
+detector.
+A number of algorithms and cuts have been designed to identify and remove
+these events from the dataset.
+These algorithms are said to ``clean'' the data by removing events
+of instrumental origin.
+
+Events of instrumental origin are not well modeled within our simulation,
+so it is not used for evaluating the efficiencies and sacrifices of
+data cleaning cuts.
+Instead a data-driven approach is used that relies primarily on calibration
+data from the $\ce{^{16}N}$ source.
+
+\subsection{Ped Cut}
+During normal detector operations there are a few trigger calibration
+tests that are periodically ran.
+These tests use the PEDESTAL signal to inject a certain amount of fake hits
+into the detector, and events with those hits are inspected to evaluate the efficiency and
+quality of the trigger response.
+It's very important that these events are clearly identified and removed from the
+dataset so that the fake PEDESTAL hits are not confused for a real signal.
+Additionally, the trigger calibration processes usually include changing settings
+related to the PEDESTAL signal on the FEC, there's reason to believe these sort
+of changes can introduce noise to the front-end.
+So an aggressive approach of cutting all events that are within one second of
+a pedestal event is used.
+This not only cuts events but introduces a dead time into the dataset,
+this deadtime is subtracted from the overall livetime.
+\subsection{Flashers}
+The primary type of instrumental event that must be removed is ``flashers'' and
+``shark-fin'' events.
+Both of these result from charge build-up on the PMT-base causing a
+spark.
+For a flasher event the light from the spark escpaes through the PMT face
+and illuminates the PMTs on the other side of the detector.
+Flashers ocurr at a rate of a few per minute.
+A shark-fin is similar but the spark is either small enough or located
+in a position such that the light does not escape the PMT.
+In both types of events the PMT in which the spark ocurrs with readout
+a very high-charge hit, and the channels next to it on the FEC will
+have low-charge hits from electronic pickup.
+For shark-fin event no other channels will be hit, except possibly by an
+accidental coincidence; for a flasher hit a number of hits will
+ocurr from the light that escaped the PMT.
+Since the number of PMT hits that ocurr in a flasher event can vary quite wildy,
+anywhere betweeen tens of hits and hundreds, they can reconstruct
+to a wide range of energies and possibly contiminate a signal region.
+So many of the data cleaning cuts are designed to ensure that all
+flasher events are identfied and removed from the dataset.
+
+\subsection{ZeroZero Cut}
+The GTID for the FEC is stored in a ripple counter, it's often the case that
+when the bottom two bits of the counter rollover the event that gets recorded in
+the FEC memory gets corrupted.
+When this happens the builder cannot put the corrupted hits into the event correctly,
+and the hits will effectively be discarded.
+This means that event the detectors effective photon detection efficiecy is lower
+for events that have a GTID with $00$ in the bottom two bits.
+Rather than correct for this inefficiecy in reconstruction, events with GTID
+ending in $00$ are discarded. This corresponds to a random pre-scale
+on our by a factor of $\frac{1}{256}$.
+\subsection{Crate Isotropy Cut}
+The Crate Isotropy Cut is designed to remove events that are isolated
+in one or a few electronics crates.
+Events originating from light within the detector are unlikely to have any
+preference in electronics space.
+However hits caused by electrical noise that was created near the electronics
+can show a very distinct preference for one crate.
+The criteria for this cut is that fraction of hits in any single
+is greater that $70\%$ and that the fractions of hits within
+that crate are either $80\%$ within adjacent FECs or $70\%$ within
+adjacent channels.
+\subsection{Flasher Geometry Cut}
+\subsection{ITC Timespread Cut}
+\subsection{Missed Muon Follower Cut}
+\subsection{CAEN Cut}
+I developed a new data cleaning cut, called the ``CAEN Cut'', that follows from
+the AMB Cut from SNO.
+The AMB Cut attempted to remove events from flashers the dataset by requiring
+that the integral and peak height of the ESUMH trigger sum (as measured by the
+AMB) fall below some threshold value.
+The CAEN Cut performs a similar function, it calculates the baseline subtracted
+integral and peak height of the digitized ESUMH tigger signal and places a cut on those values.
+
+The baseline value of each trace is calculated as the average value of the first
+$20$ samples and the $65^{\text{th}}$ to $85^{\text{th}}$ samples.
+I chose to use two windows, one before the trigger pulse, one after the trigger pulse, to
+correct for any overall slope across the digtized window.
+The CAEN window is $104$ samples long, the final 19 samples are not used because they often
+include a large noise pulse.
+The noise pulse comes from the GT pulse arriving at the front-end and generating electrical noise,
+it's typically called ``readout noise''.
+The readout noise makes the last $\approx20$ samples of the CAEN trace nearly
+useless.
+
+The determined baseline is subtracted from the CAEN trace and the integral and maximum
+peak height are calculated from the samples between the two baseline windows.
+To pass the CAEN Cut the peak and integral must fall between an upper and lower, nhit dependent,
+cut cut value.
+The cut values are given by
+\begin{equation}
+    f(n) = C\left(1-\sigma(n)\right) + \sigma(n)\left(mn+b\right)\text{.}
+    \ref{eqn:cc_threshold}
+\end{equation}
+Here $\sigma(x)$ indicates a sigmoid function,
+\begin{equation}
+    \sigma(x) = \frac{1}{1+e^{\frac{-(x-x_{0})}{w}}}
+\end{equation}
+The cut values are meant to be constant value at lower nhit, and then
+linear with nhit above $\approx15$ nhit, the sigmoid allows for a smooth
+transition between those two functions; for both the upper and lower threshold
+the sigmoid position ($x_{0}$) and width ($w$) are $15$\,nhit and $5$\,nhit respectively.
+The constant value at lower nhit is $C$ the slope of the line at higer nhit
+is given by $m$ and the value $b$ is required to be
+\begin{equation}
+    b = \frac{C}{mx_{0}}
+\end{equation}
+so that there is not discontinuity between the two cut regions.
+The values for these parameters are given in Table~\ref{XXX}.
+
+The reason for the two cut regions is because at lower nhit the signal
+peak is smaller than the noise one the ESUMH signal, so the only requirement
+is that the peak and integral be consistent with a noise only trigger sum.
+At higher nhit the ESUMH signal scales linearly with nhit, each new hit
+adds approximately the same amount of height to the trigger pulse.
+
+The cut parameters were determined from two calibration datasets, the first was
+tagged $\ce{^{16}N}$
+events. The second was a sample of $PULSE\_GT$ triggers taken during normal
+running.
+The two datasets are used to determine the cut parameters for the two
+different cut regions.
+The $\ce{^{16}N}$ data was used to determine cut values for the higher nhit
+region, the $PULSE\_GT$ data was used for the lower nhit cut values.
+
+For both regions the value of the integral or peak height that include
+99\% of the events at each nhit is found. Then the parameters of
+Eqn.~\ref{eqn:cc_threshold} that best fit those points is determined.
+Then Eqn.~\ref{eqn:cc_threshold} with the best fit upper and lower
+parameters to include 99\% of the calibration data become the threshold
+values for rejecting flasher events.
+The 99\% criteria was chosen arbitarily to ensure that the fraction of
+``good'' events rejected by this cut was similar to that of other data
+cleaning cuts.
+Figure~\ref{XXX} shows how the ESUMH CAEN trace integral is distributed
+in the two calibration datasets and for standard physics data taking.
+

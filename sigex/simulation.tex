@@ -1,0 +1,58 @@
+\section{Simulation}
+\subsection{RAT}
+A monte-carlo simulation of particle interactions in the detector is used
+for predicting detector observables for events.
+The simulation pacakage used is called RAT, it is a Geant4-based simulation that
+contains a detector and DAQ simulation in addition to simulation of particle
+interactions and photon propagation.
+
+\subsection{Solar Neutrino Fluxes}
+The expected spectral shape and normalization for the solar neutrino signal is
+taken from the BS05(OP) standard solar model.
+
+\subsection{Solar Neutrino Cross-sections}
+The rate of solar neutrino for a given flux follows from the cross-section for
+interaction. The only interaction relevant for the SNO+ detector is the
+neutrino-electron elastic scattering interaction.
+Neutrino-nuclear interactions occur as well, but they either cannot be identified
+separately from the radioactive backgrounds, or they occur at a very small rate
+compared to the elastic-scattering rate.
+
+The cross-section for the elastic-scattering interaction is take from
+XXX.
+XXX Something about radiative corrections
+
+\subsection{Survival Probability Simulation}
+A simulation of the expected solar survival probability curve for any set of mixing
+parameters was used. The survival probability is calculated using a
+3-flavor adiabatic calculation. The calculation was developed by the
+SNO collaboration \cite{XXX}.
+
+is used to calculate the fraction of the solar neutrino flux that arrives
+at Earth and interacts as a $\nu_{e}$ vs the fraction that is $\nu_{\mu}$ or $\nu_{\tau}$.
+
+\section{Analysis}
+The solar neutrino flux present in the dataset is determined by first
+rejecting events from the dataset that are unlikely to be solar neutrino events.
+Events that pass all cuts are two-dimensionally histogrammed in kinetic energy $T_{e}$ and
+$\cos\theta_{sun}$.
+The range of energies considered is $5\text{\,MeV} > T_{e} < 15\text{\,Mev}$.
+That range of energies was chosen to minimize contamination from radioactive
+backgrounds and atmospheric neutrino interactions.
+Between energies \numrange{5}{10}\,MeV the histogram bin width
+is 1\,MeV, above 10\,MeV a single bin is used.
+Forty bins of equal width are used for histogramming events in $\cos\theta_{sun}$.
+
+Simulated events are used to estimate the expected distribution of events in
+$\cos\theta_{sun}$ and electron recoil energy $T_{e}$.
+Simulated events are treated the same was as detector events, the same
+cuts are applied to their reconstructed quantities.
+
+A position dependent correction is applied to the reconstructed energy
+of both MC simulated events and detector events.
+
+
+The simulated events are histogrammed to estimate the underlying PDFs
+of observable reconstructed energy and event direction. Cut's are placed
+on each event to
+
