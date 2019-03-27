@@ -3,7 +3,7 @@ The accuracy of simulated events is evaluated with data taken while a
 radioactive source was deployed within the detector volume.
 For this analysis was an $\ce{^{16}N}$ source was used.
 
-The $\ce{^{16}N}$ source was developed by $SNO$, it uses a commercial
+The $\ce{^{16}N}$ source was developed by SNO, it uses a commercial
 deuterium and tritium generator (DT-generator) to produce gaseous $\ce{^{16}N}$.
 The gas is pumped into the deployed source where it can undergo $\beta$-decay
 to an exciteed state of $\ce{^{16}O}$, the $\ce{^{16}O}$ will then de-excite
@@ -24,15 +24,35 @@ Scanning many positions allowed for a position dependent evaluation of
 systematics.
 
 \subsection{Energy Calibration}
+The detector energy scale $\delta_{E}$ and resolution $\sigma_{E}$ are determined
+from the $\ce{^{16}N}$ energy spectrum.
+The energy spectrum is modeled as the $\ce{^{16}N}$ spectrum convolved with a 
+Gaussian, it's given by,
+\begin{equation}
+  P(T_\mathrm{e}) = N \int P_\mathrm{source}(T_{e})\frac{1}{\sqrt{2\pi}\sigma_{E}}e^-{\frac{((1+\delta_E)T_\mathrm{e}-T^{\prime}_{e})^2}{2\sigma^{2}_{E}}}dT^{\prime}_{e}\text{.}%-\Delta E
+\label{eq:convolution}
+\end{equation}
+$P_\mathrm{source}(T_{e})$ represents the distribution of deposited energy in
+the detector from the $\ce{^{16}N}$ source, in electron equivalent energy;
+it is determined from simulation.
+The $\ce{^{16}N}$ source is MC simulated, and the number of photons produced in
+each event is
+matched to the electron energy that would most likely generate that number
+of photons.
+
+
+The values for $\delta_{E}$ and $\sigma_{E}$ are determined by a fit to
+data, and a fit to MC simulation.
+
+
+
+
 
 The relative energy scale $\delta_E$ and detector energy resolution $\sigma$
 are determined by fitting the reconstructed energy spectrum $P(T_\mathrm{e})$
 with the predicted apparent energy spectrum $P_\mathrm{source}(T_e)$ convolved
 with a Gaussian~\cite{Dunford:2006qb}:
-\begin{equation}
-  P(T_\mathrm{e}) = N \int P_\mathrm{source}(T_e)\frac{1}{\sqrt{2\pi}\sigma}e^-{\frac{((1+\delta_E)T_\mathrm{e}-T\prime_{e})^2}{2\sigma^2}}dT\prime_{e}.%-\Delta E
-\label{eq:convolution}
-\end{equation}
+
 Here, $\sigma$ is the detector-only resolution, which excludes the contribution
 from Cherenkov photo-statistics and the production of electrons from the initial
 $\gamma$'s, because these are accounted for in $P_\mathrm{source}(T_e)$.  The
