@@ -24,52 +24,172 @@ Scanning many positions allowed for a position dependent evaluation of
 systematics.
 
 \subsection{Energy Calibration}
-The detector energy scale $\delta_{E}$ and resolution $\sigma_{E}$ are determined
+The detector resolution $\sigma_{E}$ and relative energy scale $\delta_{E}$ are determined
 from the $\ce{^{16}N}$ energy spectrum.
-The energy spectrum is modeled as the $\ce{^{16}N}$ spectrum convolved with a 
-Gaussian, it's given by,
+The energy spectrum is modeled by $P(T_\mathrm{e})$, the energy spectrum in
+electron equivalent kinetic energy, and is given by $P_{\mathrm{source}}(T_{\mathrm{e}})$
+convolved with a normalized Gaussian distribution,
 \begin{equation}
-  P(T_\mathrm{e}) = N \int P_\mathrm{source}(T_{e})\frac{1}{\sqrt{2\pi}\sigma_{E}}e^-{\frac{((1+\delta_E)T_\mathrm{e}-T^{\prime}_{e})^2}{2\sigma^{2}_{E}}}dT^{\prime}_{e}\text{.}%-\Delta E
+    P(T_\mathrm{e}) = N \int P_\mathrm{source}(T_{e})\frac{1}{\sqrt{2\pi}\sigma_{E}}e^-{\frac{\left((1+\delta_E)T_\mathrm{e}-T^{\prime}_{e}\right)^{2}}{2\sigma^{2}_{E}}}dT^{\prime}_{e}\text{.}%-\Delta E
 \label{eq:convolution}
 \end{equation}
-$P_\mathrm{source}(T_{e})$ represents the distribution of deposited energy in
-the detector from the $\ce{^{16}N}$ source, in electron equivalent energy;
-it is determined from simulation.
-The $\ce{^{16}N}$ source is MC simulated, and the number of photons produced in
-each event is
-matched to the electron energy that would most likely generate that number
-of photons.
+$P_\mathrm{source}(T_{\mathrm{e}})$ represents the distribution of deposited energy in
+the detector from the $\ce{^{16}N}$ source, in electron equivalent energy.
+Since the $\ce{^{16}N}$ emits gammas into the detector the mapping between
+gamma energy and electron equivalent energy is done by finding the electron
+energy that can produce the same number of Cherenkov photons
+as each gamma; this is not a one-to-one mapping because the same electron or gamma
+energy will not always produce the same number of photons.
+The mapping is determined from simulation and is shown in
+figure XXX.
+The gamma to electron energy mapping is then applied to the simulated $\ce{^{16}N}$
+gamma energy spectrum to determine $P_\mathrm{source}(T_{\mathrm{e}})$.
+
+The values for $\sigma_{E}$ and $\delta_{E}$ are extracted from~\eqref{eq:convolution}
+by performing a fit to the reconstructed $\ce{^{16}N}$ energy spectrum.
+The fit is done to both simulated $\ce{^{16}N}$ data and to detector data,
+each determining their own values for $\sigma_{E}$ and $\delta_{E}$. It's worth
+noting that $\sigma_{E}$ represents only the resolution provided by detector
+effects, resolution from effects such as photon statistics are accounted
+for in $P_\mathrm{source}(T_{\mathrm{e}})$
+
+Values for $\sigma_{E}$ and $\delta_{E}$ are extracted for data taken, or simulated, with
+the $\ce{^{16}N}$ source at many position, allowing for a position dependent
+determination of the energy scale and resolution.
+Fitting to both simulated and to detected data allows for a correction to
+be created that can make the two datasets match better, however the data
+used to create the correction cannot then be used to determine systematics.
+So the $\ce{^{16}N}$ data was split into two datasets, one for determining
+what correction should be applied to simulation, the other for extracting systematics
+after the correction is applied.
+
+The data for the correction is futher divided into position bins in $z$ and
+$\rho$, where $\rho = \sqrt{x^{2} + y^{2}}$. The choice of binning is motivated
+by the symmetry of the detector, the detector is very symmetric for an interchange
+of $x$ and $y$ or $x,y \rightarrow -x,-y$.
+There exists, however, signficant assymetries along the $z$ axis
+from the detector neck and from the rope-net along the top of the AV.
+The data is divided into 4-bins along the $\rho$ direction each $200$\,cm long
+and bins of $57$\,cm height along the $z$ axis. The number of bins along the
+z-axis varies for each slice in $\rho$ because data was primarily taken within
+the AV.\@
+Figure XXX shows the fits for $\delta_{E}$ and $\sigma_{E}$ in each bin for
+both simulated and detected events.
+
+Variations in $\delta_{E}$ along $z$ and $\rho$ were modeled by a polynomial given by,
+\begin{equation}
+    \delta_{E}(\rho^{2}, z) = A + \left[(1+B\rho^{2})(1+Cz+Dz^{2}+Ez^{3}) - 1\right]\text{.}
+    \label{eqn:escale_position_dependence}
+\end{equation}
+Values for $A$, $B$, $C$, $D$, and $E$ are extracted from a fit to the observed
+spatial variation of $\delta_{E}$ for simulation and data and are given in
+table~\ref{tbl:n16_position_escale}. The reconstructed energies of simulated and detected 
+events are then corrected according to~\eqref{eqn:escale_position_dependence} by
+their respective best fit values.
+The energy resolution is evaluated as a function of position but no correction
+is determined from it.
+\begin{table}
+    \centering
+\begin{tabular}{|c | c | c | c |c|c|}
+    \hline
+    & A&B&C&D&E\\
+    \hline
+    Data& 2.53e-2& 1.48-e9 & -5.44e-6 & 2.14e-9 & 6.49e-13\\
+    Simulation& 3.33e-2& 9.48e-10& 3.77e-6& 4.46e-10& 1.43e-13\\
+    \hline
+\end{tabular}
+    \caption{Best fit values for~\eqref{eqn:escale_position_dependence} for
+    simulated and detected data, determined using units of mm for $z$ and $\rho$.}
+    \label{tbl:n16_position_escale}
+\end{table}
 
 
-The values for $\delta_{E}$ and $\sigma_{E}$ are determined by a fit to
-data, and a fit to MC simulation.
+After the correction is applied to remaining half of the calibration dataset
+$\sigma_{E}$ and $\delta_{E}$ are determined once more as a function of position.
+The bin-by-bin differences in $\sigma_{E}$ and $\delta_{E}$ between
+simulated and detected data are taken as the systematic uncertainty for those
+parameters, with additional fit uncertainties added in quadrature.
+Averaging the bin-by-bin systematic uncertainty over the detector volume relevant
+for the solar analysis yields a $2.5\%$ uncertainty on $\delta_{E}$ and an
+$11\%$ uncertainty on $\sigma_{E}$.
 
-
-
-
-
-The relative energy scale $\delta_E$ and detector energy resolution $\sigma$
-are determined by fitting the reconstructed energy spectrum $P(T_\mathrm{e})$
-with the predicted apparent energy spectrum $P_\mathrm{source}(T_e)$ convolved
-with a Gaussian~\cite{Dunford:2006qb}:
-
-Here, $\sigma$ is the detector-only resolution, which excludes the contribution
-from Cherenkov photo-statistics and the production of electrons from the initial
-$\gamma$'s, because these are accounted for in $P_\mathrm{source}(T_e)$.  The
-detector resolution is expected to be dominated by a $\sqrt{E}$ term, owing to
-variations in light collection and photo-electron production among PMTs,
-yielding $\sigma(E) = b\sqrt{E}$, where $b$ is to be fit.  Other terms are
-expected to contribute much less to the resolution, and for robustness, it is
-preferred to have only one parameter to fit.  Fortunately, the choice of terms
-in the resolution expression has little impact on the fit results.  An energy
-offset or bias is not considered in the fit because
-%all components of the energy reconstruction are multiplicative, and
-it is assumed that there is no significant background contribution to the
-measured signals.  The determination of $P_\mathrm{source}(T_{e})$ is discussed in
-the next section.
-
-
-Figure~\ref{XXX} shows the  distribution of EnergyRSP reconstructed energy for
-$\ce{^{16}}$ events, both simulated and detected.
-\subsection{Direction Calibration}
 \subsection{Position Calibration}
+Similar to the energy calibration, the position reconstruction is evaluated
+using $\ce{^{16}N}$ data and simulation.
+The difference between the source position and the reconstructed
+position of each event is determined and histogrammed.
+A fit to that distribution is performed using a model of a Gaussian distribution
+with exponential tails convolved with a distribution for the first gamma interaction
+distance. The equation for this is given by,
+\begin{equation}
+    P(x)  = A \cdot \bigg[ \bigg(\frac{1 - \alpha}{\sqrt{2\pi}\sigma}e^{- \frac{(x-\mu)^2}{2\sigma^2}} + \frac{\alpha }{2 \tau}e^{-\frac{|x-\mu|}{\tau}}\bigg) \circledast P_{\gamma}(x) \bigg]\text{.}
+    \label{eqn:n16_position_model}
+\end{equation}
+Where $\mu$ and $\sigma$ are respectively the center and width of the Gaussian,
+$\tau$ represents the decay rate for the exponential tails, and $\alpha$ represents
+the relative strength of the exponential~vs.~the Gaussian;
+$P_{\gamma}(x)$ is distribution of distance travelled by an $\ce{^{16}N}$
+gamma before it's first interaction, it is determined from a separate MC
+simulation.
+Finally $A$ is an overall normalization to account for the number of events
+included in the distribution.
+The Gaussian and exponential portion of
+\eqref{eqn:n16_position_model} represents the spread introduced by the detector
+and position reconstruction, the $P_\gamma$ term represents the intrinsic spread
+in interaction positions from the source itself.
+Figure XXX shows an example of this distribution and fit for a central $\ce{^{16}N}$
+dataset.
+
+With this scheme three types of position uncertainties are considered, a shift
+uncertainty, a resolution uncertainty, and a scale uncertainty.
+Here a position shift is the value for $\mu$ in equation~\eqref{eqn:n16_position_model}
+averaged over the entire detector volume, $\langle \mu \rangle$;
+the position shift systematic then is the difference in $\langle \mu \rangle$
+from MC simulation and as determined by detector data.
+Rather than averaging over all source positions $\langle \mu \rangle$
+is determined averaging over scans along the $x$, $y$ and $z$ axis and
+so a position shift for each axial direction is determined.
+Only source positions along each axis are used to avoid possible correlations
+in each direction's position shift. The resulting systematic uncertainties along
+each axial direction are given in table~\ref{tbl:position_shift_systs}.
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+            \hline
+            &$\langle \mu \rangle$ Systematic Uncertainty (mm)\\
+            \hline
+            x&+16.4, -18.2\\
+            y&+22.3, -19.2\\
+            z&+38.4, -16.7\\
+            \hline
+    \end{tabular}
+    \caption{Position shift systematic uncertainties}
+    \label{tbl:position_shift_systs}
+\end{table}
+
+The position resolution systematics is evaluated in a similar way as the position
+shift systmatic, comparing values for
+$\sigma^{2}$ in equation~\eqref{eqn:n16_position_model} instead of $\mu$,
+but otherwise following the same procedure.
+Table XXX gives the extracted position resolution systematics uncertainties
+in $\text{mm}$
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+            \hline
+            &$\langle \sigma \rangle$ Systematic Uncertainty (mm)\\
+            \hline
+            x&104.0\\
+            y&98.2\\
+            z&106.2\\
+            \hline
+    \end{tabular}
+    \caption{Position resolution systematic uncertainties}
+    \label{tbl:position_resolution_systs}
+\end{table}
+
+
+For the solar analysis the most important position systematic is the vertex
+scale systematic.
+
+\subsection{Direction Calibration}
