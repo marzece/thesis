@@ -142,7 +142,8 @@ data from the $\ce{^{16}N}$ source, that analysis is detailed in~\ref{XXX}.%Teal
 The basic approach is to use tagged $\ce{^{16}N}$ events as a source of known
 non-instrumental events, and evaluate what fraction of the time those events
 are identified as instrumentals, this provides an estimate of the data-cleaning
-sacrifice.
+sacrifice. The results of this analysis estimated a $XXX$\% percent signal
+sacrifice from data cleaning.
 
 An estimate of the signal contamination was performed using a method developed
 by SNO~\cite{NEIL_THESIS} and applied to the dataset~\cite{DC_DOCUMENT};
@@ -152,8 +153,34 @@ However, a contamination estimate is not an input to the solar analysis,
 so that value is not used beyond a check that the instrumental background
 is reduced to a acceptable level.
 
-I'll detail here the data cleaning cuts
-that I developed or worked on, and discuss the other data cleaning cuts used
+Each data cleaning cut is associated with a bit in a 64-bit binary value called
+the data cleaning word or data cleaning mask.
+The cuts that each event passes or fails is tracked by its data cleaning mask.
+For the solar analyses all events are required to pass all cuts
+given by the data cleaning mask \texttt{0xFB0000017FFE}.
+This corresponds to the following data cleaning cuts:
+    \textbf{Zero Zero Cut},
+    \textbf{Crate Isotropy Cut},
+    \textbf{FTS Cut},
+    \textbf{Flahser Geo Cut},
+    \textbf{ITC Time Spread Cut},
+    \textbf{Junk Cut},
+    \textbf{Muon Tag},
+    \textbf{Neck Cut},
+    \textbf{Owl Cut},
+    \textbf{QCluster Cut},
+    \textbf{QvNhit Cut},
+    \textbf{QvT Cut},
+    \textbf{Ring Of Fire Cut},
+    \textbf{Two-Pass Muon Follower, Short},
+    \textbf{Polling Cut},
+    \textbf{Retrigger Cut},
+    \textbf{Two-Pass Burst Cut},
+    \textbf{Missed Muon Follower Cut},
+    \textbf{Missing CAEN Data Cut},
+    \textbf{Ped Cut},
+    \textbf{Atmospheric Cut}.
+Of those cuts I'll detail here those that I developed, the rest are described
 in~\ref{APPENDIXXX}.
 
 %TODO move this to appendix probably
