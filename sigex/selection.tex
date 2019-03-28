@@ -1,5 +1,21 @@
 \section{Data Selection}
+Events are included or removed from the dataset across three stages of selection.
+First entire runs are either included or removed based upon if they meet
+certain criteria for data quality.
+The events within selected runs are then rejected or approved by a set
+of low-level cuts that attempt to remove events caused by instrumental
+backgrounds and other sources of unwanted events.
+Within events that pass the low-level cuts, hits can be rejected from consideration
+if they're deemed unlikely to have originated from light within the detector.
+Following that analysis level cuts are applied to the reconstructed quantities
+for each event.
+The analysis cuts are designed to maximize the signal efficiecy for dataset and minimize the
+contamination from background sources.
+Each of these steps are detailed below.
+
 \subsection{Run Selection}
+Runs are rejected from the dataset if they fail to meet certain criteria
+for data quality and detector stability.
 \subsection{Event Selection}
 
 \subsection{Hit Cleaning}
@@ -20,7 +36,31 @@ Events of instrumental origin are not well modeled within our simulation,
 so it is not used for evaluating the efficiencies and sacrifices of
 data cleaning cuts.
 Instead a data-driven approach is used that relies primarily on calibration
-data from the $\ce{^{16}N}$ source.
+data from the $\ce{^{16}N}$ source. I'll detail here the data cleaning cuts
+that I developed or worked on, and discuss the other data cleaning cuts used
+in~\ref{APPENDIXXX}.
+
+The primary type of instrumental event that must be removed is ``flashers'' and
+``shark-fin'' events.
+Both of these result from charge build-up on the PMT-base causing a
+spark.
+For a flasher event the light from the spark escpaes through the PMT face
+and illuminates the PMTs on the other side of the detector.
+Flashers ocurr at a rate of a few per minute.
+A shark-fin is similar but the spark is either small enough or located
+in a position such that the light does not escape the PMT.\@
+In both types of events the PMT in which the spark ocurrs with readout
+a very high-charge hit, and the channels next to it on the FEC will
+have low-charge hits from electronic pickup.
+For shark-fin event no other channels will be hit, except possibly by an
+accidental coincidence; for a flasher hit a number of hits will
+ocurr from the light that escaped the PMT.\@
+Since the number of PMT hits that ocurr in a flasher event can vary quite wildy,
+anywhere betweeen tens of hits and hundreds, they can reconstruct
+to a wide range of energies and possibly contiminate a signal region.
+So many of the data cleaning cuts are designed to ensure that all
+flasher events are identfied and removed from the dataset.
+
 
 \subsection{Ped Cut}
 During normal detector operations there are a few trigger calibration
@@ -37,56 +77,27 @@ So an aggressive approach of cutting all events that are within one second of
 a pedestal event is used.
 This not only cuts events but introduces a dead time into the dataset,
 this deadtime is subtracted from the overall livetime.
-\subsection{Flashers}
-The primary type of instrumental event that must be removed is ``flashers'' and
-``shark-fin'' events.
-Both of these result from charge build-up on the PMT-base causing a
-spark.
-For a flasher event the light from the spark escpaes through the PMT face
-and illuminates the PMTs on the other side of the detector.
-Flashers ocurr at a rate of a few per minute.
-A shark-fin is similar but the spark is either small enough or located
-in a position such that the light does not escape the PMT.
-In both types of events the PMT in which the spark ocurrs with readout
-a very high-charge hit, and the channels next to it on the FEC will
-have low-charge hits from electronic pickup.
-For shark-fin event no other channels will be hit, except possibly by an
-accidental coincidence; for a flasher hit a number of hits will
-ocurr from the light that escaped the PMT.
-Since the number of PMT hits that ocurr in a flasher event can vary quite wildy,
-anywhere betweeen tens of hits and hundreds, they can reconstruct
-to a wide range of energies and possibly contiminate a signal region.
-So many of the data cleaning cuts are designed to ensure that all
-flasher events are identfied and removed from the dataset.
-
-\subsection{ZeroZero Cut}
-The GTID for the FEC is stored in a ripple counter, it's often the case that
-when the bottom two bits of the counter rollover the event that gets recorded in
-the FEC memory gets corrupted.
-When this happens the builder cannot put the corrupted hits into the event correctly,
-and the hits will effectively be discarded.
-This means that event the detectors effective photon detection efficiecy is lower
-for events that have a GTID with $00$ in the bottom two bits.
-Rather than correct for this inefficiecy in reconstruction, events with GTID
-ending in $00$ are discarded. This corresponds to a random pre-scale
-on our by a factor of $\frac{1}{256}$.
-\subsection{Crate Isotropy Cut}
-The Crate Isotropy Cut is designed to remove events that are isolated
-in one or a few electronics crates.
-Events originating from light within the detector are unlikely to have any
-preference in electronics space.
-However hits caused by electrical noise that was created near the electronics
-can show a very distinct preference for one crate.
-The criteria for this cut is that fraction of hits in any single
-is greater that $70\%$ and that the fractions of hits within
-that crate are either $80\%$ within adjacent FECs or $70\%$ within
-adjacent channels.
-\subsection{Flasher Geometry Cut}
-\subsection{ITC Timespread Cut}
 \subsection{Missed Muon Follower Cut}
+The missed muon follower cut was a data cleaning cut used in SNO, but I adapted
+it for SNO+.
+In SNO it was very important to identify and cut neutrons that follow
+after a cosmic muon event, those neutrons could fake
+a neutral current solar neutrino event.
+In SNO+ this is not as much a problem because neutron captures in water will
+primarily produce a $2.2$\,MeV gamma, which is below the analysis threshold for
+solar neutrinos.
+However, there does exist events in the dataset which are observed to follow
+after high-nhit, events. The origin of these events is not well understood, they
+could likely be instrumental, or from  spallation products within the detector.
+Since solar neutrino events are not expected to have any time correlations
+with other events in the detector, a cut can be placed on the time between
+events with relatively little sacrifice.\\
+TODO....addmore
+
+
 \subsection{CAEN Cut}
 I developed a new data cleaning cut, called the ``CAEN Cut'', that follows from
-the AMB Cut from SNO.
+the AMB Cut from SNO.\@
 The AMB Cut attempted to remove events from flashers the dataset by requiring
 that the integral and peak height of the ESUMH trigger sum (as measured by the
 AMB) fall below some threshold value.
@@ -111,7 +122,7 @@ cut cut value.
 The cut values are given by
 \begin{equation}
     f(n) = C\left(1-\sigma(n)\right) + \sigma(n)\left(mn+b\right)\text{.}
-    \ref{eqn:cc_threshold}
+    \label{eqn:cc_threshold}
 \end{equation}
 Here $\sigma(x)$ indicates a sigmoid function,
 \begin{equation}
@@ -155,4 +166,30 @@ The 99\% criteria was chosen arbitarily to ensure that the fraction of
 cleaning cuts.
 Figure~\ref{XXX} shows how the ESUMH CAEN trace integral is distributed
 in the two calibration datasets and for standard physics data taking.
+
+%TODO move this shit to an appendix
+\subsection{ZeroZero Cut}
+The GTID for the FEC is stored in a ripple counter, it's often the case that
+when the bottom two bits of the counter rollover the event that gets recorded in
+the FEC memory gets corrupted.
+When this happens the builder cannot put the corrupted hits into the event correctly,
+and the hits will effectively be discarded.
+This means that event the detectors effective photon detection efficiecy is lower
+for events that have a GTID with $00$ in the bottom two bits.
+Rather than correct for this inefficiecy in reconstruction, events with GTID
+ending in $00$ are discarded. This corresponds to a random pre-scale
+on our by a factor of $\frac{1}{256}$.
+\subsection{Crate Isotropy Cut}
+The Crate Isotropy Cut is designed to remove events that are isolated
+in one or a few electronics crates.
+Events originating from light within the detector are unlikely to have any
+preference in electronics space.
+However hits caused by electrical noise that was created near the electronics
+can show a very distinct preference for one crate.
+The criteria for this cut is that fraction of hits in any single
+is greater that $70\%$ and that the fractions of hits within
+that crate are either $80\%$ within adjacent FECs or $70\%$ within
+adjacent channels.
+\subsection{Flasher Geometry Cut}
+\subsection{ITC Timespread Cut}
 
