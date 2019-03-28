@@ -1,3 +1,28 @@
+\section{Blindenss}
+The majority of this analyses was designed with the data blinded in the
+relevant energy region.
+The data blinding was done primarily for a nucleon decay analysis~\cite{ND_PAPER}
+that was performed using the same dataset as this analyses, but was done
+for this analysis as well because both results were produced contemporaneously.
+
+%TODO check these numbers
+The scheme for blinding the data was to remove all events from the dataset that
+had an nhit between $30$ and $100$, this correspond to an approximate electron energy
+range of \numrange{4.0}{15.0}\,MeV.
+The analyses was designed primarily using simulation and a two-week open
+data period, on which no blindness restrictions were imposed.
+
+Part way through the analysis testing and design the data was partially un-blinded
+to allow for an initial look at the results.
+Blinded events that had a reconstructed energy between $4.5$\,MeV and $15.0$\,MeV
+were added into the dataset with all energy related information removed,
+each event was assigned the artificial energy of $10.0$\MeV.
+With those data plots of the distribution of event direction with respect to
+the sun were created and provided a check that the results were as expected.
+The energy cut used to select events for that plot was performed using
+uncalibrated energy, so it has little bearing on the results of the full
+analysis.
+
 \section{Data Selection}
 Events are included or removed from the dataset across three stages of selection.
 First entire runs are either included or removed based upon if they meet
