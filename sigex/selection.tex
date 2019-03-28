@@ -9,19 +9,57 @@ Within events that pass the low-level cuts, hits can be rejected from considerat
 if they're deemed unlikely to have originated from light within the detector.
 Following that analysis level cuts are applied to the reconstructed quantities
 for each event.
-The analysis cuts are designed to maximize the signal efficiecy for dataset and minimize the
+The analysis cuts are designed to maximize the signal efficiency for dataset and minimize the
 contamination from background sources.
 Each of these steps are detailed below.
 
 \subsection{Run Selection}
 Runs are rejected from the dataset if they fail to meet certain criteria
 for data quality and detector stability.
-\subsection{Event Selection}
+It's first required that all meta-info about a run be created and stored
+within the RAT Database successfully.
+Those tables have information about the state of the hardware and DAQ, as
+well as information about the run including the run type and length.
+This information is necessary for assessing if the run is capable of being
+used for a physics analysis.
+It's very rare for the meta-info for a run not to be generated and stored
+properly, so this check has a almost no effect on the dataset.
 
-\subsection{Hit Cleaning}
 
-\section{Livetime}
-\section{Data Cleaning}
+It's first required that the run type of the run be ``PHYSICS'', this indicates
+that the DAQ settings were not changed at any point in the run and no external
+sources of events were present, and that the thresholds for triggering were set
+at a level deemed sufficient for most physics analyses.
+Following this checks are done
+that require all electronics crates have high voltage on their PMTs throughout
+the run.
+It's also required that all channels that are at high voltage are capable of
+reading out data, and that all crates are participating in the trigger sums.
+A number of separate checks are performed to ensure that all necessary DAQ
+processes were running well throughout the run, to ensure that the data taken
+during the run was not interrupted by a lapse in the DAQ.\@
+
+Beyond checks on the detector state and stability, a number of checks
+are placed on the data taken within the run.
+Most of these checks are placed on the rate of certain events within the detector.
+It's required that the ESUMH and N100L trigger rate be greater than 5Hz and
+that the total trigger rate be less than 7kHz.
+These checks ensure that the data taken during the run triggered the detector
+at a rate consistent with standard running, during which the typical trigger
+rate is near 1kHz.
+Similarly it's required that fewer than 15\% of all events be retrigger events
+(events that fall within 420\,ns of the previous event).
+At a nominal rate of 1kHz it's very unlikely for two event to be within $420$\,ns
+by chance, so a high rate of retrigger events might indicate a high level
+of noise in the trigger hardware. There are however events that can occur
+in the detector, such as followers after a cosmic muon, that can produce
+re-trigger events.
+The cut threshold is designed to allow for retriggers from natural source but
+still flag detector abnormalities.
+These checks all ensure that the data in a run is likely to be useful for
+a physics analysis, but are loose enough not to bias the dataset in a way that
+might influence results.
+\subsection{Data Cleaning}
 There are a number of instrumental effects that can cause an event
 to be recorded by the detector, these events typically have some
 sort of distinguishing feature or features that set them apart
@@ -30,39 +68,71 @@ detector.
 A number of algorithms and cuts have been designed to identify and remove
 these events from the dataset.
 These algorithms are said to ``clean'' the data by removing events
-of instrumental origin.
-
-Events of instrumental origin are not well modeled within our simulation,
-so it is not used for evaluating the efficiencies and sacrifices of
-data cleaning cuts.
-Instead a data-driven approach is used that relies primarily on calibration
-data from the $\ce{^{16}N}$ source. I'll detail here the data cleaning cuts
-that I developed or worked on, and discuss the other data cleaning cuts used
-in~\ref{APPENDIXXX}.
+of instrumental origin. These definition is extended to include removing
+hits within an event that are likely of instrumental origin as well.
 
 The primary type of instrumental event that must be removed is ``flashers'' and
 ``shark-fin'' events.
 Both of these result from charge build-up on the PMT-base causing a
 spark.
-For a flasher event the light from the spark escpaes through the PMT face
+For a flasher event the light from the spark escapes through the PMT face
 and illuminates the PMTs on the other side of the detector.
-Flashers ocurr at a rate of a few per minute.
+Flashers occur at a rate of a few per minute.
 A shark-fin is similar but the spark is either small enough or located
 in a position such that the light does not escape the PMT.\@
-In both types of events the PMT in which the spark ocurrs with readout
+In both types of events the PMT in which the spark occurs with readout
 a very high-charge hit, and the channels next to it on the FEC will
 have low-charge hits from electronic pickup.
 For shark-fin event no other channels will be hit, except possibly by an
 accidental coincidence; for a flasher hit a number of hits will
-ocurr from the light that escaped the PMT.\@
-Since the number of PMT hits that ocurr in a flasher event can vary quite wildy,
-anywhere betweeen tens of hits and hundreds, they can reconstruct
-to a wide range of energies and possibly contiminate a signal region.
-So many of the data cleaning cuts are designed to ensure that all
-flasher events are identfied and removed from the dataset.
+occur from the light that escaped the PMT.\@
+Since the number of PMT hits that occur in a flasher event can vary significantly,
+anywhere between tens of hits and hundreds, they can reconstruct
+to a wide range of energies and possibly contaminate a signal region.
+Many data cleaning cuts are designed to ensure that all
+flasher events are identified and removed from the dataset.
 
+Within an event hits that are deemed unlikely to have come from a photon interacting with a PMT
+are removed from the analysis through hit cleaning.
+For this analysis the only sort of hits that were removed were those identified
+as coming from cross-talk between adjacent channels in the detector.
+Hit's from cross-talk arise from stray capacitative coupling between adjacent, or nearby, channels
+on a single daughter board.
+Typically the noise from cross-talk will only be large enough to cause a hit
+on adjacent channels if the original signal is relatively large.
+The cross-talk hits will usually be especially low in charge because they're
+the result of bi-polar noise, rather than a PMT signal, and the cross-talk
+hit will always show up after the original hit.
+These criteria are codified as a cut on any hits that show up within
+ six channels from a hit that has a pedestal subtracted QHS greater
+than 50\,ADC counts. Of those hits if it has a pedestal subtracted QHS between
+$10$ and $-30$ and are between 9 and 25\,ns after the high charge hit,
+then the hit is flagged a cross-talk hit and removed from the analysis.
 
-\subsection{Ped Cut}
+Events of instrumental origin are not well modeled within our simulation,
+so it is not used for evaluating the efficiencies and sacrifices of
+data cleaning cuts.
+Instead a data-driven approach is used that relies primarily on calibration
+data from the $\ce{^{16}N}$ source, that analysis is detailed in~\ref{XXX}.%Teals data cleaning stuff
+The basic approach is to use tagged $\ce{^{16}N}$ events as a source of known
+non-instrumental events, and evaluate what fraction of the time those events
+are identified as instrumentals, this provides an estimate of the data-cleaning
+sacrifice.
+
+An estimate of the signal contamination was performed using a method developed
+by SNO~\cite{NEIL_THESIS} and applied to the dataset~\cite{DC_DOCUMENT};
+the number of instrumental events leaked into the signal region was estimated
+to be roughly $0.5$ events over the entire dataset.
+However, a contamination estimate is not an input to the solar analysis,
+so that value is not used beyond a check that the instrumental background
+is reduced to a acceptable level.
+
+I'll detail here the data cleaning cuts
+that I developed or worked on, and discuss the other data cleaning cuts used
+in~\ref{APPENDIXXX}.
+
+%TODO move this to appendix probably
+\subsubsection{Ped Cut}
 During normal detector operations there are a few trigger calibration
 tests that are periodically ran.
 These tests use the PEDESTAL signal to inject a certain amount of fake hits
@@ -77,7 +147,8 @@ So an aggressive approach of cutting all events that are within one second of
 a pedestal event is used.
 This not only cuts events but introduces a dead time into the dataset,
 this deadtime is subtracted from the overall livetime.
-\subsection{Missed Muon Follower Cut}
+
+\subsubsection{Missed Muon Follower Cut}
 The missed muon follower cut was a data cleaning cut used in SNO, but I adapted
 it for SNO+.
 In SNO it was very important to identify and cut neutrons that follow
@@ -95,19 +166,19 @@ events with relatively little sacrifice.\\
 TODO....addmore
 
 
-\subsection{CAEN Cut}
+\subsubsection{CAEN Cut}
 I developed a new data cleaning cut, called the ``CAEN Cut'', that follows from
 the AMB Cut from SNO.\@
 The AMB Cut attempted to remove events from flashers the dataset by requiring
 that the integral and peak height of the ESUMH trigger sum (as measured by the
 AMB) fall below some threshold value.
 The CAEN Cut performs a similar function, it calculates the baseline subtracted
-integral and peak height of the digitized ESUMH tigger signal and places a cut on those values.
+integral and peak height of the digitized ESUMH trigger signal and places a cut on those values.
 
 The baseline value of each trace is calculated as the average value of the first
 $20$ samples and the $65^{\text{th}}$ to $85^{\text{th}}$ samples.
 I chose to use two windows, one before the trigger pulse, one after the trigger pulse, to
-correct for any overall slope across the digtized window.
+correct for any overall slope across the digitized window.
 The CAEN window is $104$ samples long, the final 19 samples are not used because they often
 include a large noise pulse.
 The noise pulse comes from the GT pulse arriving at the front-end and generating electrical noise,
@@ -161,11 +232,13 @@ Eqn.~\ref{eqn:cc_threshold} that best fit those points is determined.
 Then Eqn.~\ref{eqn:cc_threshold} with the best fit upper and lower
 parameters to include 99\% of the calibration data become the threshold
 values for rejecting flasher events.
-The 99\% criteria was chosen arbitarily to ensure that the fraction of
+The 99\% criteria was chosen arbitrarily to ensure that the fraction of
 ``good'' events rejected by this cut was similar to that of other data
 cleaning cuts.
 Figure~\ref{XXX} shows how the ESUMH CAEN trace integral is distributed
 in the two calibration datasets and for standard physics data taking.
+
+
 
 %TODO move this shit to an appendix
 \subsection{ZeroZero Cut}
@@ -174,7 +247,7 @@ when the bottom two bits of the counter rollover the event that gets recorded in
 the FEC memory gets corrupted.
 When this happens the builder cannot put the corrupted hits into the event correctly,
 and the hits will effectively be discarded.
-This means that event the detectors effective photon detection efficiecy is lower
+This means that event the detectors effective photon detection efficiency is lower
 for events that have a GTID with $00$ in the bottom two bits.
 Rather than correct for this inefficiecy in reconstruction, events with GTID
 ending in $00$ are discarded. This corresponds to a random pre-scale
@@ -193,3 +266,105 @@ adjacent channels.
 \subsection{Flasher Geometry Cut}
 \subsection{ITC Timespread Cut}
 
+\section{Analysis Cuts}
+The dataset of events passing all data cleaning cuts is further reduced by
+requiring all events pass cuts on reconstructed quantities.
+The cuts are designed to minimize the number of events in the dataset from
+non-solar interactions.
+
+Necessarily, the first of these cuts is the requirement that the reconstruction
+fits produce to a valid position, time and energy.
+The reconstruction algorithm's can fail to converge if an event occurs in an
+optically complicated region of the detector, \textit{e.g.} near the detector
+neck. The fitting algorithms rely on the assumption that the majority of
+the produced light will travel directly from the event vertex to PMT array.
+For events in optically complicated regions this assumption is not a good one.
+These regions modelled in simulation, so the monte-carlo simulation estimate of
+the efficiency of reconstruction to produce valid fits for solar neutrino events
+is used.
+
+A cut, called the ``trigger efficiency'' cut,  is placed on the number of
+in-time nhits in each event.
+This cut ensures the dataset occupies a region where the detector trigger
+efficiency is well understood and near 100\%.
+This cut ensures the analysis is minimally effected by uncertainties
+associated with the detector's trigger.
+As mentioned in Sec.~\ref{XXX}, the detector trigger threshold were adjusted
+part way through data-taking. The in-time nhit cut was adjusted to
+account for this.
+For the first trigger period all events were required to have an in-time
+nhit greater than or equal to $23$; for the second trigger period this
+threshold was reduced to $10$.
+This cut is similar to an energy cut because nhit is the best energy estimator
+for an event. But, as discussed below, events passing the analysis energy cut
+are very unlikely to fail the trigger efficiency cut.
+
+The next analysis cut is a fiducial volume (FV) cut that requires all events
+be within $5.3$\,m of the center of the detector.
+This cut is designed to reduce the background from radioactive decays within
+the AV or from the water outside the AV\@.
+For a time period in the data taking an elevated level of radioactive
+backgrounds was present in the upper half of the external water.
+During this period the FV cut was modified to require any events in the
+top half of the detector ($z > 0$) fall within a radius of $4.2$\,m,
+events in the bottom half of the detector were still subject to the standard
+$5.3$\,m FV cut.
+Figure {XXX} shows the expected distribution of background events from
+AV and external water backgrounds compared to the distribution for solar neutrino
+events. This more restrictive cut was in place for 13\% of the dataset livetime,
+runs XXX to XXX\@.
+
+Two event-quality cuts are further placed on events. These cuts remove events
+that have an ITR or $\beta_{14}$ (described in Sec.~\ref{sec:ITR} and Sec.~{sec:b14})
+that is inconsistent with the event originating from Cherenkov light produced
+by a solar neutrino event.
+The ITR of events is required to be greater than $55$\% and the $\beta_{14}$
+value must between $-0.12$ and $0.95$.
+These cuts are similar in purpose to the data cleaning cuts, as they attempt to
+remove events that are produced by sources other than Cherenkov light within
+the detector.
+
+The final cut analysis cut is on the reconstructed kinetic energy of each event.
+The energy region for this analysis is $5.0 > T_{\mathrm{e}} < 15.0$\, MeV.
+This region is chosen to minimize contamination from atmospheric neutrino
+interactions, and radioactive decays within the detector.
+Additionally, the only solar neutrino flux that is significant across this energy range
+are the neutrinos from the $\ce{^{8}B}$ solar reaction.
+Neutrinos from the $hep$ interaction also fall within the same energy range,
+however their flux is expected to be much lower than that of the $\ce{^{8}B}$
+neutrino flux that their presence can be largely neglected.
+
+In principle the lower energy threshold could be lowered or removed to
+increase the fraction of solar neutrino events in the dataset, however,
+the rate of backgrounds from radioactive decays increases rapidly at lower
+energies. So no additional sensitivity to the solar neutrino interaction
+rate would be gained with a lower energy threshold.
+The $5$\,MeV threshold was chosen as the lowest energy from which a solar
+signal could still be resolved.
+
+A summary of all cuts and their criteria, where applicable, is given in Table~\ref{tbl:event_selection}.
+
+\begin{table}
+    \centering
+    \begin{tabular}
+    \end{tabular}
+    \caption{Cuts}
+    \label{tbl:event_selection}
+\end{table}
+
+\section{Livetime}
+While most event selection removes individual events based upon whether they
+pass or fail certain criteria, some cuts remove all events that occur for a
+period of time before or after some criteria is met.
+These cuts are said to introduce a deadtime into the dataset.
+The most significant example of this is the muon follower data cleaning cut, which
+cuts all events for 30\,seconds after every muon interaction in the detector.
+The livetime for each run is then defined as
+\begin{equation}
+    t_{\mathrm{live}} = t_{run} - t_{\mathrm{dead}}text{,}
+\end{equation}
+where $t_{run}$ is the time between the first and last valid event within a run
+and $t_{\mathrm{dead}}$ is the sum of all deadtimes introduced into that run by cuts.
+The livetime is used to calculate the total exposure represented by the dataset.
+
+Table XXX shows the sum of deadtimes across all runs within the dataset.
