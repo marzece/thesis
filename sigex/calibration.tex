@@ -2,6 +2,8 @@
 The accuracy of simulated events is evaluated with data taken while a
 radioactive source was deployed within the detector volume.
 For this analysis was an $\ce{^{16}N}$ source was used.
+The methods and results of the $\ce{^{16}N}$ calibration are summarized here but
+are described in greater detail by~\ref{snop_water_unidoc}.
 
 The $\ce{^{16}N}$ source was developed by SNO, it uses a commercial
 deuterium and tritium generator (DT-generator) to produce gaseous $\ce{^{16}N}$.
@@ -172,7 +174,9 @@ shift systmatic, comparing values for
 $\sigma^{2}$ in equation~\eqref{eqn:n16_position_model} instead of $\mu$,
 but otherwise following the same procedure.
 Table XXX gives the extracted position resolution systematics uncertainties
-in $\text{mm}$
+in $\text{mm}$. The uncertainties are given as one-sided because a resolution uncertainty,
+unlike the shift uncertainty,
+can only be applied to MC simulation by applying addition smearing.
 \begin{table}
     \centering
     \begin{tabular}{|c|c|}
@@ -189,7 +193,109 @@ in $\text{mm}$
 \end{table}
 
 
-For the solar analysis the most important position systematic is the vertex
-scale systematic.
+The final position systematic considered is the position scale uncertainty,
+which represents any position depended shift in $\mu$ between simulation
+and data. Unlike the previous two uncertainties this systematic can effect the
+number of events that would be predicted to fall within a volume if the
+events are distributed uniformly throughout space. For this reason the position
+scale systematic is sometimes called the fiducial volume systematic.
+
+The position scale for simulation and data is determined by fitting the values
+of $\mu$ as a function of position, along each axis, with a linear function.
+The best fit slope for that line gives the position depedence of the position
+shift. The value for that shift is defined to be zero at the center
+of the detector. The position scale systematic can be though of as the
+positional divergence introduced by the MC simulation compared to the detector
+data. Table~\ref{tbl:position_scale_systs} gives the position scale systematic
+uncertainty along each axis.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+            \hline
+            &Position Scale Systematic Uncertainty (\%)\\
+            \hline
+            x&+0.91, -1.01\\
+            y&+0.92, -1.02\\
+            z&+0.91, -0.99\\
+            \hline
+    \end{tabular}
+    \caption{Position scale systematic uncertainties}
+    \label{tbl:position_scale_systs}
+\end{table}
 
 \subsection{Direction Calibration}
+Like position and energy, the direction reconstruction is calibrated using data
+from the $\ce{^{16}N}$ source. For each $\ce{^{16}N}$ event the direction
+of the gamma is estimated as co-linear with the vector from the source
+position to the reconstructed event position. The dot product of that vector
+with the reconstructed event direction is taken, this gives the value $\cos\theta$
+for that event,
+\begin{equation}
+    \cos\theta = \frac{\vec{p}_{\mathrm{fit}} - \vec{p}_{\mathrm{source}}}
+                {\abs{\vec{p}_{\mathrm{fit}} - \vec{p}_{\mathrm{source}}}} \cdot \vec{d}_{\mathrm{fit}}\text{.}
+\end{equation}
+A fit is then performed to the distribution of events in $\cos\theta$ using
+the model of a double exponential,
+\begin{equation}
+    P(\cos\theta) = \alpha\beta_{s}\frac{e^{\beta_{s}(\cos\theta -1)}}{1-e^{-\beta_{s}}} +
+                    (1-\alpha)\beta_{l}\frac{e^{\beta_{l}(\cos\theta - 1)}}{1-e^{-\beta_{l}}}\text{.}
+    \label{eq:direction_model}
+\end{equation}
+Where $\beta_{s}$ and $\beta_{l}$ represent the ``short'' and ``long'' decay constants
+for the two exponentials, and $\alpha$ represents the relative
+strength of the short exponential vs the long one.
+This model was developed by the SNO experiment and is used here simply as an empirical
+method to parameterize the distribution of events in $\cos\theta$.
+It is shown in~\cite{pierre_luc_thesis} that the systematic uncertainties on the
+parameters derived from~\eqref{eq:direction_model} can be transformed to a shift
+in $\cos\theta$ given by,
+\begin{equation}
+    \cos\theta^{\prime} = 1+(\cos\theta-1)(1+\delta_{\theta})\text{,}
+\end{equation}
+where $\delta_{\theta}$ is the relative systematic uncertainty of $\beta_{s}$ and $\beta_{l}$.
+Transformed this way the systematic uncertainty for the direction reconstruction
+is given by
+\begin{equation*}
+    \delta_{\theta} = +0.08\text{,} -0.13\text{.}
+\end{equation*}
+
+\subsection{Trigger Efficiecy}
+The trigger efficiency for this analysis is defined to be the probability that
+the detector will trigger on an event as a function of the number of ``in-time''
+hits produced by that event.
+Here, in-time hits is the effective maximum number of hits as seen by the analog
+trigger system for an event.
+For each event the in-time nhit, $\tilde{n}_{100}$, is well
+estimated by the maximum number of hits in a 100\,ns window within the event.
+Effects from the rise-time of trigger pulses and the limited band-width of the
+trigger system are applied as corrections to that simple estimate.
+
+The trigger efficiecy is estimated in two different ways, using laserball
+data, and using nhit-monitor data.
+These methods disagree by a small, but non-negligible amount, the
+reason for the disagreement is not well known, but the differences are taken
+as a systematic uncertainty. Figure XXX shows the trigger efficiecy curves
+for nhit-monitor and laserball data.
+
+The nhit-monitor is detector calibration  process that's run periodically during
+standard data taking. It simply consists of sending a variable number
+of pedestal hits to the front-end, and then observing if the detector triggers
+off of those hits or not. For the entierty of the dataset only channels in
+crate 4 of the detector were pedestalled for the nhit-monitor.
+This is one reason to prefer the trigger efficiency curve provided by laserball
+data, the hits from the laserball are isotropic and present a much lower risk of
+over-sampling a small number of channeles in the detector. Although all channels
+in the detector are designed function identically, this is not something that
+is closely monitored or tested, so it could be the case that the channels on
+crate 4 are not represetative of the detector as a whole.
+
+For runs taken after the detector threshold change discussed in Sec~\ref{XXX}
+all methods agree that the trigger is 100\% efficient for $\tilde{n}_{100} > 10$;
+only events with energy significantly below the analysis threshold (discussed
+in Section~\ref{XXX}) will have a $\tilde{n}_{100} \le 10$, and so the discrepannt
+estimates of the trigger
+efficiecy do not have any effect on the solar analysis for the second trigger period.
+For the first trigger period the trigger was not 100\% efficient till
+$\tilde{n}_{100} \approx 23$, which is much closer to the analysis energy
+threshold, and therefore uncertainties cannot be neglected.
