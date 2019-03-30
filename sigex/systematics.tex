@@ -4,12 +4,12 @@ and trigger efficiency are considered for this analysis.
 The event reconstruction systematics are uncertainties on the energy reconstruction
 scale and resolution, position reconstruction resolution and scale, and the
 resolution of the direction reconstruction.
+The uncertainties on each of these values and how they were determined is
+discussed in Sec~\ref{sec:calib}.
 
-These systematics are generally treated in the same, or a similar, way, to propagate
+Each systematics is treated in the same, or a similar, way, to propagate
 their effect to the flux result.
-The uncertainties on each quantity are determined from a separate analysis, \textit{e.g.}
-from an analysis $\ce{^{16}N}$ data.
-Those uncertainties are propagated through the analysis by modifying the
+The systematics are propagated through the analysis by modifying the
 relevant quantities on reconstructed monte-carlo events according to the
 one-$\sigma$ uncertainty.
 The PDFs that result from the modified events are used in the analysis to extract
@@ -56,21 +56,61 @@ kinetic energy of each event according to
 \end{equation}
 At all points in the analysis afterwards $T\prime_{e}$ is used instead of $T_{e}$.
 \subsection{Fiducial Volume}
-Uncertainty on the fiducial volume comes primarily from biases in the position reconstruction.
-If the position reconstruction is more likely to pull an event towards the middle of the detector
-in MC simulation than in data, it will result in an over prediction of the number of events that will
-pass the FV cut.
-This possibility is accounted for by shifting the reconstructed position of simulated events according
-to the uncertainty, the fiducial volume cut is applied to those shifted positions.
-Shifting the events results in modified PDFs, those PDFs are used in the fit for the solar event rate,
-the difference between the best fit value extracted with the modified PDFs and the best fit value from
-the standard PDFs is taken to be the systematic uncertainty.
+Uncertainty on the fiducial volume comes primarily from systematics associated
+with the position reconstruction.
+If the position reconstruction is more likely to pull an event towards the
+middle of the detector
+in MC simulation than in data, it will result in an over prediction of the
+number of events that will pass the FV cut.
+This possibility is accounted for by shifting the reconstructed position of
+simulated events according to the uncertainty, the fiducial volume cut is
+applied to those shifted positions.  Shifting the events results in modified
+PDFs, those PDFs are used in the fit for the solar event rate, the difference
+between the best fit value extracted with the modified PDFs and the best fit
+value from the standard PDFs is taken to be the systematic uncertainty.
 \subsection{Angular Resolution}
-The angular resolution uncertainty is treated differently from other uncertainties because the
-distribution of events in $\cos\theta_{sun}$ is directly related to the direction resolution.
- To minimize the impact the angular resolution has on the result it is used as one of the parameters
- in the fit to the $\cos\theta_{sun}$ solar neutrino distribution, and constrained by the results
- of the $\ce{^{16}N}$ analysis.
+The angular resolution uncertainty is treated differently from other
+uncertainties because the distribution of events in $\cos\theta_{sun}$ is
+directly related to the direction resolution.  To minimize the impact the
+angular resolution has on the result it is used as one of the parameters in the
+fit to the $\cos\theta_{sun}$ solar neutrino distribution, and constrained by
+the results of the $\ce{^{16}N}$ analysis.
+
+The angular resolution systematic is applied using the formula given in
+~\ref{sec:angular_syst},
+\begin{equation}
+    \cos\theta^{\prime} = 1 + (\cos\theta - 1)(1+\delta_{\theta})\text{.}
+    \label{eqn:angular_syst_map}
+\end{equation}
+Where $\theta$ is the angle between the true event direction and the reconstructed
+event direction, and $delta$ is the angular resolution systematic uncertainty.
+Using~\eqref{eqn:angular_syst_map} has the unfortunate downside producing
+unphysical values for $\cos\theta^{\prime}$ for values of $\cos\theta$ near
+$-1$. For values of $\cos\theta^{\prime}$ below $-1$ the value is instead replaced
+with a random value drawn from a uniform distribution $\left[-1\text{, }1\right]1$.
+The logic behind this choice is that when an event reconstructs with a direction
+that's nearly $180^{\circ}$ from the correct value, then the reconstruction
+has likely failed to such a degree that the reconstructed values are uncorrelated
+with the true values, and so drawing from a uniform random distribution preserves
+that uncorrleated nature without adding any additional bias.
+
+Once the systematically varied value for $\cos\theta$ is determined, the new angle
+needs to be transformed into a corresponding direction vector for the particle.
+To do this first a vector that is normal to the plane spanned by the reconstructed
+and true direction vector is found by taking the cross-product between those vectors,
+\begin{equation}
+    \vec{v}_{\mathrm{norm}} = \vec{d}_{\mathrm{true}} \cross \vec{d}_{\mathrm{recon}}\text{.}
+\end{equation}
+Then $\vec{d}_{\mathrm{recon}}$ is rotated around $\vec{v}_{\mathrm{norm}}$
+such that the rotated vector $\vec{d}^{\prime}_{\mathrm{recon}}$ now has an angle
+of $\theta^{\prime}$.
+The direction $\vec{d}^{\prime}_{\mathrm{recon}}$ is then used in the
+analysis to generate event distrubtions in $\cos\theta_{sun}$.
+
+Following this procedure PDFs for $\cos\theta_{sun}$ are generated for many differnt
+values of $\delta_{\theta}$, producing $P(\cos\theta_{sun}, \delta_{\theta})$.
+The constraint on t$\delta_{\theta}$ produced by the $\ce{^{16}N}$ analysis
+are included in this two-dimension PDF\@.
 
 \subsection{Mixing Parameters}
 \subsection{Trigger Efficiency}
