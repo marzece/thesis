@@ -1,5 +1,5 @@
 \section{Analysis}
-Once a MC simulated dataset and a detector dataset are selected, the analysis
+Once an MC simulated dataset and a detector dataset are selected, the analysis
 of those events is performed.
 The first steps of the analysis is to bin all events
 in a two-dimensional histogram of reconstructed energy and $\cos\theta_{sun}$.
@@ -9,7 +9,7 @@ $N_{E}$ bins in energy from \numrange{5.0}{15.0}\,MeV.
 For this analysis $N_{\theta}$ is 40 and $N_{E}$ is 6.
 From \numrange{5.0}{10.0}\,MeV $5$ bins of width $1$\,MeV are used and
 a single bin from \numrange{10.0}{15.0}\,MeV is used.
-Simulated and detected events are placed into seperate histograms.
+Simulated and detected events are placed into separate histograms.
 
 Simulated $\nu_{e}$ and $\nu_{\mu}$ events are histogrammed separately,
 but given different weights in their respective histogram according to the expected survival probability
@@ -45,15 +45,19 @@ of $T_{\mathrm{e}}$ and $\cos\theta_{sun}$.
 Applying additional scaling to this combined histogram is done to represent
 a hypothesized scaling to the overall solar neutrino flux.
 
-Since no simulation was done for the expected backgrounds for this analysis
+Since no simulation or measurements were done for the expected backgrounds for this analysis
 a simple background model is adopted.
 It is assumed that the direction of any background event will be uncorrelated
 with the position of the sun, this is what makes $\cos\theta_{sun}$ such a
 useful variable in this analysis.
 The distribution of background events is given by
 \begin{equation}
-    R_{\mathrm{background}}(\cos\theta_{sun}, T_{e}) = \frac{1}{N_\theta}N(T_{e})
+    R_{\mathrm{background}}(\cos\theta_{sun}, T_{e}) = \frac{1}{N_\theta}N(T_{\mathrm{e}})
 \end{equation}
+Where $N(T_{\mathrm{e}})$ is a normalization for histogram energy bin that $T_{\mathrm{e}}$
+falls in.
+These normalizations are not known and are treated as a nuisance parameter
+in the remainder of the analysis.
 
 The solar neutrino flux present in the dataset is determined by first
 rejecting events from the dataset that are unlikely to be solar neutrino events.
