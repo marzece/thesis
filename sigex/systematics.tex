@@ -109,10 +109,46 @@ analysis to generate event distrubtions in $\cos\theta_{sun}$.
 
 Following this procedure PDFs for $\cos\theta_{sun}$ are generated for many differnt
 values of $\delta_{\theta}$, producing $P(\cos\theta_{sun}, \delta_{\theta})$.
-The constraint on t$\delta_{\theta}$ produced by the $\ce{^{16}N}$ analysis
+The constraint on $\delta_{\theta}$ produced by the $\ce{^{16}N}$ analysis
 are included in this two-dimension PDF\@.
+$P(\cos\theta_{sun}, \delta_{\theta})$ is used in the remaineder of the analysis
+treating $\delta_{\theta}$ as a nuisance parameter.
 
 \subsection{Mixing Parameters}
+The central values and uncertainties of the neutrino mixing parameters, $\Delta
+m^{2}_{21}$, $\theta_{12}$ and $\theta_{13}$ is taken from Ref.~\cite{PDG2016}.
+\begin{table}
+    \centering
+    \begin{tabular}{c c c}
+        Parameter & Value & Uncertainty\\
+        $\Delta m^{2}_{21}$ & $7.5?\times10^{-5} \mathrm{MeV}/\mathrm{c}^{2}$ & XXX\\
+        $\theta_{12}$ & $33^{\circ}$ & XXX \\
+        $\theta_{13}$ & $8.1^{\circ}$ & XXX\\
+    \end{tabular}
+    \caption{A summary of the mixing parameters and their uncertainties, taken
+    from Ref~\cite{PDG2016}.}
+\label{tbl:mixing_values}
+\end{table}
+The values and uncertainties for the mixing parameters
+are summarized in Table~\ref{tbl:mixing_values}.
+A survival probability curve is generated for each of the mixing parameters
+shifted by their positive and negative one-sigma uncertainty.
+These systematically adjusted PDFs are used in the analysis replacing the
+standard survial probability curve to propagate the uncertainties to the
+flux result.
 \subsection{Trigger Efficiency}
+The uncertainty on the trigger efficiecy is described in Sec~\ref{sec:trigeff}.
+PDFs for $\cos\theta_{sun}$ are generated using the more pessimistic
+trigger efficiecy curves measured by the laserball and TELLIE\@.
+Simulated events that have an in-time nhit that is predicted by the nhit-monitor
+to be 100\% efficient are de-weighted to match the laserball/TELLIE efficiecy
+measurement..
+The PDFs that result from the de-weighted events are used as the systematically
+adjusted PDFs to account propagate the trigger efficiecy uncertainty to the
+flux result.
 \subsection{Livetime}
+Uncertainty on the livetime comes primarily from orphaned events in the detector.
+Orphaned detector events are disucssed in~Sec.~\ref{TODOXXX}.
+When an orphaned event ocurrs all information about that event is lost including
+the time it ocurred and\ldots%TODO! Find documentation from Aobo.
 
