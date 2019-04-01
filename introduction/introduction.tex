@@ -142,6 +142,44 @@ from astronomical considerations. % TODO add citation.
 \end{equation}
 
 
+\subsection{Neutrino Elastic Scattering}
+\begin{figure}
+    \begin{subfigure}[t]{0.53\textwidth}
+        \centering
+        \begin{feynman}
+            \fermion[label=$e^{-}$]{0.00, 0.00}{1.00, 1.00}
+            \fermion[label=$\nu_{e}$]{1.00, 1.00}{0.00, 2.00}
+            \electroweak[label=$W^{+}$]{1.00, 1.00}{2.0, 1.00}
+            \fermion[label=$\nu_{e}$, flip=true]{2.00, 1.00}{3.0, 0.00}
+            \fermion[label=$e^{-}$, showArrow=true, flip=true]{2.0, 1.00}{3.00, 2.00}
+        \end{feynman}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.53\textwidth}
+        \centering
+        \begin{feynman}
+            \fermion[label=$\nu_{x}$]{0.00, 0.00}{1.00, 1.00}
+            \fermion[label=$\nu_{x}$]{1.00, 1.00}{0.00, 2.00}
+            \electroweak[label=$Z$]{1.00, 1.00}{2.0, 1.00}
+            \fermion[label=$e^{-}$, flip=true]{2.00, 1.00}{3.0, 0.00}
+            \fermion[label=$e^{-}$, showArrow=true, flip=true]{2.0, 1.00}{3.00, 2.00}
+        \end{feynman}
+    \end{subfigure}
+    \label{fig:feynman_es}
+\end{figure}
+
+Neutrino-electron elastic scattering (ES) is an important neutrino interaction
+channel for this work. 
+Figure~\ref{fig:feynman_es} shows the tree level feynman diagrams for the charged
+current (CC) elastic scattering interaction~\ref{fig:feynman_es_cc} and the
+neutral current (NC) elastic scattering interaction~\ref{fig:feynman_es_nc}.
+The neutral current interaction is shown to involve $\nu_{\mathrm{x}}$ where $x=\mathrm{e, \mu, \tau}$,
+and the charged current interaction involves only $\nu_{\mathrm{e}}$.
+
+
+
+
+
+
 \subsection{Neutrino Experiments}
 There's a long a diverse list of neutrino experiments that have contriubted to
 our current understanding of neutrinos and neutrino oscillations.
