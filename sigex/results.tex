@@ -1,8 +1,8 @@
 \section{Results}
 Figure~\ref{fig:costheta} shows the distribution of events in $\cos\theta_\text{{sun}}$
 for events over the entire energy range of $5$ to $15$\,MeV and the fit to that distribution.\
-The fit gives a solar event rate of \InteractionRate\
- and background rate of \BackgroundRate.\
+The fit gives a solar event rate of $1.30\pm0.18$~events/kt-day
+ and background rate of  $10.23\pm0.38$~events/kt-day.
 Performing a similar fit in each individual energy bin yielded a best fit solar flux
 as a function of energy.\
 The fits were combined, in accordance with Eq.~\ref{eq:ll}, yielding an overall best fit flux of
@@ -11,24 +11,24 @@ The fits were combined, in accordance with Eq.~\ref{eq:ll}, yielding an overall 
 \end{equation*}
 This value assumes the neutrino flux consists purely of electron flavor neutrinos.\
 The result agrees with the elastic scattering flux published by Super-K,
-$\Phi_{ES}$=\fluxunits{\SuperKRate}~\cite{superk4}, combining statistical and
-systematic errors.\
+$\Phi_{ES}=\left(2.345\pm0.039\right)\times10^{6}cm^{-2}s^{-1}$~\cite{superk4},
+combining statistical and systematic errors.\
 
-\figuremacro{residual_plot.pdf}{0.5}{spectrum}{
-    (Top) The extracted solar neutrino elastic scattering event rate as a
-    function of reconstructed electron kinetic energy $T_{e}$.\
-    (Bottom) The same, as a fraction of the expected rate.\
-    The red and blue lines show the MC simulation predicted spectrum normalized
-    to the best fit flux and the SNO flux measurement~\cite{sno_combined}, respectively.\
-    The uncertainty on the SNO result includes reported uncertainty combined with
-    mixing parameter uncertainties.\
-    The black points are the results of the fits to the $\cos\theta_\text{{sun}}$
-    distribution in each energy bin,
-    with error bars indicating the combined statistical and systematic
-    uncertainty, including energy-correlated uncertainty.\
-    A horizontal dash is placed on each error bar indicating the statistics
-    only uncertainty; for all points the statistical error is dominant and the systematic
-    error bar is not visible above the dash.}
+%\figuremacro{residual_plot.pdf}{0.5}{spectrum}{
+%    (Top) The extracted solar neutrino elastic scattering event rate as a
+%    function of reconstructed electron kinetic energy $T_{\mathrm{e}}$.\
+%    (Bottom) The same, as a fraction of the expected rate.\
+%    The red and blue lines show the MC simulation predicted spectrum normalized
+%    to the best fit flux and the SNO flux measurement~\cite{sno_combined}, respectively.\
+%    The uncertainty on the SNO result includes reported uncertainty combined with
+%    mixing parameter uncertainties.\
+%    The black points are the results of the fits to the $\cos\theta_\text{{sun}}$
+%    distribution in each energy bin,
+%    with error bars indicating the combined statistical and systematic
+%    uncertainty, including energy-correlated uncertainty.\
+%    A horizontal dash is placed on each error bar indicating the statistics
+%    only uncertainty; for all points the statistical error is dominant and the systematic
+%    error bar is not visible above the dash.}
 
 \begin{table}
 \begin{center}
@@ -61,19 +61,19 @@ of
 \begin{equation*}
     \Phi_{\ce{^{8}B}}= 5.95^{+0.75}_{-0.71}\text{(stat.)}^{+0.28}_{-0.30}\text{(syst.)}\times10^{6}\text{cm}^{-2}\text{s}^{-1}\text{.}
 \end{equation*}
-This result is consistent with the \beight flux as measured by the SNO experiment,
-$\Phi_{\ce{^{8}B}}$=\fluxunits{\SNOFlux}~\cite{sno_combined}, combining statistical
+This result is consistent with the $\ce{^{8}B}$ flux as measured by the SNO experiment,
+$\Phi_{\ce{^{8}B}}=\left(5.25\pm0.20\right)\times10^{6}cm^{-2}s^{1}$~\cite{sno_combined}, combining statistical
 and systematic uncertainties.\
-Figure~\ref{spectrum} shows the best fit solar neutrino \beight event rate in each
+Figure~\ref{spectrum} shows the best fit solar neutrino $\ce{^{8}B}$ event rate in each
 energy bin along with the predicted energy spectrum scaled to the best fit
-flux, and scaled to the flux measured by SNO. Each statistical error bar on the
+flux, and scaled to the flux measured by SNO\@. Each statistical error bar on the
 measured rate is affected by both the solar neutrino and background rates in that
 energy bin.\
 Table~\ref{table:systematics} details how each systematic uncertainty affects this result.\
 
 \begin{figure}[htbp]
     \centering
-\includegraphics[width=0.5\textwidth]{figures/cos_theta_6mev.pdf}%
+%\includegraphics[width=0.5\textwidth]{figures/cos_theta_6mev.pdf}%
 \caption{Distribution of event directions with respect to solar direction for
     events with energy in \numrange[range-phrase=--]{6.0}{15.0}\,MeV.}
 \label{fig:cos_theta_six}
@@ -87,8 +87,21 @@ The comparatively high rate of backgrounds in the \numrange[range-phrase=--]{5.0
 comes primarily from decays of radioactive isotopes, such as radon, within the detector.\
 Figure~\ref{fig:cos_theta_six} shows the distribution in $\cos\theta_\text{{sun}}$ of events at
 energies above 6~MeV, illustrating the low background rate.\
-In that energy region the best fit background rate was \LowBackgroundRate, much
-lower than the measured solar rate in that energy range, \HighEnergySolarRate.\
+In that energy region the best fit background rate was $0.25^{+0.09}_{-0.07}$\,events/kt-day, much
+lower than the measured solar rate in that energy range,$1.03^{+0.13}_{-0.12}$\,events/kt-day.
 For the region above 6~MeV, this is the lowest
 background elastic scattering measurement of solar neutrinos in a water
 Cherenkov detector.\
+
+\subsection{Mixing Results}
+By using the SNO $\ce{^{8}B}$ flux result as the true value for the full,
+flavor independent, $\ce{^{8}B}$ solar neutrino flux, this measurement of the
+solar elastic-scattering rate can be used to the effective solar neutrino survival
+probability.
+This sort of measurement has been done before, most significantly by
+Super Kamiokande~\cite{superk1,superk2,superk3,superk4}.
+%and also by Borexino???TODO check if borexino has doen this
+
+For any combination of electron recoil energy $T_{\mathrm{e}}$ and solar
+neutrino energy, $E_{\nu}$ the relation between the survival probability
+and the elastic scattering rate is........
