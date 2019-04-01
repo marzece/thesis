@@ -2,8 +2,8 @@
 Once an MC simulated dataset and a detector dataset are selected, the analysis
 of those events is performed.
 The first steps of the analysis is to bin all events
-in a two-dimensional histogram of reconstructed energy and $\cos\theta_{sun}$.
-Events are distributed across $N_{\theta}$ equal width bins in $\cos\theta_{sun}$ from
+in a two-dimensional histogram of reconstructed energy and $\cos\theta_{\mathrm{sun}}$.
+Events are distributed across $N_{\theta}$ equal width bins in $\cos\theta_{\mathrm{sun}}$ from
 \numrange{-1}{1}and
 $N_{E}$ bins in energy from \numrange{5.0}{15.0}\,MeV.
 For this analysis $N_{\theta}$ is 40 and $N_{E}$ is 6.
@@ -41,43 +41,59 @@ solar neutrino flux used in simulation.
 The $\nu_{e}$ and $\nu_{\mu}$ are then combined by
 simply adding their bin contents together to get the expected
 flavor independent elastic scattering interaction rate as a function
-of $T_{\mathrm{e}}$ and $\cos\theta_{sun}$.
+of $T_{\mathrm{e}}$ and $\cos\theta_{\mathrm{sun}}$.
 Applying additional scaling to this combined histogram is done to represent
 a hypothesized scaling to the overall solar neutrino flux.
+So the rate of solar neutrino events is given by
+\begin{equation}
+    R_{\nu}(\cos\theta_{\mathrm{sun}}, T_{\mathrm{e}}) =
+    S\phi\left(R \right)
+    \label{eqn:solar_rate}
+\end{equation}
 
-Since no simulation or measurements were done for the expected backgrounds for this analysis
-a simple background model is adopted.
+Equation~\eqref{eqn:solar_rate} is modified slightly to include a parameter
+related to the detector angular resolution, $\delta_{\theta}$,
+\begin{equation}
+R_{\nu}(\cos\theta_{\mathrm{sun}}, T_{\mathrm{e}}) \rightarrow
+    R_{\nu}(\cos\theta_{\mathrm{sun}}, T_{\mathrm{e}}, \delta_{\theta})\text{.}
+\end{equation}
+This modification is discussed more in Sec~\ref{sec:angular_systematics}.
+
+No simulation or measurements were done for the expected backgrounds for this analysis,
+so a simple background model is adopted.
 It is assumed that the direction of any background event will be uncorrelated
-with the position of the sun, this is what makes $\cos\theta_{sun}$ such a
+with the position of the sun, this is what makes $\cos\theta_{\mathrm{sun}}$ such a
 useful variable in this analysis.
 The distribution of background events is given by
 \begin{equation}
-    R_{\mathrm{background}}(\cos\theta_{sun}, T_{e}) = \frac{1}{N_\theta}N(T_{\mathrm{e}})
+    R_{\mathrm{B}}(\cos\theta_{\mathrm{sun}}, T_{\mathrm{e}}) =
+    R_{\mathrm{B}}(T_{\mathrm{e}}) = \frac{1}{N_\theta}n_{\mathrm{B}}(T_{\mathrm{e}})
 \end{equation}
-Where $N(T_{\mathrm{e}})$ is a normalization for histogram energy bin that $T_{\mathrm{e}}$
-falls in.
-These normalizations are not known and are treated as a nuisance parameter
-in the remainder of the analysis.
+Where $n_{\mathrm{b}}(T_{\mathrm{e}})$ is number of background events in the
+histogram energy bins corresponding to the energy $T_{\mathrm{e}}$.
+The number of background events in each energy bin are not known \textit{a~priori}
+and are treated as a nuisance parameter in the remainder of the analysis.
 
-The solar neutrino flux present in the dataset is determined by first
-rejecting events from the dataset that are unlikely to be solar neutrino events.
-Events that pass all cuts are two-dimensionally histogrammed in kinetic energy $T_{e}$ and
-$\cos\theta_{sun}$.
-The range of energies considered is $5\text{\,MeV} > T_{e} < 15\text{\,Mev}$.
-That range of energies was chosen to minimize contamination from radioactive
-backgrounds and atmospheric neutrino interactions.
-Between energies \numrange{5}{10}\,MeV the histogram bin width
-is 1\,MeV, above 10\,MeV a single bin is used.
-Forty bins of equal width are used for histogramming events in $\cos\theta_{sun}$.
+The total expected events in each bin can be expressed by
+\begin{equation}
+    R(\cos\theta_{\mathrm{sun}}\text{, }T_{\mathrm{e}}) =
+    R_{\mathrm{B}}(T_{\mathrm{e}}) + R_{\nu}(\cos\theta_{\mathrm{sun}}\text{, }T_{\mathrm{e}}\text{, }\delta_{\theta})\text{.}
+    \label{eqn:event_rate}
+\end{equation}
 
-Simulated events are used to estimate the expected distribution of events in
-$\cos\theta_{sun}$ and electron recoil energy $T_{e}$.
-Simulated events are treated the same was as detector events, the same
-cuts are applied to their reconstructed quantities.
-
-A position dependent correction is applied to the reconstructed energy
-of both MC simulated events and detector events.
-
-The simulated events are histogrammed to estimate the underlying PDFs
-of observable reconstructed energy and event direction. Cut's are placed
-on each event to
+The unknown parameters of this rate are the 6 background rates and the solar
+rate and $\delta_{\theta}$.
+A fit to data is performed for equation~\eqref{eqn:event_rate} to extract
+those parameters.
+Goodness-of-fit is evaluated using a likelihood given by
+\begin{align}
+    \mathcal{L}(S&, \bold{B}, \delta_{\theta} | \bold{n}, \mu_{\theta}, \sigma_{\theta}) = \nonumber\\
+    &\mathcal{N}(\delta_{\theta}, \mu_{\theta}, \sigma_\theta)
+    \prod_{j=0}^{N_E}\prod^{N_{\theta}}_{i=0} \text{Pois}\left(n_{ij},\, B_{j} + S\,p_{ij}(\delta_{\theta})\right)\text{.}
+    \label{eq:ll}
+\end{align}
+The parameters $\mu_{\theta}$ and $\sigma_{\theta}$ are respectively the best
+fit and the constraint on $\delta_{\theta}$ from the $\ce{^{16}N}$ source
+analysis.
+$\text{Pois}\left(k, \lambda \right)$ is the value of the Poisson distribution
+at the value $k$ for a rate parameter $\lambda$.
