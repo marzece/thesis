@@ -16,7 +16,89 @@
 % 9385 PMTs comes from doing the following SQL query on DB
 %select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
 \section{The SNO+ Detector}
+The SNO+ detector can be mostly simply described as a large volume of a
+target material that is deep underground and is observed with an array of
+9385  photomultiplier tubes (PMTs).
+Changing the target material can change what sort of physical processes is
+observable with the detector.
+The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or $\ce{D_{2}O}$)
+target, the benefits of a heavy-water target are discussed in Sec~\ref{sec:sno}.
+For SNO+ the detector will operate in three separate phases, each with a different
+target medium.
+For this work the target medium was light-water, $\ce{H_{2}O}$, known as the
+``water phase''.
+Following this the water is to be replaced by a liquid-scintillator, LAB-PPO,
+that will be the ``pure scintillator phase'' or just the ``scintillator phase''.
+After the scintillator phase the LAB-PPO will be doped with tellurium for
+a neutrinoless double-beta decay search, this is referred to as the ``tellurium phase''.
+The motivations for each phase is discussed in~\cite{status_and_prospects}.
+
+The target volume is encapsulated within a 6-meter radius spherical acrylic vessel (AV),
+which is held suspended in a large cavity filled with ultra-pure water (UPW)\@.
+The acrylic sphere has a XXX meter acrylic chimney, called the ``neck'', at its top
+to allow access to the detector volume.
+Surrounding the acrylic vessel is an  array of inward pointing PMTs
+arranged in a geodesic pattern.
+The structure holding these PMTs is referred to as the PMT Support Structure
+(PSUP).
+There are roughly 90 PMTs on the PSUP that point outward, toward the cavity
+walls.
+These outward facing tubes are called OWLs and are for the purpose of tagging
+interactions that occur outside the PSUP\@.
+There are an additional three tubes mounted at the top of the neck of the AV,
+these are referred to as NECK tubes.
+
+Above the cavity volume is an optically isolated deck on which all the detector
+readout and trigger electronics are kept.
+PMTs are housed within a water-tight cassette and readout via a custom BNC-like
+connector that connects to the PMT interface electronics.
+Within the PMT housing is a custom PMT-base that fans out the approximately 2kV
+high voltage (HV) supply to the PMT input pins and routes the PMT return signal to the same
+HV supply cable.
+
+
 \subsection{Detection Mechanism}
+The goal of the SNO+ detector is to detect and record information about as
+many of the photons produced within the AV as possible.
+By observing photons information about the physical processes that produced
+the light can be inferred.
+Cherenkov radiation is the primary photon generating process of interest in
+SNO+'s water-phase.
+Cherenkov radiation is produced by any charged particle moving with
+velocity (\vec{v}) such that $abs{\vec{v}} > \frac{c}{n}$, where $c$ is the speed
+of light and $n$ is the index of refraction in the target medium~\cite{cherenkov}.
+
+The produced Cherenkov light has a few properties that make it a desireable
+method for particle detection.
+The first is that the number of photons produced scales nearly linearly
+with the energy of the particle propagating, therefore the energy of the particle
+can be estimated by simply counting the number of detected photons.
+The second desireable property is that the produced photons will be
+emitted in a cone, with an opening angle of approximately $42\deg$ with
+respect to the particles direction of travel.
+Meaning by detecting Cherenkov light the direction of travel of the initial
+particle can be inferred.
+And finally, if the time of each detected photon is well known then
+the requirement that all photons travel from the same point at the same speed
+allows the position of the particle to be deduced.
+
+SNO+ takes advantage of each of these aspects of Cherenkov radiation to reconstruct
+the position, time, energy, and direction of all interacting particles in the
+detector.
+Our methods for deducing each value is detailed in Sec~\ref{sec:reconstruction}.
+
+For the scintillator and tellurium loaded phases scintillation processes are
+the dominant photon production mechanism.
+The Cherenkov light production is roughly the same in scintillator as it is in
+water, however the ratio of light produced by scintillation processes to Cherenkov
+light is approximately $100:1$.
+With SNO+ it's not expected to be possible to infer which detected photons are
+from scintillation processes and which are Cherenkov radiation, so it can be treated
+as though all light is from scintillation.
+Many people are interested exploring how to separate Cherenkov light from scintillation
+light~\cite{XXX}, and so this may be possible in the future.
+%TODO FIND source to comment on scintillator for (neutrino)particle detection
+% so i don't have to write about it.
 
 The primary neutrino interaction that SNO+ is sensitive to is elastic scattering
 off electrons,
@@ -27,39 +109,28 @@ for $x=\mu$ or $x=\tau$ there exists only the neutral current channel.
 % TODO try and remember what actually I mean here
 Nuclear interactions occur as well with the oxygen in the water,
 however these are rare and difficult to identify, and so are ignored typically.
-The elastic scattering cross-section is given by
-\begin{equation}
-cross section
-\end{equation}
-This can also be expressed as it's differential cross-section as a function
-of energy
-\begin{equation}
-    d\sigma/dT_{e}
-\end{equation}
-and of scattering angle
-\begin{equation}
-d\sigma/d\theta
-\end{equation}
-These cross sections are shown in figure blah.
-The relevant points are that the angular cross section is peaked in
-the forward direction, meaning that information about the neutrino direction
-is maintained in the interaction.
+
+The cross-section for this interaction is discussed in~\ref{sec:es_xsec}.
+The forward peaked angular cross-section means that information about the
+neutrino direction is maintained in the interaction.
 But the differential cross-section for recoil energy is nearly flat below the
 end point. Meaning relatively little information about the incoming neutrino energy
 is preserved by the interaction.
-For the SNO+ water-phase the scattered electron generates light via Cherenkov radiation,
-assuming it's above Cherenkov threshold for water which is $XXX$\,MeV.
-If it is above the Cherenkov threshold the electron will generate photons that
-travel at approximtely a 42$\deg$ angle to the direction of the electron.
-The angle of travel comes directly from the speed at which electro-magnetic
-signals propagate in the medium.
-Figure $TODO$ shows this diagramatically, as the charged particle (in this case
-an electron) distance $\ell$ from point A, to point B, the electro-magnetic wave
-that was emitted at A will travel a distance $\ell \dfrac{c}{v}$, forming
-a spherical wavefront at that distance.
-When the electron travels another distance $\ell$ from B to C the wavefront
-from A is a distance $2\ell\dfrac{c}{v}$ from A and the wavefront from B is
-a distance $\ell \dfrac{c}{v}$ from B.
+
+
+%For the SNO+ water-phase the scattered electron generates light via Cherenkov radiation,
+%assuming it's above Cherenkov threshold for water which is $XXX$\,MeV.
+%If it is above the Cherenkov threshold the electron will generate photons that
+%travel at approximtely a 42$\deg$ angle to the direction of the electron.
+%The angle of travel comes directly from the speed at which electro-magnetic
+%signals propagate in the medium.
+%Figure $TODO$ shows this diagramatically, as the charged particle (in this case
+%an electron) distance $\ell$ from point A, to point B, the electro-magnetic wave
+%that was emitted at A will travel a distance $\ell \dfrac{c}{v}$, forming
+%a spherical wavefront at that distance.
+%When the electron travels another distance $\ell$ from B to C the wavefront
+%from A is a distance $2\ell\dfrac{c}{v}$ from A and the wavefront from B is
+%a distance $\ell \dfrac{c}{v}$ from B.
 
 
 %%% TODO it'd be dank to have a chapter discussing Cherenkov radiation and deriving
@@ -80,50 +151,19 @@ The inward looking PMTs are all housed within a plastic casette.
 Each PMT is also $XXX$collared$XXX$ by an array of reflective
 petals which serve to increase the effective photo-sensitive area
 of the PMT.
-The geometric coverage of the PMTs is $XXX$. % TODO, see if you can get the effective coverage
-
-
-
-\subsection{The Detector in Brief}
-The SNO+ detector can be mostly simply described as a large volume of some
-target material that is deep underground and is observed with an array of
-9385  photomultiplier tubes (PMTs).
-Changing the target material can change what sort of physical processes is
-observable with the detector.
-The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or $\ce{D_{2}O}$)
-target, the upgrades for SNO+ were done in expectation of a tellurium doped
-scintillator target, more information on this can be found in Sec.~\ref{sec:upgrades}.
-For this thesis the target material is ultra-pure water (\ce{H_{2}O}).
-
-The target volume is encapsulated within a 6-meter radius acrylic sphere,
-which is held suspended in a large cavity filled with UPW.
-The acrylic sphere has a XXX meter acrylic chimney, called the ``neck'', at its top
-to allow access to the detector volume.
-Surrounding the acrylic vessel (AV) is an  array of inward pointing PMTs
-arranged in a geodesic pattern.
-The structure holding these PMTs is referred to as the PMT Support Structure
-(PSUP).
-There are roughly 90 PMTs on the PSUP that point outward, toward the cavity
-walls.
-These outward facing tubes are called OWLs and are for the purpose of tagging
-interactions that occurred outside the PSUP.
-There are an additional three tubes mounted at the top of the neck of the AV,
-these are referred to as NECK tubes.
-
-Above the cavity volume is an optically isolated deck on which all the detector
-readout and trigger electronics are kept.
-PMTs are housed within a water-tight cassette and readout via a custom BNC-like
-connector that connects to the PMT interface electronics.
-Within the PMT housing is a custom PMT-base that fans out the approximately 2kV
-high voltage (HV) supply to the PMT input pins and routes the PMT return signal to the same
-HV supply cable.
+The reflective petals are typically referred as the PMT ``concentrator''.
+With the concetrators the geometric coverage of the PMT array is $XXX$,
+accounting for the angular acceptance of the concetrators gives
+an effective coverage of approximately $XXX\%$.
 
 
 \subsection{Electronics And DAQ}
+The hardware the connects to and reads out the PMT array forms the SNO+ data acquisition (DAQ)
+system\@.
 The SNO+ data acquisition (DAQ) inherit much of its design and components from
-SNO.
+SNO\@.
 There are a few notable upgrades that were made for the purpose of handling the
-higher light yield and event rate that SNO+ has compared to SNO.
+higher light yield and event rate that SNO+ has compared to SNO\@.
 The DAQ hardware can be described as a few separate systems, the trigger system,
 the readout system, and the PMT interface system.
 The PMT interface provides an approximately 2\,kV (HV) supply to each PMT and provides
@@ -151,7 +191,7 @@ Once the two signals are separated the PMTIC sends the PMT signal to
 a front end card (FEC) via a board-to-board connector, where it enters
 the readout and trigger system.
 
-That signal is compared to a threshold, if the signal is over threshold a "hit"
+That signal is compared to a threshold, if the signal is over threshold a ``hit''
 has occurred\,-\,this threshold is often called the ``channel threshold''.
 At the time of the channel threshold crossing the following processes occur, the name for each is given
 in parenthesis:
@@ -184,7 +224,7 @@ Each MTCA+ performs the analog summation with three different gains,
 resulting in a total of twelve signals spread across four different boards.
 Each of the twelve signals are separately compared to a threshold;
 each of the twelve thresholds are independent from each other.
-These thresholds are called "trigger thresholds".
+These thresholds are called ``trigger thresholds''.
 
 The different gains are in place due to the practical difficulty of maintaining
 a good signal-to-noise ratio (SNR) without limiting the range of the
@@ -210,14 +250,14 @@ referred to simply as ESUMH and ESUML with their gain path understood to be
 the high gain path.
 
 When a trigger signal goes over its threshold a 20\,ns digital pulse is
-emitted for that signal. This pulse is called a "raw-trigger" and there is
+emitted for that signal. This pulse is called a ``raw-trigger'' and there is
 one for each of the seven used trigger signals.
 The raw-trigger signals are sent from the MTCA+s to the Master Trigger
-Card - Digital (MTCD).
+Card-Digital (MTCD).
 Finally, each of these seven raw-trigger signals can be masked in or masked out on
-the MTCD;
+the MTCD\@;
 if a raw-trigger is masked out, nothing happens when it fires,
-if it is masked in, then the raw trigger creates a "global-trigger" (GT) signal.
+if it is masked in, then the raw trigger creates a ``global-trigger'' (GT) signal.
 That global trigger signal is fanned out to all the data crates which
 in turn sends the GT to all front end cards and daughter boards.
 As the GT signal is created the MTCD also generates a signal
@@ -228,7 +268,7 @@ Once the global trigger is created the trigger cycle is complete and
 the readout process begins.
 The raw-trigger signal that caused the global trigger, as well as any other
 raw-trigger signals that were high within a 20\,ns window of the global trigger,
-are recorded and readout, this is know as the "trigger word".
+are recorded and readout, this is know as the ``trigger word''.
 When the GT is created a counter, called the global trigger identifier (GTID) is incremented
 and readout along with the trigger word.
 
@@ -241,14 +281,14 @@ are discarded. A typical value for GT\_VALID is $400\,ns$, although
 there exists some channel\,-\,to\,-\,channel variation.
 If a GT signal does arrive at the channel before GT\_VALID expires the
 values in the memory cells are digitized and readout to a memory buffer
-on the FEC.
+on the FEC\@.
 The TAC ramp starts when the PMT signal crosses channel threshold
 and stops when the GT signal arrives at the channel.
 Since the TAC voltage ramp is linear over time the value of the TAC
 indicates when the hit occurred relative to the GT signal.
 
 The FEC stores those values and adds information to identify which
-channel's data is stored, it also records the value of its own GTID.
+channel's data is stored, it also records the value of its own GTID\@.
 Each FEC keeps a counter that is incremented every time it recieves a global
 trigger signal, in princible the value of this counter will always be the same
 as the MTCD GTID, and the same as the counter in every other FEC in the detector.
@@ -260,10 +300,10 @@ all other channels.
 This can result in the hits on a particular channel being associated with
 the wrong event.
 To mitigate this problem every $2^{16}$th and $2^{24}$th GT respectively creates a $SYNC$ and
-$SYNC24$ signal, those signals are sent by the MTCD to each FEC \& DB.
+$SYNC24$ signal, those signals are sent by the MTCD to each FEC \& DB\@.
 If a FEC or DB receives either of these synchronization pulses but its own GTID counter is not
 at an increment of $2^{16}$ or $2^{24}$ then the channel is identified as out of sync.
-If this happens, the GTID counter is adjusted to the correct value and the next hit to read out from the out of sync channel(s) is accompanied
+If this happens, the GTID counter is adjusted to the correct value and the next hit to read out from the out of sync channel/channels is accompanied
 by a flag to indicate that it was out of sync.
 This system ensures a channel is never out of sync for more than $65536$ events.
 
