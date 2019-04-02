@@ -230,10 +230,39 @@ and
     g_{2} = \sin^{2}\theta_{\mathrm{W}}\text{.}
 \end{equation}
 
-Since the scattering is elastic the equations for conservation of momentum
-and energy are simply....
+Since the electron scattering is elastic the kinematics of the interaction
+leave only free parameter, the outgoing electron direction, with respect
+to the incoming neutrino direction, $\theta$.
+For a recoil electron with a given value for $\theta$ the electron kinetic energy is
+given by
+\begin{equation}
+    T_{\mathrm{e}}=\frac{2m_{\mathrm{e}}E_{\nu}^{2}\cos^{2}\theta}{(m_{\mathrm{e}}+E_{\nu})^2 - E_{\nu}^{2}\cos^2\theta}\text{.}
+    \label{eqn:es_te_theta}
+\end{equation}
+This relationship can be used to produce the differential cross-section
+\begin{multline}
+    \frac{d\sigma}{d\cos\theta}=\sigma_{0}\frac{4E_{\nu}^{2}(m_{\mathrm{e}}+E_{\nu}^{2})^2\cos\theta}{\left[(m_{\mathrm{e}}+E_{\nu}^{2} -E_{\nu}^{2}\cos^2\theta)\right]^2}\\
+    \left[g_{1}^{2} + g_{2}^{2}\left(1 - \frac{2m_{\mathrm{e}E_{\nu}\cos^{2}\theta}}{(m_{\mathrm{e}}+E_{\nu})^2 -E_{\nu}^{2}\cos^2\theta} \right)^{2} - g_{1}g_{2}\frac{2m_{\mathrm{e}^{2}}\cos^{2}\theta}{(m_{\mathrm{e}}+E_{\nu})^{2}-E_{\nu}^{2}\cos^{2}\theta}\right]
+    \text{.}
+\end{multline}
+And finally the maximum energy a recoil electron will have can be found by
+setting $\cos\theta=1$ in equation~\eqref{eqn:es_te_theta}, this yields
+\begin{equation}
+    T_{e}^{\max}(E_\nu) = \frac{2E_{\nu}^{2}}{m_{\mathrm{e}}+ 2E_{\nu}^{2} }\text{.}
+\end{equation}
 
+Figure~\ref{XXX} shows the differential cross-sections for a 10\,MeV neutrino.
+The fact that the scattering cross-section is so peaked in $\frac{d\sigma}{d\cos\theta}$
+is very useufl for neutrino experiments because it means the electron direction
+is almost always nearly co-linear with the neutrino direction.
+Unforunately, since the cross-section is nearly flat in $T_{\mathrm{e}}$
+the electron energy conveys almost no information about the incoming neutrino
+energy.
+The kinematics and cross-section of the out-going neutrino is also
+well predicted with respect to $\cos\theta$, however the out-going
+neutrino is of little interest because it in general cannot be detected.
 
+%TODO look at PDG review and discuss uncertainties.
 
 \subsection{Neutrino Experiments}
 There's a long a diverse list of neutrino experiments that have contriubted to
