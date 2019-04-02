@@ -168,15 +168,70 @@ from astronomical considerations. % TODO add citation.
 \end{figure}
 
 Neutrino-electron elastic scattering (ES) is an important neutrino interaction
-channel for this work. 
+channel, for this work it is the main interaction through which neutrinos are
+detected.
+The ES process is $\nu_{\mathrm{x}} + e^{-} \rightarrow \nu_{mathrm{x}} +e^{-}$.
+A similar process exists for anti-neutrinos, but the focus here is on the
+neutrino ES interaction.
+
 Figure~\ref{fig:feynman_es} shows the tree level feynman diagrams for the charged
 current (CC) elastic scattering interaction~\ref{fig:feynman_es_cc} and the
 neutral current (NC) elastic scattering interaction~\ref{fig:feynman_es_nc}.
 The neutral current interaction is shown to involve $\nu_{\mathrm{x}}$ where $x=\mathrm{e, \mu, \tau}$,
 and the charged current interaction involves only $\nu_{\mathrm{e}}$.
+The charged current interaction is available to neutrinos of all flavors,
+however, for a few reasons only the electron flavor version of the interaction
+is available for solar neutrinos.
 
+The intial electron on the left hand side of the interaction is usually understood to
+be from an atom within target the detector, and therefore at rest within
+the lab frame.
+So the total energy in the interaction is simply $E = E_{\nu} + m_{e}$.
+For even the highest energy solar neutrinos $E<20$\,MeV, far less that muon
+rest mass of $m_{\mu}=105.7$\,MeV/$\text{c}^{2}$ or tau mass $m_\tau = 1776.8$\,MeV/$\text{c}^{2}$.
+Meaning a muon or tau cannot be created; the electron with a rest mass
+of $m_{e}=0.511$\,MeV/$\text{c}^{2}$ is the only charged lepton that can
+be created from the CC-ES interaction for solar neutrinos.
+And since lepton flavor is conserved in weak interactions, the electron neutrino
+is the only neutrino that can produce an electron, therefore the electron
+neutrino is the only neutrino flavor that can undergo the charged-current
+elastic scattering interaction.
 
+%TODO need citations here
+In practice this means that the cross section for the elastic scattering process
+is larger for $\nu_{e}$ than it is for a $\nu_\mu$ or $\nu_\tau$,
+and the cross-section for a $\nu_\mu$ is the same as that for a $\nu_\tau$.
+The differential cross section of for the diagrams shown in Fig~\ref{fig:feynman_es}
+can be calculated as
+\begin{equation}
+    \frac{d\sigma}{dT_{\mathrm{e}}}\left(E_{\nu}\text{, }T_{\mathrm{e}}\right)=
+    \frac{\sigma_{0}}{m_{\mathrm{e}}}\left[g_{1}^{2} + g_{2}^{2}\left(1 - \frac{T_{\mathrm{e}}}{E_{\nu}}\right)^{2} -g_{1}g_{2}\frac{m_{\mathrm{e}}T_{\mathrm{e}}}{E_{\nu}^{2}}\right]\text{,}
+\end{equation}
+where,
+\begin{equation}
+    \sigma_{0} = \frac{2G^{2}_{\mathrm{F}}m_{\mathrm{e}}^{2}}{\pi}\text{.}
+\end{equation}
+For $\nu_{x} = \nu_{e}$
+\begin{equation}
+    g_{1} = \frac{1}{2} + \sin^{2}\theta_{\mathrm{W}}\text{,}
+\end{equation}
+and
+\begin{equation}
+    g_{2} = \sin^{2}\theta_{\mathrm{W}}\text{.}
+\end{equation}
 
+For $\nu_{x} = \nu_{\mu}$ or $\nu_{x} = \nu_{\tau}$ $g_{1}$ and $g_{2}$ is
+given by,
+\begin{equation}
+    g_{1} = \sin^{2}\theta_{\mathrm{W}} - \frac{1}{2}\text{,}
+\end{equation}
+and
+\begin{equation}
+    g_{2} = \sin^{2}\theta_{\mathrm{W}}\text{.}
+\end{equation}
+
+Since the scattering is elastic the equations for conservation of momentum
+and energy are simply....
 
 
 
