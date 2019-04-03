@@ -26,8 +26,8 @@ However, roughly two decades after its initial proposal, Frederick Reines \&
 Clyde Cowan performed an experiment that involved bombarding a tank of cadmium
 doped water with anti-neutrinos from nuclear reactor.
 Doing this they were able to observe the rate and energy of inverse $\beta$
-decays that ocurred.
-The results were consitent with Fermi's model of $\beta$ decay and were
+decays that occurred.
+The results were consistent with Fermi's model of $\beta$ decay and were
 considered a confirmation of the neutrino's existence.
 
 \subsection{Neutrino Flavor}
@@ -52,70 +52,152 @@ years later in 1975 \citep{tau_discovery}.
 
 \subsection{Neutrino Oscillations}
 Neutrino oscillation is a result of the fact that neutrino flavors do not have
-well defined masses, instead neutrino flavor states are composed of a mixture
-of mass states, and vice-versa.
-This can be stated more preciesly as
+well defined masses, instead neutrino flavor states are quantum superposition
+And conversely, mass states can be described as a superposition of flavor states.
+This can be stated more precisely as
 \begin{equation}
     \ket{\nu_{i}} = U_{i\ell}\ket{\nu_\ell}
 \end{equation}
-Where $\ket{\nu_\ell}$ represents the neutrino flavor states, $\ket{nu_i}$
+Where $\ket{\nu_\ell}$ represents the neutrino flavor states, $\ket{\nu_i}$
 represents the mass states, and $U_{i\ell}$ describes the mixing of these
-states. $U_{i\ell}$ is known as the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix,
+states. $U$ is known as the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix,
 and it is exactly analogous to the Cabibbo-Kobayashi-Maskawa (CKM) matrix used
 to describe quark mixing.
 In the simplest case where the weak states and the mass states are the same
-$U_{i\ell}$ would just be the identity matrix;
+$U$ would just be the identity matrix;
 Under the assumption that there are three flavor states and three mass states
 $U_{i\ell}$ must be unitary so that the probability of observing
 a neutrino in any state is 1.
+It is known from observations of Z boson decay products that
+there are only three ``active'' neutrino flavors~\cite{Zbosondecaypaper}.
+Where active here means that the neutrino participates in
+weak interactions.
 
-It is typical to characterize $U_{i\ell}$ with three angles
+It is typical to characterize $U$ with three angles
 ($\theta_{12}$, $\theta_{13}$, $theta_{23}$) and a complex
 phase $\delta_{cp}$. Doing so allows for the SU(3) matrix to
-be decomposed into 3 SU(2) matrices,
+be decomposed into two SO(2) matrices and one SU(2) matrix,
 $$U_{12} =
 \begin{bmatrix}
     \cos\theta_{12} & \sin\theta_{12} & 0  \\
     -\sin\theta_{12}& \cos\theta_{12} & 0  \\
     0 & 0 & 0  \\
-\end{bmatrix}
-$$,
+\end{bmatrix},
+$$
 $$
 U_{13} =
 \begin{bmatrix}
     \cos\theta_{13} & 0 & \sin\theta_{13}e^{-i\delta_{cp}}\\
     0 & 0 & 0  \\
     -\sin\theta_{13} e^{-i\delta_{cp}} & 0 & \cos\theta_{13}  \\
-\end{bmatrix}
-$$,
+\end{bmatrix},
+$$
 $$
 U_{23} =
 \begin{bmatrix}
     0 & 0 & 0  \\
     0 & \cos\theta_{23} & \sin\theta_{23} \\
     0 & -\sin\theta_{23} & \cos\theta_{23}   \\
-\end{bmatrix}
-$$.
-These matrices can be multplied to produce the full mixing matrix
-$U_{i\ell} = U_{23}U_{13}U_{12}$
+\end{bmatrix}.
+$$
+These matrices can be multiplied to produce the full mixing matrix
+$U = U_{23}U_{13}U_{12}$
 
 The mixed nature of neutrino flavor and mass states gives rise to oscillations
 in the flavor content of propagating neutrinos.
-The Hamiltonian for a neutrino propagating in vaccume is
-$H = -im\textbf{p}^2 $.
-Using Schrodinger's equation,
-$H\ket{\Psi}$ = $E\ket{\Psi}$
-gives the differential equation
-$\textbf{p} \ket{\Psi} = imE\ket{\Psi}$.
-Applying the position operator to this yields
-$\dfrac{d}{d\textbf{x}} \Psi(x) = imE\Psi(x)$.
-Solving this equation for $\Psi(x)$,
-$\Psi = e^{i\dfrac({E}{m}}$.
+By definition the neutrino mass states are eigenstates of the vacuum Hamiltonian
+\begin{equation}
+    H\ket{\nu_{i}} = E_{i}\ket{\nu_{i}}\text{,}
+\end{equation}
+where the energy is given by the standard relativistic energy equation,
+\begin{equation}
+    E_{i} = \sqrt{{(p_{i}c)}^{2} + {(m_{i}c^{2})}^2}\text{.}
+\end{equation}
+It is typical to make the assumption that all neutrino mass states have the same
+momentum, $p_{i} = p$, and this is the assumption I'll user here as well.
+The equal momentum assumption allows for a straightforward derivation of the
+correct description of neutrino oscillations, but it is not well motivated.
+A thorough discussion of the assumption is available in Ref~\cite{Ahkmedov_Quantum}.
+
+Applying Schrodinger's equation,
+\begin{equation}
+    i\frac{d}{dt}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)} = E_{i}\ket{\nu_{i}(t)}\text{,}
+\end{equation}
+results in,
+\begin{equation}
+    \ket{\nu_{i}(t)} = e^{-iE_{i}t}\ket{\nu_{i}(t=0)}\text{.}
+    \label{eqn:mass_state_tevol}
+\end{equation}
+
+This time evolution of mass eigenstates can be used to then describe the state
+of a neutrino that is created in a electron flavor eigenstate.
+\begin{equation}
+\ket{\nu(t=0)} = \ket{\nu_{e}} = U_{1e}\ket{\nu_1} + U_{2e}\ket{\nu_{2}} + U_{3e}\ket{\nu_{3}}
+    =\sum_{i=1}^{3}U_{ie}\ket{\nu_{i}}
+\end{equation}
+
+Each of the mass states' time evolution can be immediately written down from
+Equation~\eqref{eqn:mass_state_tevol},
+\begin{equation}
+    \ket{\nu(t)} = \sum_{i=0}^{3} U_{ie}e^{-iE_{i}t}\ket{\nu_{i}}\text{.}
+    \label{eqn:e_state}
+\end{equation}
+
+From Eq.~\eqref{eqn:e_state} the quantity that's often of the most interest
+is the survival probability, defined as
+\begin{equation}
+    P_{ee}(t) = \abs{\braket{\nu_{e}}{\nu(t)}}^{2}\text{.}
+\end{equation}
+$P_{ee}(t)$ can be understood as the probability that a neutrino, produce in
+an electron flavor state, will be detected as an electron flavor state a time
+$t$ later.
+The survival probability for the state given in~\eqref{eqn:e_state} is
+\begin{equation}
+    P_{ee}(t) = \sum_{i,j}\abs{U_{ei}}^2\abs{U_{ej}}^2e^{-i(E_{i} - E_{j})t}\text{.}
+\end{equation}
+It is useful to separate out the terms where $i=j$,
+\begin{equation}
+    P_{ee}(t) = \sum_{i}\abs{U_{ei}}^4 + \sum_{i,j\text{, }j \ne i}
+    \abs{U_{ei}}^2\abs{U_{ej}}^2e^{-i(E_{i} - E_{j})t}\text{.}
+\end{equation}
+Here we can see there are terms that oscillate with time, and terms that do
+not.
+
+A few more simplifications are commonly done, using the equal momentum
+assumption mentioned earlier and the fact the neutrino rest mass is
+very small, the energy differences can be simplified,
+\begin{equation}
+    E_{i} - E_{j} = \sqrt{p^{2} + m_{i}^{2}} - \sqrt{p^{2} + m_{j}^{2}} \approx
+    p^{2} - p^{2} + \frac{m_{i}^2}{2p} - \frac{m_{j}^2}{2p}\text{.}
+\end{equation}
+To good approximation $p=E$, so
+\begin{equation}
+    E_{i} - E_{j} = {\Delta m^{2}_{ij}}{2E}\text{,}
+\end{equation}
+where the definition of the mass-squared splittings is used,
+\begin{equation}
+    \Delta m^{2}_{ij} = m^{2}_{i} - m^{2}_{j}\text{.}
+\end{equation}
+
+The final simplification is to assume that the neutrino is moving very close
+to the speed of light, therefore any flavor oscillations over time will also
+occur at a distance $L$ from the neutrino's creation.
+All this gives
+\begin{equation}
+    P_{ee}(L,E) = \sum_{i}\abs{U_{ei}}^4 +
+    \sum_{i,j\text{, }j \ne i}
+    \abs{U_{ei}}^2\abs{U_{ej}}^2e^{-i\left(\frac{\Delta m^{2}_{ij}L}{2E}\right)}\text{.}
+\end{equation}
+
+
+Figure XXX shows this survival probability with mixing parameters matching those
+given in~\cite{PDG2016}
 
 This shows that not only are neutrino flavor states
 composed of mass states, that composition results
 in flavor oscillation over time and space.
 
+\subsubsection{Matter Enhanced Oscillations}
 When neutrino propagate through matter this oscillation is altered.
 The local density of other particles modifies the vaccume Hamiltonian,
 adding a weak interaction potential.
