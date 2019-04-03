@@ -25,9 +25,9 @@ The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or
 target, the benefits of a heavy-water target are discussed in Sec~\ref{sec:sno}.
 For SNO+ the detector will operate in three separate phases, each with a different
 target medium.
-For this work the target medium was light-water, $\ce{H_{2}O}$, known as the
-``water phase''.
-Following this the water is to be replaced by a liquid-scintillator, LAB-PPO,
+For the entierty of the entierty of  this work the target medium is
+light-water ($\ce{H_{2}O}$); this phase is referred to as the ``water phase''.
+Following this the water is to be replaced by a liquid-scintillator, LAB-PPO~\cite{mchen_labppo},
 that will be the ``pure scintillator phase'' or just the ``scintillator phase''.
 After the scintillator phase the LAB-PPO will be doped with tellurium for
 a neutrinoless double-beta decay search, this is referred to as the ``tellurium phase''.
@@ -389,9 +389,27 @@ word is synchronized with the rest of the data for each event through it's own
 global trigger counter and through the SYNC/SYNC24 signals. More information about
 TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
+\subsection{Features of the SNO DAQ}
+There are a few aspects to the SNO and SNO+ trigger and DAQ system that 
+are worth highlighting, as they motivate some of the work discussed in future
+sections.%\ref?
+
+The first of these is the unstable analog trigger baseline.
+TODO\@: Discuss here issues such as dropout, baseline shifts,
+and orphans.
 \subsection{Electronics Upgrades}
+As previously mentioned, in the scintillator and tellurium loaded phases the
+amount of light produced by any interaction is expected to be roughly a factor
+of $100$ greater than the light that would be produced by water target.
+This increase in photon production translates to an equivalent increase in the
+current in the trigger sysytem and the necessary data readout rate.
+Additionally, since 1990's, when the SNO DAQ system was designed, the availability
+and sophistication of commercial computing and DAQ hardware has increased
+dramatically.
+To accomodate the increased current and data volume and to take advantage of modern
+hardware a few key pieces of the SNO DAQ was upgraded as part of the change from
+SNO to SNO+.
 \label{sec:upgrades}
-SN
 \subsubsection{XL3}
 \label{sec:xl3}
 The SNO system used a centralized serial readout system, where each crate of
