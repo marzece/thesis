@@ -188,6 +188,37 @@ solar neutrino energy, energies were sampled according to a flat distribution
 and according to the PDFs for each solar neutrino flux. These two methods of sampling
 were performed in equal proportions for each flux type.
 
+\section{Global Fit}
+To determine solar neutrino and neutrino mixing parameters that is most
+consistent with experimental observations, a fit is done to published
+experimental results.
+Solar neutrino results from SNO~\cite{LETA?}, Super Kamiokande~\cite{Superk1234},
+Borexino~\cite{Bx1,Bx2}, GNO~\cite{XXX}, SAGE~\cite{XXX}, and
+Homestake~\cite{XXX} are used.
+Solar neutrino fluxes are constrainted by the GS98SF2~\cite{} solar model calculations.
+Reactor neutrino results from Daya Bay~\cite{}, KamLAND~\cite{}, Reno~\cite{}
+are also used to constrain neutrino mixing parameters.
+Only the reactor neutrino results from KamLAND are used, though
+the experiment has made solar neutrino measurements as well~\cite{kamland_be7, kamland_b8}.
+Including the KamLAND solar results is a potential improvement for the global fitting
+algorithm. The KamLAND solar neutrino results are, however, compatible
+with and less constraining than the comparable measurements made by Borexino, SNO and SuperK,
+so the inclusion of those measurements would not effect any fit results significantly.
+
+The software used for evaluating experimental consistency was developed
+in part by Richard Bonventre~\cite{RICHIE_THESIS, RICHIE_NONSTANDARD},
+but was updated to include more recent solar neutrino measurements
+by the Borexino and Super Kamiokande experiments.
+The software produces the likelihood of each experimental observation
+for a given set of neutrino mixing parameter and solar neutrino fluxes.
+Best fit parameters and uncertainties are found with the Minuit gradient
+descent algorithm as well an MCMC algorithm. %TODO, probably just use one
+
+The mixing parameters are primarily evaluated by producing a energy dependent
+solar survival probability curve $P_{ee}(E_{\nu}$, then modifying the expected
+solar neutrino event accordingly. %TODO, probably delete this sentence.
+
+
 \subsection{Simplified Modified Vacuum Mixing}
 Probing the idea of modified vacuum mixing with the simulation detailed in
 section XXX proved computationally difficult.
