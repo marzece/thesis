@@ -386,6 +386,109 @@ from astronomical considerations. % TODO add citation.
     H \ket{\nu_i} = m_i \ket{\nu_i}
 \end{equation}
 
+\subsection{Adabaticity}
+The adabiticity of neutrino oscillation refers if mass state composition
+of a neutrino state changes or not, if it does change then the neutrinos
+oscillation is non-adiabatic.
+A specific example is if you imagine a neutrino state that's a pure vacuum mass-1
+state,
+\begin{equation*}
+    \ket{\Psi_{\nu}} = \ket{\nu_{1}}
+\end{equation*}
+suddenly enters a region of significant matter density where the mass states
+are now $\ket{\nu_{k}^\prime}$.
+The neutrino state does not have time to evolve at all so the state
+does not change, but it is not longer a pure eigenstate of the mixing
+hamiltonian,
+\begin{equation*}
+    \ket{\Psi_{\nu}} = \ket{\nu_{1}} = \sum_{k=1}^{3} \braket{\nu_{k}^\prime}{\nu_{1}}\ket{\nu_{k}^\prime}\text{.}
+\end{equation*}
+Since the neutrino is no longer in a pure eigenstate the state will
+now oscilate.
+
+In contrast if the neutrino slowly enters the region of significant matter
+density more slowly, then the neutrino state will smoothly evolve with the 
+eigenstate, $\ket{\nu_{1}} \rightarrow \ket{\nu_{1}^{\prime}}$.
+And so the final state of the neutrino in the adiabatic case will be,
+\begin{equation*}
+    \ket{\Psi_{\nu}} = \ket{\nu_{1}^{\prime}}\text{.}
+\end{equation*}
+
+The adiabaticity of neutrino evolution will be discussed further in
+Chapter~\ref{XXXChapChamleons}.
+
+\subsection{Solar Neutrinos}
+Nuclear reactions in the core of the sun provide energy to maintain a equilibrium
+between gravitational forces and XXX forces.
+There exists two seperate chains of nuclear reactions that are present in typical
+stellar conditions, the $pp$-chain and the CNO-cycle. Figure XXX shows these
+two reaction chains.
+For the Sun the $pp$ chain
+provides 99\% of the generated nuclear energy, and the CNO-cycle provides the remaining
+1\%. For stars significantly more massive than the Sun, the CNO-cycle is the
+main energy generating mechanism.
+
+Within the $pp$-chain there are five process that produce neutrinos.
+Since the Q-value the processes in the $pp$ chain are all well below the rest mass
+of a muon or tau, the only charged lepton generated is electrons. And so from
+lepton flavor conservation only electron flavor neutrinos are generated.
+These neutrinos are produced with an energy spectrum shown in Fig. XXX.
+
+The $hep$ and $\ce{^{8}B}$ reactions produce neutrinos with the highest
+energies. Since the $hep$ reaction branching ratio is so low the flux
+of $hep$ neutrinos is also very low compared to that of $\ce{^{8}B}$ neutrinos;
+the $hep$ flux is expected to be XXX\% of the $\ce{^{8}B}$ flux.
+So for water-cherenkov detectors that have a typical threshold of a few MeV, $\ce{^{8}B}$ neutrinos
+are the primary source of detectable solar neutrinos.
+
+The uncertainty on the predicted $\ce{^{8}B}$ flux is relatively large, this comes mostly
+from the uncertainty on the cross-sections and how those cross-sections change with
+temperature, and uncertainties on the temperature profile within the core of the sun.
+And since the $\ce{^{8}B}$ reaction has five preceding reactions the uncertainty on
+ those reactions are part of the uncertainty on the $\ce{^{8}B}$ flux.
+
+The uncertainty on the $pp$ and $pep$ neutrinos is much lower for two reasons. First, because
+they are at early stage of the reaction chain, so their reaction rate is not dependent on any
+other preceding interaction. The $pp$ reaction is also the main energy generating mechanism
+for the Sun, so measurements of the total solar luminosity provide strict constraints on the
+$pp$ flux as well.
+
+Neutrinos created in the solar core can experience significant mixing effects from local
+electron density.
+One of the most interesting aspects to neutrino mixing within the Sun is the MSW-effect,
+at a specific electron density a resonance occurs and neutrinos are maximally mixed.
+The condition for an MSW-resonance between any two matter states is given by
+\begin{equation}
+    N_{e} = \frac{\Delta m^{2} \cos2\theta}{2\sqrt{2}EG_{F}}\text{.}
+\end{equation}
+This condition is met for a 10\,MeV at a solar radius of XXX, for the mixing parameters
+given in XXX %cite pdg probably.
+For neutrinos below XXX\,MeV this condition is not met at any point within the sun,
+and so those neutrinos do not experience the MSW resonance.
+Once a neutrino created in the core of the sun has travelled past a solar radius of $\approx$XXX
+the solar electron density has dropped far enough that matter effects are no longer significant
+and neutrinos are effectively travelling through vacuum. Once in the vacuum mixing dominated region
+
+The effect neutrino mixing has on the neutrino flux is typically summarized by the
+$\ce{^{8}B}$ survival probability, $P_{ee}(E_{\nu})$ over the energy range 0-15\,MeV,
+shown in Fig~\ref{XXX}.
+
+For solar neutrinos it's generally assumed that the neutrino states
+will evolve adiabtically.
+However, when the neutrino transitions through the MSW-resonance
+the flavor composition of the mass states changes very rapidly,
+so it's thought that this could lead to a non-adiabatic transition
+between the mass-1 and mass-2 state~\cite{FIND CITATION}.
+For solar neutrinos the effect this transition would have on the
+neutrino survival probability is characterized with $P_{jump}$,
+\begin{equation}
+    P_{jump} = XXXX
+\end{equation}
+Experimental observations of solar neutrinos so far cannot distinguish if the
+neutrino oscillation is fully adiabatic or not~\cite{GDOG Everything Under the sun???XXX}.
+
+
+
 
 \subsection{Neutrino Experiments}
 There's a long a diverse list of neutrino experiments that have contriubted to
@@ -532,56 +635,3 @@ by solar experiments, although it cannot be ruled out that the disagreement
 is a result of a statistical flucation. This discrepancy will be discussed further
 in sections XXX and XXX.
 
-\subsection{Solar Neutrinos}
-Nuclear reactions in the core of the sun provide energy to maintain a equilibrium
-between gravitational forces and XXX forces.
-There exists two seperate chains of nuclear reactions that are present in typical
-stellar conditions, the $pp$-chain and the CNO-cycle. Figure XXX shows these
-two reaction chains.
-For the Sun the $pp$ chain
-provides 99\% of the generated nuclear energy, and the CNO-cycle provides the remaining
-1\%. For stars significantly more massive than the Sun, the CNO-cycle is the
-main energy generating mechanism.
-
-Within the $pp$-chain there are five process that produce neutrinos.
-Since the Q-value the processes in the $pp$ chain are all well below the rest mass
-of a muon or tau, the only charged lepton generated is electrons. And so from
-lepton flavor conservation only electron flavor neutrinos are generated.
-These neutrinos are produced with an energy spectrum shown in Fig. XXX.
-
-The $hep$ and $\ce{^{8}B}$ reactions produce neutrinos with the highest
-energies. Since the $hep$ reaction branching ratio is so low the flux
-of $hep$ neutrinos is also very low compared to that of $\ce{^{8}B}$ neutrinos;
-the $hep$ flux is expected to be XXX\% of the $\ce{^{8}B}$ flux.
-So for water-cherenkov detectors that have a typical threshold of a few MeV, $\ce{^{8}B}$ neutrinos
-are the primary source of detectable solar neutrinos.
-
-The uncertainty on the predicted $\ce{^{8}B}$ flux is relatively large, this comes mostly
-from the uncertainty on the cross-sections and how those cross-sections change with
-temperature, and uncertainties on the temperature profile within the core of the sun.
-And since the $\ce{^{8}B}$ reaction has five preceding reactions the uncertainty on
- those reactions are part of the uncertainty on the $\ce{^{8}B}$ flux.
-
-The uncertainty on the $pp$ and $pep$ neutrinos is much lower for two reasons. First, because
-they are at early stage of the reaction chain, so their reaction rate is not dependent on any
-other preceding interaction. The $pp$ reaction is also the main energy generating mechanism
-for the Sun, so measurements of the total solar luminosity provide strict constraints on the
-$pp$ flux as well.
-
-Neutrinos created in the solar core can experience significant mixing effects from local
-electron density.
-One of the most interesting aspects to neutrino mixing within the Sun is the MSW-effect,
-at a specific electron density a resonance occurs and neutrinos are maximally mixed.
-The condition for an MSW-resonance between any two matter states is given by
-\begin{equation}
-    N_{e} = \frac{\Delta m^{2} \cos2\theta}{2\sqrt{2}EG_{F}}\text{.}
-\end{equation}
-This condition is met for a 10\,MeV at a solar radius of XXX, for the mixing parameters
-given in XXX %cite pdg probably.
-For neutrinos below XXX\,MeV this condition is not met at any point within the sun,
-and so those neutrinos do not experience the MSW resonance.
-Once a neutrino created in the core of the sun has travelled past a solar radius of $\approx$XXX
-the solar electron density has dropped far enough that matter effects are no longer significant
-and neutrinos are effectively travelling through vacuum. Once in the vacuum mixing dominated region
-
-The effect neutrino mixing has on the neutrino flux is typically summarized by the
