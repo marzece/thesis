@@ -49,7 +49,6 @@ energy might lead to a neutrino's mass being modified by the local neutrino dens
 This in turn can modify neutrino mixing in the core of the sun where the neutrino
 propagates significant distances in areas of high neutrino density.
 
-
 \subsection{Chameleons}
 It was proposed in XXX that the observed expansion
 of the universe could be explained by introducing a 5th force that is weak
@@ -82,8 +81,8 @@ meaning that the flavor composition of the neutrino state changes, even though
 it's mass-state composition does not.
 This means that practically all one needs to do is calculate the composition
 of mass states that corresponds to an electron type neutrino, and then calculate
-the flavor content of that composition in vacuume, and that flavor content
-tells you the survival probability and trasition probability. One is able to
+the flavor content of that composition in vacuum, and that flavor content
+tells you the survival probability and transition probability. One is able to
 ignore all oscillations that may occur within the sun and simply calculate
 quantities for when the neutrino is created and when it is detected.
 
@@ -96,6 +95,17 @@ transition from standard to modified vacuum mixing potential may not be adiabati
 In which case the exact state of the neutrino at the point of the transition
 will determine how the flavor state of the neutrino changes as it propagates.
 
+\section{Simulation}
+Two different simulation of neutrino oscillations were developed, the first
+does a full simulation of the neutrino state as it propagates from the
+Sun to a detector at Earth. Then second calculates the evolution
+of the mixing eigenstates for solar neutrinos, and does not simulate individual
+neutrinos.
+These two methods will be discusssed in greater detail in the following sections,
+but the reason for the two different methods is to allow for different
+trade-offs between detailed simulation and computational speed.
+
+\subsection{Neutrino Simulation}
 To allow for this the simulation for modified vacuum mixing simulates the full
 neutrino state as it propagate through the sun. The equation
 \begin{equation}
@@ -105,17 +115,44 @@ neutrino state as it propagate through the sun. The equation
 is evaluated numerically using the Runge-Kutta method of numerical integration.
 This cannot be easily evaluated analytically due to the varying density in the
 core of the sun.
+The electron density profile for the sun is given in XXX, and used to
+estimate the matter potential at all points within the Sun.
 
 Performing this simulation for many neutrino energies at many different starting
-radii gives an representation of possible neutrino states for solar neutrino.
-The density profile for the sun is taken from XXX.%todo
+radii gives a representation of all possible neutrino states for solar neutrinos
+as they exit the Sun. This ``library'' of possible solar neutrino states
+is used as input to the modified vacuum potential simulation.
 
-The standard solar survival probability can be calculated by taking calcuating
+The standard solar survival probability can be calculated by calcuating
 $|\bra{\nu_{e}}\ket{\Psi_{\nu}}|^{2}$ for each simulated neutrino and appropriatly
-averaging over energies and production radii.
+integrating over energies and production radii.
 Since neutrino states are simulated by linearly sampling starting radii and logarithmically
 sampling neutrino energies, states must be weighted by the relevant production
 PDFs in energy and radius.
+Figure~{XXX} shows the standard $\ce{^{8}B}$ survival probability simulated
+this way.
+
+The chameleon portion of the simulation is done by first monte-carlo sampling
+neutrino energies and production radii, and looking up the simulated
+neutrino state that corresponds to the sampled energy \& production radius.
+The radial production PDFs for each neutrino type that are MC sampled from 
+are given in~\cite{XXXradialproduction?}.
+The neutrino energy PDFs are given by~$\cite{BS05OP}$ and $\cite{Winters}$,
+however only half of all sample energies are drawn from the relevant prodcution
+spectra, the other half are drawn from a uniform distribution from
+0\,MeV to the relevant endpoint energy.
+The reason for this sampling....
+
+Since the MC sampling produces energy and production radius values that fall
+between bins used when producing the solar state library, the states
+from the closest available radius bin is used. For energy
+a random choice is made between the energy bins immediatly above and below
+the desired energy is performed, the probability of choosing either bin
+is dependent on how close the desired energy is to that bin.
+This process is repeated for $1000000$ simulated neutrinos for each solar
+neutrino type, \textit{e.g.} $\ce{^{8}B}$, $pep$, etc.
+
+
 
 The simulation of neutrinos this way is computationally expensive. A few methods
 were explored for ensuring this simulation could be performed in a reasonable
