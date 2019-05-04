@@ -18,3 +18,5 @@ resonane and at that radius
 Also what is the maximum electron density within the sun?
 And below what energy will a neutrino never experience an
 MSW resonance?
+
+Need a paragraph or so about the wave packet treatement

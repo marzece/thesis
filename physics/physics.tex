@@ -218,6 +218,7 @@ neutrino is of little interest because it in general cannot be detected.
 %TODO look at PDG review and discuss uncertainties.
 
 \subsection{Neutrino Oscillations}
+\label{sec:neut_osc}
 Neutrino oscillation is a result of the fact that neutrino flavors do not have
 well defined masses, instead neutrino flavor states are quantum superposition
 And conversely, mass states can be described as a superposition of flavor states.
@@ -351,8 +352,9 @@ to the speed of light, therefore any flavor oscillations over time will also
 occur at a distance $L$ from the neutrino's creation.
 All this gives
 \begin{equation}
-    P_{ee}(L,E) = \sum_{i}\abs{U_{ei}}^4 +
-    \sum_{i,j\text{, }j \ne i}
+    \label{eqn:pee_adiabatic}
+    P_{ee}(L,E) = \sum_{i}^{3}\abs{U_{ei}}^4 +
+    \sum_{i,j\text{, }j \ne i}^{3}
     \abs{U_{ei}}^2\abs{U_{ej}}^2e^{-i\left(\frac{\Delta m^{2}_{ij}}{2E}L\right)}\text{.}
 \end{equation}
 
@@ -407,7 +409,7 @@ Since the neutrino is no longer in a pure eigenstate the state will
 now oscilate.
 
 In contrast if the neutrino slowly enters the region of significant matter
-density more slowly, then the neutrino state will smoothly evolve with the 
+density more slowly, then the neutrino state will smoothly evolve with the
 eigenstate, $\ket{\nu_{1}} \rightarrow \ket{\nu_{1}^{\prime}}$.
 And so the final state of the neutrino in the adiabatic case will be,
 \begin{equation*}

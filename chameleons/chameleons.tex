@@ -1,4 +1,3 @@
-
 %: ----------------------- sigex file header -----------------------
 \chapter{Chameleons}
 
@@ -145,9 +144,11 @@ The neutrino energy PDFs are given by~\cite{BS05OP} and \cite{Winters},
 however only half of all sample energies are drawn from the relevant prodcution
 spectra, the other half are drawn from a uniform distribution from
 0\,MeV to the relevant endpoint energy.
-This sampling method gurantees that no energy is so poorly sampled 
-that the simulation results are not useful, but also ensure that the most
-well sampled energies are those most typically produced in the Sun.
+The motivation for this sampling method is discussed further at the end of
+this section.
+%This sampling method gurantees that no energy is so poorly sampled 
+%that the simulation results are not useful, but also ensure that the most
+%well sampled energies are those most typically produced in the Sun.
 
 Since MC sampling produces energy and production radius values that fall
 between bins used when producing the solar state library, the states
@@ -171,7 +172,7 @@ roughly 2000\,gpu-hours. Performing this simulation as part of a fit to data wou
 require potentially hundreds or thousands of iteration. So it is not possible to
 perform the full simulation in a fit.
 
-Fortunately, by construction the solar simulation is not effected by modified
+Fortunately, by construction, the solar simulation is not effected by modified
 vacuum potential; the main inputs to the solar simulation are the standard model
 mixing parameters and the solar density profile. So, standard model mixing parameters
 taken from KamLAND and other non-solar neutrino experiments can be used for
@@ -207,15 +208,18 @@ The calculation for this is done for only a ``day'' path through the earth
 and a ``night'' path. The ``day'' path simulates the neutrino only travelling
 through the crust of the Earth. The ``night'' path simulates the neutrino
 travelling through the Earth, including the high density ``core'' region.
-The Earth density profile is take from PREM XXX% \refXXX.\@%todo.
+A one-dimensional Earth density profile is from~\cite{PREM} is used.
 This results in an simulation of the day-night effect for neutrino
 oscillation.
 
-The final result of this chain of simulation steps is monte-carlo samples
-of neutrino flavor states. The survival probability can be calculated by calculating
-$P_{ee}(\Psi_{nu}) = |\bra{\nu_{e}}\ket{\Psi_{nu}}|^2$ for each neutrino state.
-Performing an average of states and binning in neutrino energy gives the survival
-probability as a function of energy $P_{ee}(E_{\nu})$.
+The result of this chain of simulation steps is monte-carlo samples
+of neutrino flavor states. The survival probability is calculated as,
+\begin{equation}
+$P_{ee}(\Psi_{nu}) = |\bra{\nu_{e}}\ket{\Psi_{nu}}|^2$
+\end{equation}
+for each neutrino state.
+Performing an average of survival probabilities binned neutrino energy 
+gives the survival probability as a function of energy $P_{ee}(E_{\nu})$.
 
 Since neutrino states are monte-carlo sampled to calculate $P_{ee}(E_{\nu})$
 each value has statistical uncertainty from the number of samples used.
@@ -229,8 +233,92 @@ solar neutrino energy, energies were sampled according to a flat distribution
 and according to the PDFs for each solar neutrino flux. These two methods of sampling
 were performed in equal proportions for each flux type.
 
-\subsection{Neutrino State Simulation} %TODO better subsection titles
-The other method of simulation used 
+This method for calculating a modified vacuum survival probability has the
+distinct drawback of being computationally expensive, to the point
+where it cannot be used in a fit to data.
+It does, however, have the benefit of simulating effects from a non-adiabatic
+transition from between different potentials that effect neutrino mixing.
+Non-adiabatic effects are important because the neutrino is neither produced nor
+detected in a vacuum, so for modified vacuum potential to have an effect
+that can be detected with a terrestrial detector there must be some
+non-adiabatic transition.
+
+\subsection{Neutrino Mass State Simulation} %TODO better subsection titles
+The other method of simulation uses the same solar inputs as the
+Runge-Kutta integration, but instead of simulating individiual neutrino
+states, only the eigen-states are simulated.
+For each production radius and production energy within the sun the
+the mixing hamiltonian is diagonalized,
+\begin{equation}
+    H = U M U^{\dagger} + A = P D P^{\dagger}\text{.}
+\end{equation}
+Where $D$ is a diagonal matrix that gives the effective mass-squared
+difference between the mass-states.
+$P$ gives the flavor composition of the effective mass states,
+$\ket{m_{1}}$, $\ket{m_{2}}$, $\ket{m_{3}}$.
+The GNU Scientific Library~\cite{gsl_ref} is used to diagonlize
+the mixing Hamiltonian.
+
+A neutrino, produced in an electron flavor state, can be described as
+\begin{equation}
+    \ket{\nu} = \sum_{k=1}^{3}\braket{m_{k}}{\nu_{e}}\ket{m_{k}}\text{.}
+\end{equation}.
+The neutrino state is then evolved adiabatically into a modified
+vacuum potential given by
+\begin{equation}
+    H = U M U^{\dagger} + A_{\mathrm{vac}}\text{.}
+\end{equation}
+The eigenstates from the modified vacuum Hamiltonian gives the neutrino mass
+states $\ket{\mathrm{vac}_{1}}$, $\ket{\mathrm{vac}_{2}}$, $\ket{\mathrm{vac}_{3}}$.
+So the neutrino state is now given by
+\begin{equation}
+    \ket{\nu} = \sum_{k=1}^{3}\braket{m_{k}}{\nu_{e}}\ket{\mathrm{vac}_{k}}\text{.}
+\end{equation}
+In general this equation could be used to evaluate the
+survival probability, as is shown in Section~\ref{sec:neut_osc}.
+However, equation~\ref{eqn:pee_adiabatic} shows that this process produces
+terms that oscillate as the neutrino state evolves as well as constant
+terms.
+Solar neutrino experiments are not sensitive to oscillations in the survival
+probability because the production of neutrinos is distributed
+throughout the core of the Sun, which is many neutrino oscillation lengths
+across.
+For any detected neutrino
+it's impossible to say where within the Sun the neutrino was produced.
+Meaning there's no way to estimate how many oscillation lengths any neutrino
+went through while traveling from the Sun to Earth, and so the oscillations
+are effectively averaged over.
+
+% TODO consider adding a wave-packet decoherence arguement here
+%The second reason is that mass-states decohere while travelling from the Sun to Earth,
+%meaning in a wave-packet treatement of neutrino oscillations the mass-states
+%wave packets will have nearly zero overlap.
+
+Because solar neutrino experiments are not sensitive to oscillations in
+the survival probability allows for the survival probability to be calculated
+by only the un-oscillating terms,
+\begin{equation}
+    P_{ee} = \sum_{k=1}^{3}\abs{\braket{m_{k}}{\nu_{e}}}^{2}\abs{\braket{\nu_{e}}{vac_{k}}^{2}}\text{.}
+\end{equation}
+
+This method for calculating the survival probability relies
+on the neutrino entering the modified vacuum potential adiabatically.
+Since the mechanism by which the neutrino is sensitive to the local matter
+density is not considered here, it's plausible that the modified
+vacuum potential ``turns-on'' slowly enough that there's no non-adiabatic
+transition.
+However, as mentioned earlier, since the solar neutrinos are neither
+detected nor created in a vacuum, a non-adiabatic transition is required
+for terrestrial neutrino detectors to be sensitive to a modified vacuum
+neutrino potential.
+
+The benefit of this method for calculating modified vacuum solar survival
+probabilities is that it's computationally much simpler and faster than the full
+neutrino state evolution.
+Allowing for a much wider amount of the parameter space
+
+for solar neutrino mixing to be explored.
+
 
 
 \section{Global Fit}
