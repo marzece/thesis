@@ -193,11 +193,11 @@ Figure shows that correlation\ldots.%TODO!(maybe, not that important)
 
 Once  monte-carlo samples of neutrino states produced by the Sun is calculated, these
 states are used as inputs to a simulation of the modified vacuum potential.
-This simulation is in princible the same as the solar simulation,
-it simply involve evaluting Eqn.~\ref{eqn:mixing_schrodinger}, where $H$ now
+This simulation is in principle the same as the solar simulation,
+it simply involve evaluating Eqn.~\ref{eqn:mixing_schrodinger}, where $H$ now
 corresponds to the modified vacuum Hamiltonian.
 Unlike the solar simulation though the value of $H$ is not expected to change
-as the neutrino propages; Equation~\ref{eqn:mixing_schrodinger} can be evaluated analytically
+as the neutrino propagates; Equation~\ref{eqn:mixing_schrodinger} can be evaluated analytically
 between the Sun and Earth.
 
 The final step of the calculation is to evolve the sampled neutrino states through
@@ -208,7 +208,7 @@ The calculation for this is done for only a ``day'' path through the earth
 and a ``night'' path. The ``day'' path simulates the neutrino only travelling
 through the crust of the Earth. The ``night'' path simulates the neutrino
 travelling through the earth, including the high density ``core'' region.
-a one-dimensional earth density profile is from~\cite{prem} is used.
+a one-dimensional earth density profile is from~\cite{PREM} is used.
 This results in an simulation of the day-night effect for neutrino
 oscillation.
 
@@ -320,7 +320,9 @@ is approximately the same size~\cite{atmosphere_profile}.
 So it could be the case that solar neutrinos, especially at higher
 energies, would not oscillate quickly enough to have a average
 survival probability best described by the standard oscillation
-probability. 
+probability.
+For any set of mixing parameters this assumption can be checked using the
+more computationally expensive neutrino state evolution simulation.
 
 The benefit of this method for calculating modified vacuum solar survival
 probabilities is that it's computationally much simpler and faster than the full
@@ -328,27 +330,26 @@ neutrino state evolution.
 Allowing for a much wider amount of the parameter space for solar neutrino
 mixing to be explored.
 
-
-
 \section{Global Fit}
 To determine solar neutrino and neutrino mixing parameters that is most
 consistent with experimental observations, a fit is done to published
 experimental results.
-Solar neutrino results from SNO~\cite{LETA?}, Super Kamiokande~\cite{Superk1234},
-Borexino~\cite{Bx1,Bx2}, GNO~\cite{XXX}, SAGE~\cite{XXX}, and
-Homestake~\cite{XXX} are used.
-Solar neutrino fluxes are constrainted by the GS98SF2~\cite{} solar model calculations.
+Solar neutrino results from SNO~\cite{sno_combined}, Super
+Kamiokande~\cite{superk4, superk_first_solar,superk2, superk3},
+Borexino~\cite{borexino_final_results,borexino_nature}, GNO~\cite{gallex, gno},
+SAGE~\cite{sage}, and Homestake~\cite{homestake} are used.
+Solar neutrino fluxes are constrainted by the GS98SF2~\cite{XXX} solar model calculations.
 Reactor neutrino results from Daya Bay~\cite{}, KamLAND~\cite{}, Reno~\cite{}
 are also used to constrain neutrino mixing parameters.
 Only the reactor neutrino results from KamLAND are used, though
-the experiment has made solar neutrino measurements as well~\cite{kamland_be7, kamland_b8}.
+the experiment has made solar neutrino measurements as well~\cite{kamland_solar, kamland_b8}.
 Including the KamLAND solar results is a potential improvement for the global fitting
 algorithm. The KamLAND solar neutrino results are, however, compatible
 with and less constraining than the comparable measurements made by Borexino, SNO and SuperK,
 so the inclusion of those measurements would not effect any fit results significantly.
 
 The software used for evaluating experimental consistency was developed
-in part by Richard Bonventre~\cite{RICHIE_THESIS, RICHIE_NONSTANDARD},
+in part by Richard Bonventre~\cite{richie_thesis, richie_nsi},
 but was updated to include more recent solar neutrino measurements
 by the Borexino and Super Kamiokande experiments.
 The software produces the likelihood of each experimental observation
