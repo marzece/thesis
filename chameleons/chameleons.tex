@@ -207,15 +207,15 @@ Sun.
 The calculation for this is done for only a ``day'' path through the earth
 and a ``night'' path. The ``day'' path simulates the neutrino only travelling
 through the crust of the Earth. The ``night'' path simulates the neutrino
-travelling through the Earth, including the high density ``core'' region.
-A one-dimensional Earth density profile is from~\cite{PREM} is used.
+travelling through the earth, including the high density ``core'' region.
+a one-dimensional earth density profile is from~\cite{prem} is used.
 This results in an simulation of the day-night effect for neutrino
 oscillation.
 
 The result of this chain of simulation steps is monte-carlo samples
 of neutrino flavor states. The survival probability is calculated as,
 \begin{equation}
-$P_{ee}(\Psi_{nu}) = |\bra{\nu_{e}}\ket{\Psi_{nu}}|^2$
+P_{ee}(\Psi_{nu}) = |\bra{\nu_{e}}\ket{\Psi_{nu}}|^2
 \end{equation}
 for each neutrino state.
 Performing an average of survival probabilities binned neutrino energy 
@@ -291,7 +291,7 @@ are effectively averaged over.
 
 % TODO consider adding a wave-packet decoherence arguement here
 %The second reason is that mass-states decohere while travelling from the Sun to Earth,
-%meaning in a wave-packet treatement of neutrino oscillations the mass-states
+%meaning in a wave-packet treatment of neutrino oscillations the mass-states
 %wave packets will have nearly zero overlap.
 
 Because solar neutrino experiments are not sensitive to oscillations in
@@ -311,13 +311,22 @@ However, as mentioned earlier, since the solar neutrinos are neither
 detected nor created in a vacuum, a non-adiabatic transition is required
 for terrestrial neutrino detectors to be sensitive to a modified vacuum
 neutrino potential.
+For this model that non-adiabatic transition is assumed to be that the
+neutrino does not fully transition from being best described
+by a modified vacuum state by the time it's detected.
+This is plausible because the oscillation length for higher
+energy neutrinos is approximately 200\,km, the earth's atmosphere
+is approximately the same size~\cite{atmosphere_profile}.
+So it could be the case that solar neutrinos, especially at higher
+energies, would not oscillate quickly enough to have a average
+survival probability best described by the standard oscillation
+probability. 
 
 The benefit of this method for calculating modified vacuum solar survival
 probabilities is that it's computationally much simpler and faster than the full
 neutrino state evolution.
-Allowing for a much wider amount of the parameter space
-
-for solar neutrino mixing to be explored.
+Allowing for a much wider amount of the parameter space for solar neutrino
+mixing to be explored.
 
 
 
