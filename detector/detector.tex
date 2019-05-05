@@ -16,6 +16,8 @@
 % 9385 PMTs comes from doing the following SQL query on DB
 %select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
 \section{The SNO+ Detector}
+The SNO+ detector inherits much of its infrastructure from the SNO
+experiment~\cite{sno_detector_paper}.
 The SNO+ detector can be mostly simply described as a large volume of a
 target material that is deep underground and is observed with an array of
 9385  photomultiplier tubes (PMTs).
@@ -68,12 +70,12 @@ Cherenkov radiation is produced by any charged particle moving with
 velocity ($\vec{v}$) such that $abs{\vec{v}} > \frac{c}{n}$, where $c$ is the speed
 of light and $n$ is the index of refraction in the target medium~\cite{cherenkov}.
 
-The produced Cherenkov light has a few properties that make it a desireable
+The produced Cherenkov light has a few properties that make it a desirable
 method for particle detection.
 The first is that the number of photons produced scales nearly linearly
 with the energy of the particle propagating, therefore the energy of the particle
 can be estimated by simply counting the number of detected photons.
-The second desireable property is that the produced photons will be
+The second desirable property is that the produced photons will be
 emitted in a cone, with an opening angle of approximately $42\deg$ with
 respect to the particles direction of travel.
 Meaning by detecting Cherenkov light the direction of travel of the initial
@@ -96,9 +98,8 @@ With SNO+ it's not expected to be possible to infer which detected photons are
 from scintillation processes and which are Cherenkov radiation, so it can be treated
 as though all light is from scintillation.
 Many people are interested exploring how to separate Cherenkov light from scintillation
-light~\cite{XXX}, and so this may be possible in the future.
-%TODO FIND source to comment on scintillator for (neutrino)particle detection
-% so i don't have to write about it.
+light~\cite{tanners_paper,javi_chess, winslow_directionality},
+and so this may be possible in the future.
 
 The primary neutrino interaction that SNO+ is sensitive to is elastic scattering
 off electrons,
@@ -117,11 +118,10 @@ But the differential cross-section for recoil energy is nearly flat below the
 end point. Meaning relatively little information about the incoming neutrino energy
 is preserved by the interaction.
 
-
 %For the SNO+ water-phase the scattered electron generates light via Cherenkov radiation,
 %assuming it's above Cherenkov threshold for water which is $XXX$\,MeV.
 %If it is above the Cherenkov threshold the electron will generate photons that
-%travel at approximtely a 42$\deg$ angle to the direction of the electron.
+%travel at approximately a 42$\deg$ angle to the direction of the electron.
 %The angle of travel comes directly from the speed at which electro-magnetic
 %signals propagate in the medium.
 %Figure $TODO$ shows this diagramatically, as the charged particle (in this case
@@ -152,15 +152,15 @@ Each PMT is also $XXX$collared$XXX$ by an array of reflective
 petals which serve to increase the effective photo-sensitive area
 of the PMT.
 The reflective petals are typically referred as the PMT ``concentrator''.
-With the concetrators the geometric coverage of the PMT array is $XXX$,
-accounting for the angular acceptance of the concetrators gives
+With the concentrators the geometric coverage of the PMT array is $XXX$,
+accounting for the angular acceptance of the concentrators gives
 an effective coverage of approximately $XXX\%$.
 
 
 \subsection{Electronics And DAQ}
 The hardware the connects to and reads out the PMT array forms the SNO+ data acquisition (DAQ)
 system\@.
-The SNO+ data acquisition (DAQ) inherit much of its design and components from
+The SNO+ data acquisition (DAQ) inherits much of its design and components from
 SNO\@.
 There are a few notable upgrades that were made for the purpose of handling the
 higher light yield and event rate that SNO+ has compared to SNO\@.
