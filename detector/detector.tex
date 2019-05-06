@@ -37,7 +37,7 @@ The motivations for each phase is discussed in~\cite{snop_status_prospects}.
 
 The target volume is encapsulated within a 6-meter radius spherical acrylic vessel (AV),
 which is held suspended in a large cavity filled with ultra-pure water (UPW)\@.
-The acrylic sphere has a XXX meter acrylic chimney, called the ``neck'', at its top
+The acrylic sphere has a 6.8\,m acrylic chimney, called the ``neck'', at its top
 to allow access to the detector volume.
 Surrounding the acrylic vessel is an  array of inward pointing PMTs
 arranged in a geodesic pattern.
@@ -124,7 +124,7 @@ is preserved by the interaction.
 %travel at approximately a 42$\deg$ angle to the direction of the electron.
 %The angle of travel comes directly from the speed at which electro-magnetic
 %signals propagate in the medium.
-%Figure $TODO$ shows this diagramatically, as the charged particle (in this case
+%Figure $TODO$ shows this diagrammatically, as the charged particle (in this case
 %an electron) distance $\ell$ from point A, to point B, the electro-magnetic wave
 %that was emitted at A will travel a distance $\ell \dfrac{c}{v}$, forming
 %a spherical wavefront at that distance.
@@ -139,22 +139,32 @@ is preserved by the interaction.
 The photons can the be detected by the SNO+ PMT array, and the pattern
 of hits analyzed to determine the electron direction, energy, and position.
 
-SNO+ has $XXX$ inward looking PMTs all mounted on a geodesic spere referred to as
+SNO+ has 9385 inward looking PMTs all mounted on a geodesic sphere referred to as
 the PMT support structure (PSUP). The PMTs are at an average radius of 8.4\,m from
 the center of the detector.
 Mounted on the outside of the PSUP are 90 outward looking (OWL) PMTs.
 These serve to reject interactions in the outer volume from cosmic muons.
-All PMTs are Hammatsu R1408 8-inch PMTs, which have typical quantum efficiency
-of  $XXX$\%.
+All PMTs are Hammatsu R1408 8-inch PMTs.
+%, which have typical quantum efficiency of  $XXX$\%.
 
-The inward looking PMTs are all housed within a plastic casette.
-Each PMT is also $XXX$collared$XXX$ by an array of reflective
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{sno_casette}
+    \caption[PMT Casette] {Schematic diagram of the SNO/SNO+ PMT and
+    PMT housing. Dimensions in cm. Figure from~\cite{sno_detector_paper}.}
+\label{fig:triggeff}
+\end{figure}
+
+The inward looking PMTs are all housed within a plastic cassette.
+Each PMT is also surrounded by an array of reflective
 petals which serve to increase the effective photo-sensitive area
-of the PMT.
+of the PMT\@.
 The reflective petals are typically referred as the PMT ``concentrator''.
-With the concentrators the geometric coverage of the PMT array is $XXX$,
-accounting for the angular acceptance of the concentrators gives
-an effective coverage of approximately $XXX\%$.
+With the concentrators the approximate geometric coverage of the PMT array is $55\%$,
+accounting for the angular acceptance and reflectivity of the concentrators gives
+an effective coverage of approximately $50\%$.
+Figure~\ref{fig:sno_pmt_casette} shows a schematic diagram of the PMT and
+its housing.
 
 
 \subsection{Electronics And DAQ}
@@ -314,7 +324,7 @@ The XL3 is new to SNO+; it replaces the XL1 and XL2 from SNO, more will be said 
 XL3 in Sec.\,\ref{sec:xl3}.
 The XL3 reads out each FEC in sequence across the VME-like ``SNOBUS'' backplane.
 The XL3 stores data in it's own memory until eventually reading it out over
-ethernet to data-server process running on a near by computer.
+Ethernet to data-server process running on a near by computer.
 
 Each data crate has its own XL3, all XL3 read out and serve data asynchronously.
 The data-server process receives data from each XL3 and relays that data to
@@ -390,48 +400,81 @@ global trigger counter and through the SYNC/SYNC24 signals. More information abo
 TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
 \subsection{Features of the SNO DAQ}
-There are a few aspects to the SNO and SNO+ trigger and DAQ system that 
-are worth highlighting, as they motivate some of the work discussed in future
+There are a few aspects to the SNO and SNO+ trigger and DAQ system that
+are worth highlighting, as they motivate several of the upgrades from
+SNO to SNO+.
 sections.%\ref?
 
 The first of these is the unstable analog trigger baseline.
-TODO\@: Discuss here issues such as dropout, baseline shifts,
+XXXTODO\@: Discuss here issues such as dropout, baseline shifts,
 and orphans.
-\subsection{Electronics Upgrades}
-As previously mentioned, in the scintillator and tellurium loaded phases the
+
+\section{Electronics Upgrades}
+\label{sec:upgrades}
+As previously mentioned, in SNO+'s scintillator and tellurium loaded phases the
 amount of light produced by any interaction is expected to be roughly a factor
 of $100$ greater than the light that would be produced by water target.
 This increase in photon production translates to an equivalent increase in the
-current in the trigger sysytem and the necessary data readout rate.
+current in the trigger system and the necessary data readout rate.
 Additionally, since 1990's, when the SNO DAQ system was designed, the availability
 and sophistication of commercial computing and DAQ hardware has increased
 dramatically.
-To accomodate the increased current and data volume and to take advantage of modern
+To accommodate the increased current and data volume and to take advantage of modern
 hardware a few key pieces of the SNO DAQ was upgraded as part of the change from
 SNO to SNO+.
-\label{sec:upgrades}
-\subsubsection{XL3}
+\subsection{XL3}
 \label{sec:xl3}
-The SNO system used a centralized serial readout system, where each crate of
-electronics was readout in sequence.
+The SNO DAQ used a centralized serial readout system, where each crate of
+electronics was readout in one after the other.
 As part of the electronics upgrade from SNO to SNO+ this system was changed to
-an asynchronous, parallel readout system.
+an asynchronous, parallel readout system, allowing for a significant increase in
+the data readout speed.
 The board responsible for this is the XL3 which hosts a Xilinx ML403
 Evaluation platform.
 The ML403 uses a Xilinx Vertex-4 FPGA as its primary logic chip and has
-64-MB of supporting SDRAM and persitent memory provided by a CompactFlash
-card reader.
+64-MB of supporting SDRAM and persistent memory provided by a CompactFlash
+card.
 The XL3 \& ML403 interface with the FECs in a crate through VME-like communication
-accross the SNOBUS backplane.
+across the SNOBUS backplane.
 
-\subsubsection{MTCA+}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{xl3_daq_diagram}
+    \caption[Dropout Fit Example]{Diagram of the SNO+ DAQ\@.
+    Figure from~\cite{richie_thesis}.}
+\label{fig:xl3_daq_diagram}
+\end{figure}
+
+The XL3 reads data from the FECs across the backplane, and buffers that data
+in on-board memory before reading it out to a central DAQ computer over Ethernet.
+The maximum data rate each XL3 is capable of is approximately
+14\,MB/s, yielding a detector-wide rate of 250\,MB/s.
+This translates to being able to readout out roughly one-hundred thousand
+hits per crate per second.
+Figure~\ref{fig:xl3_daq_diagram} shows schematically how the XL3 is
+incorporated into the SNO+ DAQ\@.
+
+\subsection{MTCA+}
 \label{sec:mtcap}
-The SNO MTCA was not expected to be able to operate stably at the expected
-hit rate and occupancy of SNO+. For this reason the MTCA+ was developed,
-it performs the analog multiplicity sum using a series of operational
-amplifiers. The gain of the three different analog
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{mtcap_analog_diagram}
+    \caption[MTCA+ Analog Diagram]{Schematic diagram of analog
+    summation in the SNO+ trigger system. Figure courtesy of
+    Andy Mastbaum.}%TODO cite Andy's thesis maybe? Or the MTCA+ user guide?
+\label{fig:mtcap_analog_diagram}
+\end{figure}
 
-One of the most transformitive changes that the MTCA+ introduces into
+The SNO MTCA was not expected to be able to operate stably at the expected
+hit rate and occupancy of SNO+.
+So the primary goal for the MTCA+ is to simply replace the analog summing
+and discriminating capabilities of the SNO MTCA, and perform stably
+at the higher rates expected in SNO+.
+For this reason the MTCA+ performs the analog multiplicity sum using a series
+of high-current voltage feedback operational amplifiers.
+%The gain of the three different analog is 1:1, 1:3.6 and 1:10. XXX include this?
+
+One of the most transformative changes that the MTCA+ introduces into
 the SNO+ trigger system is its baseline restoration circuitry.
 The baseline of the each trigger signal is the voltage observed
 when there are zero hits in the analog sum.
@@ -459,7 +502,7 @@ This is useful when a CTC fails, its trigger sums can be disabled to prevent it 
 pulling up/down the entire trigger sum to the point that stable triggering is no
 longer possible.
 
-The second is baseline resotoration circuit on the MTCA+. At the final
+The second is baseline restoration circuit on the MTCA+. At the final
 stage of each analog sum the output sum is fed through a long-pass
 filter to extract the average voltage over an $\approx$1\,s period.
 That voltage is buffered and fed back into the non-inverting input
@@ -512,8 +555,8 @@ how many channels are dropped out during certain triggered events.
 Using that measurement I was able to estimate the rate of channels dropping out
 in the detector as a whole.
 This information is included in our simulation of the detector DAQ system to improve
-our model of the detector response. More will be said about the trigger and DAQ simulation
-in Sec.\ref{XXX}.
+our model of the detector response.
+%More will be said about the trigger and DAQ simulation in Sec.\ref{XXX}.
 
 I developed a method for extracting the dropout from the CAEN data
 recorded by the detector.
@@ -521,7 +564,7 @@ The method is to measure the baseline of the CAEN recorded N100-Lo and N20-Lo
 trigger signals.
 The measured baseline is histogrammed and then the function
 \begin{equation}
-    Pr(x) = \sum_{k=0}^{\infty} Pr(x | k)Pr(k) = \sum_{k=0}^{\infty} \dfrac{1}{\sqrt{2 \pi \sigma^2}} e^{-\dfrac{(x - (S*k + C))^2}{2 \sigma^2}} e^{-\lambda}\dfrac{\lambda^{k}}{k!}
+    \Pr(x) = \sum_{k=0}^{\infty}\Pr(x | k)\Pr(k) = \sum_{k=0}^{\infty} \dfrac{1}{\sqrt{2 \pi \sigma^2}} e^{-\dfrac{(x - (S*k + C))^2}{2 \sigma^2}} e^{-\lambda}\dfrac{\lambda^{k}}{k!}
     \label{dropout_model}
 \end{equation}
 is fit to the histogram. Eqn.~\ref{dropout_model} describes a series of Gaussians
@@ -534,20 +577,27 @@ other parameters are treated as nuisance parameters.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1\textwidth]{dropout_example}
-    \caption[Dropout Fit example]{\textbf{Dropout Fit example} XXX}
+    \caption[Dropout Fit Example]{[black solid line] The measured baselines
+    for run 101357 and [red] the best fit dropout model with the
+    individaul Gaussians [black dashed line] that make up the best fit.}
 \label{fig:dropoutexample}
 \end{figure}
-Figure XXXa and XXXb show the measured dropout for two different runs, between
-the two runs the channel thresholds were raised across the detector. This shows
-that a lower channel threshold can cause a significant change in the rate of
-dropout. It also shows that model can match data from the detector well for high
-and low amounts of dropout.
 
-For each run a dropout measurement is performed, the resulting dropout rate
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{trigger_efficiecy}
+    \caption[Trigger Efficiency] {Comparison of the measured trigger efficiency
+    and simulated trigger efficiency for run 107640. Plot from~\cite{tanner_triggeff}.}
+\label{fig:triggeff}
+\end{figure}
+
+
+Figure~\ref{fig:dropoutexample} shows the measured dropout for run 101357.
+The best fit extracts an average dropout of $\lambda=2.7$ channels.
+For each run a similar dropout measurement is performed, the resulting dropout rate
 is later used in simulation as part of the DAQ simulation.
-As shown in Fig~\ref{XXX}, the accurate dropout simulation improves agreement between simulation and recorded
-data.
-
+As shown in Fig~\ref{fig:trigegff}, the trigger simulation, using the \textit{in-situ}
+measurement of dropout, agrees well with the measured trigger efficiency.
 
 \subsubsection{TUBII}
 \label{sec:tubii}
@@ -567,7 +617,8 @@ using recent trigger signals to inform the current trigger logic.
 
 Something like this is desirable for identifying and ensuring the detector will
 be sensitive to time correlated events. An example of this would be that
-the decay chain of Bi214 $\rightarrow$ Po214 $\rightarrow$ Pb212, this decay chain is referred to as BiPo214. %TODO This chain is wrong, look it up idiot
+the decay chain of $\ce{^{214}Bi}$ $\rightarrow$ $\ce{^{214}Po}$ $\rightarrow$ $\ce{^{212}Pb}$,
+this decay chain is referred to as BiPo214. %XXXTODO This chain is wrong, look it up idiot
 The signature of this decay is an electron from $\beta$ decay, followed, with a half
 life of 4\,$\mu$s, by an $\alpha$ decay.
 It's very important that the $\alpha$ decay is detected so that the $\beta$-$\alpha$
@@ -610,8 +661,7 @@ for the TAC, the PEDESTAL is always emitted a fixed time before the PULSE\_GT
 signal, meaning the time between the PEDESTAL hit and the GT readout will always
 be the same.
 The time delay between the PEDESTAL and PULSE\_GT can be adjusted from
-XXX\,ns to XXX\,ns.
-%\numrange[range-phrase=--]{10}{10}.
+24\,ns to 2574\,ns.
 
 
 The goal of an ECAL is to provide settings for each channel that will result in a uniform
@@ -626,7 +676,7 @@ detector is replaced or repaired.
 
 The ECA is generally used for determining how values from the detector map to absolute
 physical values.
-There are two varieties of ECA,  PDST and  TSLP.
+There are two varieties of ECA,  PDST and  TSLP\@.
 The PDST ECA consists of sending many PEDESTAL signals to each channel in the detector and
 measuring the distribution of charge values (QHS, QHL, and QLX) from each channel.
 This provides a determination of which values of each charge correspond to zero PMT
@@ -635,7 +685,7 @@ This zero-point measurement is where the PEDESTAL signal derives its name; it me
 the charge pedestal upon which the PMT signal sits, so to speak.
 
 The TSLP calibration follows a similar procedure, but varies the delay between
-the PEDESTAL and PULSE\_GT.
+the PEDESTAL and PULSE\_GT\@.
 The result is a precise determination of the mapping between time (in ns) and
 TAC value.
 Beyond providing a mapping between physical values and recorded values the ECA
@@ -650,11 +700,12 @@ identify when a channel becomes unreliable.
 
 The final electronics calibration, the PCA, is the only one to make use of the PMTs.
 The PCA is used for identifying the charge associated with the detection of a single
-photon by each PMT. There exists some variation in that value from differences in the
+photon by each PMT\@.
+There exists some variation in that value from differences in the
 electronics and the PMTs themselves, the PCA attempts to measure those variations.
 For SNO+ there exists two ways of performing a PCA, the first is with a deployed light
 source called the ``laserball''.
-More information about the laserball can be found in Ref~\cite{XXX}.
+More information about the laserball can be found in Ref~\cite{sno_laserball}.
 The laserball is typically placed within the center of the
 detector and emits light isotropically. For a typical laserball PCA the amount of light emitted
 is very small, such that only a few PMTs detect anything in a single event;
@@ -668,6 +719,6 @@ For SNO+ a similar procedure can be done using a newly installed laser/LED syste
 mounted on the PSUP called ELLIE (Embedded Laser/LED Light Injection Entity).
 The ELLIE system consists of a number of fibres that project light from one
 side of the PSUP, across the detector, to the PMTs on the other side.
-The fibres are placed at a number of different positions around the PSUP.
+The fibres are placed at a number of different positions around the PSUP\@.
 ELLIE can be used for a number of calibration purposes, including playing a
-similar role to the laserball for a PCA.
+similar role to the laserball for a PCA\@.
