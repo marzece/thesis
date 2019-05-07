@@ -30,6 +30,10 @@
 %: --------------------------------------------------------------------------
 %: The end user may modify these files to personalize and define macros
 %: --------------------------------------------------------------------------
+\catcode`~=11 % make LaTeX treat tilde (~) like a normal character
+\newcommand{\urltilde}{\kern -.05em\lower .7ex\hbox{\large{~}}\kern -.08em}
+\catcode`~=13 % revert back to treating tilde (~) as an active character
+
 \usepackage{amssymb,amsmath} %for multi-line eqns and probably other stuff
 \usepackage{physics} % for bra-ket notation & more
 \usepackage{mhchem} % chemical equations
