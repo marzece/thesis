@@ -596,8 +596,10 @@ is isotropic and provides no information about the direction the particle
 was moving in.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1\textwidth]{borexino_spectrum}
-    \caption[Borexino Spectrum] {}
+    \includegraphics[width=0.75\textwidth]{borexino_spectrum}
+    \caption[Borexino Spectrum] {Borexino's observed distribution of event energies with best fit
+    signal and background model.
+    $N_{h}$ is the number of prompt PMT hits.  Figure from~\cite{borexino_nature}.} %XXX Look up N_h to be sure
 \label{fig:borexino_spectrum}
 \end{figure}
 
@@ -621,15 +623,18 @@ $XXX$ FIND TABLE\\
 show spectrum and table of results
 
 \subsubsection{KamLAND}
-The Kamioka Liquid Scintillator Antineutrino Detector (KamLAND) is a liquid-scintillator experiment similar to Borexino.
-It's primary physics goals were the detection of reactor anti-neutrinos via
+The Kamioka Liquid Scintillator Antineutrino Detector (KamLAND) is a liquid-scintillator detector.
+Its primary physics goals were the detection of reactor anti-neutrinos via
 inverse beta-decay (IBD),
 but the experiment is also sensitive to solar neutrinos.
 Performing a fit to the observed energy spectrum they were able to measure
-the flux of $\ce{^{7}Be}$~\cite{kamland_be7} and $\ce{^{8}B}$~\cite{kamland_b8}.
+the flux of $\ce{^{7}Be}$ and $\ce{^{8}B}$ solar neutrinos.
 The $\ce{^{8}B}$ flux is reported as the ``elastic-scattering'' flux $\Phi_{ES}$, the flux of
 pure electron flavor neutrinos that would produce the observed event rate.
-They, measure $\Phi_{ES\mathrm{,}\ce{^{8}B}} = 2.77 \pm 0.26(\mathrm{stat.}) \pm 0.32(\mathrm{syst.}) \times 10^6 \mathrm{cm}^{-2}\mathrm{s}^{-1}$
+They measure $\Phi_{ES\mathrm{,}\ce{^{8}B}} = 2.77 \pm 0.26(\mathrm{stat.}) \pm 0.32(\mathrm{syst.}) \times 10^6 \mathrm{cm}^{-2}\mathrm{s}^{-1}$~\cite{kamland_b8}.
+KamLAND's reported $\ce{^{7}Be}$ flux, accounting for oscillation effects,  is
+ $\Phi_{\ce{^{7}Be}} = (5.82\pm 1.02)\times10^{9} \mathrm{cm}^{-2}\mathrm{s}^{-1}$~\cite{kamland_be7}.
+
 
 \begin{figure}[htbp]
 \centering
@@ -653,7 +658,7 @@ They, measure $\Phi_{ES\mathrm{,}\ce{^{8}B}} = 2.77 \pm 0.26(\mathrm{stat.}) \pm
 
 Interestingly, KamLAND's reactor neutrino measurements~\cite{kamland_reactor} are
 more relevant to the study of solar neutrinos than their solar neutrino measurements.
-The long baseline (\urltilde180\,km) and low energy (\urltidle3\,MeV) of reactor neutrinos provides
+The long baseline (\urltilde180\,km) and low energy (\urltilde3\,MeV) of reactor neutrinos provides
 unique sensitivity to $\Delta m^{2}_{21}$.
 Other reactor neutrino experiments, such as Daya Bay, RENO, \& Double Chooz,
 are primarily sensitive to neutrinos with too short a baseline to be strongly
@@ -677,4 +682,3 @@ The value for $\Delta m^{2}_{21}$ measured by KamLAND is in disagreement with th
 by solar experiments, although it cannot be ruled out that the disagreement
 is a result of a statistical fluctuation. This discrepancy will be discussed further
 in section~\ref{sec:chameleons}.
-
