@@ -1,6 +1,7 @@
 
 %: ----------------------- detector file header -----------------------
 \chapter{Detector}
+\label{sec:detector}
 
 % the code below specifies where the figures are stored
 \ifpdf
@@ -15,7 +16,6 @@
 % ----------------------------------------------------------------------
 % 9385 PMTs comes from doing the following SQL query on DB
 %select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
-\section{The SNO+ Detector}
 The SNO+ detector inherits much of its infrastructure from the SNO
 experiment~\cite{sno_detector_paper}.
 The SNO+ detector can be mostly simply described as a large volume of a
@@ -27,13 +27,36 @@ The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or
 target, the benefits of a heavy-water target are discussed in Sec~\ref{sec:sno}.
 For SNO+ the detector will operate in three separate phases, each with a different
 target medium.
-For the entierty of the entierty of  this work the target medium is
-light-water ($\ce{H_{2}O}$); this phase is referred to as the ``water phase''.
-Following this the water is to be replaced by a liquid-scintillator, LAB-PPO~\cite{mchen_labppo},
-that will be the ``pure scintillator phase'' or just the ``scintillator phase''.
+For the entirety of this work the target medium is light-water ($\ce{H_{2}O}$);
+this phase is referred to as the ``water phase''.
+Following this the water is to be replaced by a liquid-scintillator,
+LAB-PPO~\cite{mchen_labppo}, that will be the ``pure scintillator phase'' or
+just the ``scintillator phase''.
 After the scintillator phase the LAB-PPO will be doped with tellurium for
 a neutrinoless double-beta decay search, this is referred to as the ``tellurium phase''.
 The motivations for each phase is discussed in~\cite{snop_status_prospects}.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\centering
+\includegraphics[width=1\textwidth]{cavity}
+\caption[SNO+ Diagram] {}
+\label{fig:snop_diagram}
+\end{subfigure}
+
+\begin{subfigure}[b]{0.6\textwidth}
+\centering
+\includegraphics[width=1\textwidth]{rope_net}
+\caption[SNO+ Ropes]{}
+\label{fig:ropes}
+\end{subfigure}
+
+\label{fig:snop_diagrams}
+    \caption[SNO+ Detector]{(a) Drawing of the SNO+ showing the
+    AV, PSUP, cavity, neck, ropes, and upper deck. (b) Schematic
+    depiction of the AV and hold-up and hold down ropes.}
+\end{figure}
 
 The target volume is encapsulated within a 6-meter radius spherical acrylic vessel (AV),
 which is held suspended in a large cavity filled with ultra-pure water (UPW)\@.
@@ -43,12 +66,23 @@ Surrounding the acrylic vessel is an  array of inward pointing PMTs
 arranged in a geodesic pattern.
 The structure holding these PMTs is referred to as the PMT Support Structure
 (PSUP).
+Figure~\ref{fig:snop_diagram} depicts the SNO+ detector infrastructure.
+
 There are roughly 90 PMTs on the PSUP that point outward, toward the cavity
 walls.
 These outward facing tubes are called OWLs and are for the purpose of tagging
 interactions that occur outside the PSUP\@.
 There are an additional three tubes mounted at the top of the neck of the AV,
 these are referred to as NECK tubes.
+
+
+For the scintillator and tellurium loaded phases the AV volume will have
+a lower density than the surrounding water volume, cause significant buoyant
+forces on the AV\@.
+To counteract the buoyancy a hold-down rope-net was installed across the top
+of the AV, and anchored in the cavity floor.
+A number of PMTs were removed from the PSUP to allow the rope to pass through.
+Figure~\ref{fig:ropes} depicts the rope-net.
 
 Above the cavity volume is an optically isolated deck on which all the detector
 readout and trigger electronics are kept.
@@ -59,7 +93,7 @@ high voltage (HV) supply to the PMT input pins and routes the PMT return signal 
 HV supply cable.
 
 
-\subsection{Detection Mechanism}
+\section{Detection Mechanism}
 The goal of the SNO+ detector is to detect and record information about as
 many of the photons produced within the AV as possible.
 By observing photons information about the physical processes that produced
@@ -67,7 +101,7 @@ the light can be inferred.
 Cherenkov radiation is the primary photon generating process of interest in
 SNO+'s water-phase.
 Cherenkov radiation is produced by any charged particle moving with
-velocity ($\vec{v}$) such that $abs{\vec{v}} > \frac{c}{n}$, where $c$ is the speed
+velocity ($\vec{v}$) such that $\abs{\vec{v}} > \frac{c}{n}$, where $c$ is the speed
 of light and $n$ is the index of refraction in the target medium~\cite{cherenkov}.
 
 The produced Cherenkov light has a few properties that make it a desirable
@@ -76,7 +110,7 @@ The first is that the number of photons produced scales nearly linearly
 with the energy of the particle propagating, therefore the energy of the particle
 can be estimated by simply counting the number of detected photons.
 The second desirable property is that the produced photons will be
-emitted in a cone, with an opening angle of approximately $42\deg$ with
+emitted in a cone, with an opening angle of approximately $42^{\circ}$ with
 respect to the particles direction of travel.
 Meaning by detecting Cherenkov light the direction of travel of the initial
 particle can be inferred.
@@ -101,17 +135,18 @@ Many people are interested exploring how to separate Cherenkov light from scinti
 light~\cite{tanners_paper,javi_chess, winslow_directionality},
 and so this may be possible in the future.
 
-The primary neutrino interaction that SNO+ is sensitive to is elastic scattering
+The primary neutrino interaction that SNO+ is sensitive to is elastic scattering (ES)
 off electrons,
 $\nu_{x} + e^{-} \rightarrow \nu_{x} + e^{-}$
-where $x=e$,$\mu$, $\tau$.
+where $x=e$, $\mu$, $\tau$.
 For $x=e$ there exists a neutral current and a charged current channel,
 for $x=\mu$ or $x=\tau$ there exists only the neutral current channel.
 % TODO try and remember what actually I mean here
 Nuclear interactions occur as well with the oxygen in the water,
-however these are rare and difficult to identify, and so are ignored typically.
+however these are rare and cannot be uniquely to identified against radioactive
+backgrounds, and so are ignored typically.
 
-The cross-section for this interaction is discussed in~\ref{sec:es_xsec}.
+The cross-section for the ES interaction is discussed in~\ref{sec:es_xsec}.
 The forward peaked angular cross-section means that information about the
 neutrino direction is maintained in the interaction.
 But the differential cross-section for recoil energy is nearly flat below the
@@ -121,7 +156,7 @@ is preserved by the interaction.
 %For the SNO+ water-phase the scattered electron generates light via Cherenkov radiation,
 %assuming it's above Cherenkov threshold for water which is $XXX$\,MeV.
 %If it is above the Cherenkov threshold the electron will generate photons that
-%travel at approximately a 42$\deg$ angle to the direction of the electron.
+%travel at approximately a 42$^{\circ}$ angle to the direction of the electron.
 %The angle of travel comes directly from the speed at which electro-magnetic
 %signals propagate in the medium.
 %Figure $TODO$ shows this diagrammatically, as the charged particle (in this case
@@ -133,9 +168,6 @@ is preserved by the interaction.
 %a distance $\ell \dfrac{c}{v}$ from B.
 
 
-%%% TODO it'd be dank to have a chapter discussing Cherenkov radiation and deriving
-%%% the wavelenght and angular distribution
-%\includegraphs{cherenkov_radiation_cone_pictures}
 The photons can the be detected by the SNO+ PMT array, and the pattern
 of hits analyzed to determine the electron direction, energy, and position.
 
@@ -149,7 +181,7 @@ All PMTs are Hammatsu R1408 8-inch PMTs.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1\textwidth]{sno_casette}
+    \includegraphics[width=0.7\textwidth]{sno_casette}
     \caption[PMT Casette] {Schematic diagram of the SNO/SNO+ PMT and
     PMT housing. Dimensions in cm. Figure from~\cite{sno_detector_paper}.}
 \label{fig:triggeff}
@@ -322,11 +354,8 @@ in FEC memory, the data is readout by a create level readout card,
 the ``XL3''.
 The XL3 is new to SNO+; it replaces the XL1 and XL2 from SNO, more will be said about the
 XL3 in Sec.\,\ref{sec:xl3}.
-The XL3 reads out each FEC in sequence across the VME-like ``SNOBUS'' backplane.
-The XL3 stores data in it's own memory until eventually reading it out over
-Ethernet to data-server process running on a near by computer.
 
-Each data crate has its own XL3, all XL3 read out and serve data asynchronously.
+Each data crate has its own XL3, all XL3s read out and serve data asynchronously.
 The data-server process receives data from each XL3 and relays that data to
 any clients that have subscribed to the PMT data feed.
 A similar process is done for the trigger word data. The MTCD sends trigger data
@@ -377,10 +406,12 @@ And for the purpose of most analyses that use the data from the CAEN
 it's more important to be able to resolve a single hit than to resolve
 the height of the full pulse if the pulse is very large.
 
-So a different scheme was put in place for fitting the trigger signal
-into the CAEN's available range. The trigger signal is clipped within
-the first 2\,V, thereby retaining full resolution for small signals,
-but losing resolution for signals that go over 2\,V.
+A scheme for fitting the trigger signal into the CAEN's available range that
+optionally allows for either single hit resolution or preserving the full
+signal range was adopted.
+The trigger signal is clipped within the first 2\,V, thereby retaining full
+resolution for small signals, but losing resolution for signals that go over
+2\,V.
 The board that was created to perform this dynamic range reduction
 was designed to optionally clip the signal or attenuate it, but
 for the vast majority of data taking the signal was clipped.
@@ -392,22 +423,13 @@ role as part of the trigger and data readout systems as well.
 It's significance comes primarily from the fact that it acts as an auxiliary
 digital trigger board. It can receive raw-trigger pulses from the MTCA+s and apply
 customizable trigger logic to them and emit it's own raw-trigger pulses which are
-sent to the MTCD.
+sent to the MTCD\@.
 TUBII also receives the global trigger signal and produces its own trigger
 word based upon which raw trigger pulses it had received. The TUBII trigger
 word is synchronized with the rest of the data for each event through it's own
 global trigger counter and through the SYNC/SYNC24 signals. More information about
 TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
-\subsection{Features of the SNO DAQ}
-There are a few aspects to the SNO and SNO+ trigger and DAQ system that
-are worth highlighting, as they motivate several of the upgrades from
-SNO to SNO+.
-sections.%\ref?
-
-The first of these is the unstable analog trigger baseline.
-XXXTODO\@: Discuss here issues such as dropout, baseline shifts,
-and orphans.
 
 \section{Electronics Upgrades}
 \label{sec:upgrades}
@@ -422,6 +444,32 @@ dramatically.
 To accommodate the increased current and data volume and to take advantage of modern
 hardware a few key pieces of the SNO DAQ was upgraded as part of the change from
 SNO to SNO+.
+
+Beyond the need to increase the improve the DAQ for the higher expected light
+yield there were a few aspects of the SNO electronics that motivated several
+features in the upgraded electronics.
+Most notable of these is the unstable analog trigger baseline.
+The voltage of any trigger signal's baseline can vary.
+The baseline of the each trigger signal is the voltage observed
+when there are zero hits in the analog sum,
+As the baseline moves closer to or further from the trigger threshold
+the number of PMT hits required to trigger the detector changes.
+The result is a difficult to understand trigger efficiency and bursts in the trigger
+rate that can overwhelm the DAQ\@.
+
+The baselines are sensitive to a number of known factors such as the
+ambient temperature, the PMT noise environment, and settings
+on the front-end.
+There are also a number of factors that effect that are more difficult
+to identify, such as transistors on the CTC performing malfunctioning due to
+age or other unknown factors.
+These factors lead to the baseline for any trigger signal varying
+by upto a few hits over the course of a few hours.
+A common source of baseline variation is known as ``dropout'';
+dropout is single nhit shits in the  baseline that persist over an indefinite
+time period with no clear signature in the readout.
+Dropout will be discussed in detail in~\ref{sec:dropout}.
+
 \subsection{XL3}
 \label{sec:xl3}
 The SNO DAQ used a centralized serial readout system, where each crate of
@@ -435,7 +483,7 @@ The ML403 uses a Xilinx Vertex-4 FPGA as its primary logic chip and has
 64-MB of supporting SDRAM and persistent memory provided by a CompactFlash
 card.
 The XL3 \& ML403 interface with the FECs in a crate through VME-like communication
-across the SNOBUS backplane.
+across the ``SNOBUS'' backplane.
 
 \begin{figure}[htbp]
     \centering
@@ -476,29 +524,18 @@ of high-current voltage feedback operational amplifiers.
 
 One of the most transformative changes that the MTCA+ introduces into
 the SNO+ trigger system is its baseline restoration circuitry.
-The baseline of the each trigger signal is the voltage observed
-when there are zero hits in the analog sum.
-The baselines are sensitive to a number of known factors such as the
-ambient temperature, the PMT noise environment, and settings
-on the front-end.
-There are also a number of factors that effect that are more difficult
-to identify, such as transistors on the CTC performing poorly due to
-age or other unknown factors.
-These factors lead to the baseline for any trigger signal varying
-by upto a few hits over the course of a few hours.
-%When a CTC breaks this baseline can change up by to a few hundred of hits worth.
-
-In SNO this sort of variation in the baseline could be tolerated because
+In SNO baseline variations could be tolerated because
 the threshold was far from the baseline, so variations of a few hits
-did not have a very large effect.
+did not typically have a very large effect.
 In SNO+, due to many of the upgrades, a significantly lower threshold was achieved,
-so a variation a few hits causes a much larger change in the trigger rate, which
-can be higher than the maximum possible readout rate.
+so a variation a few hits causes a much larger change in the trigger rate,
+leading to a higher likelihood of triggering faster than the  maximum possible
+readout rate.
 
 The MTCA+ provides two ways to mitigate baseline variations.
 The first is that the MTCA+ provides a relay to dynamically enable or disable each
 crates participation in the trigger sum.
-This is useful when a CTC fails, its trigger sums can be disabled to prevent it from
+This is useful if a CTC fails, its trigger sums can be disabled to prevent it from
 pulling up/down the entire trigger sum to the point that stable triggering is no
 longer possible.
 
@@ -525,79 +562,10 @@ This means the baseline will be adjusted to account for the dark-rate hits.
 The PMT dark rate is the dominant source of hits for the detector when it has
 a water target, it's suspected, but not known, that this will still be true for
 a scintillator target as well.
-
 Since typical variations in the baseline from thermal and other environmental
 effects occur on the $\approx1$\,hour timescale the 1\,s time scale for the
 baseline restoration provides adequate correction for those sort of effects.
 
-
-\subsubsection{Dropout}
-There exists one other significant source of variation for the trigger baseline, typically
-called ``dropout''.
-Dropout comes from a error in the design of one of the
-ASICs on the DB; the error results in the N100 and N20 trigger pulses from
-a channel being much longer than they should be, \textit{e.g.} 1\,ms wide
-instead of 100\,ns.
-Since the width of the pulse is then $\approx10^-3$ if the rate of dropout is
-less than $\approx 1$\,kHz, then dropout will not effect the applied baseline
-correction significantly.
-But for almost any non-zero rate of dropout  the trigger itself will be effected;
-a single channel dropping out can be thought of as lowering effective threshold
-by a single hit.
-So dropout effects our ability to predict which events will or will not
-trigger our detector.
-
-Since dropout is the result of a design error in the trigger system, the readout system
-is not sensitive to it, so there is no straight forward way of measuring how many
-or which channels are dropped out at any time.
-Using the data recorded by the CAEN I was able to develop a method for determining
-how many channels are dropped out during certain triggered events.
-Using that measurement I was able to estimate the rate of channels dropping out
-in the detector as a whole.
-This information is included in our simulation of the detector DAQ system to improve
-our model of the detector response.
-%More will be said about the trigger and DAQ simulation in Sec.\ref{XXX}.
-
-I developed a method for extracting the dropout from the CAEN data
-recorded by the detector.
-The method is to measure the baseline of the CAEN recorded N100-Lo and N20-Lo
-trigger signals.
-The measured baseline is histogrammed and then the function
-\begin{equation}
-    \Pr(x) = \sum_{k=0}^{\infty}\Pr(x | k)\Pr(k) = \sum_{k=0}^{\infty} \dfrac{1}{\sqrt{2 \pi \sigma^2}} e^{-\dfrac{(x - (S*k + C))^2}{2 \sigma^2}} e^{-\lambda}\dfrac{\lambda^{k}}{k!}
-    \label{dropout_model}
-\end{equation}
-is fit to the histogram. Eqn.~\ref{dropout_model} describes a series of Gaussians
-distributions each with width $\sigma$ and separation $S$, and an overall shift $C$.
-The normalization of the $k^{\text{th}}$ Gaussian is given by the value of the Poisson
-distribution for an average rate $\lambda$.
-The parameter $\lambda$ corresponds the average dropout for the detector, all
-other parameters are treated as nuisance parameters.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1\textwidth]{dropout_example}
-    \caption[Dropout Fit Example]{[black solid line] The measured baselines
-    for run 101357 and [red] the best fit dropout model with the
-    individual Gaussian distributions [black dashed line] that make up the best fit.}
-\label{fig:dropoutexample}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1\textwidth]{trigger_efficiecy}
-    \caption[Trigger Efficiency] {Comparison of the measured trigger efficiency
-    and simulated trigger efficiency for run 107640. Plot from~\cite{tanner_triggeff}.}
-\label{fig:triggeff}
-\end{figure}
-
-
-Figure~\ref{fig:dropoutexample} shows the measured dropout for run 101357.
-The best fit extracts an average dropout of $\lambda=2.7$ channels.
-For each run a similar dropout measurement is performed, the resulting dropout rate
-is later used in simulation as part of the DAQ simulation.
-As shown in Fig~\ref{fig:trigegff}, the trigger simulation, using the \textit{in-situ}
-measurement of dropout, agrees well with the measured trigger efficiency.
 
 \subsubsection{TUBII}
 \label{sec:tubii}
@@ -722,3 +690,70 @@ side of the PSUP, across the detector, to the PMTs on the other side.
 The fibres are placed at a number of different positions around the PSUP\@.
 ELLIE can be used for a number of calibration purposes, including playing a
 similar role to the laserball for a PCA\@.
+
+\subsection{Dropout}
+Dropout comes from a error in the design of one of the
+ASICs on the DB; the error results in the N100 and N20 trigger pulses from
+a channel being much longer than they should be, \textit{e.g.} 1\,ms wide
+instead of 100\,ns.
+Since the width of the pulse is then $\approx10^-3$ if the rate of dropout is
+less than $\approx 1$\,kHz, then dropout will not effect the applied baseline
+correction significantly.
+But for almost any non-zero rate of dropout  the trigger itself will be effected;
+a single channel dropping out can be thought of as lowering effective threshold
+by a single hit.
+So dropout effects our ability to predict which events will or will not
+trigger our detector.
+
+Since dropout is the result of a design error in the trigger system, the readout system
+is not sensitive to it, so there is no straight forward way of measuring how many
+or which channels are dropped out at any time.
+Using the data recorded by the CAEN I was able to develop a method for determining
+how many channels are dropped out during certain triggered events.
+Using that measurement I was able to estimate the rate of channels dropping out
+in the detector as a whole.
+This information is included in our simulation of the detector DAQ system to improve
+our model of the detector response.
+%More will be said about the trigger and DAQ simulation in Sec.\ref{XXX}.
+
+I developed a method for extracting the dropout from the CAEN data
+recorded by the detector.
+The method is to measure the baseline of the CAEN recorded N100-Lo and N20-Lo
+trigger signals.
+The measured baseline is histogrammed and then the function
+\begin{equation}
+    \Pr(x) = \sum_{k=0}^{\infty}\Pr(x | k)\Pr(k) = \sum_{k=0}^{\infty} \dfrac{1}{\sqrt{2 \pi \sigma^2}} e^{-\dfrac{(x - (S*k + C))^2}{2 \sigma^2}} e^{-\lambda}\dfrac{\lambda^{k}}{k!}
+    \label{dropout_model}
+\end{equation}
+is fit to the histogram. Eqn.~\ref{dropout_model} describes a series of Gaussian
+distributions each with width $\sigma$ and separation $S$, and an overall shift $C$.
+The normalization of the $k^{\text{th}}$ Gaussian is given by the value of the Poisson
+distribution for an average rate $\lambda$.
+The parameter $\lambda$ corresponds the average dropout for the detector, all
+other parameters are treated as nuisance parameters.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{dropout_example}
+    \caption[Dropout Fit Example]{[black solid line] The measured baselines
+    for run 101357 and [red] the best fit dropout model with the
+    individual Gaussian distributions [black dashed line] that make up the best fit.}
+\label{fig:dropoutexample}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1\textwidth]{trigger_efficiecy}
+    \caption[Trigger Efficiency] {Comparison of the measured trigger efficiency
+    and simulated trigger efficiency for run 107640. Plot from~\cite{tanner_triggeff}.}
+\label{fig:trigeff}
+\end{figure}
+
+Figure~\ref{fig:dropoutexample} shows the measured dropout for run 101357.
+The best fit extracts an average dropout of $\lambda=2.7$ channels.
+For each run a similar dropout measurement is performed, the resulting dropout
+rate is later used in simulation as part of the DAQ simulation.
+As shown in Fig~\ref{fig:trigeff}, the  simulated trigger efficiency, using the
+\textit{in-situ} measurement of dropout, agrees well with the measured trigger
+efficiency.
+

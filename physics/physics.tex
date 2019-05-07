@@ -79,6 +79,7 @@ is the left-handed neutrino $\nu^{L}$  and the right-handed anti-neutrino $\over
 
 Detailed here are the neutrino interactions that are relevant to this work, a more
 complete overview of neutrino interactions is available in Ref~\cite{XXX}.
+
 \subsubsection{Neutrino-Nuclear Interactions}
 There are two varieties of neutrino nuclear interactions that are most
 relevant for this work,
@@ -86,57 +87,72 @@ both are coherent
 the charged current interaction with a neutron, and the
 neutral current interaction with a proton or neutron.
 \begin{figure}
-        \centering
-        \begin{feynman}
-            \fermion[label=$e^{-}$]{0.00, 0.00}{1.00, 1.00}
-            \fermion[label=$\nu_{e}$]{1.00, 1.00}{0.00, 2.00}
-            \electroweak[label=$W^{+}$]{1.00, 1.00}{2.0, 1.00}
-            \fermion[label=$\nu_{e}$, flip=true]{2.00, 1.00}{3.0, 0.00}
-            \fermion[label=$e^{-}$, showArrow=true, flip=true]{2.0, 1.00}{3.00, 2.00}
-        \end{feynman}
+\centering
+\begin{feynman}
+\fermion[label=$e^{-}$]{0.00, 0.00}{1.00, 1.00}
+\fermion[label=$\nu_{e}$]{1.00, 1.00}{0.00, 2.00}
+\electroweak[label=$W^{+}$]{1.00, 1.00}{2.0, 1.00}
+\fermion[label=$\nu_{e}$, flip=true]{2.00, 1.00}{3.0, 0.00}
+\fermion[label=$e^{-}$, showArrow=true, flip=true]{2.0, 1.00}{3.00, 2.00}
+\end{feynman}
+\label{}
+\caption[]{}
 \end{figure}
+
 \subsubsection{Neutrino-Electron Elastic Scattering}
+% ES diagrams
 \begin{figure}
-    \begin{subfigure}[t]{0.53\textwidth}
-        \centering
-        \begin{feynman}
-            \fermion[label=$e^{-}$]{0.00, 0.00}{1.00, 1.00}
-            \fermion[label=$\nu_{e}$]{1.00, 1.00}{0.00, 2.00}
-            \electroweak[label=$W^{+}$]{1.00, 1.00}{2.0, 1.00}
-            \fermion[label=$\nu_{e}$, flip=true]{2.00, 1.00}{3.0, 0.00}
-            \fermion[label=$e^{-}$, showArrow=true, flip=true]{2.0, 1.00}{3.00, 2.00}
-        \end{feynman}
-    \end{subfigure}
-    \begin{subfigure}[t]{0.53\textwidth}
-        \centering
-        \begin{feynman}
-            \fermion[label=$\nu_{x}$]{0.00, 0.00}{1.00, 1.00}
-            \fermion[label=$\nu_{x}$]{1.00, 1.00}{0.00, 2.00}
-            \electroweak[label=$Z$]{1.00, 1.00}{2.0, 1.00}
-            \fermion[label=$e^{-}$, flip=true]{2.00, 1.00}{3.0, 0.00}
-            \fermion[label=$e^{-}$, showArrow=true, flip=true]{2.0, 1.00}{3.00, 2.00}
-        \end{feynman}
-    \end{subfigure}
-    \label{fig:feynman_es}
+\centering
+\begin{subfigure}[t]{0.48\textwidth}
+\centering
+\begin{feynman}
+\fermion[label=$e^{-}$]{0.00, 0.00}{0.80, 0.80}
+\fermion[label=$\nu_{e}$]{0.80, 0.80}{0.00, 1.60}
+\electroweak[label=$W^{+}$]{0.80, 0.80}{2.0, 0.80}
+\fermion[label=$\nu_{e}$]{2.80, 0.00}{2.0, 0.80}
+\fermion[label=$e^{-}$, showArrow=true]{2.0, 0.80}{2.80, 1.60}
+\end{feynman}
+\caption[Charged Current Elastic Scattering Feynman Diagram]{
+Charged current elastic scattering interaction}
+\label{fig:ES_CC}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+\centering
+\begin{feynman}
+\fermion[label=$\nu_{x}$]{0.00, 0.00}{0.80, 0.80}
+\fermion[label=$\nu_{x}$]{0.80, 0.80}{0.00, 1.60}
+\electroweak[label=$Z$]{0.80, 0.80}{2.0, 0.80}
+\fermion[label=$e^{-}$, flip=true]{2.00, 0.80}{2.8, 0.00}
+\fermion[label=$e^{-}$, showArrow=true ]{2.0, 0.80}{2.80, 1.60}
+\end{feynman}
+\caption[Neutral Current Elastic Scattering Feynman Diagram]{
+Neutral current elastic scattering interaction}
+\label{fig:ES_NC}
+\end{subfigure}
+\label{fig:feynman_es}
+\caption[Elastic Scattering Feynman Diagrams]{The Feynman diagrams for the
+    charged current elastic scattering interaction\,(a) and the neutral
+    current elastic scattering interaction\,(b).}
 \end{figure}
 
 Neutrino-electron elastic scattering (ES) is an important neutrino interaction
 channel, for this work it is the main interaction through which neutrinos are
 detected.
-The ES process is $\nu_{\mathrm{x}} + e^{-} \rightarrow \nu_{mathrm{x}} +e^{-}$.
+The ES process is $\nu_{\mathrm{x}} + e^{-} \rightarrow \nu_{\mathrm{x}} +e^{-}$.
 A similar process exists for anti-neutrinos, but the focus here is on the
 neutrino ES interaction.
 
-Figure~\ref{fig:feynman_es} shows the tree level feynman diagrams for the charged
-current (CC) elastic scattering interaction~\ref{fig:feynman_es_cc} and the
-neutral current (NC) elastic scattering interaction~\ref{fig:feynman_es_nc}.
+Figure~\ref{fig:feynman_es} shows the tree level Feynman diagrams for the charged
+current (CC) elastic scattering interaction~\ref{fig:ES_CC} and the
+neutral current (NC) elastic scattering interaction~\ref{fig:ES_NC}.
 The neutral current interaction is shown to involve $\nu_{\mathrm{x}}$ where $x=\mathrm{e, \mu, \tau}$,
 and the charged current interaction involves only $\nu_{\mathrm{e}}$.
 The charged current interaction is available to neutrinos of all flavors,
 however, for a few reasons only the electron flavor version of the interaction
 is available for solar neutrinos.
 
-The intial electron on the left hand side of the interaction is usually understood to
+The initial electron on the left hand side of the interaction is usually understood to
 be from an atom within target the detector, and therefore at rest within
 the lab frame.
 So the total energy in the interaction is simply $E = E_{\nu} + m_{e}$.
@@ -204,13 +220,36 @@ setting $\cos\theta=1$ in equation~\eqref{eqn:es_te_theta}, this yields
     T_{e}^{\max}(E_\nu) = \frac{2E_{\nu}^{2}}{m_{\mathrm{e}}+ 2E_{\nu}^{2} }\text{.}
 \end{equation}
 
-Figure~\ref{XXX} shows the differential cross-sections for a 10\,MeV neutrino.
-The fact that the scattering cross-section is so peaked in $\frac{d\sigma}{d\cos\theta}$
-is very useufl for neutrino experiments because it means the electron direction
-is almost always nearly co-linear with the neutrino direction.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{neutrino_xsec_energy}
+        \caption[ES Recoil Energy Cross-Section]{}
+        \label{}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{neutrino_xsec_angular}
+        \caption[ES Angular Cross-Section]{}
+        \label{}
+    \end{subfigure}
+    \caption[Neutrino-Electron ES Cross-Sections]{The electron recoil\,(a)
+    cross-section and electron angular\,(b) cross-section for neutrino-electron
+    elastic scattering with a 10\,MeV incoming neutrino energy.}
+    \label{fig:es_xsec}
+\end{figure}
+
+
+Figure~\ref{fig:es_xsec} shows the differential cross-sections for a 10\,MeV neutrino.
+The fact that the scattering cross-section is peaked near $\cos\theta=1$
+is very useufl for neutrino experiments; thee observed electron direction
+will almost always be nearly co-linear with the incoming neutrino direction.
 Unforunately, since the cross-section is nearly flat in $T_{\mathrm{e}}$
 the electron energy conveys almost no information about the incoming neutrino
 energy.
+
 The kinematics and cross-section of the out-going neutrino is also
 well predicted with respect to $\cos\theta$, however the out-going
 neutrino is of little interest because it in general cannot be detected.
@@ -285,7 +324,7 @@ It is typical to make the assumption that all neutrino mass states have the same
 momentum, $p_{i} = p$, and this is the assumption I'll user here as well.
 The equal momentum assumption allows for a straightforward derivation of the
 correct description of neutrino oscillations, but it is not well motivated.
-A thorough discussion of the assumption is available in Ref~\cite{Ahkmedov_Quantum}.
+A discussion of the equal momentum assumption is available in Ref~\cite{neutrino_osc_subtleties}.
 
 Applying Schrodinger's equation,
 \begin{equation}
@@ -319,7 +358,7 @@ is the survival probability, defined as
 $P_{ee}(t)$ can be understood as the probability that a neutrino, produce in
 an electron flavor state, will be detected as an electron flavor state a time
 $t$ later.
-The survival probability for the state given in~\eqref{eqn:e_state} is
+The survival probability for the state given in Eqn.~\eqref{eqn:e_state} is
 \begin{equation}
     P_{ee}(t) = \sum_{i,j}\abs{U_{ei}}^2\abs{U_{ej}}^2e^{-i(E_{i} - E_{j})t}\text{.}
 \end{equation}
@@ -361,32 +400,49 @@ All this gives
 Figure XXX shows this survival probability with mixing parameters matching those
 given in~\cite{PDG2016}.
 
+With the exception of the CP violating phase $\delta_{cp}$, all mixing
+parameters and mass-squared splitting have been measured experimentally.
+The parameters are not predicted from the standard model, so are theoretically
+uncsontrained. %TODOXXX add a bunch of expermental citations?
+The measurements of the mass-squared splittings and
+other parameters are discussed in Sec.~\ref{sec:experiments}.
+The absolute masses of each neutrino state are not yet known.
+There are upper limits placed on the sum of the neutrino masses from
+observations of tritium decay~\cite{troitsk_mass}, and from cosmological
+observations and modelling~\cite{cosmological_neutrino_mass}.
+
+Also unknown is the ``hierarchy'' of the neutrino masses, i.e.\ which
+mass states are heavier or lighter than the others.
+Solar neutrino measurements have established that the $\nu_{2}$ state
+is more massive than the $\nu_{1}$ state~\cite{sno_first, sno_combined}, but so far no experiment has been
+able to resolve if $\nu_{3}$ is more or less massive than $\nu_{1}$ and $\nu_{2}$ states~\cite{vogel_hierarchy}.
+The case where the $\nu_{1}$ state is the lightest is referred to as the
+``normal hierarchy'' because then neutrino mass state have the same
+ordering as the charged leptons;
+the case where $\nu_{3}$ is the least massive neutrino is knwn as the
+ ``inverted hierarchy'', because then the neutrino mass states are opposite
+ that of the charged lepton states.
+ Experimental measurements and cosmological consdierations currently prefer
+ the normal hierarchy over the inverted hierarchy at \urltilde$2.4\sigma$ statistical
+ significance~\cite{nu_fit}
 
 \subsubsection{Matter Enhanced Oscillations}
-When neutrino propagate through matter this oscillation is altered.
+When neutrino propagate through matter, as opposed to vacuum, its oscillation is altered.
 The local density of other particles modifies the vacuum Hamiltonian,
 adding a weak interaction potential.
-This interaction comes from a neutral current interaction of the form
-shown in $TODO$, or a flavor dependent charge current interaction with the
-leptons around the neutrino.
+The interaction comes primarily from a neutral current interaction of the form
+shown in $XXX$, and a flavor dependent charged current interaction, shown in
+XXX, with the leptons around the neutrino.
 Since nearly all matter contains a much higher density of electrons
 than the other flavors of charged lepton, the charged current reaction
 modifies the electron neutrino potential and not the potential for the muon
-or tau neutrion.
+or tau neutrino.
 The result is that the electron density through which a neutrino propagates
 can modify the effective mass-splitting and mixing angle for the electron
 neutrino.
 For a given neutrino energy $E_{\nu}$ there exists an electron density for which
 the effective mixing angle is maximal, this is known as the resonant density.
 
-The masses of the neutrino mass states are not known, there are limits placed
-on the sum of the neutrino masses from observations of tritium decay, and
-from astronomical considerations. % TODO add citation.
-
-
-\begin{equation}
-    H \ket{\nu_i} = m_i \ket{\nu_i}
-\end{equation}
 
 \subsection{Adabaticity}
 The adabiticity of neutrino oscillation refers if mass state composition
@@ -492,13 +548,14 @@ neutrino oscillation is fully adiabatic or not~\cite{GDOG Everything Under the s
 
 
 
-\subsection{Neutrino Experiments}
+\section{Neutrino Experiments}
+\label{sec:experiments}
 There's a long a diverse list of neutrino experiments that have contriubted to
 our current understanding of neutrinos and neutrino oscillations.
 I won't attempt to list them all here, but rather highlight the most immediatly
 relevant to this work. A more compresive review can be found in \citep{FINDAREVIEW}.
 
-\subsubsection{Homestake}
+\subsection{Homestake}
 The first experiment to succesfully detect solar neutrinos was the Homestake
 experiment.
 The detector was composed of approximately 100000 gallons of dry cleaning fluid.
@@ -520,7 +577,7 @@ was the first evidence for neutrino oscillation.
 The deficiency was present across the entire lifetime of the Homestake experiment,
 their final report flux was XXX.
 
-\subsubsection{SNO}
+\subsection{SNO}
 \label{sec:sno}
 The Sudbury Neutrino Observatory (SNO) is a water-Cherenkov detector located
 roughly $2$\,km underground near Sudbury Ontario in Canada, it ran from
@@ -566,7 +623,7 @@ the rates of each measurement had a different dependence on the flavor content
 of solar neutrinos.
 
 
-\subsubsection{Super Kamiokande}
+\subsection{Super Kamiokande}
 Super Kamiokande (SuperK) is a 50\,kton cylindrical water cherekov detector.
 It started running in $1996$ and has since made the most precise measurements of
 atmospheric neutrinos and solar neutrinos so far.
@@ -583,7 +640,7 @@ The SuperK experiment seperates their dataset into 4 subsets, called
 SuperK-I, SuperK-II, \textit{etc}. %TODO Roman numerals.
 Each dataset covers several years of data taking.
 
-\subsubsection{Borexino}
+\subsection{Borexino}
 Borexino is 300\,ton spherical liquid scintillator detector~\cite{borexino_tdr}. Their detector
 apparatus is similar to that of a water-Cherenkov detector, the significant difference
 is that the water is replaced with pseudo-cumine, a liquid scintillator.
@@ -622,7 +679,7 @@ fluxes.
 $XXX$ FIND TABLE\\
 show spectrum and table of results
 
-\subsubsection{KamLAND}
+\subsection{KamLAND}
 The Kamioka Liquid Scintillator Antineutrino Detector (KamLAND) is a liquid-scintillator detector.
 Its primary physics goals were the detection of reactor anti-neutrinos via
 inverse beta-decay (IBD),
