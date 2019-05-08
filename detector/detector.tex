@@ -75,7 +75,6 @@ interactions that occur outside the PSUP\@.
 There are an additional three tubes mounted at the top of the neck of the AV,
 these are referred to as NECK tubes.
 
-
 For the scintillator and tellurium loaded phases the AV volume will have
 a lower density than the surrounding water volume, cause significant buoyant
 forces on the AV\@.
@@ -363,14 +362,14 @@ to the data-server, the data-server relays that data to any clients that have su
 clients.
 
 The primary client to the data server is what's known as the ``Event Builder'', sometimes
-called the EB or just the ``Builder''. The Builder receieves data from the data-server and
+called the EB or just the ``Builder''. The Builder receives data from the data-server and
 uses GTID information to associate trigger words and hits with each other.
 Once all the hits for an event have been associated with their trigger word the event
 has been ``built'' it is written to disk and the read out process for that event is complete.
 Data is typically taken in hour long chunks referred to as a ``run'';
 every run has an unique number associated with it and a ``run type'' number that
 gives basic context to the detector circumstances and settings in which the data was taken.
-The Builder, in addition to building events, is reponsible for associating
+The Builder, in addition to building events, is responsible for associating
 events with their run number and run type.
 
 There are a few ancillary systems within the DAQ electronics, all
