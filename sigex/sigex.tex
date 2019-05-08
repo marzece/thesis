@@ -12,11 +12,24 @@
 % ----------------------- sigex content -------------------------
 % ----------------------------------------------------------------------
 
+This section details the analysis methods used for extracting the $\ce{^{8}B}$
+interaction rate in the SNO+ detector during it's initial water-phase
+data taking run.
+SNO+ is sensitive to the $\ce{^{8}B}$ and $hep$ solar neutrinos,
+though at almost all energies the interaction rate of $\ce{^{8}B}$ neutrinos
+is dominant over the rate of $hep$ neutrino interactions.
+Lower energy solar neutrinos, such as those from the $pep$ and $\ce{^{7}Be}$
+reactions are in principle measurable, but radioactive backgrounds from
+contaminants in the water render signal extraction nearly impossible.
+
+
+
+
 Solar neutrino events are monte-carlo simulated using ``RAT'', a Geant-4 based
 simulation and analysis toolkit.
 RAT simulates all effects after the initial interaction, including photon
 propagation and detection, and particle scattering.
-Beyond the photon and physics simulation RAT also simluates the SNO+ DAQ and trigger electronics,
+Beyond the photon and physics simulation RAT also simulates the SNO+ DAQ and trigger electronics,
 allowing the effects of digitization and electronics noise to be simulated.
 
 A solar neutrino production rate is an input to the simulation.
@@ -27,9 +40,11 @@ RAT provides an accurate model of the detector response for each interaction.
 Solar neutrino events are simulated on run-by-run basis with a fixed average rate
 of interactions.
 Each run's simulation is matched to the detector trigger and
-daq settings for that run. To ensure adequate monte-carlo statistics the
-rate of solar $\nu_{e}$ and $\nu_{\mu\text{,\,}tau}$ interactions is artificially
-enhanced by a factor of XXX and XXX; the enhanced rate is later removed as a correction
+DAQ settings for that run.
+To ensure adequate monte-carlo statistics the rate of solar $\nu_{e}$ and
+$\nu_{\mu\text{,\,}tau}$ interactions are respectively enhanced by a factor of
+1700 and 9600;
+the enhanced rate is later removed as a correction
 to the normalization of the PDFs created from the monte-carlo simulation.
 
 $\theta_{sun}$ is defined by
