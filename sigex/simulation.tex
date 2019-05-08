@@ -10,8 +10,19 @@ interactions and photon propagation.
 
 
 \subsection{Solar Neutrino Fluxes}
-The expected spectral shape and normalization for the solar neutrino signal is
-taken from the BS05(OP) standard solar model~\cite{XXX}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{b8_flux}
+\caption[Expected $\ce{^{8}B}$ Flux]{The $\ce{^{8}B}$ neutrino flux
+normalized to the solar reaction rate predicted by BS05-0P~\cite{bs05op}}
+\label{fig:b8_flux}
+\end{figure}
+The distribution for the $\ce{^{8}B}$ neutrino energy from Winters~\textit{et. al}~\cite{winterspectrum}
+was used, normalized to a nominal flux of $5.69\times10^{6}\mathrm{cm}^{-2}\mathrm{s}^{-1}$,
+as predicted by BS05-OP~\cite{bs05op} using the GS98~\cite{gs98} solar
+abundances.
+This nominal flux normalization is arbitrary because it's the value that is
+eventually extracted from data.
 
 \subsection{Solar Neutrino Cross-sections}
 The rate of solar neutrino for a given flux follows from the cross-section for
@@ -22,7 +33,7 @@ neutrino-electron elastic scattering interaction.
 %compared to the elastic-scattering rate.
 
 The cross-section for the elastic-scattering interaction is take from Bahcall
-\textit{et.\al}~\cite{escrosssec} which includes radiative corrections to
+\textit{et. al}~\cite{escrosssec} which includes radiative corrections to
 the cross-section.
 
 \subsection{Survival Probability Simulation}
@@ -33,4 +44,5 @@ The survival probability is calculated using a
 SNO collaboration~/cite{XXX}.
 is used to calculate the fraction of the solar neutrino flux that arrives
 at Earth and interacts as a $\nu_{e}$ vs the fraction that is $\nu_{\mu}$ or $\nu_{\tau}$.
+Solar densities and production distributions from the GS98~\cite{gs98}.
 
