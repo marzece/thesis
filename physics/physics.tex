@@ -77,14 +77,34 @@ only left-handed particles and right-handed anti-particles interact weakly.
 Since neutrinos only interact weakly, the only detectable varieties of neutrino
 is the left-handed neutrino $\nu^{L}$  and the right-handed anti-neutrino $\overline{\nu}^{R}$.
 
-Detailed here are the neutrino interactions that are relevant to this work, a more
-complete overview of neutrino interactions is available in Ref~\cite{XXX}.
+Detailed here are the neutrino interactions occur in the energy regime
+relevant for solar neutrinos.
+At higher energies, $E_{\nu} \gtrapprox 100$\,MeV, neutrinos interact
+with nuclear targets through quasi-elastic scattering, resonant
+pion-production, or deep inelastic scattering.
+complete overview of neutrino interactions is available in Ref~\cite{neutrino_xsec}.
 
-\subsubsection{Neutrino-Nuclear Interactions}
-There are two varieties of neutrino nuclear interactions that are most
-relevant for this work,
-the charged current interaction with a neutron, and the
-neutral current interaction with a proton or neutron.
+\begin{figure}[htbp]
+\centering
+\begin{feynman}
+\fermion[label=$\overline{\nu}_{e}$]{0.00, 0.00}{1.50, 1.00}
+\fermion[label=$p$]{3.00, 0.00}{1.50, 1.00}
+\electroweak[label=$W^{+}$]{1.50, 1.00}{1.5, 2.00}
+\fermion[label=$e^{+}$]{1.50, 2.00}{0.0, 3.00}
+\fermion[label=$n$]{1.5, 2.00}{3.00, 3.00}
+\end{feynman}
+\caption[Inverse Beta Decay Feynman Diagram]{Feynman diagram for the 
+inverse beta decay process.}
+\label{fig:ibd}
+\end{figure}
+At lower energies one of the most common methods for detecting (anti)neutrinos
+is through inverse beta-decay, $\overline{\nu}_{e} + p \rightarrow n + e^{+}$.
+Figure~\ref{fig:ibd} shows the Feynman diagram for this process.
+The Cowan \& Reines experiment used this interaction to establish the existence
+of the neutrino and reactor neutrino experiments still use this interaction as
+their primary detection method~\cite{double_chooz1, daya_bay, reno}.
+
+
 \begin{figure}[htbp]
 \centering
 \begin{subfigure}[b]{0.48\textwidth}
@@ -96,7 +116,7 @@ neutral current interaction with a proton or neutron.
 \fermion[label=$p$, showArrow=true]{2.0, 1.00}{3.00, 2.00}
 \end{feynman}
 \caption[]{}
-\label{fig:nuclear_nc}
+\label{fig:nuclear_cc}
 \end{subfigure}
 \hfill
 \begin{subfigure}[b]{0.48\textwidth}
@@ -111,13 +131,19 @@ neutral current interaction with a proton or neutron.
 \label{fig:nuclear_nc}
 \end{subfigure}
 \caption[Neutrino Nuclear Interactions]{}
-\label{}
+\label{fig:nuclear_interactions}
 \end{figure}
 
-At higher energies neutrinos interact through a quasi-elastic
-scattering, resonant pion-production, and deep in-elastic scattering~\cite{XXX}.
-Those processes
-\subsubsection{Neutrino-Electron Elastic Scattering}
+Also significant at lower energies is the charged current (CC) nuclear interaction
+$\nu_{e} + n \rightarrow p + e^{-}$, sometimes call neutrino capture.
+Figure~\ref{fig:nuclear_cc} gives the Feynman diagram for this process.
+The charged current nuclear interaction played a significant role in early
+radio-chemical solar neutrino experiments~\cite{homestake, sage, gallex, gno}.
+The Sudbury Neutrino Observatory (SNO) made use of the charged current
+nuclear interaction and the similar neutral current (NC) interaction (Fig~\ref{fig:nuclear_nc})
+to solve the Solar Neutrino Problem\cite{solar_nu_problem, sno_second}.
+SNO and its measurements will be discussed in greater detail in Sec~\ref{sec:sno}.
+
 \label{sec:esxsec}
 % ES diagrams
 \begin{figure}
@@ -156,21 +182,19 @@ Neutral current elastic scattering interaction}
 \end{figure}
 
 Neutrino-electron elastic scattering (ES) is an important neutrino interaction
-channel, for this work it is the main interaction through which neutrinos are
+channel for this work --- it is the main interaction through which neutrinos are
 detected.
 The ES process is $\nu_{\mathrm{x}} + e^{-} \rightarrow \nu_{\mathrm{x}} +e^{-}$.
-A similar process exists for anti-neutrinos, but the focus here is on the
-neutrino ES interaction.
-
-Figure~\ref{fig:feynman_es} shows the tree level Feynman diagrams for the charged
-current (CC) elastic scattering interaction~\ref{fig:ES_CC} and the
-neutral current (NC) elastic scattering interaction~\ref{fig:ES_NC}.
-The neutral current interaction is shown to involve $\nu_{\mathrm{x}}$ where $x=\mathrm{e, \mu, \tau}$,
+A similar process exists for anti-neutrinos.
+The tree level Feynman diagrams for the charged current elastic scattering
+interaction is shown in Fig.~\ref{fig:ES_CC} and the neutral current elastic
+scattering interaction in Fig.~\ref{fig:ES_NC}.
+The neutral current interaction involves $\nu_{\mathrm{x}}$ where $x=\mathrm{e, \mu, \tau}$,
 and the charged current interaction involves only $\nu_{\mathrm{e}}$.
-The charged current interaction is available to neutrinos of all flavors,
-however, for a few reasons only the electron flavor version of the interaction
-is available for solar neutrinos.
 
+The charged current interaction is in principle available to neutrinos of all
+flavors, however, for a few reasons only the electron flavor version of the
+interaction is available for solar neutrinos.
 The initial electron on the left hand side of the interaction is usually understood to
 be from an atom within target the detector, and therefore at rest within
 the lab frame.
@@ -189,8 +213,8 @@ elastic scattering interaction.
 In practice this means that the cross section for the elastic scattering process
 is larger for $\nu_{e}$ than it is for a $\nu_\mu$ or $\nu_\tau$,
 and the cross-section for a $\nu_\mu$ is the same as that for a $\nu_\tau$.
-The differential cross section of for the diagrams shown in Fig~\ref{fig:feynman_es}
-can be calculated as
+The differential cross section of for the diagrams shown in Fig~\ref{fig:ES_CC} and
+Fig.~\ref{fig:ES_NC} can be calculated as
 \begin{equation}
     \frac{d\sigma}{dT_{\mathrm{e}}}\left(E_{\nu}\text{, }T_{\mathrm{e}}\right)=
     \frac{\sigma_{0}}{m_{\mathrm{e}}}\left[g_{1}^{2} + g_{2}^{2}\left(1 - \frac{T_{\mathrm{e}}}{E_{\nu}}\right)^{2} -g_{1}g_{2}\frac{m_{\mathrm{e}}T_{\mathrm{e}}}{E_{\nu}^{2}}\right]\text{,}
@@ -207,7 +231,6 @@ and
 \begin{equation}
     g_{2} = \sin^{2}\theta_{\mathrm{W}}\text{.}
 \end{equation}
-
 For $\nu_{x} = \nu_{\mu}$ or $\nu_{x} = \nu_{\tau}$ $g_{1}$ and $g_{2}$ is
 given by,
 \begin{equation}
@@ -269,17 +292,22 @@ will almost always be nearly co-linear with the incoming neutrino direction.
 Unforunately, since the cross-section is nearly flat in $T_{\mathrm{e}}$
 the electron energy conveys almost no information about the incoming neutrino
 energy.
-
 The kinematics and cross-section of the out-going neutrino is also
 well predicted with respect to $\cos\theta$, however the out-going
 neutrino is of little interest because it in general cannot be detected.
 
-%TODO look at PDG review and discuss uncertainties.
+Experimentally neutrino elastic scattering has been studied in a number
+of venues historically and recently~\cite{reines2, es_measurement, nutev}.
+Famously the first experimental evidence for the $Z$ boson came from
+the observations of neutrino elastic scattering at the
+Gargamelle experiment~\cite{gargamelle}.
 
-\subsection{Neutrino Oscillations}
+
+\section{Neutrino Oscillations}
 \label{sec:neut_osc}
 Neutrino oscillation is a result of the fact that neutrino flavors do not have
-well defined masses, instead neutrino flavor states are quantum superposition
+well defined masses, instead neutrino flavor states are a quantum superposition
+of neutrino mass states.
 And conversely, mass states can be described as a superposition of flavor states.
 This can be stated more precisely as
 \begin{equation}
@@ -296,13 +324,16 @@ Under the assumption that there are three flavor states and three mass states
 $U_{i\ell}$ must be unitary so that the probability of observing
 a neutrino in any state is 1.
 It is known from observations of Z boson decay products that
-there are only three ``active'' neutrino flavors~\cite{Zbosondecaypaper}.
-Where active here means that the neutrino participates in
+there are only three ``active'' neutrino flavors~\cite{Zdecay}.
+Where active means that the neutrino participates in
 weak interactions.
+It's possible there there is a neutrino that does not interact
+weakly, this is referred to as a sterile neutrino and is the
+subject of a number of experimental searches~\cite{prospect, lsnd, miniboone, jsns2}.
 
 It is typical to characterize $U$ with three angles
-($\theta_{12}$, $\theta_{13}$, $theta_{23}$) and a complex
-phase $\delta_{cp}$. Doing so allows for the SU(3) matrix to
+($\theta_{12}$, $\theta_{13}$, $\theta_{23}$) and a CP violating
+phase $\delta_{cp}$. Doing so allows for the general SU(3) mixing matrix to
 be decomposed into two SO(2) matrices and one SU(2) matrix,
 $$U_{12} =
 \begin{bmatrix}
@@ -327,8 +358,8 @@ U_{23} =
     0 & -\sin\theta_{23} & \cos\theta_{23}   \\
 \end{bmatrix}.
 $$
-These matrices can be multiplied to produce the full mixing matrix
-$U = U_{23}U_{13}U_{12}$
+The product of these matrices produces the full mixing matrix,
+$U = U_{23}U_{13}U_{12}$.
 
 The mixed nature of neutrino flavor and mass states gives rise to oscillations
 in the flavor content of propagating neutrinos.
@@ -341,10 +372,11 @@ where the energy is given by the standard relativistic energy equation,
     E_{i} = \sqrt{{(p_{i}c)}^{2} + {(m_{i}c^{2})}^2}\text{.}
 \end{equation}
 It is typical to make the assumption that all neutrino mass states have the same
-momentum, $p_{i} = p$, and this is the assumption I'll user here as well.
+momentum, $p_{i} = p$.
 The equal momentum assumption allows for a straightforward derivation of the
 correct description of neutrino oscillations, but it is not well motivated.
-A discussion of the equal momentum assumption is available in Ref~\cite{neutrino_osc_subtleties}.
+A discussion of the equal momentum assumption and its validity
+is available in Ref~\cite{neutrino_osc_subtleties}.
 
 Applying Schrodinger's equation,
 \begin{equation}
@@ -366,16 +398,16 @@ of a neutrino that is created in a electron flavor eigenstate.
 Each of the mass states' time evolution can be immediately written down from
 Equation~\eqref{eqn:mass_state_tevol},
 \begin{equation}
-    \ket{\nu(t)} = \sum_{i=0}^{3} U_{ie}e^{-iE_{i}t}\ket{\nu_{i}}\text{.}
+    \ket{\nu(t)} = \sum_{i=1}^{3} U_{ie}e^{-iE_{i}t}\ket{\nu_{i}}\text{.}
     \label{eqn:e_state}
 \end{equation}
 
-From Eq.~\eqref{eqn:e_state} the quantity that's often of the most interest
+From Eqn.~\eqref{eqn:e_state} the quantity that's often of the most interest
 is the survival probability, defined as
 \begin{equation}
     P_{ee}(t) = \abs{\braket{\nu_{e}}{\nu(t)}}^{2}\text{.}
 \end{equation}
-$P_{ee}(t)$ can be understood as the probability that a neutrino, produce in
+$P_{ee}(t)$ can be understood as the probability that a neutrino, produced in
 an electron flavor state, will be detected as an electron flavor state a time
 $t$ later.
 The survival probability for the state given in Eqn.~\eqref{eqn:e_state} is
@@ -421,12 +453,12 @@ Figure XXX shows this survival probability with mixing parameters matching those
 given in~\cite{PDG2016}.
 
 With the exception of the CP violating phase $\delta_{cp}$, all mixing
-parameters and mass-squared splitting have been measured experimentally.
-The parameters are not predicted from the standard model, so are theoretically
-uncsontrained. %TODOXXX add a bunch of expermental citations?
+parameters and mass-squared splitting have been measured experimentally~\cite{pdg_globalfit}.
+None of the parameters are not predicted from the standard model, so are theoretically
+unconstrained.
 The measurements of the mass-squared splittings and
 other parameters are discussed in Sec.~\ref{sec:experiments}.
-The absolute masses of each neutrino state are not yet known.
+The absolute mass of each neutrino state is not yet known.
 There are upper limits placed on the sum of the neutrino masses from
 observations of tritium decay~\cite{troitsk_mass}, and from cosmological
 observations and modelling~\cite{cosmological_neutrino_mass}.
@@ -443,18 +475,27 @@ the case where $\nu_{3}$ is the least massive neutrino is knwn as the
  ``inverted hierarchy'', because then the neutrino mass states are opposite
  that of the charged lepton states.
  Experimental measurements and cosmological consdierations currently prefer
- the normal hierarchy over the inverted hierarchy at \urltilde$2.4\sigma$ statistical
+ the normal hierarchy over the inverted hierarchy at approximately $2.4\sigma$ statistical
  significance~\cite{nu_fit}
+
+This model of neutrino mixing assumes that neutrinos are Dirac, as opposed to
+Majorana. In the case that the neutrino is a Majorana particle the PMNS matrix
+gains two additional complex ``Majorana'' phases, similar to the CP violating
+phase $\delta_{CP}$.
+However, neutrino oscillation observables, such as the survival and transition
+probability, are in general not effected by the Majorana phase~\cite{majorana_mixing}.
+Therefore it is acceptable to ignore the presence of Majorana phases in typical 
+neutrino mixing calculations.
 
 \subsection{Matter Enhanced Oscillations}
 When neutrino propagate through matter, as opposed to vacuum, its oscillation is altered.
 The local density of other particles modifies the vacuum Hamiltonian,
 adding a weak interaction potential.
 The interaction comes primarily from a neutral current interaction of the form
-shown in $XXX$, and a flavor dependent charged current interaction, shown in
-XXX, with the leptons around the neutrino.
-Since nearly all matter contains a much higher density of electrons
-than the other flavors of charged lepton, the charged current reaction
+shown in Fig~\ref{nuclear_nc}, and a flavor dependent charged current interaction shown in
+Fig~\ref{nuclear_cc}.
+Nearly all normal matter contains a much higher density of electrons
+than the other flavors of charged lepton, so the charged current reaction
 modifies the electron neutrino potential and not the potential for the muon
 or tau neutrino.
 The result is that the electron density through which a neutrino propagates
@@ -464,7 +505,6 @@ For a given neutrino energy $E_{\nu}$ there exists an electron density for which
 the effective mixing angle is maximal, this is known as the resonant density.
 
 
-\subsection{Adabaticity}
 The adabiticity of neutrino oscillation refers if mass state composition
 of a neutrino state changes or not, if it does change then the neutrinos
 oscillation is non-adiabatic.
@@ -477,7 +517,7 @@ suddenly enters a region of significant matter density where the mass states
 are now $\ket{\nu_{k}^\prime}$.
 The neutrino state does not have time to evolve at all so the state
 does not change, but it is not longer a pure eigenstate of the mixing
-hamiltonian,
+Hamiltonian,
 \begin{equation*}
     \ket{\Psi_{\nu}} = \ket{\nu_{1}} = \sum_{k=1}^{3} \braket{\nu_{k}^\prime}{\nu_{1}}\ket{\nu_{k}^\prime}\text{.}
 \end{equation*}
