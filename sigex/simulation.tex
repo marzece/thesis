@@ -4,7 +4,7 @@
 \subsection{RAT}
 A monte-carlo simulation of particle interactions in the detector is used
 for predicting detector observables for events.
-The simulation package used is called RAT, it is a Geant4-based simulation that
+The simulation package used is called RAT, it is a Geant4~\cite{geant4} based simulation that
 contains a detector and DAQ simulation in addition to simulation of particle
 interactions and photon propagation.
 
@@ -18,31 +18,139 @@ normalized to the solar reaction rate predicted by BS05-0P~\cite{bs05op}}
 \label{fig:b8_flux}
 \end{figure}
 The distribution for the $\ce{^{8}B}$ neutrino energy from Winters~\textit{et. al}~\cite{winterspectrum}
-was used, normalized to a nominal flux of $5.69\times10^{6}\mathrm{cm}^{-2}\mathrm{s}^{-1}$,
-as predicted by BS05-OP~\cite{bs05op} using the GS98~\cite{gs98} solar
-abundances.
-This nominal flux normalization is arbitrary because it's the value that is
-eventually extracted from data.
+was used, normalized to a nominal flux of $5.69\times10^{6}\mathrm{cm}^{-2}\mathrm{s}^{-1}$.
+The flux is predicted by BS05-OP~\cite{bs05op} using the GS98~\cite{gs98} solar
+abundances.  this nominal flux normalization, however, is arbitrary in this
+analysis.
 
-\subsection{Solar Neutrino Cross-sections}
-The rate of solar neutrino for a given flux follows from the cross-section for
-interaction. The only interaction relevant for the SNO+ detector is the
-neutrino-electron elastic scattering interaction.
-%Neutrino-nuclear interactions occur as well, but they either cannot be identified
-%separately from the radioactive backgrounds, or they occur at a very small rate
-%compared to the elastic-scattering rate.
+\subsection{Detector Interaction Rate}
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+  \includegraphics[width=\textwidth]{diff_xsec_nue}
+    \caption[$\nu_{e}$ Differential Cross Section]{}
+    \label{fig:diff_xsec_nue}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+  \includegraphics[width=\textwidth]{diff_xsec_numu}
+    \caption[$\nu_{\mu}$ Differential Cross Section]{}
+    \label{fig:diff_xsec_numu}
+  \end{subfigure}
+    \caption[ES Differential Cross Section]{The differential cross section for $\nu_{e}$ electron
+    elastic scattering (a) and $\nu_{\mu\mathrm{,}\tau}$ (b) as used by
+    RAT. Units for Z-axis is $10^{-42} \mathrm{cm}^{-2} \mathrm{MeV}^{-2}$.}
+    \label{fig:diff_xsec}
+\end{figure}
 
-The cross-section for the elastic-scattering interaction is take from Bahcall
-\textit{et. al}~\cite{escrosssec} which includes radiative corrections to
-the cross-section.
+The rate of solar neutrino interactions for a given flux follows from the cross-section for
+interaction. The only interaction relevant for this analysis is the
+neutrino-electron elastic scattering interaction, the cross-section of which
+is discussed in Sec.~\ref{sec:esxsec}.
+The model used for event generation in RAT includes radiative corrections as
+described in Bahcall~\textit{et. al}~\cite{escrosssec}.
+The differential cross-section as a function of $E_{\nu}$ is shown in~\cite{fig:diff_xsec}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{solar_nu_recoil_spectrum}
+  \caption[Solar Recoil Electron Spectrum]{
+      The distribution of electron recoil energies from $\ce{^{8}B}$ solar neutrino
+      interactions, as simulated by RAT. The normalization shown here is arbitrary.}
+    \label{fig:recoil_spectrum}
+\end{figure}
+
+Convolving the differential cross section with $\ce{^{8}B}$ neutrino flux
+spectrum provides the expected event rate as a function of$T_{\mathrm{e}}$. 
+The convolution is performed in RAT with a monte-carlo simulation, the
+results of which are show in Figure~\ref{fig:recoil_spectrum}.
+
+Simulated recoil electrons are distributed uniformly throughout the SNO+ AV volume, with
+the $\theta_{sun}$ given by,
+\begin{equation}
+  \cos\theta_{sun} = \sqrt{\dfrac{T_{\mathrm{e}}(m_{\mathrm{e}}+E_{\nu})^{2}}{2m_{e}E_{\nu}^{2} + E_{\nu}^{2}T_{\mathrm{e}}}}\text{.}
+  \label{eqn:costheta_te}
+\end{equation}
+This equation assumes that the direction of the neutrino is directly from the center of sun.
+Averaged over many events that is a safe assumption; the additional angular uncertainty
+introduced by considering the radial neutrino production distribution is negligible.
+
+Once the simulated position, direction, and energy of the recoil electron are determined  the
+electron interactions and  photon production and propagation in the detector are simulated
+by Geant-4.
+The goal of this simulation is to transform the kinematics of the event to
+a collection of PMT hits in a simulated detector.
+In the simulation, once a photon interacts with a PMT photo-cathode, a check is performed
+to simulate the detection efficiency for that photon, which includes the quantum efficiency and
+collection efficiency.
+These efficiencies are determined from \textit{ex-situ} PMT measurements and
+taken to be uniform across the detector. %TODO Citation?
+If the photon passes that check a PMT signal is created in the DAQ simulation is created.
+Once all the photons in an event have been simulated and have either exited the detector,
+been detected, or been absorbed, the DAQ simulation is ran on the detected photon signals.
+
+The goal of the DAQ simulation is transform simulated PMT hits to detector observables,
+\textit{e.g.} QHS, hit times, trigger information etc.
+The DAQ simulation accomplishes this by replicating the trigger system of the real SNO+ detector.
+It starts by creating waveforms for every simulated PMT signal, the size
+of the PMT signal is drawn from the charge spectrum for each PMT as determined
+by the PCA calibration.
+Electronics noise is added to each simulated waveform, then each waveform is compared to a discriminator
+threshold, the value for which is matched to detector settings.
+For signals that pass the discriminator threshold a PMT hit is created
+and N100, N20, ESUMH and ESUML trigger signals are created.
+The waveforms for the trigger signals are simulated with electronic noise and dropout, both
+of which match detector measurements.
+The trigger signals are then summed detector wide and compared to ``MTCA+'' thresholds,
+if the one or more signals cross threshold.
+If any of the threshold crossing signals are included in the simulated trigger mask
+each hit's  QHS, QHL, QLX, and threshold crossing time, are calculated from the original PMT waveform.
+The trigger waveforms are also digitized in a simulated 12-bit digitizer with sampling rate matched
+to that of the detector.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{energy_comparison}
+  \caption[Reconstructed Energy Vs True Energy]{ The distributions of recoil
+  electron truth energy (black) and reconstructed energy (red) for simulated
+  $\ce{^{8}B}$ $\nu_{e}$ elastic-scatter events. Both histograms are normalized to $1.0$.} %TODO normalize them the number simulated instead
+  \label{fig:energy_comparison}
+\end{figure}
+
+Once the DAQ results is a dataset that can be used in exactly the same way the
+detector data can be used.
+Reconstruction is performed on the simulated detector observables in exactly the same
+way it is performed on detected events, and the reconstructed quantities can be compared
+to the corresponding MC truth values to assess expected detector performance.
+The comparison between true energy and reconstructed energy is shown in
+Fig.~\ref{fig:energy_comparison} for the simulated $\ce{^{8}B}$ $\nu_{e}$
+dataset.
+The probability of an event having a reconstructed energy below approximately 3\,MeV
+is small because events with low energy will often not trigger the detector, or
+fail to reconstruct at all.
+Additionally to prevent the reconstruction process from being too computationally expensive
+only 10\% of events with fewer than 15 PMT hits are reconstructed because
+those events are generally not useful for analysis.
 
 \subsection{Survival Probability Simulation}
-A simulation of the expected solar survival probability curve for a given
-set of mixing parameters was used.
-The survival probability is calculated using a
-3-flavor adiabatic calculation. The calculation was developed by the
-SNO collaboration~/cite{XXX}.
-is used to calculate the fraction of the solar neutrino flux that arrives
-at Earth and interacts as a $\nu_{e}$ vs the fraction that is $\nu_{\mu}$ or $\nu_{\tau}$.
-Solar densities and production distributions from the GS98~\cite{gs98}.
+\label{sec:survival_prob}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{pee_example}
+  \caption[$\ce{^{8}B}$ Solar Neutrino Survival Probability]{
+Survival probability for $\ce{^{8}B}$ solar neutrinos for mixing parameters
+given in table 1 of Capozzi\textit{et. al.}~\cite{pdg_globalfit}.
+}
+    \label{fig:example_survival_prob}
+\end{figure}
+
+The survival probability is calculated using a three-flavor adiabatic approximation.
+The implementation used is the Physics interpretation Sun-Earth Large Mixing Angle Adiabatic Approximation
+(PSelmaa) used in SNO~\cite{nuno_thesis, sno_combined}.
+The survival probability calculation use the GS98~\cite{gs98_ref} solar abundances,
+and the BS05OP radial production distributions and solar density profile~\cite{bs05op}.
+Figure~\ref{fig:example_survival_prob} shows an example survival probability, using the best fit mixing parameters
+from a global fit to neutrino oscillation data~\cite{pdg_globalfit}.
