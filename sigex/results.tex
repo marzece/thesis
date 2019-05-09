@@ -1,4 +1,15 @@
 \section{Results}
+\begin{figure}
+  \centering
+  \includegraphics[0.7\textwidth]{cos_theta_full}
+  \caption[5.0 to 15.0 MeV $\cos\theta_{sun}$ Distribution] {Distribution of event direction
+                                              with respect to solar direction.
+                                              The systematic error bar includes
+                                              angular correlated and
+                                              uncorrelated errors.}
+
+  \label{fig:costheta}
+\end{figure}
 Figure~\ref{fig:costheta} shows the distribution of events in $\cos\theta_\text{{sun}}$
 for events over the entire energy range of $5$ to $15$\,MeV and the fit to that distribution.\
 The fit gives a solar event rate of $1.30\pm0.18$~events/kt-day
@@ -14,21 +25,27 @@ The result agrees with the elastic scattering flux published by Super-K,
 $\Phi_{ES}=\left(2.345\pm0.039\right)\times10^{6}cm^{-2}s^{-1}$~\cite{superk4},
 combining statistical and systematic errors.\
 
+\begin{figure}
+  \centering
+  \includegraphics[0.7\textwidth]{cos_theta_full}
+  \caption[Solar Spectrum Data to MC Comparison]{
+    (Top) The extracted solar neutrino elastic scattering event rate as a
+    function of reconstructed electron kinetic energy $T_{\mathrm{e}}$.\
+    (Bottom) The same, as a fraction of the expected rate.\
+    The red and blue lines show the MC simulation predicted spectrum normalized
+    to the best fit flux and the SNO flux measurement~\cite{sno_combined}, respectively.\
+    The uncertainty on the SNO result includes reported uncertainty combined with
+    mixing parameter uncertainties.\
+    The black points are the results of the fits to the $\cos\theta_\text{{sun}}$
+    distribution in each energy bin,
+    with error bars indicating the combined statistical and systematic
+    uncertainty, including energy-correlated uncertainty.\
+    A horizontal dash is placed on each error bar indicating the statistics
+    only uncertainty; for all points the statistical error is dominant and the systematic
+    error bar is not visible above the dash.}
+  \label{fig:spectrum}
+\end{figure}
 %\figuremacro{residual_plot.pdf}{0.5}{spectrum}{
-%    (Top) The extracted solar neutrino elastic scattering event rate as a
-%    function of reconstructed electron kinetic energy $T_{\mathrm{e}}$.\
-%    (Bottom) The same, as a fraction of the expected rate.\
-%    The red and blue lines show the MC simulation predicted spectrum normalized
-%    to the best fit flux and the SNO flux measurement~\cite{sno_combined}, respectively.\
-%    The uncertainty on the SNO result includes reported uncertainty combined with
-%    mixing parameter uncertainties.\
-%    The black points are the results of the fits to the $\cos\theta_\text{{sun}}$
-%    distribution in each energy bin,
-%    with error bars indicating the combined statistical and systematic
-%    uncertainty, including energy-correlated uncertainty.\
-%    A horizontal dash is placed on each error bar indicating the statistics
-%    only uncertainty; for all points the statistical error is dominant and the systematic
-%    error bar is not visible above the dash.}
 
 \begin{table}
 \begin{center}
@@ -73,7 +90,7 @@ Table~\ref{table:systematics} details how each systematic uncertainty affects th
 
 \begin{figure}[htbp]
     \centering
-%\includegraphics[width=0.5\textwidth]{figures/cos_theta_6mev.pdf}%
+\includegraphics[width=0.5\textwidth]{cos_theta_6mev}%
 \caption{Distribution of event directions with respect to solar direction for
     events with energy in \numrange[range-phrase=--]{6.0}{15.0}\,MeV.}
 \label{fig:cos_theta_six}
