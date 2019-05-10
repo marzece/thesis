@@ -23,13 +23,13 @@ target material that is deep underground and is observed by a large array of
 photomultiplier tubes (PMTs).
 The target material can dictates the physical processes
 observable with the detector.
-The SNO detector was originally designed for a heavy-water ($\ce{^{2}H_{2}O}$ or $\ce{D_{2}O}$)
+The SNO detector was originally designed for a heavy-water
 target, the benefits of a heavy-water target are discussed in Sec~\ref{sec:sno}.
 For SNO+ the detector will operate in three separate phases, each with a different
 target medium.
-For the entirety of this work the target medium is light-water ($\ce{H_{2}O}$);
+For all results in this work the target medium is light-water ($\ce{H_{2}O}$);
 this phase is referred to as the ``water phase''.
-Following this the water is to be replaced by a liquid-scintillator,
+Following this, the water is to be replaced by a liquid-scintillator,
 LAB-PPO~\citep{mchen_labppo}, that will be the ``pure scintillator phase'' or
 just the ``scintillator phase''.
 After the scintillator phase the LAB-PPO will be doped with tellurium for
@@ -75,22 +75,42 @@ interactions that occur outside the PSUP\@.
 There are an additional three tubes mounted at the top of the neck of the AV,
 these are referred to as NECK tubes.
 
+%, which have typical quantum efficiency of  $XXX$\%.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{sno_casette}
+    \caption[PMT Casette] {Schematic diagram of the SNO/SNO+ PMT and
+    PMT housing. Dimensions in cm. Figure from~\citep{sno_detector_paper}.}
+\label{fig:triggeff}
+\end{figure}
+
+SNO+ has 9385 inward looking PMTs all mounted in the PSUP at an average radius
+of 8.4\,m from the center of the detector..
+All PMTs are Hammatsu R1408 8-inch PMTs.
+The inward looking PMTs are all housed within a plastic cassette,
+and each PMT is also surrounded by an array of reflective
+petals arranged in a Winston cone~\cite{winston}.
+This reflective petals serves to increase the effective photo-sensitive area
+of the PMT\@ and are typically referred to as the PMT ``concentrator''..
+With the concentrators the approximate geometric coverage of the PMT array is $55\%$,
+accounting for the angular acceptance and reflectivity of the concentrators gives
+an effective coverage of approximately $50\%$.
+Figure~\ref{fig:sno_pmt_casette} shows a schematic diagram of the PMT and
+its housing.
+
 For the scintillator and tellurium loaded phases the AV volume will have
-a lower density than the surrounding water volume, cause significant buoyant
+a lower density than the surrounding water volume, producing significant buoyant
 forces on the AV\@.
 To counteract the buoyancy a hold-down rope-net was installed across the top
 of the AV, and anchored in the cavity floor.
 A number of PMTs were removed from the PSUP to allow the rope to pass through.
 Figure~\ref{fig:ropes} depicts the rope-net.
-
 Above the cavity volume is an optically isolated deck on which all the detector
 readout and trigger electronics are kept.
-PMTs are housed within a water-tight cassette and readout via a custom BNC-like
-connector that connects to the PMT interface electronics.
-Within the PMT housing is a custom PMT-base that fans out the approximately 2kV
-high voltage (HV) supply to the PMT input pins and routes the PMT return signal to the same
-HV supply cable.
-
+The PMT casetted provides a BNC-like connection that allows the 2kV power 
+supply to be provided to each PMT and allows for the PMT signals to be read
+out.
 
 \section{Detection Mechanism}
 The goal of the SNO+ detector is to detect and record information about as
@@ -120,9 +140,9 @@ allows the position of the particle to be deduced.
 SNO+ takes advantage of each of these aspects of Cherenkov radiation to reconstruct
 the position, time, energy, and direction of all interacting particles in the
 detector.
-Our methods for deducing each value is detailed in Sec~\ref{sec:reconstruction}.
+The methods used for deducing each value is detailed in Sec~\ref{sec:reconstruction}.
 
-For the scintillator and tellurium loaded phases scintillation processes are
+For the scintillator and tellurium loaded phases scintillation processes will be
 the dominant photon production mechanism.
 The Cherenkov light production is roughly the same in scintillator as it is in
 water, however the ratio of light produced by scintillation processes to Cherenkov
@@ -141,11 +161,11 @@ where $x=e$, $\mu$, $\tau$.
 For $x=e$ there exists a neutral current and a charged current channel,
 for $x=\mu$ or $x=\tau$ there exists only the neutral current channel.
 % TODO try and remember what actually I mean here
-Nuclear interactions occur as well with the oxygen in the water,
+Charged and neutral current nuclear interactions occur as well with the oxygen in the water,
 however these are rare and cannot be uniquely to identified against radioactive
-backgrounds, and so are ignored typically.
+backgrounds, and so are ignored.
 
-The cross-section for the ES interaction is discussed in~\ref{sec:es_xsec}.
+The cross-section for the ES interaction is discussed in~\ref{sec:esxsec}.
 The forward peaked angular cross-section means that information about the
 neutrino direction is maintained in the interaction.
 But the differential cross-section for recoil energy is nearly flat below the
@@ -167,35 +187,9 @@ is preserved by the interaction.
 %a distance $\ell \dfrac{c}{v}$ from B.
 
 
-The photons can the be detected by the SNO+ PMT array, and the pattern
-of hits analyzed to determine the electron direction, energy, and position.
+%The photons can the be detected by the SNO+ PMT array, and the pattern
+%of hits analyzed to determine the electron direction, energy, and position.
 
-SNO+ has 9385 inward looking PMTs all mounted on a geodesic sphere referred to as
-the PMT support structure (PSUP). The PMTs are at an average radius of 8.4\,m from
-the center of the detector.
-Mounted on the outside of the PSUP are 90 outward looking (OWL) PMTs.
-These serve to reject interactions in the outer volume from cosmic muons.
-All PMTs are Hammatsu R1408 8-inch PMTs.
-%, which have typical quantum efficiency of  $XXX$\%.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.7\textwidth]{sno_casette}
-    \caption[PMT Casette] {Schematic diagram of the SNO/SNO+ PMT and
-    PMT housing. Dimensions in cm. Figure from~\citep{sno_detector_paper}.}
-\label{fig:triggeff}
-\end{figure}
-
-The inward looking PMTs are all housed within a plastic cassette.
-Each PMT is also surrounded by an array of reflective
-petals which serve to increase the effective photo-sensitive area
-of the PMT\@.
-The reflective petals are typically referred as the PMT ``concentrator''.
-With the concentrators the approximate geometric coverage of the PMT array is $55\%$,
-accounting for the angular acceptance and reflectivity of the concentrators gives
-an effective coverage of approximately $50\%$.
-Figure~\ref{fig:sno_pmt_casette} shows a schematic diagram of the PMT and
-its housing.
 
 
 \subsection{Electronics And DAQ}
@@ -217,7 +211,7 @@ PMT signal is recorded such that offline analysis is possible.
 
 The first step of the PMT interface system is the PMT base. The base is responsible
 for fanning-out the supplied HV to the PMT dynode pins and connecting the PMT output
-to a PMT cable. The PMT base is housed within a water-tight cassette.
+to a PMT cable. The PMT base is housed within the water-tight cassette.
 The PMT cables pass through penetrations in the cavity ceiling where they then connect
 to the rest of the electronics. The PMT cable connects first to a PMT interface
 board (PMTIC). The physical connection occurs on a daughter card, called a ``paddle card'',
@@ -233,7 +227,7 @@ a front end card (FEC) via a board-to-board connector, where it enters
 the readout and trigger system.
 
 That signal is compared to a threshold, if the signal is over threshold a ``hit''
-has occurred\,-\,this threshold is often called the ``channel threshold''.
+has occurred --- this threshold is often called the ``channel threshold''.
 At the time of the channel threshold crossing the following processes occur, the name for each is given
 in parenthesis:
 a 100\,ns long fixed-height square pulse is created (N100), a 20\,ns fixed height square pulse is created (N20),
@@ -252,7 +246,7 @@ from all channels with be combined and separately all the
 N20 signals will be combined, \textit{etc}.
 The signals are combined through analog summation, summing is done on a few different
 circuit boards within the detector.
-The FEC sums the top and bottom sixteen channels separately, the crate
+The FEC sums its top and bottom sixteen channels separately, the crate
 trigger card (CTC) sums the signals from the sixteen
 FECs that are in each electronics crate.
 The signals from each of the nineteen CTCs are all summed on the
@@ -487,7 +481,7 @@ across the ``SNOBUS'' backplane.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{xl3_daq_diagram}
-    \caption[Dropout Fit Example]{Diagram of the SNO+ DAQ\@.
+    \caption[SNO+ DAQ Diagram]{Diagram of the SNO+ DAQ\@.
     Figure from~\citep{richie_thesis}.}
 \label{fig:xl3_daq_diagram}
 \end{figure}
@@ -630,7 +624,6 @@ be the same.
 The time delay between the PEDESTAL and PULSE\_GT can be adjusted from
 24\,ns to 2574\,ns.
 
-
 The goal of an ECAL is to provide settings for each channel that will result in a uniform
 detector response. Put differently, the ECAL attempts to minimize channel-to-channel variation
 across the detector.
@@ -691,6 +684,7 @@ ELLIE can be used for a number of calibration purposes, including playing a
 similar role to the laserball for a PCA\@.
 
 \subsection{Dropout}
+\label{sec:dropout}
 Dropout comes from a error in the design of one of the
 ASICs on the DB; the error results in the N100 and N20 trigger pulses from
 a channel being much longer than they should be, \textit{e.g.} 1\,ms wide
