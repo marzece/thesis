@@ -273,7 +273,7 @@ system.
 For example, if there exists 10\,mV of noise in the system a 20\,mV pulse
 would give a 2:1 SNR, however this would mean if 5000 PMT hits occurred simultaneously
 the signal would be 100\,V in size.
-It is not practical to have a system with 100+\,V range and 20\,mV resolution,
+It is not practical to have a system with 100\,V range and 20\,mV resolution,
 so the three different gain paths allow for three different trade-offs between
 SNR/resolution and range.
 The highest gain signal has the best SNR, but the smallest range, and so usually
@@ -566,7 +566,7 @@ effects occur on the $\approx1$\,hour timescale the 1\,s time scale for the
 baseline restoration provides adequate correction for those sort of effects.
 
 
-\subsubsection{TUBII}
+\subsection{TUBII}
 \label{sec:tubii}
 TUBII is used as interface board for some of the detector calibration systems.
 These systems emit light into the detector and usually need to be
@@ -608,7 +608,7 @@ TUBII also accepts analog signal and can apply an MTCA\,-\,like threshold
 discrimination and it contains logic for creating raw-trigger pulses the
 same as the MTCA+.
 
-\subsection{Electronics Calibration}
+\section{Electronics Calibration}
 There are three primary calibrations performed for electronics to ensure that the
 detector behaves in a predictable way and that readout values can be interpreted
 for a physics analysis. The first calibration is the ECAL (Electronics Calibration),

@@ -41,7 +41,7 @@ The experiment's results were consistent with Fermi's model of $\beta$ decay and
 considered a confirmation of the neutrino's existence.
 
 The first experimental evidence for neutrino flavor came in 1962 from an
-experiment \citep{lederman_muon_flavor} that studied the interactions of
+experiment~\citep{lederman_muon_flavor} that studied the interactions of
 neutrinos that came from muon decay, and the interactions of neutrinos
 from beta decay.
 The experiment observed that neutrinos from came from muon decay would produce
@@ -52,13 +52,46 @@ This lead to the conclusion that there are two different varieties of neutrino,
 the $\nu_e$ and the $\nu_{\mu}$, and the idea that lepton flavor is conserved in
 Weak interactions.
 The third lepton generation, the $\tau$ and the $\nu_{\tau}$ was discovered 13
-years later in 1975 \citep{tau_discovery}.
-% It's worth noting that lepton flavor conservation was not predicted or required
-% by the standard model, for that reason it's known as an 'accidental symmetry'.
-% ^^^^Not true??? Lepton number is an accidental symmetry, idk about lepton
-% flavor Also the definition of accidental symmetry has to do with term in the
-% lagrangian being to high dimensional (according to wikipedia) not what I
-% said....though they might be the same somehow
+years later in 1975~\citep{tau_discovery}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{bahcall_evolution}
+\caption[Evolution of Solar Neutrino Predictions and Observations]{
+The evolution in the predicted and detectable flux of neutrinos from the sun.
+Figure from~\cite{bahcall_evolution}.}
+\label{fig:solar_evolution_cartoon}
+\end{figure}
+
+Modern modelling of the Sun and stars could be said to have begun in 1920 with
+Arthur Eddington's proposal that nuclear reactions fuel stellar burning~\cite{eddington}.
+Bethe's 1938 calculations of solar energy production~\cite{bethe1, bethe2}
+followed Eddington's proposal and produced the first model for stellar evolution and burning.
+This model was developed over the years as knowledge of nuclear interaction
+improved, eventually resulting in Bahcall's comprehensive summary of and
+prediction for the Sun's rates of neutrino
+production~\cite{bahcall_solar_neutrinos_theory}.
+Simultaneous to improvements in solar and nuclear modeling,
+particle detection techniques had developed and
+the first solar neutrino detector, the Homestake experiment, began
+operations in 1967~\cite{homestake_initial}.
+The Homestake experiment provided the first experimental measurement
+of solar neutrinos and measured a flux that was approximately half what was expected~\cite{homestake}.
+Bahcall and Davis depicted the evolution in solar neutrino predictions and
+experimental observation with plot shown in Fig.~\ref{fig:solar_evolution_cartoon}.
+
+The persistent deficit measured by the Homestake experiment
+eventually became known as the ``Solar Neutrino Problem''.
+It was the first evidence that the flavor of neutrinos oscillates with
+time, and that therefore neutrinos must have mass.
+Conclusive evidence for neutrino oscillation came from  atmospheric neutrino
+measurements by the Super Kamiokande and Irvine-Michigan-Brookhaven (IMB)
+experiments~\cite{superk_atmospherics, imb_atmospherics}.
+And the Solar Neutrino Problem was conclusively resolved by flavor
+independent solar neutrino measurement done
+by the SNO experiment~\cite{sno_first, sno_second}.
+More will be said about the Super Kamiokande and SNO experiments in
+Sec.~\ref{sec:experiments}.
 
 \subsection{Neutrino Interactions}
 \label{sec:neutrino_interactions}
@@ -77,7 +110,7 @@ The second aspect is that the weak interaction is known to be chiral,
 only left-handed particles and right-handed anti-particles interact weakly.
 Since neutrinos only interact weakly, the only detectable varieties of neutrino
 is the left-handed neutrino $\nu^{L}$  and the right-handed
-anti-neutrino $\overline{\nu}^{R}$~/cite{weinberg}.
+anti-neutrino $\overline{\nu}^{R}$~\cite{weinberg}.
 
 Discussed here are the neutrino interactions occur in the energy regime
 relevant for solar neutrinos.
@@ -247,7 +280,7 @@ given by,
     g_{2} = \sin^{2}\theta_{\mathrm{W}}\text{.}
 \end{equation}
 
-Since the electron scattering is elastic the kinematics of the interaction
+Since the electron scattering is elastic, the kinematics of the interaction
 leave only one free parameter, the outgoing electron direction with respect
 to the incoming neutrino direction, $\theta$.
 For a recoil electron with a given value for $\theta$ the electron kinetic energy is
@@ -315,12 +348,12 @@ kamiokande, superk_first_solar}.
 \section{Neutrino Oscillations}
 \label{sec:neut_osc}
 Neutrino oscillation is a phenomena of massive neutrinos, and it's observation
-is currently the only evidence that neutrinos do indeed have mass.
+is currently the only experimental evidence that neutrinos do indeed have mass.
 Neutrino oscillation results from the fact that neutrino flavors do not have
 well defined masses, instead neutrino flavor states are a quantum superposition
 of neutrino mass states.
 And conversely, mass states can be described as a superposition of flavor states.
-This can be stated more precisely as
+Stated more precisely,
 \begin{equation}
     \ket{\nu_{i}} = U_{i\ell}\ket{\nu_\ell}
 \end{equation}
@@ -433,8 +466,8 @@ It is useful to separate out the terms where $i=j$,
     P_{ee}(t) = \sum_{i}\abs{U_{ei}}^4 + \sum_{i,j\text{, }j \ne i}
     \abs{U_{ei}}^2\abs{U_{ej}}^2e^{-i(E_{i} - E_{j})t}\text{.}
 \end{equation}
-Here we can see there are terms that oscillate with time, and terms that do
-not.
+Here we can see there are terms that vary with time, and terms that are
+constant.
 
 A few more simplifications are commonly done, using the equal momentum
 assumption mentioned earlier and the fact the neutrino rest mass is
@@ -567,7 +600,7 @@ branching ratios for the Sun, values from~\cite{bahcall_book}.}
 \end{figure}
 Nuclear reactions in the core of the Sun provides the main fuel for
 stellar burning, and prevents the Sun from undergoing gravitational
-collapse~\cite{XXX}. %XXXTODO find a  source like Bethe or something
+collapse~\cite{bethe1, bethe2}.
 There exists two separate chains of nuclear reactions that are present in typical
 stellar conditions, the $pp$-chain and the CNO-cycle~\cite{bahcall_solar_neutrinos_theory}.
 Figure~\ref{fig:pp_chain} and~\ref{fig:cno_cycle} shows these two reaction chains.
@@ -590,7 +623,7 @@ of a muon or tau, the only charged lepton generated is electrons. And so from
 lepton flavor conservation only electron flavor neutrinos are generated.
 And because the neutrino producing processes are all fusion reactions or
 $\beta^{+}$ decay, only neutrinos are produced and not any anti-neutrinos.
-These neutrinos are produced with an energy spectrum shown in Fig.~\ref{bs05_spectrum}.
+These neutrinos are produced with an energy spectrum shown in Fig.~\ref{fig:bs05_spectrum}.
 
 The $hep$ and $\ce{^{8}B}$ reactions produce neutrinos with the highest
 energies. Since the $hep$ reaction branching ratio is so low the flux
@@ -659,7 +692,7 @@ and helioseismological measurements of the Sun~\cite{ags, bahcall01}.
 The disagreements between the two models has become known as the
 ``Solar Metallicity Problem''.
 
-\subsection{Solar Neutrino Mixing}
+\section{Solar Neutrino Mixing}
 Mixing for solar neutrinos is historically very important as it was
 the measurements of solar neutrinos that provided the first evidence that
 neutrinos mix at all~\cite{homestake,solar_nu_problem}.
@@ -681,9 +714,10 @@ The condition for an MSW-resonance between any two matter states is given by
 \begin{equation}
     N_{e} = \frac{\Delta m^{2} \cos2\theta}{2\sqrt{2}EG_{F}}\text{.}
 \end{equation}
-This condition is met for a 10\,MeV at a solar radius of XXX, for the mixing parameters
-given in XXX %cite pdg probably.
-For neutrinos with energy below approximately 1\,MeV this condition is not met
+This condition is met for a 10\,MeV at an electron density
+of $\frac{N_{e}}{N_{A}} \approx 20$ which occurs a solar radius of $0.25R_{\odot}$, 
+for the mixing parameters given in~\cite{pdg_globalfit}.
+For neutrinos with energy below approximately 5\,MeV this condition is not met
 at any point within the sun, and so those neutrinos do not experience the MSW
 resonance.
 Once a neutrino created in the core of the sun has travelled past a solar radius of
@@ -709,6 +743,14 @@ and $N$ is electron density as a function of position.
 For experimentally determined values of $\theta_{12}$ and $\Delta m^{2}_{21}$ in the so-called
 Large Mixing Angle (LMA) regime the effect of $P_{\mathrm{jump}}$ is negligible.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.84\textwidth]{day_night_example}
+    \caption[Day and Night Survival Probability]{$\ce{^{8}B}$ survival
+    probability during the day and night.}
+\label{fig:day_night_example}
+\end{figure}
+
 One final feature of solar neutrino mixing is the ``day-night effect''.
 The mantle and core of the Earth have sufficient electron density to provide
 a non-negligible change to the effective neutrino mixing Hamiltonian as the neutrino
@@ -728,38 +770,39 @@ the Earth;
 neutrinos that are detected at night, when the detector is ``shadowed'' by the
 Earth, will travel through large portions of the Earth.
 Thus the effective survival probability is different during the day than the night.
-Figure~\ref{fig:daynight_example} shows an example survival probability during
+Figure~\ref{fig:day_night_example} shows the survival probability during
 the day and night.
-
 
 \section{Neutrino Experiments}
 \label{sec:experiments}
 There's a long a diverse list of neutrino experiments that have contributed to
 our current understanding of neutrinos and neutrino oscillations and solar neutrinos.
 I won't attempt to list them all here, but rather highlight the most immediately
-relevant to this work. A more comprehensive review can be found in Ref~\citep{giuntikim}.
+relevant to this work;
+These experiments play a significant role in the analysis described in Chapter~\ref{sec:chameleons}.
+A more comprehensive review of neutrino experiments can be found in Ref.~\citep{giuntikim}.
 
-\subsection{Homestake}
-The first experiment to successfully detect solar neutrinos was the Homestake
-experiment.
-The detector was composed of approximately 100000 gallons of dry cleaning fluid.
-The choice of target was motivated by the high chlorine content in the cleaning
-fluid. Neutrinos above an energy of XXX would interact with the chlorine via
-beta decay, creating XXX. XXX would then decay to XXX with a half life of XXX.
-Periodically $\ce{^{3}He}$ was bubbled through the
-target liquid to extract the atoms of XXX that had been created. Once
-extracted those atoms were observed with proportional counters to count the
-number of XXX to XXX decays. The number of observed counts was proportional
-to the solar neutrino interaction rate, and therefore the solar neutrino flux.
-
-The Homestake experiment~\cite{homestake} ran from 1970 - 1990. %(XXX? is that right??)
-The experiment was able to provide the first measurement of the solar neutrino
-flux above XXX MeV. In 19XX they first reported a measure flux of
-XXX, nearly a third of the expected rate which was XXX.
-This deficiency became known as the solar neutrino problem, and it
-was the first evidence for neutrino oscillation.
-The deficiency was present across the entire lifetime of the Homestake experiment,
-their final report flux was XXX.
+%\subsection{Homestake}
+%The first experiment to successfully detect solar neutrinos was the Homestake
+%experiment.
+%The detector was composed of approximately 100000 gallons of dry cleaning fluid.
+%The choice of target was motivated by the high chlorine content in the cleaning
+%fluid. Neutrinos above an energy of XXX would interact with the chlorine via
+%beta decay, creating XXX. XXX would then decay to XXX with a half life of XXX.
+%Periodically $\ce{^{3}He}$ was bubbled through the
+%target liquid to extract the atoms of XXX that had been created. Once
+%extracted those atoms were observed with proportional counters to count the
+%number of XXX to XXX decays. The number of observed counts was proportional
+%to the solar neutrino interaction rate, and therefore the solar neutrino flux.
+%
+%The Homestake experiment~\cite{homestake} ran from 1970 - 1990. %(XXX? is that right??)
+%The experiment was able to provide the first measurement of the solar neutrino
+%flux above XXX MeV. In 19XX they first reported a measure flux of
+%XXX, nearly a third of the expected rate which was XXX.
+%This deficiency became known as the solar neutrino problem, and it
+%was the first evidence for neutrino oscillation.
+%The deficiency was present across the entire lifetime of the Homestake experiment,
+%their final report flux was XXX.
 
 \subsection{SNO}
 \label{sec:sno}
@@ -855,7 +898,7 @@ elastic scattering rate,
 \begin{equation*}
 \Phi_{\mathrm{ES}} = (2.308\pm0.020(stat.)^{+0.039}_{-0.040}(syst).)\times10^{6}\mathrm{cm}^{-2}\mathrm{s}^{-1}
 \end{equation*}
-And when constraining the full $\ce{^{8}B}$ flux to the SNO result they've measured
+Constraining the full $\ce{^{8}B}$ flux to the SNO result they've measured
 the solar mixing parameters as,
 \begin{equation*}
 \Delta m^{2}_{21} = (4.8^{+1.5}_{-0.8})\times10^{-5} \mathrm{eV}^{2}
@@ -883,50 +926,64 @@ was moving in.
     $N_{h}$ is the number of prompt PMT hits.  Figure from~\cite{borexino_nature}.} %XXX Look up N_h to be sure
 \label{fig:borexino_spectrum}
 \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{borexino_pee}
+    \caption[Borexino Survival Probability] {The best fit survival probability
+    as measured by Borexino compared to the MSW modified neutrino mixing
+    and vacuum only mixing. Figure from~\cite{borexino_nature}.}
+\label{fig:borexino_pee}
+\end{figure}
 
 Water-Cherenkov detector are able to measure solar neutrinos by correlating the
 direction of detected events with the position of the sun. Since Borexino is not
 able to determine the direction of events within their detector, they instead
 perform a spectroscopic measurement. The measurement requires
 all sources of backgrounds to be accounted for and constrained from \textit{ex-situ}
-measurements. Figure \ref{fig:borexino_spectrum} shows the observed spectrum by Borexino and the
-spectrums of the constituent solar fluxes and backgrounds.
+measurements. Figure\ref{fig:borexino_spectrum} shows the observed spectrum by Borexino and the
+spectra of the constituent solar fluxes and backgrounds.
 
 Borexino took data from 2007 to 2016, with a pause in 2010 to remove source
 of radioactive backgrounds and improve the radio-purity of their detector.
-With that data they've produced measurements of neutrino fluxes from the $\ce{^{7}Be}$,
-$\ce{pep}$, $\ce{pp}$, and $\ce{^{8}B}$; they've also placed upper limits on the flux
+With that data they've measured $\ce{^{7}Be}$, $\ce{pep}$, $\ce{pp}$, and $\ce{^{8}B}$ neutrino
+fluxes; they've also placed upper limits on the flux
 of neutrinos from the CNO cycle and from the $hep$ solar reaction.
 They're currently the only experiment to have measured the $\ce{pp}$ and $\ce{pep}$ neutrino
 fluxes.
+Figure~\ref{borexino_pee} shows these results as the best fit survival probability
+for each measured flux.
 
-$XXX$ FIND TABLE\\
-show spectrum and table of results
+%$XXX$ FIND TABLE\\
+%show spectrum and table of results
 
 \subsection{KamLAND}
-The Kamioka Liquid Scintillator Antineutrino Detector (KamLAND) is a liquid-scintillator detector.
+The Kamioka Liquid Scintillator Anti-neutrino Detector (KamLAND) is a liquid-scintillator detector.
 Its primary physics goals were the detection of reactor anti-neutrinos via
-inverse beta-decay (IBD),
-but the experiment is also sensitive to solar neutrinos.
+inverse beta-decay.
+In addition to reactor anti-neutrinos KamLAND is also sensitive to solar neutrinos.
 Performing a fit to the observed energy spectrum they were able to measure
 the flux of $\ce{^{7}Be}$ and $\ce{^{8}B}$ solar neutrinos.
 The $\ce{^{8}B}$ flux is reported as the ``elastic-scattering'' flux $\Phi_{ES}$, the flux of
 pure electron flavor neutrinos that would produce the observed event rate.
-They measure $\Phi_{ES\mathrm{,}\ce{^{8}B}} = 2.77 \pm 0.26(\mathrm{stat.}) \pm 0.32(\mathrm{syst.}) \times 10^6 \mathrm{cm}^{-2}\mathrm{s}^{-1}$~\cite{kamland_b8}.
+They measure 
+\begin{equation*}
+\Phi_{ES\mathrm{,}\ce{^{8}B}} = 2.77 \pm 0.26(\mathrm{stat.}) \pm 0.32(\mathrm{syst.}) \times 10^6 \mathrm{cm}^{-2}\mathrm{s}^{-1}\text{\cite{kamland_b8}}.
+\end{equation*}
 KamLAND's reported $\ce{^{7}Be}$ flux, accounting for oscillation effects,  is
- $\Phi_{\ce{^{7}Be}} = (5.82\pm 1.02)\times10^{9} \mathrm{cm}^{-2}\mathrm{s}^{-1}$~\cite{kamland_be7}.
-
+\begin{equation*}
+\Phi_{\ce{^{7}Be}} = (5.82\pm 1.02)\times10^{9} \mathrm{cm}^{-2}\mathrm{s}^{-1}\text{\cite{kamland_be7}.}
+\end{equation*}
 
 \begin{figure}[htbp]
 \centering
-\begin{subfigure}[b]{0.48\textwidth}
+\begin{subfigure}[b]{0.75\textwidth}
 \centering
 \includegraphics[width=\textwidth]{kamland_be7_spectrum}
 \caption{}
 \label{fig:kamland_be7}
 \end{subfigure}
-%\hfill
-\begin{subfigure}[b]{0.48\textwidth}
+
+\begin{subfigure}[b]{0.75\textwidth}
 \centering
 \includegraphics[width=\textwidth]{kamland_b8_spectrum}
 \caption{}
@@ -956,10 +1013,17 @@ affected by $\Delta m^{2}_{21}$.
 Figure~\ref{fig:kamland_reactor} shows reactor anti-neutrino energy spectrum measured
 by the KamLAND experiment, with the best fit mixing parameters compared to the
 expected spectrum with no oscillations.
-From this measurement a best fit value of $\Delta m^{2}_{21} = 7.58^{+0.14}_{-0.13}(\mathrm{stat.})^{+0.15}_{-0.15}(\mathrm{syst.}) \times 10^{-5}$\,eV
-and $\tan^{2} \theta_{12} = 0.56^{+0.10}_{-0.07}(\mathrm{stat.})^{+0.10}_{-0.06}(\mathrm{syst.})$ was determined.
+From this measurement a best fit value of 
+\begin{equation*}
+    \Delta m^{2}_{21} = 7.58^{+0.14}_{-0.13}(\mathrm{stat.})^{+0.15}_{-0.15}(\mathrm{syst.}) \times 10^{-5}\text{eV}^{2}
+\end{equation*}
+and,
+\begin{equation*}
+\tan^{2} \theta_{12} = 0.56^{+0.10}_{-0.07}(\mathrm{stat.})^{+0.10}_{-0.06}(\mathrm{syst.})
+\end{equation*}
+was determined.
 
-The value for $\Delta m^{2}_{21}$ measured by KamLAND is in disagreement with the value extracted
-by solar experiments, although it cannot be ruled out that the disagreement
-is a result of a statistical fluctuation. This discrepancy will be discussed further
-in section~\ref{sec:chameleons}.
+The value for $\Delta m^{2}_{21}$ measured by KamLAND is in disagreement with
+the value determined by solar experiments, although it cannot be ruled out that
+the disagreement is a result of a statistical fluctuation. This discrepancy
+will be discussed further in Sec.~\ref{sec:chameleons}.
