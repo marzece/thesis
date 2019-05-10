@@ -13,73 +13,72 @@
 % ----------------------- sigex content -------------------------
 % ----------------------------------------------------------------------
 
-This section details the analysis methods used for extracting the $\ce{^{8}B}$
+ Described here are the analysis used for extracting the $\ce{^{8}B}$
 interaction rate in the SNO+ detector during it's initial water-phase
 data taking run.
-SNO+ is sensitive to the $\ce{^{8}B}$ and $hep$ solar neutrinos,
-though at almost all energies the interaction rate of $\ce{^{8}B}$ neutrinos
-is dominant over the rate of $hep$ neutrino interactions.
-Lower energy solar neutrinos, such as those from the $pep$ and $\ce{^{7}Be}$
-reactions are in principle measurable, but radioactive backgrounds from
-contaminants in the water render signal extraction nearly impossible.
+This first section provides a broad overview of the data, simulation and analysis methods
+used for this result.
+A more detailed description of these topics is provided in the following sections.
+A report of these results is also published in Anderson~\textit{et.\ al.}~\cite{snop_solar}.
 
-The following sections detail the simulation of expected interaction rates
-and the selection criteria performed to isolate the solar neutrino signal
-from backgrounds.
-As well as the techniques used to reconstruct information about detected events
-from the observed PMT hit information.
+Neutrinos interact in the SNO+ detector by elastic scattering off
+electrons in the detector volume.
+Depending on the energy transferred in the interaction
+the scattered electron will produce Cherenkov radiation, which is detected by the PMT array.
+The direction of the Cherenkov cone is expected to be pointing directly away
+from the Sun at the time of the event for solar neutrino interactions.
+The principle of this analysis is to search for the rate of events that exhibit
+this solar direction correlation, and interpret that rate as a solar neutrino flux.
+This analysis is similar to solar neutrino measurements done by SuperK~\cite{superk4} and
+to a lesser extent, SNO~\cite{sno_combined}.
 
-Solar neutrinos are detected in SNO+ through the electron elastic scattering
-interaction, and the Cherenkov radiation produced by the scattered
-electron.
-Since the scattered electron will typically be nearly co-linear with
-the incoming neutrino direction, and the electro
-The analysis revolves around the directionality of the neutrino-electron
-elastic scattering interaction and of the Cherenkov radiation from
-the recoil electro
+Data for this analysis was taken from May 2017 to January 2018, with pauses
+for maintenance, calibration, and commissioning of detector components.
+The majority of data taken was blinded for an eventual search for invisible
+nucleon decay~\cite{snop_nd}.
+A two week period of time at the start of data taking was left un-blinded to
+allow for analysis methods to be evaluated, this period of time is referred
+to as the open dataset.
+Approximately half-way through the data taking period the detector trigger thresholds
+were adjusted, allowing for a significant reduction in the detector energy
+threshold.
+The periods of time before and after this threshold reduction are respectively
+referred to as the high and low threshold period.
+And finally, during the commissioning of the external water circulation system
+a significant increase in radioactive backgrounds was observed in the upper
+portion of the external water.
+These background rates eventually returned to normal levels; the period of time
+during which the rate of external backgrounds were elevated is referred to
+as the ``hot-spot'' time period, as the backgrounds were clustered around
+a small area of the detector.
 
-RAT simulates all effects after the initial interaction, including photon
-propagation and detection, and particle scattering.
-Beyond the photon and physics simulation RAT also simulates the SNO+ DAQ and trigger electronics,
-allowing the effects of digitization and electronics noise to be simulated.
+Simulation is used to determine expected event rates and distributions of
+detector observables for SNO+.
+The simulation software used is ``RAT'', which performs monte-carlo
+simulation of events within the SNO+ detector.
+Beyond simulation RAT also provides methods for reconstructing event
+observables, \textit{e.g.} energy, direction etc.
+And so RAT is also used for processing detector data in addition
+to simulated data.
+There exists a open-source version of this software called
+RAT-PAC~\cite{ratpac}, that is largely the same as the SNO+ version of RAT,
+the most significant difference is the implementations of a detector model
+and event reconstruction methods.
 
-The BS05OP~\cite{bs_ssm} solar neutrino production rate is an input to the simulation.
-A cross-section model take from \citep{esxsec}
-is used to estimate the elastic scattering interaction rate.
-RAT includes detailed model of the detector response for each interaction.
+The $\ce{^{8}B}$ solar neutrino signal is extracted from the detector dataset
+using a number of cuts to isolate likely solar neutrino events, and remove
+events that originate from instrumental effects or radioactive contamination.
+A fit is performed to the resulting dataset, searching for the rate above background of events
+that are directed away from the Sun as the time of the event.
+The source of these events is assumed to be $\ce{^{8}B}$ solar neutrinos, and
+so the flux $\ce{^{8}B}$ events is estimated from the observed event rate.
+Simulation is used to produce the PDFs used in the fit and provide a map observed
+event rate to neutrino flux.
+Since simulation plays a significant role in this analysis, data taken using
+a deployed $\ce{^{16}N}$ source is used to evaluate the accuracy of the
+simulation, assign systematic uncertainties to distributions of simulated observables
+and similarly provide empirical corrections to those observables.
 
-Solar neutrino events are simulated on run-by-run basis with a fixed average rate
-of interactions.
-Each run's simulation is matched to the detector trigger and
-DAQ settings for that run.
-To ensure adequate monte-carlo statistics the rate of solar $\nu_{e}$ and
-$\nu_{\mu\text{,\,}tau}$ interactions are respectively enhanced by a factor of
-1700 and 9600;
-the enhanced rate is later removed as a correction
-to the normalization of the PDFs created from the monte-carlo simulation.
-
-$\theta_{sun}$ is defined by
-\begin{equation}
-\cos\theta_{sun} = \vec{d}\cdot\vec{d_{sun}}\text{, }
-\end{equation}
-where $\vec{d_{e}}$ represents the reconstructed direction of an event and
-$\vec{d_{sun}}$ is the direction vector pointing from the center of the sun to
-the reconstructed position of the event.
-$\vec{d_{sun}}$ estimates the direction the neutrino was travelling when it interacted
-within the detector, $\vec{d_{\nu}}$; it is assumed the neutrino travelled directly
-from the center of the sun without scattering off anything while it travelled.
-This is a good assumption because the neutrino cross-section is small that it's very
-unlikely the neutrino will interact with anything before interacting in the detector.
-Assuming the neutrino comes from the center of the sun is a poor assumption for an individual
-neutrino, but averaged over many neutrinos it is a good assumption.
-Additionally, correcting for the radius the neutrino is produced at would only adjust
-the direction by at most $0.1\deg$.
-Figure XXX shows the angle between $d_{sun}$ and $d_{\nu}$ for simulated solar neutrino
-events.
-
-Figure XXX shows why $\theta_{sun}$ is a useful variable for a solar neutrino analysis.
-By comparing the rates of events with different values for $\theta_{sun}$ one can
-extract a background rate and a solar rate.
 \input{sigex/simulation}
 \input{sigex/reconstruction}
 \input{sigex/calibration}
