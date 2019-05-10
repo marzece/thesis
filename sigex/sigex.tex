@@ -1,5 +1,5 @@
 %: ----------------------- sigex file header -----------------------
-\chapter{Signal Extraction}
+\chapter{$\ce{^{8}B}$ Flux Measurement}
 \label{sec:sigex}
 
 % the code below specifies where the figures are stored
@@ -23,20 +23,30 @@ Lower energy solar neutrinos, such as those from the $pep$ and $\ce{^{7}Be}$
 reactions are in principle measurable, but radioactive backgrounds from
 contaminants in the water render signal extraction nearly impossible.
 
+The following sections detail the simulation of expected interaction rates
+and the selection criteria performed to isolate the solar neutrino signal
+from backgrounds.
+As well as the techniques used to reconstruct information about detected events
+from the observed PMT hit information.
 
+Solar neutrinos are detected in SNO+ through the electron elastic scattering
+interaction, and the Cherenkov radiation produced by the scattered
+electron.
+Since the scattered electron will typically be nearly co-linear with
+the incoming neutrino direction, and the electro
+The analysis revolves around the directionality of the neutrino-electron
+elastic scattering interaction and of the Cherenkov radiation from
+the recoil electro
 
-
-Solar neutrino events are monte-carlo simulated using ``RAT'', a Geant-4 based
-simulation and analysis toolkit.
 RAT simulates all effects after the initial interaction, including photon
 propagation and detection, and particle scattering.
 Beyond the photon and physics simulation RAT also simulates the SNO+ DAQ and trigger electronics,
 allowing the effects of digitization and electronics noise to be simulated.
 
-A solar neutrino production rate is an input to the simulation.
-A cross-section model take from \citep{bahcall} and \citep{lookitup}
+The BS05OP~\cite{bs_ssm} solar neutrino production rate is an input to the simulation.
+A cross-section model take from \citep{esxsec}
 is used to estimate the elastic scattering interaction rate.
-RAT provides an accurate model of the detector response for each interaction.
+RAT includes detailed model of the detector response for each interaction.
 
 Solar neutrino events are simulated on run-by-run basis with a fixed average rate
 of interactions.

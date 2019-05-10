@@ -141,11 +141,11 @@ data from the $\ce{^{16}N}$ source, that analysis is detailed in~\ref{XXX}.%Teal
 The basic approach is to use tagged $\ce{^{16}N}$ events as a source of known
 non-instrumental events, and evaluate what fraction of the time those events
 are identified as instrumentals, this provides an estimate of the data-cleaning
-sacrifice. The results of this analysis estimated a $XXX$\% percent signal
+sacrifice. The results of this analysis estimated a $1.2$\% percent signal
 sacrifice from data cleaning.
 
 An estimate of the signal contamination was performed using a method developed
-by SNO~\citep{NEIL_THESIS} and applied to the dataset~\citep{DC_DOCUMENT};
+by SNO~\citep{neil_thesis} and applied to the dataset~\citep{dc_document};
 the number of instrumental events leaked into the signal region was estimated
 to be roughly $0.5$ events over the entire dataset.
 However, a contamination estimate is not an input to the solar analysis,
@@ -179,10 +179,9 @@ This corresponds to the following data cleaning cuts:
     \textbf{Missing CAEN Data Cut},
     \textbf{Ped Cut},
     \textbf{Atmospheric Cut}.
-Of those cuts I'll detail here those that I developed, the rest are described
-in~\ref{APPENDIXXX}.
+Of those cuts I'll detail here the motiviation behind and evaluation of the
+cuts that I developed, the cuts that I did not directly develop are described in~\citep{dc_document}.
 
-%TODO move this to appendix probably
 \subsubsection{Ped Cut}
 During normal detector operations there are a few trigger calibration
 tests that are periodically ran.
@@ -214,12 +213,70 @@ could likely be instrumental, or from  spallation products within the detector.
 Since solar neutrino events are not expected to have any time correlations
 with other events in the detector, a cut can be placed on the time between
 events with relatively little sacrifice.\\
-TODO....addmore
 
+The cut considers three values, an initial and a follower event nhit, $N_{1}$
+and $N_{2}$, and a time difference between the two events $\Delta t$;
+a threshold is placed on each of these three values, and any pairs of events that cross
+each threshold are cut and so is all other events that fall within the threshold
+time window.
+To evaluate the cut optimal cut criteria for $N_{1}$, $N_{2}$ and $\Delta_{t}$
+two different values are considered.
+The first is the probability that an event of nhit greater than $N_{2}$ will occurr within a time
+window $\Delta t$ after an event of nhit greater than $N_{1}$.
+This values is called the follower probability, $P_{F}(N_{1}, N_{2}, \Delta t)$.
+The second values is the probability that an event of nhit $N$ will ocurr
+within a time window $\Delta t$ that is chosen randomly, this value
+is called accidental probability or random coincidence probability, $P_{R}(N, \Delta t)$.
+Under the assumption that there is no time correlation with non-background
+events the probability of this cut sacrificing a signal event is
+\begin{equation}
+    \mathrm{Sacrifice} = P_{R}(N_{1},\Delta t)P_{S}(N_{2}) + P_{R}(N_{2}, \Delta t)P_{S}(N_{1})\text{,}
+\end{equation}
+where $P_{S}(N)$ is the probability for a signal event to have an nhit above
+$N$.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.74\textwidth]{mmf_pr_v_pf}
+    \caption[Missed Muon Follower Example PDFs]{
+        $P_R(N_2=20, \Delta t)$ (red) vs $P_F(N_1=60, N_2=20, \Delta t)$ (blue).}
+\label{fig:mmf_sac}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.74\textwidth]{mmf_bin_volume_normalized}
+    \caption[Two-Dimensional Comparison for Missed Muon Follower]{
+}
+\label{fig:mmf_sac2}
+\end{figure}
+Figure~\ref{fig:mmf_sac} shows the measured distributions for $P_{F}$ and $P_{R}$
+evaluated during the unblinded portion of the dataset;
+a number of feactures exist in the observed distribution for $P_{F}$,
+the peak at very short $\Delta t$ comes from re-triggers within the
+detector following a high-nhit event.
+Figure~\ref{fig:mmf_sac2} shows this comparison in two dimensions, each
+bin along the Y-axis is normalized to account for the logarithmic change
+in effective bin size.
+
+Since there exists a number of selections from the threshold values of $N_{1}$,
+$N_{2}$ and $\delta T$, the threshold value for $N_{1}$ was fixed at the SNO value
+of $60$~\citep{neil_thesis}.
+This value is motivated by the fact that time correlated events are more
+likely to follow highly energetic events or events that can produce cosmogenic
+isotopes, and the nhit threshold for these processes is not effected signficantly
+by the changes from SNO to SNO+.
+The threshold value for $N_{2}$ was selected based upon what nhit of event
+could possibly serve as a background to the solar or nucleon decay analysis,
+a conservative value of $20$ was selected, which corresponds to an electron kinetic energy
+of approximately $3$\,MeV.
+With the two nhit constraints selected the $\delta t$ window was selected to
+be as large as possible without incurring signficant signal sacrifice,
+the threshold value of $1$\,ms was selected.
+From this a sacrifice of $0.01\%$ percent was determined~\citep{dc_document}.
 
 \subsubsection{CAEN Cut}
 I developed a new data cleaning cut, called the ``CAEN Cut'', that follows from
-the AMB Cut from SNO.\@
+the AMB Cut from SNO\@.
 The AMB Cut attempted to remove events from flashers the dataset by requiring
 that the integral and peak height of the ESUMH trigger sum (as measured by the
 AMB) fall below some threshold value.
@@ -260,7 +317,20 @@ is given by $m$ and the value $b$ is required to be
     b = \frac{C}{mx_{0}}
 \end{equation}
 so that there is not discontinuity between the two cut regions.
-The values for these parameters are given in Table~\ref{XXX}.
+\begin{table}
+    \centering
+  \begin{tabular}{c | c c}
+      & Constant & Slope  \\
+      \hline
+      Upper Bound & 658.8 & -6.61\\
+      Lower Bound & -707.0 & -15.9\\
+    \end{tabular}
+    \caption[CAEN Cut Values]{The upper and lower bounds for the CAEN Cut as
+    described in Eqn.~\eqref{fig:cc_threshold}.
+    Constant values are in ADC Counts, slope values are ADC Counts per nhit.}
+\label{tbl:caen_cut}
+\end{table}
+The values for these parameters are given in Table~\ref{tbl:caen_cut}.
 
 The reason for the two cut regions is because at lower nhit the signal
 peak is smaller than the noise one the ESUMH signal, so the only requirement
@@ -277,6 +347,32 @@ different cut regions.
 The $\ce{^{16}N}$ data was used to determine cut values for the higher nhit
 region, the $PULSE\_GT$ data was used for the lower nhit cut values.
 
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{caen_pgt}
+        \caption[]{}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{caen_n16}
+        \caption[]{}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.50\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{caen_physics}
+        \caption[]{}
+    \end{subfigure}
+    \caption[]{Distribution of CAEN integral for $PULSE\_GT$ (a), $\ce{^{16}N}$ (b), and
+    standard physics triggered (c) events. Integral values are in ADC counts
+    and Z-axis values are counts. The thin red lines indicate the 99\% inclusion
+    values and the thick red lines indicate the best fit functions.}
+    \label{fig:caen_inclusion}
+\end{figure}
+
 For both regions the value of the integral or peak height that include
 99\% of the events at each nhit is found. Then the parameters of
 Eqn.~\ref{eqn:cc_threshold} that best fit those points is determined.
@@ -286,36 +382,36 @@ values for rejecting flasher events.
 The 99\% criteria was chosen arbitrarily to ensure that the fraction of
 ``good'' events rejected by this cut was similar to that of other data
 cleaning cuts.
-Figure~\ref{XXX} shows how the ESUMH CAEN trace integral is distributed
+Figure~\ref{fig:caen_inclusion} shows how the ESUMH CAEN trace integral is distributed
 in the two calibration datasets and for standard physics data taking.
 
 
 
 %TODO move this shit to an appendix
-\subsection{ZeroZero Cut}
-The GTID for the FEC is stored in a ripple counter, it's often the case that
-when the bottom two bits of the counter rollover the event that gets recorded in
-the FEC memory gets corrupted.
-When this happens the builder cannot put the corrupted hits into the event correctly,
-and the hits will effectively be discarded.
-This means that event the detectors effective photon detection efficiency is lower
-for events that have a GTID with $00$ in the bottom two bits.
-Rather than correct for this inefficiecy in reconstruction, events with GTID
-ending in $00$ are discarded. This corresponds to a random pre-scale
-on our by a factor of $\frac{1}{256}$.
-\subsection{Crate Isotropy Cut}
-The Crate Isotropy Cut is designed to remove events that are isolated
-in one or a few electronics crates.
-Events originating from light within the detector are unlikely to have any
-preference in electronics space.
-However hits caused by electrical noise that was created near the electronics
-can show a very distinct preference for one crate.
-The criteria for this cut is that fraction of hits in any single
-is greater that $70\%$ and that the fractions of hits within
-that crate are either $80\%$ within adjacent FECs or $70\%$ within
-adjacent channels.
-%\subsection{Flasher Geometry Cut}
-%\subsection{ITC Timespread Cut}
+%\subsection{ZeroZero Cut}
+%The GTID for the FEC is stored in a ripple counter, it's often the case that
+%when the bottom two bits of the counter rollover the event that gets recorded in
+%the FEC memory gets corrupted.
+%When this happens the builder cannot put the corrupted hits into the event correctly,
+%and the hits will effectively be discarded.
+%This means that event the detectors effective photon detection efficiency is lower
+%for events that have a GTID with $00$ in the bottom two bits.
+%Rather than correct for this inefficiecy in reconstruction, events with GTID
+%ending in $00$ are discarded. This corresponds to a random pre-scale
+%on our by a factor of $\frac{1}{256}$.
+%\subsection{Crate Isotropy Cut}
+%The Crate Isotropy Cut is designed to remove events that are isolated
+%in one or a few electronics crates.
+%Events originating from light within the detector are unlikely to have any
+%preference in electronics space.
+%However hits caused by electrical noise that was created near the electronics
+%can show a very distinct preference for one crate.
+%The criteria for this cut is that fraction of hits in any single
+%is greater that $70\%$ and that the fractions of hits within
+%that crate are either $80\%$ within adjacent FECs or $70\%$ within
+%adjacent channels.
+%%\subsection{Flasher Geometry Cut}
+%%\subsection{ITC Timespread Cut}
 
 \section{Analysis Cuts}
 The dataset of events passing all data cleaning cuts is further reduced by
