@@ -709,6 +709,28 @@ and $N$ is electron density as a function of position.
 For experimentally determined values of $\theta_{12}$ and $\Delta m^{2}_{21}$ in the so-called
 Large Mixing Angle (LMA) regime the effect of $P_{\mathrm{jump}}$ is negligible.
 
+One final feature of solar neutrino mixing is the ``day-night effect''.
+The mantle and core of the Earth have sufficient electron density to provide
+a non-negligible change to the effective neutrino mixing Hamiltonian as the neutrino
+passes through Earth.
+Earth's atmosphere, however, is not dense enough to provide a significant
+matter enhancement.
+This, coupled with the fact that at higher energies neutrino mixing lengths
+are $\mathcal(O)(100\mathrm{ km})$, means that neutrinos that travel a short
+distance ($<\sim100$\,km) through the Earth will be detected in an
+vacuum eigenstate.
+Neutrinos that are travel a large distance in Earth's crust, mantle, or core,
+will experience significant, potentially non-adiabatic matter effects, and will
+be detected in a matter-enhance mass eigenstate.
+For solar neutrinos the result is that neutrinos detected during the day, when
+the Sun is directly above the detector, will not travel significantly through
+the Earth;
+neutrinos that are detected at night, when the detector is ``shadowed'' by the
+Earth, will travel through large portions of the Earth.
+Thus the effective survival probability is different during the day than the night.
+Figure~\ref{fig:daynight_example} shows an example survival probability during
+the day and night.
+
 
 \section{Neutrino Experiments}
 \label{sec:experiments}
@@ -756,11 +778,11 @@ as well as charged and neutral current nuclear interactions on the deuterium
 nuclei.
 These interaction are described generally in Sec.~\ref{sec:neutrino_interactions}.
 The NC interaction on a deuteron can break apart the neutron and proton
-that comprises the nucleus. $\nu_{x} + D \rightarrow p + n + \nu_{x}$.
+that comprises the nucleus. $\nu_{x} + d \rightarrow p + n + \nu_{x}$.
 The free-neutron can then capture on the deuterium forming tritium ($\ce{^{3}H}$)
 and emitting an $6.2$\,MeV gamma.
 This process has no flavor dependence.
-The CC interaction $\nu_{e} + D \rightarrow p + p + e^{-}$
+The CC interaction $\nu_{e} + d \rightarrow p + p + e^{-}$
 is detected by observing the Cherenkov cone of the electron and will only
 occur for electron flavor neutrinos.
 And the ES interaction is similarly detected from the scattered electron,
@@ -779,8 +801,8 @@ the neutron capture efficiency.
 In the third phase an array of $\ce{^{3}He}$ proportional counters were added
 to the detector, to once again increase neutron detection efficiency~\cite{sno_review}.
 
-The results of the SNO experiment are summarized in Figures~\ref{fig:sno_cross_graph}
-and~\ref{fig:sno_pee}.
+Some of the main results of the SNO experiment are summarized in
+Figures~\ref{fig:sno_cross_graph} and~\ref{fig:sno_pee}.
 Their combined 3-phase result for the $\ce{^{8}B}$ flux is
 \begin{figure}
 \centering
@@ -798,38 +820,54 @@ Their combined 3-phase result for the $\ce{^{8}B}$ flux is
 \label{fig:sno_pee}
 
 \end{subfigure}
-\caption[]{}
+\caption[SNO Results]{(a) The extracted ES, CC, and NC rates in the
+SNO experiment and how they relate to the
+effective $\nu_{e}$ flux and $\nu_{\mu,\tau}$ flux; figure from~\cite{sno_second}.
+ (b) The combined best fit survival probability from the combined three phase SNO
+analysis (Ref.~\cite{sno_combined}), the red band is the best fit and uncertainty
+from a maximum likelihood fit, the blue from a Bayesian fit.}
 \end{figure}
 
 \begin{equation*}
-\Phi_{\ce{^{8}B}} = 5.25\pm0.16(stat.)^{+0.11}_{−0.13}(syst.))\times10^6\mathrm{cm}^{-2}\mathrm{s}^{-1}\text{\cite{sno_combined}.}
+\Phi_{\ce{^{8}B}} = (5.25\pm0.16(stat.)^{+0.11}_{−0.13}(syst.))\times10^6\mathrm{cm}^{-2}\mathrm{s}^{-1}\text{.}
 \end{equation*}
-
+Their best fit mixing parameter estimates measurements are
+\begin{equation}
+\Delta m^{2}_{21}=(5.13^{+1.49}_{-0.98})\times10^{-5}\mathrm{eV}^2
+\end{equation}
+\begin{equation}
+\tan^{2}\theta_{12} = 0.436^{+0.048}_{-0.036}\text{.}
+\end{equation}
+Values from Ref.~\cite{sno_combined}.
 
 \subsection{Super Kamiokande}
 Super Kamiokande (SuperK) is a 50\,kton cylindrical water Cherenkov detector.
 It started running in $1996$ and has since made the most precise measurements of
-atmospheric neutrinos and solar neutrinos so far.
+atmospheric neutrinos and $\ce{^{8}B}$ solar neutrinos so far~\cite{superk4,superk4_atm}.
 It's the successor to the previous Kamiokande experiment, which was a significantly
-smaller and had a higher energy threshold for detection.
+smaller and had a higher energy threshold for event detection.
 SuperK can detect $\ce{^{8}B}$ solar neutrinos through only neutrino-electron elastic scattering,
 they do not use a $\ce{D_{2}O}$ target and so are not sensitive to the
-nuclear interactions that SNO used.
+nuclear interactions similar to that of SNO\@.
 Their extremely large detector volume though provides them extraordinary
 statistics with which they've produced the most precise measurement of the $\ce{^{8}B}$
-elastic scattering rate.
-\begin{equation}
-XXX
-\end{equation}
-
-The SuperK experiment separates their dataset into 4 subsets, called
-SuperK-I~\cite{superk1}, SuperK-II~\cite{superk2}, SuperK-III~\cite{superk3}, SuperK-IV~\cite{superk4},
-each dataset covers several years of data taking.
+elastic scattering rate,
+\begin{equation*}
+\Phi_{\mathrm{ES}} = (2.308\pm0.020(stat.)^{+0.039}_{-0.040}(syst).)\times10^{6}\mathrm{cm}^{-2}\mathrm{s}^{-1}
+\end{equation*}
+And when constraining the full $\ce{^{8}B}$ flux to the SNO result they've measured
+the solar mixing parameters as,
+\begin{equation*}
+\Delta m^{2}_{21} = (4.8^{+1.5}_{-0.8})\times10^{-5} \mathrm{eV}^{2}
+\end{equation*}
+\begin{equation*}
+\sin^{2}\theta_{12} = 0.334^{+0.027}_{-0.023}\text{\cite{superk4}.}
+\end{equation*}
 
 \subsection{Borexino}
 Borexino is 300\,ton spherical liquid scintillator detector~\cite{borexino_tdr}. Their detector
 apparatus is similar to that of a water Cherenkov detector, the significant difference
-is that the water is replaced with pseudo-cumine, a liquid scintillator.
+is that the water is replaced with pseudocumene, a liquid scintillator.
 A charged particle moving through scintillator generates roughly 50-100 times
 more light than a similar particle moving through just water.
 Water-Cherenkov detector are typically limited in energy threshold
