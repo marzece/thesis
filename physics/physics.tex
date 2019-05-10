@@ -61,6 +61,7 @@ years later in 1975 \citep{tau_discovery}.
 % said....though they might be the same somehow
 
 \subsection{Neutrino Interactions}
+\label{sec:neutrino_interactions}
 The neutrino interacts almost exclusively via the weak interaction.
 In principle neutrinos also interacts gravitationally and they have a non-vanishing
 magnetic moment so can interact electromagnetically, but these
@@ -610,22 +611,44 @@ other preceding interaction. The $pp$ reaction is also the main energy generatin
 for the Sun, so measurements of the total solar luminosity provide strict constraints on the
 $pp$ flux as well.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{solar_radial_production}
+\caption[BS05OP Radial Production Profiles]{The radial
+PDF for each solar neutrino production process. Values from BS05OP.}
+\label{fig:radial_production_pdfs}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.74\textwidth]{solar_electron_density}
+\caption[BS05OP Electron Density]{Electron density in units of Avogadro's
+Number as function of radius in the Sun. Values from BS05OP.}
+\label{fig:electron_density}
+\end{figure}
+
 Predictions for solar neutrinos rely heavily on solar modelling, which in turn
 is constrained by observations of the Sun.
-Detailed solar models will simulate the evolution of the Sun from a proto-star
+Detailed solar models are used to simulate the evolution of the Sun from a proto-star
 with a given mixture of chemical abundances and produce predictions for
 what we would expect to observe today.
-Following this procedure a temperature and density profile for the Sun is determined
+Following this procedure a temperature and density profile for the Sun can be determined
 which in turn leads to predictions for solar neutrino production.
-For this work the BS05OP~\cite{bs_ssm} predictions are typically used.
-Figure{XXX} shows the solar neutrino production distribution within the Sun.
+For this work the BS05OP~\cite{bs_ssm} solar model predictions are used.
+Figure~\ref{fig:radial_production_pdfs} shows the solar neutrino production
+distribution within the Sun.
+Figure~\ref{fig:electron_density} shows the electron density profile within
+the Sun.
+The radial production distributions and electron density are necessary inputs
+for solar neutrino mixing calculations.
+%Photospheric and helioseismological measurements of chemical abundances provide input for solar models.
 
-Photospheric and helioseismological measurements of chemical abundances provide
-input for solar models.
 %and helioseismological measurements of the speed of sound in or across the Sun.  The speed of sound measurements can be used to estimate the require chemical composition.
 %From this procedure the standard chemical abundances were determined~\cite{gs98}.
 There are two standard estimates for the solar chemical abundances,
 GS98~\cite{gs98} and AGS~\cite{ags}.
+The BS05OP model uses both as inputs and produces separate predictions for each,
+in general this thesis uses the predictions from the GS98 abundances.
 The most significant discrepancy between the two models is in the value
 for the solar metallicity, the AGS prediction for the metallicity is
 lower by roughly a factor of two.
@@ -635,8 +658,6 @@ the AGS model also produces discrepancies between photospheric measurements
 and helioseismological measurements of the Sun~\cite{ags, bahcall01}.
 The disagreements between the two models has become known as the
 ``Solar Metallicity Problem''.
-For this work the GS98 values for chemical abundances is generally used if
-both are not considered.
 
 \subsection{Solar Neutrino Mixing}
 Mixing for solar neutrinos is historically very important as it was
@@ -649,6 +670,8 @@ sno_second}.
 Still today the Sun provides an unique source of neutrinos that travel through
 densities and distances that cannot be produced by any other source, thus making
 them a valuable object for study.
+Chapter~\ref{sec:chameleons} explores the study of mixing with
+solar neutrinos further.
 
 Neutrinos created in the solar core can experience significant mixing effects from local
 electron density.
@@ -660,43 +683,42 @@ The condition for an MSW-resonance between any two matter states is given by
 \end{equation}
 This condition is met for a 10\,MeV at a solar radius of XXX, for the mixing parameters
 given in XXX %cite pdg probably.
-For neutrinos below XXX\,MeV this condition is not met at any point within the sun,
-and so those neutrinos do not experience the MSW resonance.
-Once a neutrino created in the core of the sun has travelled past a solar radius of $\approx$XXX
+For neutrinos with energy below approximately 1\,MeV this condition is not met
+at any point within the sun, and so those neutrinos do not experience the MSW
+resonance.
+Once a neutrino created in the core of the sun has travelled past a solar radius of
+approximately 0.5\,$\text{R}_{\odot}$ %TODO get a better number than this
 the solar electron density has dropped far enough that matter effects are no longer significant
 and neutrinos are effectively travelling through vacuum. Once in the vacuum mixing dominated region
 
-The effect neutrino mixing has on the neutrino flux is typically summarized by the
-$\ce{^{8}B}$ survival probability, $P_{ee}(E_{\nu})$ over the energy range $0-15\,MeV$,
-shown in Fig~\ref{XXX}.
-
-For solar neutrinos it's generally assumed that the neutrino states
-will evolve adiabatically.
+For solar neutrinos the neutrino states will generally evolve adiabatically from
+matter effect dominated states to vacuum states.
 However, when the neutrino transitions through the MSW-resonance
-the flavor composition of the mass states changes very rapidly,
-so it's thought that this could lead to a non-adiabatic transition
+the flavor composition of the mass states changes rapidly,
+which can lead to a non-adiabatic transition
 between the mass-1 and mass-2 state.
-For solar neutrinos the effect this transition would have on the
-neutrino survival probability is characterized with $P_{jump}$,
+For solar neutrinos the effect this transition has on the
+neutrino survival probability is characterized with $P_{\mathrm{jump}}$,
 \begin{equation}
-    P_{jump} = \mathrm{exp}\left[-\dfrac{\pi}{2} \dfrac{\sin^{2}2\theta_{12}}{\cos2\theta_{12}}
-               \dfrac{\frac{\Delta m^{2}_{21}}{2E}}{\frac{1}{N} \frac{dN}{dx}|_{x_{R}}}   \right]\cite{parke}\text{.}
+    P_{\mathrm{jump}} = \mathrm{exp}\left[-\dfrac{\pi}{2} \dfrac{\sin^{2}2\theta_{12}}{\cos2\theta_{12}}
+               \dfrac{\frac{\Delta m^{2}_{21}}{2E}}{\frac{1}{N} \frac{dN}{dx}|_{x_{R}}}   \right]
+\text{\cite{parke}.}
 \end{equation}
 Where $x_{R}$ indicates the position at which the resonant density is crossed
 and $N$ is electron density as a function of position.
-For values of $\theta_{12}$ and $\Delta m^{2}_{21}$ near those determined by experimental
-observation $P_{jump}$ is negligible.
+For experimentally determined values of $\theta_{12}$ and $\Delta m^{2}_{21}$ in the so-called
+Large Mixing Angle (LMA) regime the effect of $P_{\mathrm{jump}}$ is negligible.
 
 
 \section{Neutrino Experiments}
 \label{sec:experiments}
-There's a long a diverse list of neutrino experiments that have contriubted to
-our current understanding of neutrinos and neutrino oscillations.
-I won't attempt to list them all here, but rather highlight the most immediatly
-relevant to this work. A more compresive review can be found in \citep{FINDAREVIEW}.
+There's a long a diverse list of neutrino experiments that have contributed to
+our current understanding of neutrinos and neutrino oscillations and solar neutrinos.
+I won't attempt to list them all here, but rather highlight the most immediately
+relevant to this work. A more comprehensive review can be found in Ref~\citep{giuntikim}.
 
 \subsection{Homestake}
-The first experiment to succesfully detect solar neutrinos was the Homestake
+The first experiment to successfully detect solar neutrinos was the Homestake
 experiment.
 The detector was composed of approximately 100000 gallons of dry cleaning fluid.
 The choice of target was motivated by the high chlorine content in the cleaning
@@ -708,10 +730,10 @@ extracted those atoms were observed with proportional counters to count the
 number of XXX to XXX decays. The number of observed counts was proportional
 to the solar neutrino interaction rate, and therefore the solar neutrino flux.
 
-The homestake experiment ran from 1970 - 1990. %(XXX? is that right??)
+The Homestake experiment~\cite{homestake} ran from 1970 - 1990. %(XXX? is that right??)
 The experiment was able to provide the first measurement of the solar neutrino
 flux above XXX MeV. In 19XX they first reported a measure flux of
-XXX, nearly a third of the expted rate which was XXX.
+XXX, nearly a third of the expected rate which was XXX.
 This deficiency became known as the solar neutrino problem, and it
 was the first evidence for neutrino oscillation.
 The deficiency was present across the entire lifetime of the Homestake experiment,
@@ -721,50 +743,71 @@ their final report flux was XXX.
 \label{sec:sno}
 The Sudbury Neutrino Observatory (SNO) is a water-Cherenkov detector located
 roughly $2$\,km underground near Sudbury Ontario in Canada, it ran from
-$1999$ to $2006$.
-SNO was primarily a solar neutrino detector, it had the unique benefit of
+$1999$ to $2006$ and detected primarily $\ce{^{8}B}$ solar neutrinos.
+SNO had the unique feature of
 being able to detect neutrinos through three different interaction channels,
 each channel had it's own sensitivity to different flavor neutrinos.
-This allowed for a measurment of the $^8B$ solar neutrino flux that was not
-dependent on the flavor composition of the incoming neutrinos.
-This was accoplished by using a heavy-water ($\ce{^{2}H_{2}O}$) target.
-Heavy-water's primary neutrino interactions are the
-electron scattering interaction (ES), a charged current nuclear reaction (CC),
-and a neutral current nuclear reaction (NC).
-%TODO add feynman diagrams for those reactions.
-There exists both charged current and a neutral current versions of the
-ES interaction; since electron neutrinos can interact through either
-of the two where as muon or tau neutrinos can only elastic scatter throug the
-neutral current version, the ES cross-section for electron neutrinos is larger
-than the cross-section for muon and tau neutrinos.
-The difference in cross-section is energy dependent, but it's roughly a factor
-of 6 for solar neutrino energies. The neutral current and charged current ES reactions
-are not treated seperately because there is no detectable signature that
-would allow you to discrimate between the two.
-
+Combining measurements of each interaction channel allowed for a measurement of the $^8B$
+solar neutrino flux that was not dependent on the flavor composition of the
+incoming neutrinos.
+This was accomplished by using a heavy-water ($\ce{^{2}H_{2}O}$ a.k.a. $\ce{D_{2}O}$) target and
+detecting interactions through the electron-neutrino elastic scattering,
+as well as charged and neutral current nuclear interactions on the deuterium
+nuclei.
+These interaction are described generally in Sec.~\ref{sec:neutrino_interactions}.
 The NC interaction on a deuteron can break apart the neutron and proton
-that comprises the nucleus. $\nu_{e} + D -> p + n + \nu_{e}$.
+that comprises the nucleus. $\nu_{x} + D \rightarrow p + n + \nu_{x}$.
 The free-neutron can then capture on the deuterium forming tritium ($\ce{^{3}H}$)
-and emitting an $XXX$\,MeV gamma. %TODO how often does it capture on oxygen?????
-The NC reaction has no neutrino flavor preference, so a measure of the rate
-of NC rate along with the process' cross-section provides a flavor independent
-measurement of the solar neutrino flux.
+and emitting an $6.2$\,MeV gamma.
+This process has no flavor dependence.
+The CC interaction $\nu_{e} + D \rightarrow p + p + e^{-}$
+is detected by observing the Cherenkov cone of the electron and will only
+occur for electron flavor neutrinos.
+And the ES interaction is similarly detected from the scattered electron,
+but the electron direction has a strong correlation with solar direction,
+allowing the rate of ES interactions to be determined separately from the
+rate of CC interactions.
+The ES interaction occurs for neutrinos of all flavors, but with an increased
+cross-section for electron flavor neutrinos.
 
-The charged current interaction on a deuteron converts a neutron to a
-proton and produces an electron.$\nu_{e} + D -> H + H + e^{-}$.
-This reaction can only occur when the charged lepton and the neutrino are the same
-flavor. So for typical matter this reaction only occurs for the electron flavor
-neutrinos, and so it provides a measurement of the electron flavor content
-of the solar neutrino flux.
+SNO ran in the three phases, each phase with a different target
+designed to increase the detectors ability to observe neutrons from neutrino
+interactions.
+The first phase had a pure $\ce{D_{2}O}$ target.
+ The second phase loaded salt ($\ce{NaCl}$) into the heavy-water to increase
+the neutron capture efficiency.
+In the third phase an array of $\ce{^{3}He}$ proportional counters were added
+to the detector, to once again increase neutron detection efficiency~\cite{sno_review}.
 
-SNO was able to seperate and count the events of each type of interaction,
-providing them three independent measurements of solar neutrinos. And
-the rates of each measurement had a different dependence on the flavor content
-of solar neutrinos.
+The results of the SNO experiment are summarized in Figures~\ref{fig:sno_cross_graph}
+and~\ref{fig:sno_pee}.
+Their combined 3-phase result for the $\ce{^{8}B}$ flux is
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{sno_cross_graph}
+\caption[]{}
+\label{fig:sno_cross_graph}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{sno_pee}
+\caption[]{}
+\label{fig:sno_pee}
+
+\end{subfigure}
+\caption[]{}
+\end{figure}
+
+\begin{equation*}
+\Phi_{\ce{^{8}B}} = 5.25\pm0.16(stat.)^{+0.11}_{−0.13}(syst.))\times10^6\mathrm{cm}^{-2}\mathrm{s}^{-1}\text{\cite{sno_combined}.}
+\end{equation*}
 
 
 \subsection{Super Kamiokande}
-Super Kamiokande (SuperK) is a 50\,kton cylindrical water cherekov detector.
+Super Kamiokande (SuperK) is a 50\,kton cylindrical water Cherenkov detector.
 It started running in $1996$ and has since made the most precise measurements of
 atmospheric neutrinos and solar neutrinos so far.
 It's the successor to the previous Kamiokande experiment, which was a significantly
@@ -772,17 +815,20 @@ smaller and had a higher energy threshold for detection.
 SuperK can detect $\ce{^{8}B}$ solar neutrinos through only neutrino-electron elastic scattering,
 they do not use a $\ce{D_{2}O}$ target and so are not sensitive to the
 nuclear interactions that SNO used.
-Their extremely large detector volume though provides them with far more exposure
-than SNO could attain though. This results in a very precise measurement of the
+Their extremely large detector volume though provides them extraordinary
+statistics with which they've produced the most precise measurement of the $\ce{^{8}B}$
 elastic scattering rate.
+\begin{equation}
+XXX
+\end{equation}
 
-The SuperK experiment seperates their dataset into 4 subsets, called
-SuperK-I, SuperK-II, \textit{etc}. %TODO Roman numerals.
-Each dataset covers several years of data taking.
+The SuperK experiment separates their dataset into 4 subsets, called
+SuperK-I~\cite{superk1}, SuperK-II~\cite{superk2}, SuperK-III~\cite{superk3}, SuperK-IV~\cite{superk4},
+each dataset covers several years of data taking.
 
 \subsection{Borexino}
 Borexino is 300\,ton spherical liquid scintillator detector~\cite{borexino_tdr}. Their detector
-apparatus is similar to that of a water-Cherenkov detector, the significant difference
+apparatus is similar to that of a water Cherenkov detector, the significant difference
 is that the water is replaced with pseudo-cumine, a liquid scintillator.
 A charged particle moving through scintillator generates roughly 50-100 times
 more light than a similar particle moving through just water.
