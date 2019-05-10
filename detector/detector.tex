@@ -17,7 +17,7 @@
 % 9385 PMTs comes from doing the following SQL query on DB
 %select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
 The SNO+ detector inherits much of its infrastructure from the SNO
-experiment~\cite{sno_detector_paper}.
+experiment~\citep{sno_detector_paper}.
 The SNO+ detector can be mostly simply described as a large volume of a
 target material that is deep underground and is observed by a large array of
 photomultiplier tubes (PMTs).
@@ -30,11 +30,11 @@ target medium.
 For the entirety of this work the target medium is light-water ($\ce{H_{2}O}$);
 this phase is referred to as the ``water phase''.
 Following this the water is to be replaced by a liquid-scintillator,
-LAB-PPO~\cite{mchen_labppo}, that will be the ``pure scintillator phase'' or
+LAB-PPO~\citep{mchen_labppo}, that will be the ``pure scintillator phase'' or
 just the ``scintillator phase''.
 After the scintillator phase the LAB-PPO will be doped with tellurium for
 a neutrinoless double-beta decay search, this is referred to as the ``tellurium phase''.
-The motivations for each phase is discussed in~\cite{snop_status_prospects}.
+The motivations for each phase is discussed in~\citep{snop_status_prospects}.
 
 \begin{figure}[htbp]
 \centering
@@ -101,7 +101,7 @@ Cherenkov radiation is the primary photon generating process of interest in
 SNO+'s water-phase.
 Cherenkov radiation is produced by any charged particle moving with
 velocity ($\vec{v}$) such that $\abs{\vec{v}} > \frac{c}{n}$, where $c$ is the speed
-of light and $n$ is the index of refraction in the target medium~\cite{cherenkov}.
+of light and $n$ is the index of refraction in the target medium~\citep{cherenkov}.
 
 The produced Cherenkov light has a few properties that make it a desirable
 method for particle detection.
@@ -131,7 +131,7 @@ With SNO+ it's not expected to be possible to infer which detected photons are
 from scintillation processes and which are Cherenkov radiation, so it can be treated
 as though all light is from scintillation.
 Many people are interested exploring how to separate Cherenkov light from scintillation
-light~\cite{tanners_paper,javi_chess, winslow_directionality},
+light~\citep{tanners_paper,javi_chess, winslow_directionality},
 and so this may be possible in the future.
 
 The primary neutrino interaction that SNO+ is sensitive to is elastic scattering (ES)
@@ -182,7 +182,7 @@ All PMTs are Hammatsu R1408 8-inch PMTs.
     \centering
     \includegraphics[width=0.7\textwidth]{sno_casette}
     \caption[PMT Casette] {Schematic diagram of the SNO/SNO+ PMT and
-    PMT housing. Dimensions in cm. Figure from~\cite{sno_detector_paper}.}
+    PMT housing. Dimensions in cm. Figure from~\citep{sno_detector_paper}.}
 \label{fig:triggeff}
 \end{figure}
 
@@ -488,7 +488,7 @@ across the ``SNOBUS'' backplane.
     \centering
     \includegraphics[width=0.5\textwidth]{xl3_daq_diagram}
     \caption[Dropout Fit Example]{Diagram of the SNO+ DAQ\@.
-    Figure from~\cite{richie_thesis}.}
+    Figure from~\citep{richie_thesis}.}
 \label{fig:xl3_daq_diagram}
 \end{figure}
 
@@ -672,7 +672,7 @@ There exists some variation in that value from differences in the
 electronics and the PMTs themselves, the PCA attempts to measure those variations.
 For SNO+ there exists two ways of performing a PCA, the first is with a deployed light
 source called the ``laserball''.
-More information about the laserball can be found in Ref~\cite{sno_laserball}.
+More information about the laserball can be found in Ref~\citep{sno_laserball}.
 The laserball is typically placed within the center of the
 detector and emits light isotropically. For a typical laserball PCA the amount of light emitted
 is very small, such that only a few PMTs detect anything in a single event;
@@ -744,7 +744,7 @@ other parameters are treated as nuisance parameters.
     \centering
     \includegraphics[width=1\textwidth]{trigger_efficiecy}
     \caption[Trigger Efficiency] {Comparison of the measured trigger efficiency
-    and simulated trigger efficiency for run 107640. Plot from~\cite{tanner_triggeff}.}
+    and simulated trigger efficiency for run 107640. Plot from~\citep{tanner_triggeff}.}
 \label{fig:trigeff}
 \end{figure}
 

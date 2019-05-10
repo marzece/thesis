@@ -140,8 +140,8 @@ The chameleon portion of the simulation is done by first monte-carlo sampling
 neutrino energies and production radii, and looking up the simulated
 neutrino state that corresponds to the sampled energy \& production radius.
 The radial production PDFs for each neutrino type that are MC sampled from 
-are given in~\cite{XXXradialproduction?}.
-The neutrino energy PDFs are given by~\cite{BS05OP} and \cite{Winters},
+are given in~\citep{XXXradialproduction?}.
+The neutrino energy PDFs are given by~\citep{BS05OP} and \citep{Winters},
 however only half of all sample energies are drawn from the relevant prodcution
 spectra, the other half are drawn from a uniform distribution from
 0\,MeV to the relevant endpoint energy.
@@ -209,7 +209,7 @@ The calculation for this is done for only a ``day'' path through the earth
 and a ``night'' path. The ``day'' path simulates the neutrino only travelling
 through the crust of the Earth. The ``night'' path simulates the neutrino
 travelling through the earth, including the high density ``core'' region.
-a one-dimensional earth density profile is from~\cite{PREM} is used.
+a one-dimensional earth density profile is from~\citep{PREM} is used.
 This results in an simulation of the day-night effect for neutrino
 oscillation.
 
@@ -257,7 +257,7 @@ Where $D$ is a diagonal matrix that gives the effective mass-squared
 difference between the mass-states.
 $P$ gives the flavor composition of the effective mass states,
 $\ket{m_{1}}$, $\ket{m_{2}}$, $\ket{m_{3}}$.
-The GNU Scientific Library~\cite{gsl_ref} is used to diagonlize
+The GNU Scientific Library~\citep{gsl_ref} is used to diagonlize
 the mixing Hamiltonian.
 
 A neutrino, produced in an electron flavor state, can be described as
@@ -317,7 +317,7 @@ neutrino does not fully transition from being best described
 by a modified vacuum state by the time it's detected.
 This is plausible because the oscillation length for higher
 energy neutrinos is approximately 200\,km, the earth's atmosphere
-is approximately the same size~\cite{atmosphere_profile}.
+is approximately the same size~\citep{atmosphere_profile}.
 So it could be the case that solar neutrinos, especially at higher
 energies, would not oscillate quickly enough to have a average
 survival probability best described by the standard oscillation
@@ -335,15 +335,15 @@ mixing to be explored.
 To determine solar neutrino and neutrino mixing parameters that is most
 consistent with experimental observations, a fit is done to published
 experimental results.
-Solar neutrino results from SNO~\cite{sno_combined}, Super
-Kamiokande~\cite{superk4, superk_first_solar,superk2, superk3},
-Borexino~\cite{borexino_final_results,borexino_nature}, GNO~\cite{gallex, gno},
-SAGE~\cite{sage}, and Homestake~\cite{homestake} are used.
-Solar neutrino fluxes are constrainted by the GS98SF2~\cite{XXX} solar model calculations.
-Reactor neutrino results from Daya Bay~\cite{}, KamLAND~\cite{}, Reno~\cite{}
+Solar neutrino results from SNO~\citep{sno_combined}, Super
+Kamiokande~\citep{superk4, superk_first_solar,superk2, superk3},
+Borexino~\citep{borexino_final_results,borexino_nature}, GNO~\citep{gallex, gno},
+SAGE~\citep{sage}, and Homestake~\citep{homestake} are used.
+Solar neutrino fluxes are constrainted by the GS98SF2~\citep{XXX} solar model calculations.
+Reactor neutrino results from Daya Bay~\citep{}, KamLAND~\citep{}, Reno~\citep{}
 are also used to constrain neutrino mixing parameters.
 Only the reactor neutrino results from KamLAND are used, though
-the experiment has made solar neutrino measurements as well~\cite{kamland_solar, kamland_b8}.
+the experiment has made solar neutrino measurements as well~\citep{kamland_solar, kamland_b8}.
 Including the KamLAND solar results is a potential improvement for the global fitting
 algorithm.
 The KamLAND solar neutrino results are, however, compatible with and
@@ -352,7 +352,7 @@ Borexino, SNO and SuperK, so the inclusion of those measurements would not
 effect any fit results significantly.
 
 The software used for evaluating experimental consistency was developed
-in part by Richard Bonventre~\cite{richie_thesis, richie_nsi},
+in part by Richard Bonventre~\citep{richie_thesis, richie_nsi},
 but was updated to include more recent solar neutrino measurements
 by the Borexino and Super Kamiokande experiments.
 The software produces the likelihood of each experimental observation
