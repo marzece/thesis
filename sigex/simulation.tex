@@ -1,15 +1,4 @@
 \section{Simulation}
-
-
-\subsection{RAT}
-A monte-carlo simulation of particle interactions in the detector is used
-for predicting detector observables for events.
-The simulation package used is called RAT, it is a Geant4~\citep{geant4} based simulation that
-contains a detector and DAQ simulation in addition to simulation of particle
-interactions and photon propagation.
-
-
-\subsection{Solar Neutrino Fluxes}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{b8_flux}
@@ -17,13 +6,28 @@ interactions and photon propagation.
 normalized to the solar reaction rate predicted by BS05-0P~\citep{bs_ssm}}
 \label{fig:b8_flux}
 \end{figure}
-The distribution for the $\ce{^{8}B}$ neutrino energy from Winters~\textit{et. al}~\citep{winterspectrum}
-was used, normalized to a nominal flux of $5.69\times10^{6}\mathrm{cm}^{-2}\mathrm{s}^{-1}$.
-The flux is predicted by BS05-OP~\citep{bs_ssm} using the GS98~\citep{gs98} solar
-abundances.  this nominal flux normalization, however, is arbitrary in this
-analysis.
 
-\subsection{Detector Interaction Rate}
+RAT, A monte-carlo simulation of particle interactions in the detector is used
+for predicting detector observables for solar neutrino and background events.
+RAT is a Geant4~\citep{geant4} based simulation that
+contains a detector and DAQ simulation in addition to simulation of particle
+interactions and photon propagation.
+
+The first step in the monte-carlo event simulation process is to generate
+event vertex information, including the interaction location, and the neutrino
+and recoil electron energy and direction.
+For this step standard solar model input are used.
+The distribution for the $\ce{^{8}B}$ neutrino energy from Winters~\textit{et.\ al.}~\citep{winterspectrum}
+was used, normalized to a nominal flux of
+$\Phi_{\nu_{\mathrm{e}}} = 9.67\times10^{9}\mathrm{cm}^{-2}\mathrm{s}^{-1}$
+and
+$\Phi_{\nu_{\mathrm{\mu}}} = 5.46\times10^{10}\mathrm{cm}^{-2}\mathrm{s}^{-1}$.
+These values are the full BS05OP~\cite{bs_ssm} $\ce{^{8}B}$ flux scaled by a factor
+of $1700$ for the $\nu_{\mathrm{e}}$ and a factor of $9600$ for the $\nu_{\mathrm{\mu}}$.
+The overall flux normalization is arbitrary in this analysis, but the enhanced rate
+ensures that the statistical fluctuations observed in the MC datasets are
+negligible compared to the detected dataset.
+
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.48\textwidth}
@@ -64,8 +68,9 @@ The differential cross-section as a function of $E_{\nu}$ is shown in~\citep{fig
 
 Convolving the differential cross section with $\ce{^{8}B}$ neutrino flux
 spectrum provides the expected event rate as a function of$T_{\mathrm{e}}$. 
-The convolution is performed in RAT with a monte-carlo simulation, the
-results of which are show in Figure~\ref{fig:recoil_spectrum}.
+RAT performs this convolution through monte-carlo sampling of the neutrino
+and cross-section PDFs.
+The results of the MC sampling are show in Figure~\ref{fig:recoil_spectrum}.
 
 Simulated recoil electrons are distributed uniformly throughout the SNO+ AV volume, with
 the $\theta_{sun}$ given by,
@@ -79,12 +84,12 @@ introduced by considering the radial neutrino production distribution is negligi
 
 Once the simulated position, direction, and energy of the recoil electron are determined  the
 electron interactions and  photon production and propagation in the detector are simulated
-by Geant-4.
+by Geant4~\citep{geant4}.
 The goal of this simulation is to transform the kinematics of the event to
-a collection of PMT hits in a simulated detector.
+a collection of PMT hits in the simulated detector.
 In the simulation, once a photon interacts with a PMT photo-cathode, a check is performed
-to simulate the detection efficiency for that photon, which includes the quantum efficiency and
-collection efficiency.
+to simulate the detection efficiency for that photon, which includes the photo-cathode quantum efficiency and
+PMT collection efficiency.
 These efficiencies are determined from \textit{ex-situ} PMT measurements and
 taken to be uniform across the detector. %TODO Citation?
 If the photon passes that check a PMT signal is created in the DAQ simulation is created.
@@ -134,23 +139,61 @@ Additionally to prevent the reconstruction process from being too computationall
 only 10\% of events with fewer than 15 PMT hits are reconstructed because
 those events are generally not useful for analysis.
 
+RAT is used to generate two MC datasets, a solar $\nu_{e}$ dataset
+and a solar $\nu_{mu}$ dataset.
+No $\nu_{\tau}$ dataset is generated because the SNO+ detector has
+no way to discriminate between $\nu_{\mu}$ and $\nu_{\tau}$ elastic scatters.
+So the $\nu_{\mu}$ dataset can be considered to reprsent both the $\nu_{\mu}$
+and the $\nu_{\tau}$ components of the solar neutrino flux.
+The simulated solar neutrino datasets restrict interactions to the AV volume,
+further datasets were generated that simulate interactions exclusively in the
+volume between the AV and PSUP\@.
+These external datasets contribute negligibly to the final dataset after all
+analysis cuts are performed, and so they are in general not considered.
+
+Also generated a number of datasets for the expected backgrounds from
+radioactivity isotopes in the detector components.
+These datasets are not directly used in this analysis, they were used however
+for assessing the effectiveness of the analysis cuts that are used.
+
+This analysis uses what is referred to as ``run-by-run'' simulation.
+This means every detector data run used in the analysis has simulated run that uses
+the detector and electronic calibration settings from the run as input to the DAQ simulation, and simulates
+a length of time and time of day equal to the detector run.
+The purpose of this is to remove the possibility that changes in detector settings
+or circumstances will bias any result.
+Of course this method is not perfect, there exists features of the real detector
+that are not simulated.
+For example if an increased amount of noise exists in the SNO+ DAQ due to
+temperature fluctuations, this is not an effect that will be reflected in
+simulated data.
+For this reason detector runs that have difficult to simulate conditions 
+are typically not included in the analysis, this is discussed further
+in Sec.~\ref{sec:data_selection}.
+
 \subsection{Survival Probability Simulation}
 \label{sec:survival_prob}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{pee_example}
 \caption[$\ce{^{8}B}$ Solar Neutrino Survival Probability]{
 Survival probability for $\ce{^{8}B}$ solar neutrinos for mixing parameters
-given in table 1 of Capozzi~\textit{et. al.}~\citep{pdg_globalfit}.
+given in table 1 of Capozzi~\textit{et.\ al.}~\citep{pdg_globalfit}.
 }
 \label{fig:example_survival_prob}
 \end{figure}
 
+The neutrino survival probability is simulated outside of RAT\@.
+The MC $\nu_{\mathrm{e}}$ and $\nu_{\mathrm{\mu}}$ datasets are combined
+as one of the last stages of this analysis to ensure that MC data
+does not need to be regenerated for any change in the simulated survival probability.
+
 The survival probability is calculated using a three-flavor adiabatic approximation.
 The implementation used is the Physics interpretation Sun-Earth Large Mixing Angle Adiabatic Approximation
 (PSelmaa) used in SNO~\citep{nuno_thesis, sno_combined}.
-The survival probability calculation use the GS98~\citep{gs98} solar abundances,
+The survival probability calculation use the GS98~\citep{gs98} solar abundances
 and the BS05OP radial production distributions and solar density profile~\citep{bs_ssm}.
 Figure~\ref{fig:example_survival_prob} shows an example survival probability, using the best fit mixing parameters
 from a global fit to neutrino oscillation data~\citep{pdg_globalfit}.
+The uncertainties on those values are also considered as will be discussed in
+Sec~\ref{sec:systematics}.
