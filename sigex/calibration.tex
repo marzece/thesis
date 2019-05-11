@@ -248,17 +248,40 @@ The Gaussian and exponential portion of
 \eqref{eqn:n16_position_model} represents the spread introduced by the detector
 and position reconstruction, the $P_\gamma$ term represents the intrinsic spread
 in interaction positions from the source itself.
-Figure~\ref{fig:n16_position_fit} shows an example of this distribution and fit for a central $\ce{^{16}N}$
-dataset.
+The distribution used for $P_\gamma$ in show in Fig~\ref{fig:gamma_first}
+Figure~\ref{fig:n16_position_comparison} shows a comparison between data
+and monte-carlo simulation for reconstructed position and an example fit to the data
+for a central $\ce{^{16}N}$ dataset.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.79\textwidth]{gamma_first_scattering}
+    \caption[Distribution of Gamma First Interaction Distance]{
+    The distribution of first interaction distances for gamma ray produced
+    in the $\ce{^{16}N}$ source. Produced from MC simulation and used in
+    Eqn.~\eqref{eqn:n16_position_model}.}
+    \label{fig:gamma_first}
+\end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.78\textwidth]{Position_data_vs_mc}
-\caption[]{}
-\label{}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Position_data_vs_mc}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{n16_position_fit_example}
+        \caption{}
+    \end{subfigure}
+\caption[Reconstructed Postion for $\ce{^{16}N}$ events, Data and MC]{
+    (a) Reconstructed position of $\ce{^{16}N}$ detected events and MC simulated
+    events for a central $\ce{^{16}N}$ run. (b) An example fit to detected events,
+    also for a central $\ce{^{16}N}$ run.}
+\label{fig:n16_position_comparison}
 \end{figure}
 
-With this scheme three types of position uncertainties are considered, a shift
+With this model three types of position uncertainties are considered, a shift
 uncertainty, a resolution uncertainty, and a scale uncertainty.
 Here a position shift is the value for $\mu$ in equation~\eqref{eqn:n16_position_model}
 averaged over the entire detector volume, $\langle \mu \rangle$;
@@ -289,7 +312,7 @@ The position resolution systematics is evaluated in a similar way as the positio
 shift systmatic, comparing values for
 $\sigma^{2}$ in equation~\eqref{eqn:n16_position_model} instead of $\mu$,
 but otherwise following the same procedure.
-Table XXX gives the extracted position resolution systematics uncertainties
+Table~\ref{tbl:position_resolution_systs} gives the extracted position resolution systematics uncertainties
 in $\text{mm}$. The uncertainties are given as one-sided because a resolution uncertainty,
 unlike the shift uncertainty,
 can only be applied to MC simulation by applying addition smearing.
