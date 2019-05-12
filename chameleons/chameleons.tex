@@ -13,15 +13,245 @@
 % ----------------------- chameleons content -------------------------
 % ----------------------------------------------------------------------
 
-The observed discrepancy in $\Delta m^{2}_{21}$ has motivated a number
-of theories that modify solar neutrinos oscillation from the standard
-MSW-LMA hypothesis described in section~\ref{sec:solar_nu_mixing}.
-Here I'll describe a few of those theories and introduce a novel
-phenominalogical theory
-that modifies the potential the neutrino experiences as it travels in
-vacuume between the Sun and Earth.
+The current global best fit value for  $\Delta m^{2}_{21}$ and
+$\theta_{12}$ comes
+primarily from a combined fit to solar neutrino data from SNO
+and SuperK and Borexino, and reactor neutrino data from KamLAND\@.
+These fits have produced the values
+\begin{equation}
+    \Delta m^{2}_{21} = 7.39^{+0.21}_{-0.21}\times10^5 \text{eV}^{2}
+\end{equation}
+\begin{equation}
+    \sin^2\theta_{12} = 0.310^{+0.013}_{-0.012}\text{.}
+\end{equation}
+However, KamLAND has much better sensitivity to $\Delta m^{2}_{21}$
+than the combined SNO and SuperK result, so the best fit value for
+$\Delta m^{2}_{21}$ comes almost exclusively from the KamLAND
+reactor neutrino measurements.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{kamland_oscillation}
+    \caption[]{}
+    \label{fig:kamland_oscillation}
+\end{figure}
+The KamLAND measurement is discussed briefly in Sec~\ref{sec:kamland}.
+The precision of their measurement comes from the fact that $\Delta m^{2}_{21}$
+adjusts the ``wavelength'' in energy of oscillations in their observed
+reactor neutrino spectrum.
+Figure~\ref{fig:kamland_oscillation} shows KamLAND's observed oscillation
+spectrum and best fit.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{labelled_survival_probability}
+    \caption[]{}
+    \label{fig:labelled_pee}
+\end{figure}
+
+Figure~\ref{fig:labelled_pee} shows the solar survival probability,
+with labelled features.
+The transition region is where the survival probability changes from
+being very close to the vacuum survival probability at low energies,
+to being dominated by matter effects at the higher energies.
+The width of the transition region comes from the radial production
+distribution of solar neutrinos in the sun;
+Neutrinos at energies high enough to experience significant matter
+effects in the sun, may or may not be in an area of the Sun with sufficient
+electron density to provide a strong matter effect.
+The reason the solar neutrino experiments are relatively insensitive
+to $\Delta m^{2}_{21}$ is because the only effect it has on the
+solar neutrino survival probability is to shift the energy
+of the MSW-transition region, a smaller value for $\Delta m^{2}_{21}$ results
+a lower energy transition region.
+At energies in the middle of transition region, you'll observe approximately
+as many neutrinos that never experience significant matter effects as neutrinos
+that did.
+For experiments, this means sensitivity to $\Delta m^{2}_{21}$ comes
+primarily from their ability to measure the survival probability in the
+transition region compared to in the vacuum or matter dominate regions.
+
+In principal this means solar neutrino experiments should be very sensitive
+to $\Delta m^{2}_{21}$, a good measurement of neutrino oscillation probability
+in the transition region is all that is required.
+However, the Sun does not provide a optimal source of neutrinos at energies
+in the transition region.
+The $\ce{^{8}B}$ and $hep$ reactions provide neutrinos at energies across the
+entirety of the transition region, but the flux of each of those sources is
+very small, especially at energies between $1-3$\,MeV\@;
+At energies below $15$\,MeV the $\ce{^{8}B}$ flux is dominant over the $hep$
+flux.
+
+The challenge of detecting relatively low energy, low flux $\ce{^{8}B}$ neutrinos
+is made more difficult by the fact that at those energies radioactive backgrounds
+are dominant in water Cherenkov detectors.
+Most notably backgrounds from $\ce{^{214}Bi}$ and $\ce{^{208}Tl}$ contamination
+which each provide a $\beta$ with a spectrum that respectively have a decay
+Q-value of $3.2$\,MeV and $5.0$\,MeV.
+These background render $\ce{^{8}B}$ neutrino measurements in the transition
+region nearly impossible for water Cherenkov detectors.
+For a liquid scintillator detector, target volume can be purified to a greater
+degree than a water detector, which mitigates
+background contamination somewhat.
+However, scintillator detectors cannot in general reconstruct the direction
+of the neutrino, and so solar neutrinos cannot be identified against backgrounds.
+And so even with higher radio-purity, at energies below approximately $3\,MeV$,
+the $^{8}B$ solar neutrino flux is extremely difficult to measure for scintillator detectors..
+
+Beyond the difficulty of measuring solar neutrinos at energies in the transition
+region, is the fact that the most common way to measure solar neutrinos for
+water Cherenkov or scintillator detectors
+is through the electron elastic scattering interaction.
+And as discussed in Sec~\ref{sec:esxsec} the energy of the observable
+scattered electron is weakly correlated with the energy of the incoming neutrino.
+And so even if a measurement of $\ce{^{8}B}$ solar neutrino interaction rate at low energies was
+made, that interaction rate would include contributions from $\ce{^{8}B}$ neutrinos
+from the observed energy up to the end-point energy.
+Meaning any measurement performed in the transition region will contain many
+more interactions from neutrinos with energy above the transition region than within
+the transition region.
+This means any measurement will require a very high statistics dataset to make
+a good measurement of the solar neutrino survival probability in the transition
+region.
+
+Despite these difficulties the $\ce{^{8}B}$ survival probability has been measured
+down to $3.5\,MeV$, though uncertainties at the lower energies are significant.
+These measurements come from the SuperK elastic scattering measurements~\citep{superk4}, combined
+with the three-phase SNO elastic scattering, charged current and neutral current measurements
+~\citep{sno_combined}.
+The SNO measurement provides the strongest constraints on the full, all-flavor, $\ce{^{8}B}$
+flux, and the SuperK measurement provides the strongest constraints on the
+flavor sensitive ``elastic-scattering'' flux.
+So far these experiments have not seen strong evidence for any
+upward transition in the survival probability.
+Figure~\ref{fig:es_b8_measurement} shows the SNO measurement
+and the combined SNO + SuperK  measurement
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.38\textwidth}
+        \centering
+    \includegraphics[width=\textwidth]{sno_pee}
+        \caption[]{}
+        \label{fig:sno_pee}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.58\textwidth}
+        \centering
+    \includegraphics[width=\textwidth]{sk_spectrum}
+        \caption[]{}
+    \end{subfigure}
+    \caption[]{}
+    \label{fig:es_b8_measurement}
+\end{figure}
+
+Because the ``up-turn'' in the survival probability has not yet been observed,
+solar neutrino measurements of $\Delta m^{2}_{21}$ prefer relatively low values
+that push the transition region to lower energies.
+Using only data from SNO and SuperK the best fit value for 
+$\Delta m^{2}_{21}$ is
+\begin{equation*}
+    \Delta m^{2}_{21} = (4.8^{+1.5}_{-0.8})\times 10^{-5} eV^{2}\text{\citep{superk4}.}
+\end{equation*}
+
+
+In principal, the transition region could be probed as well by a precise
+measurement of the survival probability from $pep$ or $\ce{^{7}Be}$ neutrinos.
+$pep$ neutrinos are mono-energetic at $E_{\nu}$ = 1.4\,MeV,
+this means they should have a survival probability of $53\%$ instead of the
+vacuum survival probability of about $56\%$.
+$\ce{^{7}Be}$ neutrinos are also mono-energetic at $0.861$\,MeV, providing
+them with an expected survival probability of $54\%$.
+A measured deviations of these survival probabilities from the expected
+vacuum mixing value would provide a measurement of $\Delta m^{2}_{21}$.
+But so far measuring these fluxes to that level of precision has not been
+possible.
+The current best measurement of these neutrino fluxes comes from the Borexino
+collaboration~\citep{borexino_nature}, their results are show in Tbl.~\ref{tbl:borexino_results}.
+\begin{table}
+    \centering
+    \begin{tabular} {c| c c}
+        & Measured Survival Probability [\%]\\
+        \hline
+        $pp$ & $056.6 \pm  9.2$\\
+        $\ce{^{7}Be}$ & $53.2\pm 5.4$ \\
+        $pep$ & $42.8\pm11.4$ \\
+    \end{tabular}
+    \caption[Borexino Measured Low Energy Survival Probabilities]{
+        Measured survival probabilities for low energy solar neutrinos
+        from the Borexino experiment~\citep{borexino_nature}.}
+    \label{tbl:borexino_results}
+\end{table}
+
+The day-night effect also provides sensitivity to $\Delta m^{2}_{21}$.
+The smaller $\Delta m^{2}_{21}$ is, the lower the energy threshold is for
+neutrinos to experience significant matter effects as they travel through the
+Earth.
+In practice the day-night effect has been difficult to measure due to
+the statistics required to measure a few percent change on the survival
+probability.
+And so the majority of sensitivity to $\Delta m^{2}_{21}$ for solar neutrino
+experiments comes from their ability to measure the transition region.
+The day-night asymmetry in the survival probability is often parameterized by the value $A_{ee}$, a value
+defined as,
+\begin{equation}
+    A_{ee}(E_\nu) = \frac{P_{\text{ee, day}}(E_\nu) - P_{\text{ee, night}}(E_\nu)}{P_{\text{ee, day}}(E_\nu) + P_{\text{ee, night}}(E_\nu)}\text{.}
+\end{equation}
+The SNO measurement of this asymmetry is shown in the bottom panel of~\ref{fig:sno_pee},
+they're result is consistent with no asymmetry.
+The SuperK measured value for the asymmetry in the observed interaction rate (as opposed to
+the survival probability) is
+\begin{equation*}
+    A_{R_\nu, SK} = (-3.3 \pm 1.0(stat.)\pm 0.5(syst))\%\text{.} 
+\end{equation*}
+This value is inconsistent with the no asymmetry at the roughly two-sigma level.
+The predicted value for this asymmetry for the best fit KamLAND $\Delta m^{2}_{21}$
+is $-1.7\%$ the predicted value for the SuperK+SNO value of $\Delta m^{2}_{21}$ is
+$-3.3\%$.
+So with relatively small significance, the solar measurement of $\Delta m^{2}_{21}$ from the day-night effect
+prefers a lower value than the KamLAND measurement.
+Figure~\ref{fig:sk_daynight} shows the SuperK asymmetry measurement in the
+observed interaction rate.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.78\textwidth]{sk_daynight}
+    \caption[]{Figure from~\ref{superk4}}
+    \label{fig:sk_daynight}
+\end{figure}
+
+Figure~\ref{fig:sk_pee_global} shows a summary of solar neutrino measurements
+with the solar survival probabilities as predicted by the KamLAND+solar and
+the solar only values for $\Delta m^{2}_{21}$.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.78\textwidth]{nufit_dm21_tension}
+    \caption[]{Figure from~\citep{nu_fit4}}
+    \label{fig:nufit_dm21_tension}
+\end{figure}
+A global fit for solar neutrino parameters done by Esteban \textit{et. al.}~\citep{nu_fit4},
+shown in Fig.~\ref{fig:nufit_dm21_tension},
+the overall significance disagreement between the KamLAND+solar and the solar only
+measurements for $\Delta m^{2}_{21}$.
+They perform a fit to the solar data using solar model input from the GS98 solar abundances
+as well as the AGS abundances, and show that uncertainty introduced by the
+disagreement in those models is not sufficient to explain the consistently
+low value for $\Delta m^{2}_{21}$ observed by SNO and SuperK.
+They determine the disagreement between the solar and KamLAND values for
+$\Delta m^{2}_{21}$ to have a significance of $\Delta \Chi^{2} = 4.7$, or
+roughly a $3\%$ chance of being the result of a statistical fluctuation.
+
 
 \subsection{Non-Standard Interactions}
+The observed discrepancy in the reactor and solar measured values for $\Delta m^{2}_{21}$
+has motivated re-consideration of the models used to predict the solar survival
+probability.
+It's been shown that if neutrinos produced in the core of the Sun experience
+significant flavor sensitive forces their mixing could be sufficiently modified
+to produce results consistent with the observed solar neutrino data, and
+the KamLAND measured value for $\Delta m^{2}_{21}$~\citep{richie_nsi,XXX}.
+
 Solar neutrinos  moving through the core of the sun is one of the few sources
 of neutrinos that experience oscillations that are significantly modified by
 the ambient electron density.
@@ -339,7 +569,7 @@ Kamiokande~\citep{superk4, superk_first_solar,superk2, superk3},
 Borexino~\citep{borexino_final_results,borexino_nature}, GNO~\citep{gallex, gno},
 SAGE~\citep{sage}, and Homestake~\citep{homestake} are used.
 Solar neutrino fluxes are constrainted by the GS98~\citep{gs98} solar abundance calculations.
-Reactor neutrino results from Daya Bay~\citep{daya_bay}, KamLAND~\citep{kamland_reactor, kamland_data_release}, Reno~\citep{reno2017}
+Reactor neutrino results from Daya Bay~\citep{daya_bay}, KamLAND~\citep{kamland_reactor, kamland_data_release}, Reno~\citep{reno}
 are also used to constrain neutrino mixing parameters.
 The KamLAND experiment has also published solar neutrino
 measurements~\citep{kamland_solar, kamland_b8},
