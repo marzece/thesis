@@ -23,16 +23,11 @@ and the weight for a $\nu_{\mu}$ event is given by,
     w_{\mathrm{\mu}}= P_{\mathrm{e\mu}} = 1 - P_{\mathrm{ee}}(E_{\nu})\text{.}
 \end{equation}
 
-Note, no specific accounting is made for the $\nu_{\tau}$ flux, instead
-only a two-flavor flux is considered.
-This is done because a $\nu_{\mu}$ ES interaction is indistinguishable
-from a $\nu_{\tau}$ ES interaction.
-So for all intents and purposes within this analysis $\nu_\mu$ and $\nu_\tau$
-are the same and refered to by just $\nu_\mu$.
-
-As mentioned in Sec~\ref{sec:solar_simulation}%XXX
-the effective livetime of the solar simulations are much larger to than
-the livetime of the detected dataset; the simulated histograms are
+As mentioned in Sec~\ref{sec:simulation} the effective flux of the solar
+simulations are much larger to than the expected flux of the detected dataset;
+this scaled flux is the same as if the simulated dataset had a much higher livetime
+but a standard flux value.
+So the simulated histograms are
 scaled to by $\frac{t_{live}}{t_{sim}}$ to make the effective simulated
 livetime match the livetime of the detector dataset.
 An additional scaling is done to the simulated histograms to account
@@ -41,20 +36,20 @@ is not applied to simulate events.
 The data cleaning sacrifice was determined to be $1.2\%$, so the
 simulated histograms are scaled by a factor of $0.988$.
 
-Once these scalings are applied the $\nu_{e}$ and $\nu_{\mu}$ histograms
+Once these scales are applied the $\nu_{e}$ and $\nu_{\mu}$ histograms
 respectively  represent the expected distribution and event rate for the charged current
 and neutral current interactions in the dataset for the nominal $\ce{^{8}B}$
 solar neutrino flux used in simulation.
-The $\nu_{e}$ and $\nu_{\mu}$ are then combined by
+The $\nu_{e}$ and $\nu_{\mu}$ histograms are then combined by
 simply adding their bin contents together to get the expected
-flavor independent elastic scattering interaction rate as a function
+mixed flavor elastic scattering interaction rate as a function
 of $T_{\mathrm{e}}$ and $\cos\theta_{\mathrm{sun}}$.
 Applying additional scaling to this combined histogram is done to represent
 a hypothesized scaling to the overall solar neutrino flux.
 So the rate of solar neutrino events is given by
 \begin{equation}
     R_{\nu}(\cos\theta_{\mathrm{sun}}, T_{\mathrm{e}}) =
-    S\phi\left(R \right)
+    S\phi(R)
     \label{eqn:solar_rate}
 \end{equation}
 

@@ -20,7 +20,7 @@ each event was assigned the artificial energy of $10.0$\,MeV.
 With those data, plots of the distribution of event direction with respect to
 the sun were created and provided a check that the results were as expected.
 The energy cut used to select events for that plot was performed using
-uncalibrated energy, so it has little bearing on the results of the full
+un-calibrated energy, so it has little bearing on the results of the full
 analysis.
 
 \section{Data Selection}
@@ -39,7 +39,84 @@ The analysis cuts are designed to maximize the signal efficiency for dataset and
 contamination from background sources.
 Each of these steps are detailed below.
 
+\subsection{Dataset}
+\label{sec:dataset}
+Data for this analysis was taken in SNO+'s initial water-phase data taking
+run.
+Data taking started May 05 2017 (exactly 4 years after I
+started my PhD) and ended December 25 the same year.
+The data taking started with run $100000$ and concluded with run
+$108416$, with each run being typically 1 hour long, though not
+all runs are suitable for analysis.
+In those runs approximately 185 days worth of useable data was taken,
+with significant pauses for commissioning of ancillary detector components,
+such as the water circulation systems, and for detector maintenance.
+Data taking was restarted several months after the end of this dataset,
+after the AV circulation pipes had been replaced to help reduce backgrounds
+in the detector.
+
+In the dataset there are a three different periods of data taking that are
+given special treatment in this analysis
+to be considered.
+The first is that an external water circulation pipe was observed to have
+introduced backgrounds into the upper-portion of the detector, between the
+PSUP and AV\@.
+For data taken during this period of time analysis cuts were adjusted, as
+will be discussed in Sec~\ref{sec:analysis_cuts}.
+The elevated background levels lasted from run $100400$ to $102048$.
+These runs are referred to as the ``hot-spot'' runs.
+
+The other period of time that requires special treatment within the analysis
+is due to significant adjustments to the detector trigger settings done approximately
+half-way through the dataset.
+So the dataset is split into a high and low trigger period, the high trigger
+period being first.
+The high trigger period started at run 100000 the low trigger period started
+at run 104613.
+The adjustment made was to raise the threshold on all channel threshold
+by a single DAC count.
+The result was a significant reduction in the observed dropout and noise rate
+in the detector, which allowed for the trigger threshold to be pushed further
+down, and an overall increase the detector's efficiency.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{pre_trigger_dropout}
+        \caption[]{}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{post_trigger_dropout}
+        \caption[]{}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.78\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{dropout_nd}
+        \caption[]{}
+    \end{subfigure}
+    \caption[Dropout In Low and High Trigger Period]{
+        N20 dropout in the high (a) and low (b) trigger period,
+        and the average dropout measured across all runs in the
+        dataset (c); the various ``jumps'' in the dropout are generally
+        due to bad fits.}
+    \label{fig:dataset_dropout}
+\end{figure}
+
+It's not known why the adjustment to channel thresholds resulted in such a significant
+reduction in the noise.
+It may be the case that adjusting the threshold reduced the rate of dropout.
+Figure~\ref{fig:dataset_dropout} shows a dropout measurement before and after the trigger
+adjustment, which shows how significant the dropout rate reduction in the trigger
+system was.
+It's not known if the in dropout is a side-effect of the noise reduction in
+the system, or the cause of it.
+
 \subsection{Run Selection}
+\label{sec:run_selection}
 Runs are rejected from the dataset if they fail to meet certain criteria
 for data quality and detector stability.
 It's first required that all meta-info about a run be created and stored
@@ -48,10 +125,12 @@ Those tables have information about the state of the hardware and DAQ, as
 well as information about the run including the run type and length.
 This information is necessary for assessing if the run is capable of being
 used for a physics analysis.
+It's further necessary that all meta-info be available so that the run
+can be simulated.
 It's very rare for the meta-info for a run not to be generated and stored
 properly, so this check has a almost no effect on the dataset.
 
-It's first required that the run type of the run be ``PHYSICS'', this indicates
+It's required that the run type of the run be ``PHYSICS'', this indicates
 that the DAQ settings were not changed at any point in the run and no external
 sources of events were present, and that the thresholds for triggering were set
 at a level deemed sufficient for most physics analyses.
@@ -84,6 +163,7 @@ still flag detector abnormalities.
 These checks all ensure that the data in a run is likely to be useful for
 a physics analysis, but are loose enough not to bias the dataset in a way that
 might influence results.
+
 \subsection{Data Cleaning}
 There are a number of instrumental effects that can cause an event
 to be recorded by the detector, these events typically have some
@@ -135,7 +215,7 @@ $10$ and $-30$ and are between 9 and 25\,ns after the high charge hit,
 then the hit is flagged a cross-talk hit and removed from the analysis.
 
 Events of instrumental origin are not well modeled within our simulation,
-so it is not used for evaluating the efficiencies and sacrifices of
+so simulation is not used for evaluating the efficiencies and sacrifices of
 data cleaning cuts.
 Instead a data-driven approach is used that relies primarily on calibration
 data from the $\ce{^{16}N}$ source, that analysis is detailed in~\ref{dc_document}.%Teals data cleaning stuff
@@ -180,7 +260,7 @@ This corresponds to the following data cleaning cuts:
     \textbf{Missing CAEN Data Cut},
     \textbf{Ped Cut},
     \textbf{Atmospheric Cut}.
-Of those cuts I'll detail here the motiviation behind and evaluation of the
+Of those cuts I'll detail here the motivation behind and evaluation of the
 cuts that I developed, the cuts that I did not directly develop are described in~\citep{dc_document}.
 
 \subsubsection{Ped Cut}
@@ -252,7 +332,7 @@ $N$.
 \end{figure}
 Figure~\ref{fig:mmf_sac} shows the measured distributions for $P_{F}$ and $P_{R}$
 evaluated during the unblinded portion of the dataset;
-a number of feactures exist in the observed distribution for $P_{F}$,
+a number of features exist in the observed distribution for $P_{F}$,
 the peak at very short $\Delta t$ comes from re-triggers within the
 detector following a high-nhit event.
 Figure~\ref{fig:mmf_sac2} shows this comparison in two dimensions, each
@@ -264,7 +344,7 @@ $N_{2}$ and $\delta T$, the threshold value for $N_{1}$ was fixed at the SNO val
 of $60$~\citep{neil_thesis}.
 This value is motivated by the fact that time correlated events are more
 likely to follow highly energetic events or events that can produce cosmogenic
-isotopes, and the nhit threshold for these processes is not effected signficantly
+isotopes, and the nhit threshold for these processes is not effected significantly
 by the changes from SNO to SNO+.
 The threshold value for $N_{2}$ was selected based upon what nhit of event
 could possibly serve as a background to the solar or nucleon decay analysis,
@@ -312,7 +392,7 @@ The cut values are meant to be constant value at lower nhit, and then
 linear with nhit above $\approx15$ nhit, the sigmoid allows for a smooth
 transition between those two functions; for both the upper and lower threshold
 the sigmoid position ($x_{0}$) and width ($w$) are $15$\,nhit and $5$\,nhit respectively.
-The constant value at lower nhit is $C$ the slope of the line at higer nhit
+The constant value at lower nhit is $C$ the slope of the line at higher nhit
 is given by $m$ and the value $b$ is required to be
 \begin{equation}
     b = \frac{C}{mx_{0}}
@@ -415,6 +495,7 @@ in the two calibration datasets and for standard physics data taking.
 %%\subsection{ITC Timespread Cut}
 
 \section{Analysis Cuts}
+\label{sec:analysis_cuts}
 The dataset of events passing all data cleaning cuts is further reduced by
 requiring all events pass cuts on reconstructed quantities.
 The cuts are designed to minimize the number of events in the dataset from
@@ -437,7 +518,7 @@ This cut ensures the dataset occupies a region where the detector trigger
 efficiency is well understood and near 100\%.
 This cut ensures the analysis is minimally effected by uncertainties
 associated with the detector's trigger.
-As mentioned in Sec.~\ref{XXX}, the detector trigger threshold were adjusted
+As mentioned in Sec.~\ref{sec:dataset}, the detector trigger threshold were adjusted
 part way through data-taking. The in-time nhit cut was adjusted to
 account for this.
 For the first trigger period all events were required to have an in-time
@@ -451,16 +532,12 @@ The next analysis cut is a fiducial volume (FV) cut that requires all events
 be within $5.3$\,m of the center of the detector.
 This cut is designed to reduce the background from radioactive decays within
 the AV or from the water outside the AV\@.
-For a time period in the data taking an elevated level of radioactive
-backgrounds was present in the upper half of the external water.
-During this period the FV cut was modified to require any events in the
+During the hot-spot time period the FV cut was modified to require any events in the
 top half of the detector ($z > 0$) fall within a radius of $4.2$\,m,
 events in the bottom half of the detector were still subject to the standard
 $5.3$\,m FV cut.
-Figure {XXX} shows the expected distribution of background events from
-AV and external water backgrounds compared to the distribution for solar neutrino
-events. This more restrictive cut was in place for 13\% of the dataset livetime,
-runs XXX to XXX\@.
+The more restrictive cut was in place for 13\% of the dataset livetime.
+%Figure {XXX} shows the expected distribution of background events from AV and external water backgrounds compared to the distribution for solar neutrino events.
 
 The time residual, defined in equation~\ref{eqn:tres} for a PMT hit is an extremely
 useful quantity because in general light that travels directly from an
@@ -468,9 +545,10 @@ interaction will have a very small time residual.
 Light that is produced by another source, or reflects off of a detector component
 between production and detection will have a larger time residual.
 
+
 The fraction of hits that satisfy
 \begin{equation}
-    -4 < t_{res} < 9 %TODO CHECK VALUES
+    -2.5 < t_{res} < 5
 \end{equation}
 is known as the ``In-time ratio'' (ITR).
 %The expected distribution in ITR for electrons is shown in figure XXX.
@@ -487,20 +565,11 @@ where
 $P_{\ell}$ is the $\ell^{\text{th}}$ Legendre Polynomial and
 $\theta_{ij}$ is the angle subtended by the vectors pointing
 from the reconstructed position of the event to the $i^{\text{th}}$ and
-$j^{\text{th}}$ hit PMT.
+$j^{\text{th}}$ hit PMT\@.
 
-The expected distribution of $\beta_{14}$ for electron events within the
-detector volume is shown in Figure XXX.
-
-%The fraction of hits that appear in a very prompt time window is a useful
-%value for removing instrumental backgrounds. Cherenkov radiation produces
-%a very short pulse of light within the detector, so any source of light
-%that has a longer time profile is unlikely to be from a Cherenkov process.
-%This is quantified using the ``In-time ratio'' (ITR) for an event.
-%ITR is the fraction of light with a time residual.
-
-Two event-quality cuts are further placed on events. These cuts remove events
-that have an ITR or $\beta_{14}$ (described in Sec.~\ref{sec:ITR} and Sec.~{sec:b14})
+Cuts are placed on the ITR and $\beta_{14}$ value for each event.
+These cuts aim to remove events
+that have an ITR or $\beta_{14}$ 
 that is inconsistent with the event originating from Cherenkov light produced
 by a solar neutrino event.
 The ITR of events is required to be greater than $55$\% and the $\beta_{14}$
@@ -509,7 +578,7 @@ These cuts are similar in purpose to the data cleaning cuts, as they attempt to
 remove events that are produced by sources other than Cherenkov light within
 the detector.
 
-The final cut analysis cut is on the reconstructed kinetic energy of each event.
+The final analysis cut is on the reconstructed kinetic energy of each event.
 The energy region for this analysis is $5.0 > T_{\mathrm{e}} < 15.0$\, MeV.
 This region is chosen to minimize contamination from atmospheric neutrino
 interactions, and radioactive decays within the detector.
@@ -526,17 +595,16 @@ energies. So no additional sensitivity to the solar neutrino interaction
 rate would be gained with a lower energy threshold.
 The $5$\,MeV threshold was chosen as the lowest energy from which a solar
 signal could still be resolved.
+%A summary of all cuts and their criteria, where applicable, is given in Table~\ref{tbl:event_selection}.
 
-A summary of all cuts and their criteria, where applicable, is given in Table~\ref{tbl:event_selection}.
-
-\begin{table}
-    \centering
-  \begin{tabular}{c  c}
-        Energy & FV\\
-    \end{tabular}
-    \caption{Cuts}
-\label{tbl:event_selection}
-\end{table}
+%\begin{table}
+%    \centering
+%  \begin{tabular}{c  c}
+%      Energy & FV & Data Cleaning & ITR & $\Beta_{14}\\
+%    \end{tabular}
+%    \caption{Cuts}
+%\label{tbl:event_selection}
+%\end{table}
 
 \section{Livetime}
 While most event selection removes individual events based upon whether they
@@ -552,6 +620,8 @@ The livetime for each run is then defined as
 where $t_{run}$ is the time between the first and last valid event within a run
 and $t_{\mathrm{dead}}$ is the sum of all deadtimes introduced into that run by cuts.
 The livetime is used to calculate the total exposure represented by the dataset.
-Table XXX shows the sum of deadtimes across all runs within the dataset.
 For simulated events many of the effects that necessitate deadtime are not simulated,
 so no deadtimes are added into the simulated runs.
+%Table XXX shows the sum of deadtimes across all runs within the dataset.
+The livetime represented by the dataset is 120.2 days, after subtracting the
+calculated deadtimes the effective livetime  114.7 days.
