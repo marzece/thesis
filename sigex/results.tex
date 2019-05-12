@@ -10,20 +10,60 @@
 
   \label{fig:costheta}
 \end{figure}
+The analysis outline in the previous section was performed in two steps.
+First the analysis was done with a single energy bin from $5$ to $15$,
+this provided an idea of the signal and background rate, but was not used in
+the final flux result.
+The principal purpose of the single bin analysis was to constrain the value of
+$\delta_{\theta}$, the angular resolution systematic.
+A fit was done to this distribution in three dimensions, signal normalization,
+background normalization and $\delta_{\theta}$.
+In this fit $\delta_{\theta}$ was constrained by the seperate $\ce{^{16}N}$ 
+results.
+From this the systematic uncertaintie on $\delta_{\theta}$
+was determined to be XXX.
+
+The analysis was then performed again with six energy bins, five equal width
+bins from 5 to 10\,MeV and a single bin from 10 to 15\,MeV.
+In each energy bin a two-dimension fit to the distribution of events in $\cos\theta_{sun}$ was
+done to determine the signal and background normalization.
+Then the likelihood space from each fit was combined,
+marginalizing over each energy bin's background rate,
+to find the most likely solar neutrino flux normalization.
+The best fit solar rates in each energy bin also serve to provide
+a measurement of the spectral shape of the solar neutrino
+flux.
+The spectral fit was also done as a three-dimensional fit
+in each bin, allowing $\delta_{\theta}$ to vary.
+This provided negligible difference in the final result
+and was significantly more computationally expensive.
+
+For each of these steps the fitting routine was a simple grid scan
+over the parameter space. 
+The solar and background normalizations were both scanned in $2000$ steps from 0 to
+an  value equal to  1.5 times the number of events in the energy bin.
+For fits involving $\delta_{\theta}$ 500 steps were used scanning values across
+double the $\ce{^{16}N}$ constraint.
+The uncertainty introduced by the sampling step size was, in all cases, negligible
+compared to the systematic and statistical uncertainty.
+
 Figure~\ref{fig:costheta} shows the distribution of events in $\cos\theta_\text{{sun}}$
 for events over the entire energy range of $5$ to $15$\,MeV and the fit to that distribution.\
+The value $\delta_\theta$ for the best fit line is fixed to zero, but the 
+systematic uncertainties are shown in the blue band.
 The fit gives a solar event rate of $1.30\pm0.18$~events/kt-day
  and background rate of  $10.23\pm0.38$~events/kt-day.
+
 Performing a similar fit in each individual energy bin yielded a best fit solar flux
 as a function of energy.\
-The fits were combined, in accordance with Eq.~\ref{eq:ll}, yielding an overall best fit flux of
+The fits were combined,  yielding an overall best fit flux of
 \begin{equation*}
     \Phi_{ES}= 2.53^{+0.31}_{-0.28}\text{(stat.)}^{+0.13}_{-0.10}\text{(syst.)}\times10^6\,\text{cm}^{-2}\text{s}^{-1}\text{.}
 \end{equation*}
 This value assumes the neutrino flux consists purely of electron flavor neutrinos.\
 The result agrees with the elastic scattering flux published by Super-K,
 $\Phi_{ES}=\left(2.345\pm0.039\right)\times10^{6}cm^{-2}s^{-1}$~\citep{superk4},
-combining statistical and systematic errors.\
+combining statistical and systematic errors.
 
 \begin{figure}
   \centering
@@ -73,7 +113,7 @@ Total & 5.0\%\\
 
 Including the effects of solar neutrino oscillations, using the neutrino mixing
 parameters given in Ref.~\citep{pdg2016} and the solar production and electron
-density distributions given in Ref.~\citep{bs05op} gave a best fit solar flux
+density distributions given in Ref.~\citep{bs_ssm} gave a best fit solar flux
 of
 \begin{equation*}
     \Phi_{\ce{^{8}B}}= 5.95^{+0.75}_{-0.71}\text{(stat.)}^{+0.28}_{-0.30}\text{(syst.)}\times10^{6}\text{cm}^{-2}\text{s}^{-1}\text{.}
@@ -110,15 +150,15 @@ For the region above 6~MeV, this is the lowest
 background elastic scattering measurement of solar neutrinos in a water
 Cherenkov detector.\
 
-\subsection{Mixing Results}
-By using the SNO $\ce{^{8}B}$ flux result as the true value for the full,
-flavor independent, $\ce{^{8}B}$ solar neutrino flux, this measurement of the
-solar elastic-scattering rate can be used to the effective solar neutrino survival
-probability.
-This sort of measurement has been done before, most significantly by
-Super Kamiokande~\citep{superk1,superk2,superk3,superk4}.
-%and also by Borexino???TODO check if borexino has doen this
-
-For any combination of electron recoil energy $T_{\mathrm{e}}$ and solar
-neutrino energy, $E_{\nu}$ the relation between the survival probability
-and the elastic scattering rate is........
+%\subsection{Mixing Results}
+%By using the SNO $\ce{^{8}B}$ flux result as the true value for the full,
+%flavor independent, $\ce{^{8}B}$ solar neutrino flux, this measurement of the
+%solar elastic-scattering rate can be used to the effective solar neutrino survival
+%probability.
+%This sort of measurement has been done before, most significantly by
+%Super Kamiokande~\citep{superk1,superk2,superk3,superk4}.
+%%and also by Borexino???TODO check if borexino has doen this
+%
+%For any combination of electron recoil energy $T_{\mathrm{e}}$ and solar
+%neutrino energy, $E_{\nu}$ the relation between the survival probability
+%and the elastic scattering rate is........
