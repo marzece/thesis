@@ -28,7 +28,6 @@ However, KamLAND has much better sensitivity to $\Delta m^{2}_{21}$
 than the combined SNO and SuperK result, so the best fit value for
 $\Delta m^{2}_{21}$ comes almost exclusively from the KamLAND
 reactor neutrino measurements.
-
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{kamland_oscillation}
@@ -173,7 +172,7 @@ collaboration~\citep{borexino_nature}, their results are show in Tbl.~\ref{tbl:b
     \begin{tabular} {c| c c}
         & Measured Survival Probability [\%]\\
         \hline
-        $pp$ & $056.6 \pm  9.2$\\
+        $pp$ & $56.6 \pm  9.2$\\
         $\ce{^{7}Be}$ & $53.2\pm 5.4$ \\
         $pep$ & $42.8\pm11.4$ \\
     \end{tabular}
@@ -321,7 +320,8 @@ A_{\mathrm{vac}}^{\prime} =
     A_{\mathrm{\tau}} & 0 & 0  \\
     0 &  A_{\mathrm{\tau}} & 0  \\
     0 & 0 &  A_{\mathrm{\tau}}  \\ 
-\end{bmatrix}  
+\end{bmatrix} 
+= 
 \begin{bmatrix}
     A_{\mathrm{e}}^{\prime} & 0 & 0  \\
     0 &  A_{\mathrm{\mu}}^{\prime} & 0  \\
@@ -564,7 +564,7 @@ integration.
 
 The modified vacuume state evolution done by first evaluating the mixing
 Hamiltonian and diagonalizing the resulting matrix.
-Diagonalization is done using the GNU Scientific Library~\cite{gsl}
+Diagonalization is done using the GNU Scientific Library~\cite{gsl_ref}
 linear algebra routines.
 The resulting eigenvectors are used to transform to a basis where the
 Hamiltonian is diagonal and the state can be evolved by evaluating
@@ -572,10 +572,9 @@ Hamiltonian is diagonal and the state can be evolved by evaluating
 \ket{\Psi_{k}(x)} = e^{(-iE_{k}x)} \ket{\Psi_{k}(t=0)}\text{.}
 \label{eqn:chameleon_evolution}
 \end{equation}
-The energy $E_{k}$ is the k$^{\mathrm{th}}$ energy eigenvalue determined
-by the diagonalization.
-$\ket{\Psi_{k}}(t=0)$ is neutrino state, in the eigen-basis at the time
-that it enters the modified vacuum potential;
+The energy $E_{k}$ is the k$^{\mathrm{th}}$ energy eigenvalue determined by the
+diagonalization routine, $\ket{\Psi_{k}}(t=0)$ is neutrino state, in the eigen-basis, at
+the time that it enters the modified vacuum potential;
 the states from the solar simulation are transformed to the eigen-basis
 and used for $\ket{\Psi_{k}(t=0)}$.
 Equation~\eqref{eqn:chameleon_evolution} is evaluated for $x=1$AU
@@ -591,10 +590,9 @@ Sun.
 The calculation for this is done for only a ``day'' path through the earth
 and a ``night'' path. The ``day'' path simulates the neutrino only travelling
 through the crust of the Earth. The ``night'' path simulates the neutrino
-travelling through the Earth, including the high density ``core'' region.
-a one-dimensional earth density profile is from~\citep{PREM} is used.
-This results in an simulation of the day-night effect for neutrino
-oscillation.
+travelling through the Earth, including the high density core.
+The one-dimensional earth density profile is from Ref.~\citep{PREM} is used.
+%This results in an simulation of the day-night effect for neutrino oscillation.
 
 The result of this chain of simulation steps is monte-carlo samples
 of neutrino flavor states. The survival probability is calculated as,
@@ -632,7 +630,7 @@ The other method of simulation uses the same solar inputs as the
 Runge-Kutta integration, but instead of simulating individiual neutrino
 states, only the eigen-states are simulated.
 For each production radius and production energy within the sun the
-the mixing hamiltonian is diagonalized,
+the mixing Hamiltonian is diagonalized,
 \begin{equation}
     H = U M U^{\dagger} + A = P D P^{\dagger}\text{.}
 \end{equation}
@@ -722,12 +720,12 @@ Solar neutrino results from SNO~\citep{sno_combined}, Super
 Kamiokande~\citep{superk4, superk_first_solar,superk2, superk3},
 Borexino~\citep{borexino_final_results,borexino_nature}, GNO~\citep{gallex, gno},
 SAGE~\citep{sage}, and Homestake~\citep{homestake} are used.
-Solar neutrino fluxes are constrainted by the GS98~\citep{gs98} solar abundance calculations.
+Solar neutrino fluxes are constrained by the GS98~\citep{gs98} solar abundance calculations.
 Reactor neutrino results from Daya Bay~\citep{daya_bay}, KamLAND~\citep{kamland_reactor, kamland_data_release}, Reno~\citep{reno}
 are also used to constrain neutrino mixing parameters.
 The KamLAND experiment has also published solar neutrino
 measurements~\citep{kamland_solar, kamland_b8},
-only ther reactor neutrino results are used however.
+only their reactor neutrino results are used however.
 Including the KamLAND solar results is a potential improvement for the global fitting
 algorithm.
 The KamLAND solar neutrino results are, however, compatible with and
