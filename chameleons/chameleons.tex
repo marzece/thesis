@@ -239,7 +239,7 @@ as well as the AGS abundances, and show that uncertainty introduced by the
 disagreement in those models is not sufficient to explain the consistently
 low value for $\Delta m^{2}_{21}$ observed by SNO and SuperK.
 They determine the disagreement between the solar and KamLAND values for
-$\Delta m^{2}_{21}$ to have a significance of $\Delta \Chi^{2} = 4.7$, or
+$\Delta m^{2}_{21}$ to have a significance of $\Delta \chi^{2} = 4.7$, or
 roughly a $3\%$ chance of being the result of a statistical fluctuation.
 
 
@@ -248,82 +248,106 @@ The observed discrepancy in the reactor and solar measured values for $\Delta m^
 has motivated re-consideration of the models used to predict the solar survival
 probability.
 It's been shown that if neutrinos produced in the core of the Sun experience
-significant flavor sensitive forces their mixing could be sufficiently modified
+significant flavor sensitive potentials their mixing could be sufficiently modified
 to produce results consistent with the observed solar neutrino data, and
-the KamLAND measured value for $\Delta m^{2}_{21}$~\citep{richie_nsi,XXX}.
+the KamLAND measured value for $\Delta m^{2}_{21}$~\citep{richie_nsi,mavans_nsi, nsi_friedland}.
+Theories that modify the standard mixing model for neutrinos are generally
+referred to as ``Non-Standard Interaction'' or NSI models, because
+they often suppose the neutrino might couple to matter in some unexpected way.
+Solar neutrinos provide an excellent laboratory for testing NSI models
+because solar neutrinos are produced in and travel through matter densities much
+higher than what is found in terrestrial neutrino experiments;
+similarly solar neutrinos have a much longer baseline than any terrestrial
+neutrino sources have.
+Additionally, the neutrino production sources within the sun are well
+relatively well understood and the Sun's density profile is also well
+constrained by solar models.
+These two factors allow for NSI theories to produce predictions for solar
+neutrino observation that are precise but not ruled out by observations from
+reactor, accelerator, or atmospheric neutrino experiments.
 
-Solar neutrinos  moving through the core of the sun is one of the few sources
-of neutrinos that experience oscillations that are significantly modified by
-the ambient electron density.
-In princible neutrino mixing could be modified by neutrino-nuclear interactions
-as well, however standard nuclear interactions for the neutrino are either
-not flavor sensitive. Or are the result of incoherent neutrino scattering, which
-in most cases has a much smaller  cross-section than coherent or electron scattering.
+Beyond non-standard interactions there exist theories involving sterile neutrinos,
+mass-varying neutrinos, neutrino decay, and large magnetic moments, all of
+which modify the standard solar neutrino survival probability~\citep{maltoni_solar, richie_nsi}.
+Figure~\ref{fig:maltoni_mixing} shows an example of survival probabilities
+for a modified up and down quark neutrino interaction and a sterile neutrino
+model.
 
-But their potential sensitivity to nuclear or modified electron scattering
-means they can be used to probe into our understanding of how neutrinos
-interact with matter.
-If there exists neutrino-nucleus or neutrino-electron interactions that are
-not accounted for within the standard model those interactions could be visible
-in how they modify the oscillations of solar neutrinos.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{maltoni_mixing}
+\caption[]{Figure from~\citep{maltoni_solar}}
+\label{fig:maltoni_mixing}
+\end{figure}
 
-It's common to parameterize these modified interactions in a general manner,
-without tieing it to particular theory of modified interactions. As show in
-figure XXX, which shows a possible survival probability curves for a modified
-up or down quark-neutrino interaction\ldots TODO.\@
 
-\subsection{MaVaNs}
-It was originally proposed in XXX that the cosmological acceleron theory for dark
-energy might lead to a neutrino's mass being modified by the local neutrino density.
-This in turn can modify neutrino mixing in the core of the sun where the neutrino
-propagates significant distances in areas of high neutrino density.
+\section{Modified Vacuum Mixing}
+Considered here is a novel phenomenological theory that modifies the solar
+neutrino survival probability.
+Whereas many theories of modified neutrino mixing alter the way neutrinos
+interact with matter, similar to standard matter enhanced-mixing,
+here we consider a modification to neutrino mixing in areas of very low matter
+density.
+ Motivations for a potential with strength inversely related to local matter
+density is considered in Sec.~\ref{sec:actual_chameleons}.
+The effect A potential of this form is might have on neutrino
+mixing is parameterized as follows
+\begin{equation}
+H = UM^{2}U^{\dagger} + A_{v}\text{,}
+\end{equation}
+where $U$ $M^{2}$ $A_{v}$ 
 
-\subsection{Chameleons}
-It was proposed in~\citep{khoury_chameleons} that the observed expansion
-of the universe could be explained by introducing a 5th force that is weak
-in areas of high matter density. Such a force would be difficult to detect
-in most experiments because its effects would be small compared to standard
-forces. But at cosmological distance scales where the matter density is near
-zero, the force could be much stronger. This force is referred to as a ``chameleon''
-force, because it is affected by it's surrounding and can ``blend in'' to avoid
-detection.
 
-It could be the case that this force couples to neutrinos such that the coupling
-is sensitive to either neutrino flavor, or the mass. If so it's expected that the
-neutrino's mixing would be modified by the prescesce of a chameleon field.
-And that the chameleon-modified mixing would be only significant in areas of very
-low matter density.
-Solar neutrinos would provide almost unique sensitivity to this sort of modified
-vacuum mixing, because they're by far the most abundant and easily detectable source
-of neutrinos that travel a significant distance in areas of near-zero matter
-density, \textit{ i.e.}\ between the Sun and Earth.
 
-This idea is the phenomonlogical basis for the idea of modified vacuum mixing.
-To explore this idea I developed a simulation of neutrino mixing in the sun and in
-the vacuum. Typical calculations of the neutrino survival probability from
-the sun are able to take advantage of the fact that the neutrino travels adiabatically
-through the varying mass density of the sun. This means that the neutrino is
-created in a mixture of mass states, the exact composition depending on the local
-electron density, and the neutrino stays in that same mixture of mass states
-as it exits the sun. The flavor composition of each mass state however changes,
-meaning that the flavor composition of the neutrino state changes, even though
-it's mass-state composition does not.
-This means that practically all one needs to do is calculate the composition
-of mass states that corresponds to an electron type neutrino, and then calculate
-the flavor content of that composition in vacuum, and that flavor content
-tells you the survival probability and transition probability. One is able to
-ignore all oscillations that may occur within the sun and simply calculate
-quantities for when the neutrino is created and when it is detected.
 
-This simplification is not necessarily valid depending on how the neutrino
-exits the sun and how quickly the modified vacuum potential becomes significant.
-While the matter density is low but non-zero the neutrino will experience standard
-vaccuum mixing. If the neutrino changes from low to zero matter density over
-a distance much shorter than the oscillation length of the neutrino, the
-transition from standard to modified vacuum mixing potential may not be adiabatic.
-In which case the exact state of the neutrino at the point of the transition
-will determine how the flavor state of the neutrino changes as it propagates.
 
+%\subsection{Chameleons}
+%\label{sec:actual_chameleons
+%It was proposed in~\citep{khoury_chameleons} that the observed expansion
+%of the universe could be explained by introducing a 5th force that is weak
+%in areas of high matter density. Such a force would be difficult to detect
+%in most experiments because its effects would be small compared to standard
+%forces. But at cosmological distance scales where the matter density is near
+%zero, the force could be much stronger. This force is referred to as a ``chameleon''
+%force, because it is affected by it's surrounding and can ``blend in'' to avoid
+%detection.
+%
+%It could be the case that this force couples to neutrinos such that the coupling
+%is sensitive to either neutrino flavor, or the mass. If so it's expected that the
+%neutrino's mixing would be modified by the prescesce of a chameleon field.
+%And that the chameleon-modified mixing would be only significant in areas of very
+%low matter density.
+%Solar neutrinos would provide almost unique sensitivity to this sort of modified
+%vacuum mixing, because they're by far the most abundant and easily detectable source
+%of neutrinos that travel a significant distance in areas of near-zero matter
+%density, \textit{ i.e.}\ between the Sun and Earth.
+%
+%This idea is the phenomonlogical basis for the idea of modified vacuum mixing.
+%To explore this idea I developed a simulation of neutrino mixing in the sun and in
+%the vacuum. Typical calculations of the neutrino survival probability from
+%the sun are able to take advantage of the fact that the neutrino travels adiabatically
+%through the varying mass density of the sun. This means that the neutrino is
+%created in a mixture of mass states, the exact composition depending on the local
+%electron density, and the neutrino stays in that same mixture of mass states
+%as it exits the sun. The flavor composition of each mass state however changes,
+%meaning that the flavor composition of the neutrino state changes, even though
+%it's mass-state composition does not.
+%This means that practically all one needs to do is calculate the composition
+%of mass states that corresponds to an electron type neutrino, and then calculate
+%the flavor content of that composition in vacuum, and that flavor content
+%tells you the survival probability and transition probability. One is able to
+%ignore all oscillations that may occur within the sun and simply calculate
+%quantities for when the neutrino is created and when it is detected.
+%
+%This simplification is not necessarily valid depending on how the neutrino
+%exits the sun and how quickly the modified vacuum potential becomes significant.
+%While the matter density is low but non-zero the neutrino will experience standard
+%vaccuum mixing. If the neutrino changes from low to zero matter density over
+%a distance much shorter than the oscillation length of the neutrino, the
+%transition from standard to modified vacuum mixing potential may not be adiabatic.
+%In which case the exact state of the neutrino at the point of the transition
+%will determine how the flavor state of the neutrino changes as it propagates.
+%
 \section{Simulation}
 Two different simulation of neutrino oscillations were developed, the first
 does a full simulation of the neutrino state as it propagates from the

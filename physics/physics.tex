@@ -427,6 +427,7 @@ is available in Ref~\citep{neutrino_osc_subtleties}.
 Applying Schrodinger's equation,
 \begin{equation}
     i\frac{d}{dt}\ket{\nu_{i}(t)} = H\ket{\nu_{i}(t)} = E_{i}\ket{\nu_{i}(t)}\text{,}
+\label{eq:mass_state_evolution}
 \end{equation}
 results in,
 \begin{equation}
@@ -497,6 +498,25 @@ All this gives
 For the mixing parameters given in~\citep{PDG2016} the average survival probability
 for a electron neutrino is $P_{ee} = 55.8\%$.
 
+It's common to reprsent neutrino mixing in the following form
+\begin{equation}
+i\frac{d}{dt}\ket{\Psi_{\alpha}} = H\ket{\Psi} = \frac{1}{2E}UM^{2}U^{\dagger}\ket{\Psi_{\alpha}}\text{.}
+\label{eq:mixing_hamiltonian}
+\end{equation}
+Where $U$ is the PMNS matrix, $\Psi_{\alpha}$ is the neutrino state in the  flavor
+basis, and
+\begin{equation}
+M^{2} = 
+\begin{bmatrix}
+    0 & 0 & 0  \\
+    0 & \Delta m^{2}_{21} & 0  \\
+    0 & 0 & \Delta m^{2}_{31}  \\
+\end{bmatrix}text{.}
+\end{equation}
+This form of the mixing equation is the same as Eqn.~\eqref{eq:mass_state_evolution}
+written in the flavor basis.
+
+
 With the exception of the CP violating phase $\delta_{cp}$, all mixing
 parameters and mass-squared splitting have been measured experimentally~\citep{pdg_globalfit}.
 None of the parameters are not predicted from the standard model, so are theoretically
@@ -533,34 +553,96 @@ Therefore it is acceptable to ignore the presence of Majorana phases in typical
 neutrino mixing calculations.
 
 \subsection{Matter Enhanced Oscillations}
-When neutrino propagate through matter, as opposed to vacuum, its oscillation is altered.
-The local density of other particles modifies the vacuum Hamiltonian,
-adding a weak interaction potential.
+When neutrino propagate through matter, as opposed to vacuum, its oscillation is altered
+by the potential introduced from available nuclear and leptonic interactions.
 The interaction comes primarily from a neutral current interaction of the form
 shown in Fig.~\ref{fig:nuclear_nc}, and a flavor dependent charged current interaction shown in
 Fig.~\ref{fig:nuclear_cc} and the  neutrino elastic scattering potential shown in
 Fig.~\ref{fig:ES_CC} and Fig.~\ref{ES_NC}.
-Nearly all normal matter contains a much higher density of electrons
-than the other flavors of charged lepton, so the charged current reaction
-elastic scatter modifies the electron neutrino potential and not the potential for the muon
-or tau neutrino.
-The result is that the electron density through which a neutrino propagates
-can modify the effective mass-splitting and mixing angle for the electron
-neutrino.
+The potential for the nuclear charged current interaction is negligible
+because it modifies the state of the nucleon it interacts with,
+and is thus considered an incoherent nuclear interaction.
+It is shown in Ref.~\citep{wolfenstein_osc} that incoherent interactions
+will contribute negligibly to the interaction potential except if the neutrinos
+are extremely high energy or in regions of extremely high matter density.
+
+The potential energy associated with the charged current ES interaction
+is given by
+\begin{equation}
+V_{\mathrm{CC}} = \sqrt{2}G_{F}N_{\text{e}}\text{,}
+\end{equation}
+where $N_{\mathrm{e}}$ is the local electron density.
+Similarly the neutral current interactions contribute a flavor independent
+shift to the potential given by
+\begin{equation}
+V_{\mathrm{NC}} = -\frac{\sqrt{2}}{2} G_{\text{F}} N_{\mathrm{n}}
+\end{equation}
+where $N_{n}$ is the local neutron density, the contributions to this potential
+from electron and proton interactions cancel out.
+This derivation assumes the neutrino is traveling through matter composed primarily
+of protons, neutrons, and electrons.
+ A safe assumption for almost all cases.
+
+The mixing described by Eqn.~\eqref{eq:mixing_hamiltonian} is modified to include
+the potential terms described above.
+\begin{equation}
+i\frac{d}{dt}\ket{\Psi_{\alpha}} = \left[H_{\mathrm{vac}} + H_{\mathrm{I}}\right]\ket{\Psi}
+\end{equation}
+\begin{equation}
+H_{\mathrm{vac}}  = \frac{1}{2E}UM^{2}U^{\dagger}
+\end{equation}
+\begin{equation}
+ H_{\mathrm{I}} =  A_{\mathrm{CC}} + A_{\mathrm{NC}}\text{.}
+\end{equation}
+The mixing potentials for the charged and neutral current interactions
+are given by
+\begin{equation}
+A_{\mathrm{CC}} = 
+\begin{bmatrix}
+    V_{\mathrm{CC}} & 0 & 0  \\
+    0 & 0 & 0  \\
+    0 & 0 & 0\\
+\end{bmatrix}\text{,}
+\end{equation}
+\begin{equation}
+A_{\mathrm{NC}} = 
+\begin{bmatrix}
+    V_{\mathrm{NC}} & 0 & 0  \\
+    0 & V_{\mathrm{NC}} & 0  \\
+    0 & 0 & V_{\mathrm{NC}}\\
+\end{bmatrix}\text{.}
+\end{equation}
+It can be show that since $A_{\mathrm{NC}}$ is identity-like it can be neglected
+from consideration.
+Identity-like matrices produce no observable effect on the overall neutrino mixing.
+The full mixing Hamiltonian is given by
+\begin{equation}
+H = \frac{1}{2E}UM^{2}U^{\dagger} + A_{\mathrm{CC}}\text{.}
+\end{equation}
+These results are derived in detail in Ref.~\cite{wolfenstein_osc} and Ref.~\citep{giuntikim}.
+
+With this derivation it's clear that the electron density through which a
+neutrino propagates can modify the effective mass-splitting and mixing angle
+for the electron neutrino.
+That is to say, any matter-enhanced mixing can also be described as vacuum mixing
+with just a different set of mixing parameters.
 For a given neutrino energy $E_{\nu}$ there exists an electron density for which
 the effective mixing angle is maximal, this is known as the resonant density~\citep{wolfenstein_osc, ms_oscillation}.
 This resonance is important for solar neutrinos and will be discussed more in
 the next section.
 
-The adabiticity of neutrino oscillation refers if mass state composition
-of a neutrino state changes or not, if it does change then the neutrinos
-oscillation is non-adiabatic.
+Matter effects also introduce the question of adiabaticity into neutrino
+oscillations.
+As a neutrino travels through changing matter potentials its possible for
+the effective potential to evolve much faster than the neutrino oscillates.
+A neutrinos propagation is said to be full adiabatic if its mass state composition
+does not change between production and detection.
 A specific example is if a neutrino state is a pure vacuum mass-1
 state,
 \begin{equation*}
     \ket{\Psi_{\nu}} = \ket{\nu_{1}}
 \end{equation*}
-suddenly enters a region of significant matter density where the mass states
+suddenly enters a region of significant electron density where the mass states
 are now $\ket{\nu_{k}^\prime}$.
 The neutrino state does not have time to evolve at all so the state
 does not change, but it is not longer a pure eigenstate of the mixing
@@ -571,7 +653,7 @@ Hamiltonian,
 Since the neutrino is no longer in a pure eigenstate the state will
 now oscillate.
 
-In contrast if the neutrino slowly enters the region of significant matter
+In contrast if the neutrino enters the region of significant electron
 density more slowly, then the neutrino state will smoothly evolve with the
 eigenstate, $\ket{\nu_{1}} \rightarrow \ket{\nu_{1}^{\prime}}$.
 And so the final state of the neutrino in the adiabatic case will be,
@@ -617,7 +699,7 @@ the Sun with normalization uncertainties. Figure from~\citep{bs_ssm}.}
 \end{figure}
 
 Within the $pp$-chain there are five processes that produce neutrinos.
-Since the Q-value the processes in the $pp$ chain are all below the rest mass
+Since the Q-value of the processes in the $pp$ chain are all below the rest mass
 of a muon or tau, the only charged lepton generated is electrons. And so from
 lepton flavor conservation only electron flavor neutrinos are generated.
 And because the neutrino producing processes are all fusion reactions or
@@ -628,13 +710,12 @@ The $hep$ and $\ce{^{8}B}$ reactions produce neutrinos with the highest
 energies. Since the $hep$ reaction branching ratio is so low the flux
 of $hep$ neutrinos is also very low compared to that of $\ce{^{8}B}$ neutrinos;
 the $hep$ flux is expected to be approximately $0.15\%$ of the $\ce{^{8}B}$ flux.
-So for water-Cherenkov detectors that have a typical threshold of a few MeV, $\ce{^{8}B}$ neutrinos
-are the primary source of detectable solar neutrinos.
-
+So for water-Cherenkov detectors that have a typical threshold of a few MeV,
+$\ce{^{8}B}$ neutrinos are the primary source of detectable solar neutrinos.
 The uncertainty on the predicted $\ce{^{8}B}$ flux is relatively large, this comes mostly
 from the uncertainty on the cross-sections and how those cross-sections change with
 temperature, and uncertainties on the temperature profile within the core of the sun.
-And since the $\ce{^{8}B}$ reaction has five preceding reactions the uncertainty on
+And because the $\ce{^{8}B}$ reaction has five preceding reactions the uncertainty on
  those reactions are part of the uncertainty on the $\ce{^{8}B}$ flux.
 
 The uncertainty on the $pp$ and $pep$ neutrinos is much lower for two reasons. First, because
@@ -706,7 +787,7 @@ them a valuable object for study.
 Chapter~\ref{sec:chameleons} explores the study of mixing with
 solar neutrinos further.
 
-Neutrinos created in the solar core can experience significant mixing effects from local
+Neutrinos created in the solar core can experience significant matter enhanced mixing effects from local
 electron density.
 One of the most interesting aspects to neutrino mixing within the Sun is the MSW-effect,
 at a specific electron density a resonance occurs and neutrinos are maximally mixed.
