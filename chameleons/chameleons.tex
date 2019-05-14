@@ -12,7 +12,121 @@
 % ----------------------------------------------------------------------
 % ----------------------- chameleons content -------------------------
 % ----------------------------------------------------------------------
+\section{Modified Vacuum Mixing}
+Considered here is a novel phenomenological theory that modifies the solar
+neutrino survival probability.
+Whereas many theories of modified neutrino mixing alter the way neutrinos
+interact with matter, similar to standard matter enhanced-mixing,
+here we consider a modification to neutrino mixing in areas of very low matter
+density.
+ Motivations for a potential with strength inversely related to local matter
+density is considered in Sec.~\ref{sec:actual_chameleons}.
+The effect a potential of this form is might have on neutrino
+mixing is parameterized as follows
+\begin{equation}
+H = UM^{2}U^{\dagger} + A_{\mathrm{vac}}\text{,}
+\end{equation}
+where $A_{\mathrm{vac}}$ represents a potential only significant in regions
+of near-zero matter density.
+$A_{\mathrm{vac}}$ is given by
+\begin{equation}
+A_{\mathrm{vac}} =
+\begin{bmatrix}
+    A_{\mathrm{e}} & 0 & 0  \\
+    0 &  A_{\mathrm{\mu}} & 0  \\
+    0 & 0 &  A_{\mathrm{\tau}}  \\
+\end{bmatrix}\text{.}
+\end{equation}
+Each diagonal entry represents a potential felt in the vacuum
+by the neutrino of the given flavor state.
+This parameterization can be simplified somewhat by subtracting off
+an identity like term.
+\begin{equation}
+A_{\mathrm{vac}}^{\prime} =
+\begin{bmatrix}
+    A_{\mathrm{e}} & 0 & 0  \\
+    0 &  A_{\mathrm{\mu}} & 0  \\
+    0 & 0 &  A_{\mathrm{\tau}}  \\
+\end{bmatrix} - 
+\begin{bmatrix}
+    A_{\mathrm{\tau}} & 0 & 0  \\
+    0 &  A_{\mathrm{\tau}} & 0  \\
+    0 & 0 &  A_{\mathrm{\tau}}  \\ 
+\end{bmatrix} 
+= 
+\begin{bmatrix}
+    A_{\mathrm{e}}^{\prime} & 0 & 0  \\
+    0 &  A_{\mathrm{\mu}}^{\prime} & 0  \\
+    0 & 0 &  0  \\ 
+\end{bmatrix}  
+\end{equation}
+This makes no difference because neutrino mixing is only effected by differences
+between the neutrino states, so an identity-like matrix can always be subtracted
+from the mixing Hamiltonian without effecting the result.
 
+In this model mixing is described by standard MSW-LMA mixing in areas of
+non-negligible matter density, and by the modified vacuum mixing potential
+in areas of near zero matter density.
+In areas where the matter effect on neutrinos is negligible but the local
+matter density is non-zero, the mixing is best described a standard
+vacuum mixing potential, \textit{i.e.} $H = UM^{2}U^{\dagger}$.
+A model like this is desirable because it allows for the mixing of solar neutrinos, which
+travel for a signifiant distance in the vacuum of space between the Sun and Earth,
+to be modified, while not effecting neutrino mixing observed by terrestrial neutrino experiments.
+
+Nearly all detected neutrino sources, neutrinos are produced, propagate through
+ and detected are detected in areas of relatively high matter density
+The exception to this is supernova neutrinos observed by from SN1987A~\citep{kamiokande_sn, imb_sn,baksan_sn},
+and neutrinos detected by the IceCube experiment from a blazar~\citep{icecube_blazar}.
+Neither of these datasets are sufficient to make statements
+about neutrino mixing though.
+Ultra-high energy neutrinos from the GZK production process~\citep{gzk} would be an useful
+source for constraining this model, as GZK neutrinos not only travel through
+significant distances in vacuum, they're also produced in vacuum.
+However, neutrinos from the GZK process have not yet been detected by
+any experiments.
+And so, solar neutrinos are the only currently available source
+of neutrinos that are sensitive to this model.
+
+\subsection{Motivation}
+There are broadly two motivating factors behind a modified vacuum mixing model.
+The first is the tension in between solar neutrino measurements and 
+the KamLAND reactor neutrino measurement of $\Delta m^{2}_{21}$.
+This tension is discussed in detail in Sec.~\ref{sec:dm21_tension}.
+While the tension could be the result of statistical fluctuations or un-modelled
+systematic effects, the flatness of observed solar survival probability and
+unexpectedly large day-night asymmetry both independently prefer lower values
+for $\Delta m^{2}_{21}$.
+This motivates considerations of what physics might effect the solar survival
+probability and not the KamLAND result.
+Unexpected effects from the high density long baseline solar environment provide a neat answer.
+Similarly unexpected effects from a near zero matter density environment
+provides an explanation for the observed tension between the KamLAND and solar
+results.
+Some of the existing ideas for non-standard interactions in the Sun are discussed
+in Sec.~\ref{sec:nsi}
+
+The second motivating factor is that there exists theories that
+suggest a potential in empty space across large distance scales may be the source
+of the observed expansion of the universe~\cite{khoury_chameleons}.
+This new potential is referred to as a ``chameleon'' force because it
+is screened by the local matter around it, and so it ``blends in'' in
+areas of relatively high matter density.
+But in empty space the potential is much stronger and thus able to provide
+a source of energy for the observed expansion of the universe.
+The chameleon theory for dark energy could also provide a neutrino flavor dependent
+potential that effects the oscillation of neutrinos in areas of very low matter
+density.
+The chameleon theory for dark energy here only provides a phenomenological basis
+for considering modified vacuum neutrino mixing. The model proposed here is
+not necessarily dependent on the chameleon dark energy theory, or vice versa.
+This relationship is similar to how Mass Varying Neutrino (MaVaN) models
+for neutrino oscillation are motivated by acceleron theories for dark energy,
+but not specifically required~\cite{mavans_cosmology}.
+
+
+\section{Measurements of $\Delta m^{2}_{21}$}
+\label{sec:dm21_tension}.
 The current global best fit value for  $\Delta m^{2}_{21}$ and
 $\theta_{12}$ comes
 primarily from a combined fit to solar neutrino data from SNO
@@ -243,6 +357,7 @@ roughly a $3\%$ chance of being the result of a statistical fluctuation.
 
 
 \subsection{Non-Standard Interactions}
+\label{sec:nsi}
 The observed discrepancy in the reactor and solar measured values for $\Delta m^{2}_{21}$
 has motivated re-consideration of the models used to predict the solar survival
 probability.
@@ -279,130 +394,6 @@ model.
 \label{fig:maltoni_mixing}
 \end{figure}
 
-
-\section{Modified Vacuum Mixing}
-Considered here is a novel phenomenological theory that modifies the solar
-neutrino survival probability.
-Whereas many theories of modified neutrino mixing alter the way neutrinos
-interact with matter, similar to standard matter enhanced-mixing,
-here we consider a modification to neutrino mixing in areas of very low matter
-density.
- Motivations for a potential with strength inversely related to local matter
-density is considered in Sec.~\ref{sec:actual_chameleons}.
-The effect a potential of this form is might have on neutrino
-mixing is parameterized as follows
-\begin{equation}
-H = UM^{2}U^{\dagger} + A_{\mathrm{vac}}\text{,}
-\end{equation}
-where $A_{\mathrm{vac}}$ represents a potential only significant in regions
-of near-zero matter density.
-$A_{\mathrm{vac}}$ is given by
-\begin{equation}
-A_{\mathrm{vac}} =
-\begin{bmatrix}
-    A_{\mathrm{e}} & 0 & 0  \\
-    0 &  A_{\mathrm{\mu}} & 0  \\
-    0 & 0 &  A_{\mathrm{\tau}}  \\
-\end{bmatrix}\text{.}
-\end{equation}
-Each diagonal entry represents a potential felt in the vacuum
-by the neutrino of the given flavor state.
-This parameterization can be simplified somewhat by subtracting off
-an identity like term.
-\begin{equation}
-A_{\mathrm{vac}}^{\prime} =
-\begin{bmatrix}
-    A_{\mathrm{e}} & 0 & 0  \\
-    0 &  A_{\mathrm{\mu}} & 0  \\
-    0 & 0 &  A_{\mathrm{\tau}}  \\
-\end{bmatrix} - 
-\begin{bmatrix}
-    A_{\mathrm{\tau}} & 0 & 0  \\
-    0 &  A_{\mathrm{\tau}} & 0  \\
-    0 & 0 &  A_{\mathrm{\tau}}  \\ 
-\end{bmatrix} 
-= 
-\begin{bmatrix}
-    A_{\mathrm{e}}^{\prime} & 0 & 0  \\
-    0 &  A_{\mathrm{\mu}}^{\prime} & 0  \\
-    0 & 0 &  0  \\ 
-\end{bmatrix}  
-\end{equation}
-This makes no difference because neutrino mixing is only effected by differences
-between the neutrino states, so an identity-like matrix can always be subtracted
-from the mixing Hamiltonian without effecting the result.
-
-In this model mixing is described by standard MSW-LMA mixing in areas of
-non-negligible matter density, and by the modified vacuum mixing potential
-in areas of near zero matter density.
-In areas where the matter effect on neutrinos is negligible but the local
-matter density is non-zero, the mixing is best described a standard
-vacuum mixing potential, \textit{i.e.} $H = UM^{2}U^{\dagger}$.
-A model like this is desirable because it allows for the mixing of solar neutrinos, which
-travel for a signifiant distance in the vacuum of space between the Sun and Earth,
-to be modified, while not effecting neutrino mixing observed by terrestrial neutrino experiments.
-
-Nearly all detected neutrino sources, neutrinos are produced, propagate through
- and detected are detected in areas of relatively high matter density
-The exception to this is supernova neutrinos observed by from SN1987A~\citep{kamiokande_sn, imb_sn,baksan_sn},
-and neutrinos detected by the IceCube experiment from a blazar~\citep{icecube_blazar}.
-Neither of these datasets are sufficient to make statements
-about neutrino mixing though.
-Ultra-high energy neutrinos from the GZK production process~\citep{gzk} would be an useful
-source for constraining this model, as GZK neutrinos not only travel through
-significant distances in vacuum, they're also produced in vacuum.
-However, neutrinos from the GZK process have not yet been detected by
-any experiments.
-And so, solar neutrinos are the only currently available source
-of neutrinos that are sensitive to this model.
-
-%\subsection{Chameleons}
-%\label{sec:actual_chameleons
-%It was proposed in~\citep{khoury_chameleons} that the observed expansion
-%of the universe could be explained by introducing a 5th force that is weak
-%in areas of high matter density. Such a force would be difficult to detect
-%in most experiments because its effects would be small compared to standard
-%forces. But at cosmological distance scales where the matter density is near
-%zero, the force could be much stronger. This force is referred to as a ``chameleon''
-%force, because it is affected by it's surrounding and can ``blend in'' to avoid
-%detection.
-%
-%It could be the case that this force couples to neutrinos such that the coupling
-%is sensitive to either neutrino flavor, or the mass. If so it's expected that the
-%neutrino's mixing would be modified by the prescesce of a chameleon field.
-%And that the chameleon-modified mixing would be only significant in areas of very
-%low matter density.
-%Solar neutrinos would provide almost unique sensitivity to this sort of modified
-%vacuum mixing, because they're by far the most abundant and easily detectable source
-%of neutrinos that travel a significant distance in areas of near-zero matter
-%density, \textit{ i.e.}\ between the Sun and Earth.
-%
-%This idea is the phenomonlogical basis for the idea of modified vacuum mixing.
-%To explore this idea I developed a simulation of neutrino mixing in the sun and in
-%the vacuum. Typical calculations of the neutrino survival probability from
-%the sun are able to take advantage of the fact that the neutrino travels adiabatically
-%through the varying mass density of the sun. This means that the neutrino is
-%created in a mixture of mass states, the exact composition depending on the local
-%electron density, and the neutrino stays in that same mixture of mass states
-%as it exits the sun. The flavor composition of each mass state however changes,
-%meaning that the flavor composition of the neutrino state changes, even though
-%it's mass-state composition does not.
-%This means that practically all one needs to do is calculate the composition
-%of mass states that corresponds to an electron type neutrino, and then calculate
-%the flavor content of that composition in vacuum, and that flavor content
-%tells you the survival probability and transition probability. One is able to
-%ignore all oscillations that may occur within the sun and simply calculate
-%quantities for when the neutrino is created and when it is detected.
-%
-%This simplification is not necessarily valid depending on how the neutrino
-%exits the sun and how quickly the modified vacuum potential becomes significant.
-%While the matter density is low but non-zero the neutrino will experience standard
-%vaccuum mixing. If the neutrino changes from low to zero matter density over
-%a distance much shorter than the oscillation length of the neutrino, the
-%transition from standard to modified vacuum mixing potential may not be adiabatic.
-%In which case the exact state of the neutrino at the point of the transition
-%will determine how the flavor state of the neutrino changes as it propagates.
-%
 \section{Simulation}
 Two different simulation of neutrino oscillations were developed to explore the
 effects of the modified vacuum mixing potential.
@@ -418,8 +409,7 @@ The goal of both simulations is to produce a solar neutrino survival probability
 for any given set of standard model mixing parameters and modified vacuum
 mixing parameters.
 The reason for the two different methods is to allow for different
-trade-offs between detailed simulation and computational speed.
-These two simulations methods will be discussed in greater detail in the following sections.
+trade-offs between simulation precision and computational speed.
 
 \subsection{Neutrino Simulation}
 For this method of simulation the neutrino state is propagated through the
@@ -625,26 +615,23 @@ detected in a vacuum, so for modified vacuum potential to have an effect
 that can be detected with a terrestrial detector there must be some
 non-adiabatic transition.
 
-\subsection{Neutrino Mass State Simulation} %TODO better subsection titles
-The other method of simulation uses the same solar inputs as the
-Runge-Kutta integration, but instead of simulating individiual neutrino
+\subsection{Mass State Simulation} %TODO better subsection titles
+For the mass state simulation instead of simulating individiual neutrino
 states, only the eigen-states are simulated.
 For each production radius and production energy within the sun the
 the mixing Hamiltonian is diagonalized,
 \begin{equation}
-    H = U M U^{\dagger} + A = P D P^{\dagger}\text{.}
+    H = U M U^{\dagger} + A_{\mathrm{CC}} = P D P^{\dagger}\text{.}
 \end{equation}
 Where $D$ is a diagonal matrix that gives the effective mass-squared
 difference between the mass-states.
 $P$ gives the flavor composition of the effective mass states,
 $\ket{m_{1}}$, $\ket{m_{2}}$, $\ket{m_{3}}$.
-The GNU Scientific Library~\citep{gsl_ref} is used to diagonlize
-the mixing Hamiltonian.
 
-A neutrino, produced in an electron flavor state, can be described as
+A neutrino produced in an electron flavor state, is given by
 \begin{equation}
     \ket{\nu} = \sum_{k=1}^{3}\braket{m_{k}}{\nu_{e}}\ket{m_{k}}\text{.}
-\end{equation}.
+\end{equation}
 The neutrino state is then evolved adiabatically into a modified
 vacuum potential given by
 \begin{equation}
@@ -665,11 +652,11 @@ Solar neutrino experiments are not sensitive to oscillations in the survival
 probability because the production of neutrinos is distributed
 throughout the core of the Sun, which is many neutrino oscillation lengths
 across.
-For any detected neutrino
-it's impossible to say where within the Sun the neutrino was produced.
-Meaning there's no way to estimate how many oscillation lengths any neutrino
-went through while traveling from the Sun to Earth, and so the oscillations
-are effectively averaged over.
+%For any detected neutrino
+%it's impossible to say where within the Sun the neutrino was produced.
+%Meaning there's no way to estimate how many oscillation lengths any neutrino
+%went through while traveling from the Sun to Earth, and so the oscillations
+%are effectively averaged over.
 
 % TODO consider adding a wave-packet decoherence arguement here
 %The second reason is that mass-states decohere while travelling from the Sun to Earth,
@@ -677,8 +664,8 @@ are effectively averaged over.
 %wave packets will have nearly zero overlap.
 
 Because solar neutrino experiments are not sensitive to oscillations in
-the survival probability allows for the survival probability to be calculated
-by only the un-oscillating terms,
+the survival probability, terms that oscillate can be ignored.
+The survival probability to be calculated as
 \begin{equation}
     P_{ee} = \sum_{k=1}^{3}\abs{\braket{m_{k}}{\nu_{e}}}^{2}\abs{\braket{\nu_{e}}{vac_{k}}^{2}}\text{.}
 \end{equation}
@@ -707,12 +694,12 @@ For any set of mixing parameters this assumption can be checked using the
 more computationally expensive neutrino state evolution simulation.
 
 The benefit of this method for calculating modified vacuum solar survival
-probabilities is that it's computationally much simpler and faster than the full
-neutrino state evolution.
-Allowing for a much wider amount of the parameter space for solar neutrino
+probabilities is that it's computationally much faster than the full
+neutrino state evolution;
+A much wider search of the parameter space for solar neutrino
 mixing to be explored.
 
-\section{Global Fit}
+\section{Data Sets}
 To determine solar neutrino and neutrino mixing parameters that is most
 consistent with experimental observations, a fit is done to published
 experimental results.
@@ -726,68 +713,125 @@ are also used to constrain neutrino mixing parameters.
 The KamLAND experiment has also published solar neutrino
 measurements~\citep{kamland_solar, kamland_b8},
 only their reactor neutrino results are used however.
-Including the KamLAND solar results is a potential improvement for the global fitting
-algorithm.
-The KamLAND solar neutrino results are, however, compatible with and
-significantly less constraining than the comparable measurements made by
-Borexino, SNO and SuperK, so the inclusion of those measurements would not
-effect any fit results significantly.
+%The KamLAND solar neutrino results are, however, compatible with and
+%significantly less constraining than the comparable measurements made by
+%Borexino, SNO and SuperK, so the inclusion of those measurements would not
+%effect any fit results significantly.
 
-The software used for evaluating experimental consistency was developed
-in part by Richard Bonventre~\citep{richie_thesis, richie_nsi},
-but was updated to include more recent solar neutrino measurements
-by the Borexino and Super Kamiokande experiments.
-The software produces the likelihood of each experimental observation
-for a given set of neutrino mixing parameter and solar neutrino fluxes.
-Best fit parameters and uncertainties are found with the Minuit gradient
-descent algorithm as well an MCMC algorithm. %TODO, probably just use one
+%///////
+The experimental results for each experiment are modeled using methods developed
+by Richard Bonventre, Anthony LaTorre and Oliviva Wasalski~\cite{richie_thesis}.
+For all solar experiments, except for SNO, the expected event rate in each
+energy bin over the experiments sensitive energy region is calculated;
+for SuperK and Borexino the event rates are calculated in each energy bin.
+Event rates are calculated by performing a convolution of the neutrino
+flux spectrum with the interaction cross-section relevant for  each experiment
+and with the hypothesized neutrino survival probability spectrum
+producing a spectrum of observable elastic-scatter electron energies, or
+an event rate for nuclear interactions.
+For SuperK and Borexino the electron energy spectrum is convolved with a
+detector response function to produce expected event rates.
+For the Homestake experiment interaction cross-sections from Bahcall~\citep{bahcall_chlorine}
+are used.
+For the gallium experiments cross-sections for $\ce{^{71}Ge}$ is given by
+the SAGE collaboration in Ref.~\citep{sage_xs} and Bahcall~\citep{bahcall_gallium}.
 
-The mixing parameters are primarily evaluated by producing a energy dependent
-solar survival probability curve $P_{ee}(E_{\nu}$, then modifying the expected
-solar neutrino event accordingly. %TODO, probably delete this sentence.
+Each experiment provides their own own measurement of detector
+related systematic uncertainties, these uncertainties are all treated as independent,
+with the exception of the four SuperK datasets.
+ Each SuperK dataset has it's own systematic uncertainty associated with,
+but each uncertainty is treated as fully correlated across datasets.
+Systematic uncertainties are treated as Gaussian, or a bifurcated
+Gaussian in the case of asymmetry uncertainties.
+Systematics are marginalized over when evaluating the likelihood
+of any hypothesized event rate.
+
+For comparison to SNO data, the likelihood of a survival probability can be evaluated
+directly without calculating expected event rates.
+SNO reports their measurement of the $\ce{^{8}B}$ survival probability as a quadratic
+parameterization,
+\begin{equation}
+P_{ee}(E_{\nu}) = c_{0} + c_{1}(E_{\nu} - E_{0}) + c_{2}(E_{\nu} - E_{0})^2
+\label{eqn:sno_quad}
+\end{equation}
+where $E_{0}= 10\,MeV$,
+and a linear day-night asymmetry
+\begin{equation}
+A_{ee}(E_{\nu}) = a_{0} + a_{1}(E_{\nu} - E_{0})\text{.}
+\label{eqn:sno_linear}
+\end{equation}
+A procedure recommended in Refs~\citep{sno_leta} and~\citep{sno_combinedt} is followed.
+A fit to of Eqn.~\eqref{eqn:sno_quad} and~\eqref{eqn:sno_linear} is done to the hypothesized the survival probability,
+exacting values for $c_{0}$, $c_{1}$,$c_{2}$, $a_{0}$ and $a_{1}$.
+The best fit values are compared to the best fit values reported by SNO to
+determine a likelihood.
+
+For evaluating the likelihood of the KamLAND result for a set of
+mixing parameters and modified vacuum parameters a simple lookup
+is done to their published $\Delta \chi^{2}$ map~\cite{kamland_data_release}.
+A similar approach is used to evaluate the likelihood the Daya Bay and
+RENO reactor neutrino results. 
+The hypothesized value for $\theta_{13}$ is compared to each
+experiments measured value with uncertainty to extract a likelihood.
 
 
-\subsection{Simplified Modified Vacuum Mixing}
-Probing the idea of modified vacuum mixing with the simulation detailed in
-section XXX proved computationally difficult.
-So I explored simplified method for evaluating the likelihood of a modified
-vacuum mixing potential. The simplification was to restrict the modified mixing
-to be equivalent to a change in the effective value for $\Delta m^{2}_{21}$.
-The motivation being that the observed discrepancy between solar neutrino
-experiments and KamLAND was only in $\Delta m^{2}_{21}$, and not in $\theta_{12}$.
+\section{Fit And Results}
+Taken together these experimental models can be used to constrain
+to the modified vacuum solar survival probability allowing up to
+11 free parameters: $\Delta m^{2}_{21}$, $\theta_{12}$, $\theta_{13}$,
+each of the 5 $pp$-chain solar neutrino fluxes, the combined flux of the
+CNO neutrinos, and the two modified vacuum mixing potentials $A_{\mathrm{e}}$
+and $A_{\mathrm{\mu}}$.
+A full fit to 11 free parameters is however too computationally
+expensive given the speed of the modified vacuum simulation.
+Instead a 3 parameter fit is done, allowing $\Delta m^{2}_{21}$ and the
+two parameters of the modified vacuum mixing potential to vary.
+%For future results it's likely the simulation could be sped up to allow for a higher dimensionality search of the likelihood space.
 
-To explore this idea one simply can use standard methods for calculating the
-survival probability, but modify them such that all terms are effected by the
-local electron density ($n_{e}$) use a different value for $\Delta m^{2}_{21}$ than the
-terms that are not effected by $n_{e}$.
-This introduces a new parameter into the theory, $\Delta m^{2}_{21}\prime$, the
-effective mass-squared splitting the neutrino experiences in vacuum.
+Fitting was performed in a few different manners
 
-With this modification a fit to solar neutrino data was performed, allowing
-all mixing parameters to vary. If this version of modified vacuum mixing describes
-reality then the best fit value for the matter mass-splitting ($\Delta m^{2}_{21}$) should be
-consistent with the value determined by KamLAND.\@ The value for the vacuum mass
-splitting ($\Delta m^{2}_{21}\prime$) has no-apriori preferred value but it would
-be sensible for it to be near the standard best fit value for $\Delta m^{2}_{21}$
-as determined by solar neutrino only measurements.
-
-The fit to data was performed using a Markov-chain Monte-Carlo method to sample
-the likelihood space of mixing parameters as well as solar neutrino fluxes.
-Figure XXX shows the results of the MCMC sampling. Marginalizing over all
-the mixing parameters, including $\Delta m^{2}_{21}\prime$, gives the best fit
-value for $\Delta m^{2}_{21}$ in matter and the error on it.
-The marginalized result is shown in Figure XXX, the preferred value
-for $\Delta m^{2}_{21}$ from solar experiments is $XXX\pm XXX$, only slightly higher than
-the preferred value in a standard mixing formulation, $XXX$, but still significantly
-lower than the best fit KamLAND value, $XXX$.
-The tension between the solar and KamLAND values of $\Delta m^{2}_{21}$ is at
-the $XXX\sigma$ level in the standard formulation, this version of modified
-vacuum mixing reduces that to $XXX\sigma$, at the cost of introducing a new
-parameter into the theory.
-
-The improvement in agreement between solar neutrino experiments and KamLAND on
-the value of $\Delta m^{2}_{21}$ is not large enough to constitue compelling evidence
-that this simple version of modified vacuum mixing describes reality much better
-than standard mixing. And so this motivates going back to a fuller description
-of modified vacuum mixing, that allows for a fuller description of how
-neutrinos might oscillate between the Sun and Earth.
+%Move this shit to an appendix
+%\subsection{Simplified Modified Vacuum Mixing}
+%Probing the idea of modified vacuum mixing with the simulation detailed in
+%section XXX proved computationally difficult.
+%So I explored simplified method for evaluating the likelihood of a modified
+%vacuum mixing potential. The simplification was to restrict the modified mixing
+%to be equivalent to a change in the effective value for $\Delta m^{2}_{21}$.
+%The motivation being that the observed discrepancy between solar neutrino
+%experiments and KamLAND was only in $\Delta m^{2}_{21}$, and not in $\theta_{12}$.
+%
+%To explore this idea one simply can use standard methods for calculating the
+%survival probability, but modify them such that all terms are effected by the
+%local electron density ($n_{e}$) use a different value for $\Delta m^{2}_{21}$ than the
+%terms that are not effected by $n_{e}$.
+%This introduces a new parameter into the theory, $\Delta m^{2}_{21}\prime$, the
+%effective mass-squared splitting the neutrino experiences in vacuum.
+%
+%With this modification a fit to solar neutrino data was performed, allowing
+%all mixing parameters to vary. If this version of modified vacuum mixing describes
+%reality then the best fit value for the matter mass-splitting ($\Delta m^{2}_{21}$) should be
+%consistent with the value determined by KamLAND.\@ The value for the vacuum mass
+%splitting ($\Delta m^{2}_{21}\prime$) has no-apriori preferred value but it would
+%be sensible for it to be near the standard best fit value for $\Delta m^{2}_{21}$
+%as determined by solar neutrino only measurements.
+%
+%The fit to data was performed using a Markov-chain Monte-Carlo method to sample
+%the likelihood space of mixing parameters as well as solar neutrino fluxes.
+%Figure XXX shows the results of the MCMC sampling. Marginalizing over all
+%the mixing parameters, including $\Delta m^{2}_{21}\prime$, gives the best fit
+%value for $\Delta m^{2}_{21}$ in matter and the error on it.
+%The marginalized result is shown in Figure XXX, the preferred value
+%for $\Delta m^{2}_{21}$ from solar experiments is $XXX\pm XXX$, only slightly higher than
+%the preferred value in a standard mixing formulation, $XXX$, but still significantly
+%lower than the best fit KamLAND value, $XXX$.
+%The tension between the solar and KamLAND values of $\Delta m^{2}_{21}$ is at
+%the $XXX\sigma$ level in the standard formulation, this version of modified
+%vacuum mixing reduces that to $XXX\sigma$, at the cost of introducing a new
+%parameter into the theory.
+%
+%The improvement in agreement between solar neutrino experiments and KamLAND on
+%the value of $\Delta m^{2}_{21}$ is not large enough to constitue compelling evidence
+%that this simple version of modified vacuum mixing describes reality much better
+%than standard mixing. And so this motivates going back to a fuller description
+%of modified vacuum mixing, that allows for a fuller description of how
+%neutrinos might oscillate between the Sun and Earth.
