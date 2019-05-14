@@ -19,13 +19,15 @@ $\delta_{\theta}$, the angular resolution systematic.
 A fit was done to this distribution in three dimensions, signal normalization,
 background normalization and $\delta_{\theta}$.
 In this fit $\delta_{\theta}$ was constrained by the seperate $\ce{^{16}N}$ 
-results.
-From this the systematic uncertaintie on $\delta_{\theta}$
-was determined to be XXX.
+results, a bifurcatd Gaussian was used to model the likelihood of the
+$\ce{^{16}N}$ results.
+The fit determined the systematic uncertainty on $\delta_{\theta}$
+was determined to be $+0.07$, $-0.12$ a small improvement  compared to the values from the 
+$\ce{^{16}N}$ analysis, $+0.08$, $-0.013$.
 
-The analysis was then performed again with six energy bins, five equal width
+The analysis was then performed again in six energy bins, five equal width
 bins from 5 to 10\,MeV and a single bin from 10 to 15\,MeV.
-In each energy bin a two-dimension fit to the distribution of events in $\cos\theta_{sun}$ was
+In each energy bin a two-dimensional fit to the distribution of events in $\cos\theta_{sun}$ was
 done to determine the signal and background normalization.
 Then the likelihood space from each fit was combined,
 marginalizing over each energy bin's background rate,
@@ -54,9 +56,9 @@ systematic uncertainties are shown in the blue band.
 The fit gives a solar event rate of $1.30\pm0.18$~events/kt-day
  and background rate of  $10.23\pm0.38$~events/kt-day.
 
-Performing a similar fit in each individual energy bin yielded a best fit solar flux
-as a function of energy.\
-The fits were combined,  yielding an overall best fit flux of
+From the energy bin-by-bin fit  yielded the best fit solar event rate
+as a function of energy shown in Fig~\ref{fig:spectrum}, and
+an overall flux
 \begin{equation*}
     \Phi_{ES}= 2.53^{+0.31}_{-0.28}\text{(stat.)}^{+0.13}_{-0.10}\text{(syst.)}\times10^6\,\text{cm}^{-2}\text{s}^{-1}\text{.}
 \end{equation*}
@@ -148,7 +150,112 @@ In that energy region the best fit background rate was $0.25^{+0.09}_{-0.07}$\,e
 lower than the measured solar rate in that energy range,$1.03^{+0.13}_{-0.12}$\,events/kt-day.
 For the region above 6~MeV, this is the lowest
 background elastic scattering measurement of solar neutrinos in a water
-Cherenkov detector.\
+Cherenkov detector.
+Figure~\ref{fig:binbybin} shows the distribution of events in $\cos\theta_{sun}$
+with best fit MC prediction in each energy bin of the analysis.
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{bin1}
+\caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{bin2}
+\caption{}
+\end{subfigure}
+
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{bin3}
+\caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{bin4}
+\caption{}
+\end{subfigure}
+
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{bin5}
+\caption{}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{bin6}
+\caption{}
+\end{subfigure}
+\caption[Bin-by-Bin $\cos\theta_{sun}$ Distributions]{
+Distribution of events in $\cos\theta_{sun}$ in all six energy bins with
+best fit signal+background distribution.}
+\label{fig:binbybin}
+\end{figure}
+
+\section{Outlook For Water and Scintillator Phase}
+The primary result of this analysis is a measurement of the $\ce{^{8}B}$
+flux wth the SNO+ detector. 
+But, by using the $\ce{^{8}B}$ flux measured by the SNO experiment, the data for
+this analysis can be used to measure the solar survival probability instead
+of the flux.
+This analysis is statistically limited, so a measurement of the survival
+probability done this way would have uncertainties much larger than the similar
+measurements done by the Super Kamiokande collaboration.
+But, the low backgrounds observed at higher energies could allow for a good measurement
+of the day-night effect once more data are acquired.
+A measurement of the day-night effect could allow for relatively
+competitive constraints on the standard neutrino mixing parameters.
+
+Since the completion of this measurement SNO+ has acquired approximately double
+the livetime, with lower backgrounds.
+The decreased background rates may allow for an expanded fidicial volue at
+higer energies, which would increase the available statistics for this measreument
+or a possible measurement of the day-night effect.
+A likelihood fit in both $\cos\theta_{sun}$ and radius might allow for an
+expanded fidicual volume as well.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{globalfit_spectrum}
+    \caption[Expected Scintillator Phase SNO+ Solar Neutrino Spectrum]{}
+    \label{fig:snop_scintillator}
+\end{figure}
+SNO+ has begun it's partial fill
+period, in which the AV  water is replaced with liquid scintillator.
+Once complete SNO+ will be able to take data for low-energy solar neutrino
+analysis.
+The expected increase in radio-purity and energy resolution will allow
+for solar neutrinos to be identified above background at much lower energies
+than was possible in the water phase.
+Figure~\ref{fig:snop_scintillator} shows the expected solar neutrino and
+background spectrum at low energies for SNO+, scintillator purity related
+backgrounds are assumed to be at Borexino levels.
+
+One of SNO+'s advantages for making solar neutrino measurements is the
+very large overburden, which provides a low rate of cosmogenic 
+muons passing through the detectiro, which results in a low rate of
+cosmogenic isotope production within the detector.
+One of the most significant cosmogenic isotopes for low energy solar is
+the $\ce{^{11}C}$, which has a half-life of 20\,minutes and produces a
+$\beta^{+}$ with an endpoint energy approximately $1$\,MeV.
+The long half-life means the $\beta^{+}$ cannot easily be associated with
+the muon that produced it, and the energy spectrum for the decay is at
+the end point for the $pep$ and CNO solar neutrino fluxes.
+So a low rate of cosmogenic muons will mean the the $\ce{^{11}C}$ background
+does not preclude a significant measurement of the $pep$ and CNO neutrino flux.
+However, the low rate of CNO neutirnos compared to $pep$ neutrinos and other
+backgrounds will
+still make a strong measurement of the CNO flux  very difficult.
+With 6\,months of scintillator data it's expected that SNO+ will be able
+to measure the $pep$ flux to $13\%$ uncertainty, almost a factor of two
+improvement on existing measurements.
+With the same data a measurement of $\ce{^{7}Be}$ flux to $5\%$ and the
+$\ce{^{8}B}$ flux to $10\%$ is expected.
 
 %\subsection{Mixing Results}
 %By using the SNO $\ce{^{8}B}$ flux result as the true value for the full,
