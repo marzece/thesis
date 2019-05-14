@@ -1,6 +1,6 @@
 
 %: ----------------------- detector file header -----------------------
-\chapter{Detector}
+\chapter{SNO+ Detector}
 \label{sec:detector}
 
 % the code below specifies where the figures are stored
@@ -18,10 +18,10 @@
 %select count(*) from pmt_info where (type & 1)>0 and (type & 32)=0  and (type & 128) =0 and (type & 2)>0 and (type& 64)=0 and (type & 16)=0 and (type & 8)=0;
 The SNO+ detector inherits much of its infrastructure from the SNO
 experiment~\citep{sno_detector_paper}.
-The SNO+ detector can be mostly simply described as a large volume of a
+The detector is mostly simply described as a large volume of a
 target material that is deep underground and is observed by a large array of
 photomultiplier tubes (PMTs).
-The target material can dictates the physical processes
+The target material dictates the physical processes
 observable with the detector.
 The SNO detector was originally designed for a heavy-water
 target, the benefits of a heavy-water target are discussed in Sec~\ref{sec:sno}.
@@ -29,12 +29,12 @@ For SNO+ the detector will operate in three separate phases, each with a differe
 target medium.
 For all results in this work the target medium is light-water ($\ce{H_{2}O}$);
 this phase is referred to as the ``water phase''.
-Following this, the water is to be replaced by a liquid-scintillator,
+In the next phase the water is to be replaced by a liquid-scintillator,
 LAB-PPO~\citep{mchen_labppo}, that will be the ``pure scintillator phase'' or
 just the ``scintillator phase''.
 After the scintillator phase the LAB-PPO will be doped with tellurium for
 a neutrinoless double-beta decay search, this is referred to as the ``tellurium phase''.
-The motivations for each phase is discussed in~\citep{snop_status_prospects}.
+The motivations for each phase is discussed in Ref.~\citep{snop_status_prospects}.
 
 \begin{figure}[htbp]
 \centering
@@ -58,20 +58,19 @@ The motivations for each phase is discussed in~\citep{snop_status_prospects}.
     depiction of the AV and hold-up and hold down ropes.}
 \end{figure}
 
-The target volume is encapsulated within a 6-meter radius spherical acrylic vessel (AV),
+The detector's target volume is encapsulated within a 6-meter radius spherical acrylic vessel (AV),
 which is held suspended in a large cavity filled with ultra-pure water (UPW)\@.
 The acrylic sphere has a 6.8\,m acrylic chimney, called the ``neck'', at its top
 to allow access to the detector volume.
-Surrounding the acrylic vessel is an  array of inward pointing PMTs
-arranged in a geodesic pattern.
+Surrounding the acrylic vessel is an  array of inward pointing PMTs.
 The structure holding these PMTs is referred to as the PMT Support Structure
 (PSUP).
-Figure~\ref{fig:snop_diagram} depicts the SNO+ detector infrastructure.
+Figure~\ref{fig:snop_diagram} depicts the SNO+ detector.
 
-There are roughly 90 PMTs on the PSUP that point outward, toward the cavity
+There are roughly 90 PMTs on the PSUP that point outward, towards the surrounding cavity
 walls.
-These outward facing tubes are called OWLs and are for the purpose of tagging
-interactions that occur outside the PSUP\@.
+These outward looking tubes are called OWLs and are for the purpose of tagging
+particle interactions that occur outside the PSUP\@.
 There are an additional three tubes mounted at the top of the neck of the AV,
 these are referred to as NECK tubes.
 
@@ -82,7 +81,7 @@ these are referred to as NECK tubes.
     \includegraphics[width=0.7\textwidth]{sno_casette}
     \caption[PMT Casette] {Schematic diagram of the SNO/SNO+ PMT and
     PMT housing. Dimensions in cm. Figure from~\citep{sno_detector_paper}.}
-\label{fig:triggeff}
+\label{fig:sno_pmt_casette}
 \end{figure}
 
 SNO+ has 9385 inward looking PMTs all mounted in the PSUP at an average radius
@@ -91,8 +90,8 @@ All PMTs are Hammatsu R1408 8-inch PMTs.
 The inward looking PMTs are all housed within a plastic cassette,
 and each PMT is also surrounded by an array of reflective
 petals arranged in a Winston cone~\cite{winston}.
-This reflective petals serves to increase the effective photo-sensitive area
-of the PMT\@ and are typically referred to as the PMT ``concentrator''..
+The reflective petals serves to increase the effective photo-sensitive area
+of the PMT and are typically referred to as the PMT ``concentrator''.
 With the concentrators the approximate geometric coverage of the PMT array is $55\%$,
 accounting for the angular acceptance and reflectivity of the concentrators gives
 an effective coverage of approximately $50\%$.
@@ -100,15 +99,16 @@ Figure~\ref{fig:sno_pmt_casette} shows a schematic diagram of the PMT and
 its housing.
 
 For the scintillator and tellurium loaded phases the AV volume will have
-a lower density than the surrounding water volume, producing significant buoyant
+a lower density than the surrounding water volume, resulting in significant buoyant
 forces on the AV\@.
 To counteract the buoyancy a hold-down rope-net was installed across the top
-of the AV, and anchored in the cavity floor.
+of the AV, and anchored to the cavity floor.
 A number of PMTs were removed from the PSUP to allow the rope to pass through.
 Figure~\ref{fig:ropes} depicts the rope-net.
+
 Above the cavity volume is an optically isolated deck on which all the detector
 readout and trigger electronics are kept.
-The PMT casetted provides a BNC-like connection that allows the 2kV power 
+The PMT housing provides a BNC-like connection that allows the 2kV power 
 supply to be provided to each PMT and allows for the PMT signals to be read
 out.
 
@@ -131,12 +131,11 @@ can be estimated by simply counting the number of detected photons.
 The second desirable property is that the produced photons will be
 emitted in a cone, with an opening angle of approximately $42^{\circ}$ with
 respect to the particles direction of travel.
-Meaning by detecting Cherenkov light the direction of travel of the initial
-particle can be inferred.
+Meaning by detecting Cherenkov light the particles direction of travel
+can be inferred.
 And finally, if the time of each detected photon is well known then
 the requirement that all photons travel from the same point at the same speed
 allows the position of the particle to be deduced.
-
 SNO+ takes advantage of each of these aspects of Cherenkov radiation to reconstruct
 the position, time, energy, and direction of all interacting particles in the
 detector.
@@ -144,15 +143,15 @@ The methods used for deducing each value is detailed in Sec~\ref{sec:reconstruct
 
 For the scintillator and tellurium loaded phases scintillation processes will be
 the dominant photon production mechanism.
-The Cherenkov light production is roughly the same in scintillator as it is in
+The Cherenkov light production is approximately the same in scintillator as it is in
 water, however the ratio of light produced by scintillation processes to Cherenkov
-light is approximately $100:1$.
+light is approximately 100:1.
 With SNO+ it's not expected to be possible to infer which detected photons are
 from scintillation processes and which are Cherenkov radiation, so it can be treated
 as though all light is from scintillation.
-Many people are interested exploring how to separate Cherenkov light from scintillation
+Many people are developing methods to separate Cherenkov light from scintillation
 light~\citep{tanners_paper,javi_chess, winslow_directionality},
-and so this may be possible in the future.
+and so this may be possible for SNO+ in the future.
 
 The primary neutrino interaction that SNO+ is sensitive to is elastic scattering (ES)
 off electrons,
@@ -736,7 +735,7 @@ other parameters are treated as nuisance parameters.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1\textwidth]{trigger_efficiecy}
+    \includegraphics[width=0.73\textwidth]{trigger_efficiecy}
     \caption[Trigger Efficiency] {Comparison of the measured trigger efficiency
     and simulated trigger efficiency for run 107640. Plot from~\citep{tanner_triggeff}.}
 \label{fig:trigeff}

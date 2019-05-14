@@ -59,15 +59,15 @@ Fig.~\ref{fig:cherenkov_energy_map}.
 The gamma to electron energy mapping is then applied to the simulated $\ce{^{16}N}$
 gamma energy spectrum to determine $P_\mathrm{source}(T_{\mathrm{e}})$.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.78\textwidth]{cherenkov_nhit_energy_map.eps}
-\caption[Electron Cherenkov Photon Product PDF]{ The map between electron
-energy and expected Cherenkov photons production.  Used for the energy
-calibration to map between gamma energy and equivalent electron energy.  This is
-the same PDF used by EnergyRSP to estimate energy from the observed PMT hits.}
-\label{fig:cherenkov_energy_map}
-\end{figure}
+%\begin{figure}[htbp]
+%\centering
+%%\includegraphics[width=0.78\textwidth]{cherenkov_nhit_energy_map.eps}
+%\caption[Electron Cherenkov Photon Product PDF]{ The map between electron
+%energy and expected Cherenkov photons production.  Used for the energy
+%calibration to map between gamma energy and equivalent electron energy.  This is
+%the same PDF used by EnergyRSP to estimate energy from the observed PMT hits.}
+%\label{fig:cherenkov_energy_map}
+%\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -257,7 +257,7 @@ and monte-carlo simulation for reconstructed position and an example fit to the 
 for a central $\ce{^{16}N}$ dataset.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.79\textwidth]{gamma_first_scattering}
+    \includegraphics[width=0.69\textwidth]{gamma_first_scattering}
     \caption[Distribution of Gamma First Interaction Distance]{
     The distribution of first interaction distances for gamma ray produced
     in the $\ce{^{16}N}$ source. Produced from MC simulation and used in
@@ -367,6 +367,7 @@ uncertainty along each axis.
 \end{table}
 
 \subsection{Direction Calibration}
+\label{sec:direction_calibration}
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.78\textwidth]{direction_n16_cartoon}
@@ -457,6 +458,7 @@ is given by
 the full derivation of these uncertainties can be found in Ref~\citep{snop_water_unidoc}.
 
 \subsection{Trigger Efficiency}
+\label{sec:trigeff}
 The trigger efficiency for this analysis is defined to be the probability that
 the detector will trigger on an event as a function of the number of ``in-time''
 hits produced by that event.

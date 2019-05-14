@@ -1,6 +1,6 @@
 
 %: ----------------------- physics file header -----------------------
-\chapter{Overview of Relevant Physics}
+\chapter{Physics Overview}
 
 % the code below specifies where the figures are stored
 \ifpdf
@@ -23,7 +23,7 @@ These symmetry groups specify the number of bosons that mediate each...
 The $SU({(3)})_C$ symmetry corresponds to the strong nuclear force and quark/gluon
 interactions.
 
-\section{Neutrinos}
+\section{Neutrino History}
 Neutrinos were first hypothesized by Wolfgang Pauli in 1930.
 The motivation for the proposal the apparent violation of energy
 conservation in $\beta$ decay \citep{pauli_letter}.
@@ -38,20 +38,20 @@ doped water with anti-neutrinos from nuclear reactor~\citep{cowan_reines}.
 Their detector was able to observe the rate and energy of inverse $\beta$
 decays that occurred.
 The experiment's results were consistent with Fermi's model of $\beta$ decay and were
-considered a confirmation of the neutrino's existence.
+considered experimental confirmation of the neutrino's existence.
 
 The first experimental evidence for neutrino flavor came in 1962 from an
 experiment~\citep{lederman_muon_flavor} that studied the interactions of
-neutrinos that came from muon decay, and the interactions of neutrinos
+neutrinos from muon decay and 
 from beta decay.
-The experiment observed that neutrinos from came from muon decay would produce
-muons upon interacting in a detector.
-And neutrinos produced from $\beta$ decay would create electrons in the
+The experiment observed that neutrinos from came from muon decay would only produce
+muons upon interacting in a detector,
+and neutrinos produced from $\beta$ decay would only create electrons in the
 detector.
-This lead to the conclusion that there are two different varieties of neutrino,
+This led to the conclusion that there are two different flavors of neutrino,
 the $\nu_e$ and the $\nu_{\mu}$, and the idea that lepton flavor is conserved in
 Weak interactions.
-The third lepton generation, the $\tau$ and the $\nu_{\tau}$ was discovered 13
+The third lepton generation, the $\tau$ and the $\nu_{\tau}$, was discovered 13
 years later in 1975~\citep{tau_discovery}.
 
 \begin{figure}[htbp]
@@ -59,7 +59,7 @@ years later in 1975~\citep{tau_discovery}.
 \includegraphics[width=0.75\textwidth]{bahcall_evolution}
 \caption[Evolution of Solar Neutrino Predictions and Observations]{
 The evolution in the predicted and detectable flux of neutrinos from the sun.
-Figure from~\citep{bahcall_evolution}.}
+Figure from Ref.~\citep{bahcall_evolution}.}
 \label{fig:solar_evolution_cartoon}
 \end{figure}
 
@@ -93,7 +93,7 @@ by the Sudbury Neutrino Observatory (SNO)~\citep{sno_first, sno_second, solar_nu
 More will be said about the Super Kamiokande and SNO experiments in
 Sec.~\ref{sec:experiments}.
 
-\subsection{Neutrino Interactions}
+\section{Neutrino Interactions}
 \label{sec:neutrino_interactions}
 The neutrino interacts almost exclusively via the weak interaction.
 In principle neutrinos also interacts gravitationally and they have a non-vanishing
@@ -169,7 +169,8 @@ all backgrounds can be removed.
 \caption[]{}
 \label{fig:nuclear_nc}
 \end{subfigure}
-\caption[Neutrino Nuclear Interactions]{}
+  \caption[Neutrino Nuclear Interactions]{Charged current (a) and neutral current (b)
+  neutrino nuclear interactions.}
 \label{fig:nuclear_interactions}
 \end{figure}
 
@@ -303,14 +304,14 @@ These results are derived from first princibles in Ref.~\citep{giuntikim}.
 
 \begin{figure}[htbp]
 \centering
-\begin{subfigure}[b]{0.48\textwidth}
+\begin{subfigure}[b]{0.57\textwidth}
 \centering
 \includegraphics[width=\textwidth]{neutrino_xsec_energy}
 \caption[ES Recoil Energy Cross-Section]{}
 \label{}
 \end{subfigure}
 \hfill
-\begin{subfigure}[b]{0.48\textwidth}
+\begin{subfigure}[b]{0.57\textwidth}
 \centering
 \includegraphics[width=\textwidth]{neutrino_xsec_angular}
 \caption[ES Angular Cross-Section]{}
@@ -476,7 +477,7 @@ very small, the energy differences can be simplified,
     E_{i} - E_{j} = \sqrt{p^{2} + m_{i}^{2}} - \sqrt{p^{2} + m_{j}^{2}} \approx
     p^{2} - p^{2} + \frac{m_{i}^2}{2p} - \frac{m_{j}^2}{2p}\text{.}
 \end{equation}
-To good approximation $p=E$, so
+To good approximation $p^2=E^2$, so
 \begin{equation}
     E_{i} - E_{j} = \frac{\Delta m^{2}_{ij}}{2E}\text{,}
 \end{equation}
@@ -511,7 +512,7 @@ M^{2} =
     0 & 0 & 0  \\
     0 & \Delta m^{2}_{21} & 0  \\
     0 & 0 & \Delta m^{2}_{31}  \\
-\end{bmatrix}text{.}
+\end{bmatrix}\text{.}
 \end{equation}
 This form of the mixing equation is the same as Eqn.~\eqref{eq:mass_state_evolution}
 written in the flavor basis.
@@ -519,7 +520,7 @@ written in the flavor basis.
 
 With the exception of the CP violating phase $\delta_{cp}$, all mixing
 parameters and mass-squared splitting have been measured experimentally~\citep{pdg_globalfit}.
-None of the parameters are not predicted from the standard model, so are theoretically
+None of the parameters are predicted in the standard model, so they are theoretically
 unconstrained.
 The measurements of the mass-squared splittings and
 other parameters are discussed in Sec.~\ref{sec:experiments}.
@@ -543,22 +544,22 @@ the case where $\nu_{3}$ is the least massive neutrino is known as the
  the normal hierarchy over the inverted hierarchy at approximately $2.4\sigma$ statistical
  significance~\citep{nu_fit}
 
-This model of neutrino mixing assumes that neutrinos are Dirac, as opposed to
+The model of neutrino mixing as described assumes that neutrinos are Dirac, as opposed to
 Majorana. In the case that the neutrino is a Majorana particle the PMNS matrix
 gains two additional complex ``Majorana'' phases, similar to the CP violating
 phase $\delta_{CP}$.
 However, neutrino oscillation observables, such as the survival and transition
 probability, are in general not effected by the Majorana phase~\citep{majorana_mixing}.
-Therefore it is acceptable to ignore the presence of Majorana phases in typical 
-neutrino mixing calculations.
+Therefore it is accurate to ignore the presence of Majorana phases in typical 
+neutrino mixing calculations regardless of the true Majorana or Dirac nature of the neutrino.
 
 \subsection{Matter Enhanced Oscillations}
-When neutrino propagate through matter, as opposed to vacuum, its oscillation is altered
+When neutrinos propagate through matter, as opposed to vacuum, its oscillation is altered
 by the potential introduced from available nuclear and leptonic interactions.
 The interaction comes primarily from a neutral current interaction of the form
 shown in Fig.~\ref{fig:nuclear_nc}, and a flavor dependent charged current interaction shown in
-Fig.~\ref{fig:nuclear_cc} and the  neutrino elastic scattering potential shown in
-Fig.~\ref{fig:ES_CC} and Fig.~\ref{ES_NC}.
+Fig.~\ref{fig:nuclear_cc} and the  neutrino-electron elastic scattering interaction shown in
+Fig.~\ref{fig:ES_CC} and Fig.~\ref{fig:ES_NC}.
 The potential for the nuclear charged current interaction is negligible
 because it modifies the state of the nucleon it interacts with,
 and is thus considered an incoherent nuclear interaction.
@@ -613,29 +614,29 @@ A_{\mathrm{NC}} =
 \end{bmatrix}\text{.}
 \end{equation}
 It can be show that since $A_{\mathrm{NC}}$ is identity-like it can be neglected
-from consideration.
-Identity-like matrices produce no observable effect on the overall neutrino mixing.
+from consideration;
+identity-like matrices produce no observable effect on the overall neutrino mixing.
 The full mixing Hamiltonian is given by
 \begin{equation}
 H = \frac{1}{2E}UM^{2}U^{\dagger} + A_{\mathrm{CC}}\text{.}
 \end{equation}
 These results are derived in detail in Ref.~\cite{wolfenstein_osc} and Ref.~\citep{giuntikim}.
 
-With this derivation it's clear that the electron density through which a
+It's clear that the electron density through which a
 neutrino propagates can modify the effective mass-splitting and mixing angle
 for the electron neutrino.
 That is to say, any matter-enhanced mixing can also be described as vacuum mixing
 with just a different set of mixing parameters.
 For a given neutrino energy $E_{\nu}$ there exists an electron density for which
 the effective mixing angle is maximal, this is known as the resonant density~\citep{wolfenstein_osc, ms_oscillation}.
-This resonance is important for solar neutrinos and will be discussed more in
+This resonance is important for solar neutrinos and will be discussed further in
 the next section.
 
 Matter effects also introduce the question of adiabaticity into neutrino
 oscillations.
 As a neutrino travels through changing matter potentials its possible for
 the effective potential to evolve much faster than the neutrino oscillates.
-A neutrinos propagation is said to be full adiabatic if its mass state composition
+A neutrino's propagation is said to be fully adiabatic if its mass state composition
 does not change between production and detection.
 A specific example is if a neutrino state is a pure vacuum mass-1
 state,
@@ -661,8 +662,7 @@ And so the final state of the neutrino in the adiabatic case will be,
     \ket{\Psi_{\nu}} = \ket{\nu_{1}^{\prime}}\text{.}
 \end{equation*}
 
-The adiabaticity of neutrino evolution will be discussed further in
-Chapter~\ref{sec:chameleons}.
+%The adiabaticity of neutrino evolution will be discussed further in Chapter~\ref{sec:chameleons}.
 
 \section{Solar Neutrinos}
 \begin{figure}[htbp]
@@ -680,8 +680,8 @@ branching ratios for the Sun, values from~\citep{bahcall_book}.}
 \label{fig:cno_cycle}
 \end{figure}
 Nuclear reactions in the core of the Sun provides the main fuel for
-stellar burning, and prevents the Sun from undergoing gravitational
-collapse~\citep{bethe1, bethe2}.
+stellar burning and prevents the Sun from collapsing due to gravitation
+pressure.
 There exists two separate chains of nuclear reactions that are present in typical
 stellar conditions, the $pp$-chain and the CNO-cycle~\citep{bahcall_solar_neutrinos_theory}.
 Figure~\ref{fig:pp_chain} and~\ref{fig:cno_cycle} shows these two reaction chains.
@@ -689,6 +689,7 @@ For the Sun the $pp$ chain
 provides 99\% of the generated nuclear energy, and the CNO-cycle provides the remaining
 1\%. For stars significantly more massive than the Sun, the CNO-cycle is the
 main energy generating mechanism.
+%The CNO-cycle has the interesting property of conserving the atmoic abundance of the atomic
 
 \begin{figure}[htbp]
 \centering
@@ -704,7 +705,7 @@ of a muon or tau, the only charged lepton generated is electrons. And so from
 lepton flavor conservation only electron flavor neutrinos are generated.
 And because the neutrino producing processes are all fusion reactions or
 $\beta^{+}$ decay, only neutrinos are produced and not any anti-neutrinos.
-These neutrinos are produced with an energy spectrum shown in Fig.~\ref{fig:bs05_spectrum}.
+Neutrinos are produced with an energy spectrum shown in Fig.~\ref{fig:bs05_spectrum}.
 
 The $hep$ and $\ce{^{8}B}$ reactions produce neutrinos with the highest
 energies. Since the $hep$ reaction branching ratio is so low the flux
@@ -714,9 +715,9 @@ So for water-Cherenkov detectors that have a typical threshold of a few MeV,
 $\ce{^{8}B}$ neutrinos are the primary source of detectable solar neutrinos.
 The uncertainty on the predicted $\ce{^{8}B}$ flux is relatively large, this comes mostly
 from the uncertainty on the cross-sections and how those cross-sections change with
-temperature, and uncertainties on the temperature profile within the core of the sun.
+temperature, and uncertainties on the temperature profile within the core of the Sun.
 And because the $\ce{^{8}B}$ reaction has five preceding reactions the uncertainty on
- those reactions are part of the uncertainty on the $\ce{^{8}B}$ flux.
+ those reactions are part of the uncertainty on the $\ce{^{8}B}$ flux~\citep{bs_ssm}.
 
 The uncertainty on the $pp$ and $pep$ neutrinos is much lower for two reasons. First, because
 they are at early stage of the reaction chain, so their reaction rate is not dependent on any
@@ -741,7 +742,7 @@ Number as function of radius in the Sun. Values from BS05OP.}
 \end{figure}
 
 Predictions for solar neutrinos rely heavily on solar modelling, which in turn
-is constrained by observations of the Sun.
+is constrained by helioseismological and photospheric measurements of the Sun.
 Detailed solar models are used to simulate the evolution of the Sun from a proto-star
 with a given mixture of chemical abundances and produce predictions for
 what we would expect to observe today.
@@ -760,7 +761,7 @@ for solar neutrino mixing calculations.
 %From this procedure the standard chemical abundances were determined~\citep{gs98}.
 There are two standard estimates for the solar chemical abundances,
 GS98~\citep{gs98} and AGS~\citep{ags}.
-The BS05OP model uses both as inputs and produces separate predictions for each,
+The BS05 model uses both as inputs and produces separate predictions for each,
 in general this thesis uses the predictions from the GS98 abundances.
 The most significant discrepancy between the two models is in the value
 for the solar metallicity, the AGS prediction for the metallicity is
@@ -771,6 +772,8 @@ the AGS model also produces discrepancies between photospheric measurements
 and helioseismological measurements of the Sun~\citep{ags, bahcall01}.
 The disagreements between the two models has become known as the
 ``Solar Metallicity Problem''.
+%It's thought that solar neutrino measurements may be able 
+
 
 \section{Solar Neutrino Mixing}
 \label{sec:solar_nu_mixing}
@@ -784,7 +787,7 @@ sno_second}.
 Still today the Sun provides an unique source of neutrinos that travel through
 densities and distances that cannot be produced by any other source, thus making
 them a valuable object for study.
-Chapter~\ref{sec:chameleons} explores the study of mixing with
+Chapter~\ref{sec:chameleons} discusses the study of mixing with
 solar neutrinos further.
 
 Neutrinos created in the solar core can experience significant matter enhanced mixing effects from local
@@ -804,7 +807,7 @@ resonance.
 Once a neutrino created in the core of the sun has travelled past a solar radius of
 approximately 0.5\,$\text{R}_{\odot}$ %TODO get a better number than this
 the solar electron density has dropped far enough that matter effects are no longer significant
-and neutrinos are effectively travelling through vacuum. Once in the vacuum mixing dominated region
+and neutrinos are effectively travelling through vacuum.% Once in the vacuum mixing dominated region
 
 For solar neutrinos the neutrino states will generally evolve adiabatically from
 matter effect dominated states to vacuum states.
@@ -926,7 +929,7 @@ In the third phase an array of $\ce{^{3}He}$ proportional counters were added
 to the detector, to once again increase neutron detection efficiency~\citep{sno_review}.
 
 Some of the main results of the SNO experiment are summarized in
-Figures~\ref{fig:sno_cross_graph} and~\ref{fig:sno_pee}.
+Figures~\ref{fig:sno_cross_graph} and~\ref{fig:sno_pee1}.
 Their combined 3-phase result for the $\ce{^{8}B}$ flux is
 \begin{figure}
 \centering
@@ -941,7 +944,7 @@ Their combined 3-phase result for the $\ce{^{8}B}$ flux is
 \centering
 \includegraphics[width=\textwidth]{sno_pee}
 \caption[]{}
-\label{fig:sno_pee}
+\label{fig:sno_pee1}
 
 \end{subfigure}
 \caption[SNO Results]{(a) The extracted ES, CC, and NC rates in the
@@ -953,7 +956,7 @@ from a maximum likelihood fit, the blue from a Bayesian fit.}
 \end{figure}
 
 \begin{equation*}
-\Phi_{\ce{^{8}B}} = (5.25\pm0.16(stat.)^{+0.11}_{−0.13}(syst.))\times10^6\mathrm{cm}^{-2}\mathrm{s}^{-1}\text{.}
+\Phi_{\ce{^{8}B}} = (5.25\pm0.16(stat.)^{+0.11}_{-0.13}(syst.))\times10^6\mathrm{cm}^{-2}\mathrm{s}^{-1}\text{.}
 \end{equation*}
 Their best fit mixing parameter estimates measurements are
 \begin{equation}
@@ -965,12 +968,12 @@ Their best fit mixing parameter estimates measurements are
 Values from Ref.~\citep{sno_combined}.
 
 \subsection{Super Kamiokande}
-Super Kamiokande (SuperK) is a 50\,kton cylindrical water Cherenkov detector.
+Super Kamiokande (Super-K) is a 50\,kton cylindrical water Cherenkov detector.
 It started running in $1996$ and has since made the most precise measurements of
-atmospheric neutrinos and $\ce{^{8}B}$ solar neutrinos so far~\citep{superk4,superk4_atm}.
-It's the successor to the previous Kamiokande experiment, which was a significantly
+atmospheric neutrinos and $\ce{^{8}B}$ solar neutrinos~\citep{superk4,superk4_atm}.
+It's the successor to the Kamiokande experiment, which was a significantly
 smaller and had a higher energy threshold for event detection.
-SuperK can detect $\ce{^{8}B}$ solar neutrinos through only neutrino-electron elastic scattering,
+Super-K can detect $\ce{^{8}B}$ solar neutrinos through only neutrino-electron elastic scattering,
 they do not use a $\ce{D_{2}O}$ target and so are not sensitive to the
 nuclear interactions similar to that of SNO\@.
 Their extremely large detector volume though provides them extraordinary
@@ -982,7 +985,7 @@ elastic scattering rate,
 Constraining the full $\ce{^{8}B}$ flux to the SNO result they've measured
 the solar mixing parameters as,
 \begin{equation*}
-\Delta m^{2}_{21} = (4.8^{+1.5}_{-0.8})\times10^{-5} \mathrm{eV}^{2}
+  \Delta m^{2}_{21} = 4.8^{+1.5}_{-0.8}\times10^{-5}\mathrm{eV}^{2}
 \end{equation*}
 \begin{equation*}
 \sin^{2}\theta_{12} = 0.334^{+0.027}_{-0.023}\text{\citep{superk4}.}
@@ -993,7 +996,7 @@ Borexino is 300\,ton spherical liquid scintillator detector~\citep{borexino_tdr}
 apparatus is similar to that of a water Cherenkov detector, the significant difference
 is that the water is replaced with pseudocumene, a liquid scintillator.
 A charged particle moving through scintillator generates roughly 50-100 times
-more light than a similar particle moving through just water.
+more light than is produced by Cherenkov radiation alone.
 Water-Cherenkov detector are typically limited in energy threshold
 and energy resolution by the number of photons produced and detected, a liquid scintillator
 detector solves this problem.  Scintillation light, unlike Cherenkov light,
@@ -1031,7 +1034,7 @@ fluxes; they've also placed upper limits on the flux
 of neutrinos from the CNO cycle and from the $hep$ solar reaction.
 They're currently the only experiment to have measured the $\ce{pp}$ and $\ce{pep}$ neutrino
 fluxes.
-Figure~\ref{borexino_pee} shows these results as the best fit survival probability
+Figure~\ref{fig:borexino_pee} shows these results as the best fit survival probability
 for each measured flux.
 
 %$XXX$ FIND TABLE\\

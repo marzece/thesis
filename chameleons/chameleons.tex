@@ -1,5 +1,5 @@
 %: ----------------------- sigex file header -----------------------
-\chapter{Chameleons}
+\chapter{Vacuum Enhanced Mixing}
 \label{sec:chameleons}
 
 % the code below specifies where the figures are stored
@@ -12,7 +12,7 @@
 % ----------------------------------------------------------------------
 % ----------------------- chameleons content -------------------------
 % ----------------------------------------------------------------------
-\section{Modified Vacuum Mixing}
+%\section{Modified Vacuum Mixing}
 Considered here is a novel phenomenological theory that modifies the solar
 neutrino survival probability.
 Whereas many theories of modified neutrino mixing alter the way neutrinos
@@ -20,7 +20,7 @@ interact with matter, similar to standard matter enhanced-mixing,
 here we consider a modification to neutrino mixing in areas of very low matter
 density.
  Motivations for a potential with strength inversely related to local matter
-density is considered in Sec.~\ref{sec:actual_chameleons}.
+density is considered in Sec.~\ref{sec:motivations}.
 The effect a potential of this form is might have on neutrino
 mixing is parameterized as follows
 \begin{equation}
@@ -76,7 +76,7 @@ to be modified, while not effecting neutrino mixing observed by terrestrial neut
 
 Nearly all detected neutrino sources, neutrinos are produced, propagate through
  and detected are detected in areas of relatively high matter density
-The exception to this is supernova neutrinos observed by from SN1987A~\citep{kamiokande_sn, imb_sn,baksan_sn},
+The exception to this is supernova neutrinos observed by from SN1987A~\citep{kamiokande_sn, imb_sn, baksan_sn},
 and neutrinos detected by the IceCube experiment from a blazar~\citep{icecube_blazar}.
 Neither of these datasets are sufficient to make statements
 about neutrino mixing though.
@@ -88,7 +88,8 @@ any experiments.
 And so, solar neutrinos are the only currently available source
 of neutrinos that are sensitive to this model.
 
-\subsection{Motivation}
+\section{Motivation}
+\label{sec:motivations}
 There are broadly two motivating factors behind a modified vacuum mixing model.
 The first is the tension in between solar neutrino measurements and 
 the KamLAND reactor neutrino measurement of $\Delta m^{2}_{21}$.
@@ -125,8 +126,8 @@ for neutrino oscillation are motivated by acceleron theories for dark energy,
 but not specifically required~\cite{mavans_cosmology}.
 
 
-\section{Measurements of $\Delta m^{2}_{21}$}
-\label{sec:dm21_tension}.
+\section{Measurements of \textbf{$\Delta m^{2}_{21}$}}
+\label{sec:dm21_tension}
 The current global best fit value for  $\Delta m^{2}_{21}$ and
 $\theta_{12}$ comes
 primarily from a combined fit to solar neutrino data from SNO
@@ -157,7 +158,7 @@ spectrum and best fit.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{labelled_survival_probability}
+    \includegraphics[width=0.78\textwidth]{labelled_survival_probability}
     \caption[]{}
     \label{fig:labelled_pee}
 \end{figure}
@@ -317,10 +318,18 @@ the survival probability) is
 \begin{equation*}
     A_{SK} = (-3.3 \pm 1.0(stat.)\pm 0.5(syst))\%\text{.} 
 \end{equation*}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{sk_daynight}
+    \caption[Super-K Day Night Asymmetry Measurement]{Zenith angle dependence of elastic scatter interaction rate observed with Super-K. Figure from~\citep{superk4}}
+    \label{fig:sk_daynight}
+\end{figure}
+
 This value is inconsistent with the no asymmetry at the roughly two-sigma level.
 The predicted value for this asymmetry for the best fit KamLAND $\Delta m^{2}_{21}$
 is $-1.7\%$ the predicted value for the Super-K+SNO value of $\Delta m^{2}_{21}$ is
-$-3.3\%$.
+$-3.3\%$.%XXX TODO CHECK THIS VALUE
 So with relatively small significance, the solar measurement of $\Delta m^{2}_{21}$ from the day-night effect
 prefers a lower value than the KamLAND measurement.
 Figure~\ref{fig:sk_daynight} shows the Super-K asymmetry measurement in the
@@ -328,9 +337,9 @@ observed interaction rate.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.78\textwidth]{sk_daynight}
-    \caption[]{Figure from~\ref{superk4}}
-    \label{fig:sk_daynight}
+    \includegraphics[width=0.78\textwidth]{sk_pee_global}
+    \caption[]{Figure from~\citep{superk4}}
+    \label{fig:sk_pee_global}
 \end{figure}
 
 Figure~\ref{fig:sk_pee_global} shows a summary of solar neutrino measurements
@@ -389,7 +398,7 @@ model.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.78\textwidth]{maltoni_mixing}
+\includegraphics[width=0.68\textwidth]{maltoni_mixing}
 \caption[]{Figure from~\citep{maltoni_solar}}
 \label{fig:maltoni_mixing}
 \end{figure}
@@ -533,12 +542,6 @@ This process is repeated for $1000000$ simulated neutrinos for each solar
 neutrino type, \textit{e.g.} $\ce{^{8}B}$, $pep$, etc.
 
 % TODO need typical radii/energy sample counts
-However, even using GPU acceleration the simulation is still very time consuming,
-a simulation of XXX energy samples and XXX production radius samples requires
-roughly 2000\,gpu-hours. Performing this simulation as part of a fit to data would
-require potentially hundreds or thousands of iteration. So it is not possible to
-perform the full simulation in a fit.
-
 Once  monte-carlo samples of solar neutrino states are calculated, the
 states are used as inputs to a simulation of the modified vacuum potential.
 This simulation is in principle the same as the solar simulation,
@@ -708,7 +711,7 @@ Kamiokande~\citep{superk4, superk_first_solar,superk2, superk3},
 Borexino~\citep{borexino_final_results,borexino_nature}, GNO~\citep{gallex, gno},
 SAGE~\citep{sage}, and Homestake~\citep{homestake} are used.
 Solar neutrino fluxes are constrained by the GS98~\citep{gs98} solar abundance calculations.
-Reactor neutrino results from Daya Bay~\citep{daya_bay}, KamLAND~\citep{kamland_reactor, kamland_data_release}, Reno~\citep{reno}
+Reactor neutrino results from Daya Bay~\citep{daya_bay}, KamLAND~\citep{kamland_reactor, kamland_data_release}, RENO~\citep{reno}
 are also used to constrain neutrino mixing parameters.
 The KamLAND experiment has also published solar neutrino
 measurements~\citep{kamland_solar, kamland_b8},
