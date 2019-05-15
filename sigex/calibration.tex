@@ -459,6 +459,26 @@ the full derivation of these uncertainties can be found in Ref~\citep{snop_water
 
 \subsection{Trigger Efficiency}
 \label{sec:trigeff}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.78\textwidth}
+        \centering
+    \includegraphics[width=\textwidth]{trigger_eff_plot}
+    \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.78\textwidth}
+        \centering
+    \includegraphics[width=\textwidth]{trigger_eff_plot2}
+    \end{subfigure}
+    \caption[Trigger Efficiecy, Before And After Threshold Changes]{
+        (a) The trigger efficiency during the high threshold period for the
+        N100 trigger as measured by nhit-monitor, laserball, and TELLIE data,
+        for N100L (left three curves) N100M (center three curves) and N100L
+        (right three curves). (b) The trigger efficiency for the lower threshold
+        data taking period from nhit-monitor data.}
+    \label{fig:trigeff_plots}
+\end{figure}
+
 The trigger efficiency for this analysis is defined to be the probability that
 the detector will trigger on an event as a function of the number of ``in-time''
 hits produced by that event.
@@ -473,8 +493,9 @@ The trigger efficiency is estimated in two different ways, using laserball
 data, and using nhit-monitor data.
 These methods disagree by a small, but non-negligible amount, the
 reason for the disagreement is not well known, but the differences are taken
-as a systematic uncertainty. Figure XXX shows the trigger efficiency curves
-for nhit-monitor and laserball data.
+as a systematic uncertainty.
+Figure~\ref{fig:trigeff_plots} shows the trigger efficiency curves
+for nhit-monitor, laserball, and TELLIE data.
 Here, trigger efficiency is defined to be the probability that a raw-trigger
 is emitted for a given event.
 
@@ -490,12 +511,14 @@ in the detector are designed function identically, this is not something that
 is closely monitored or tested, so it could be the case that the channels on
 crate 4 are not representative of the detector as a whole.
 
-For runs taken after the detector threshold change discussed in Sec~\ref{XXX}
+For runs taken after the detector threshold change discussed in Sec~\ref{sec:dataset}
 all methods agree that the trigger is 100\% efficient for $\tilde{n}_{100} > 10$;
-only events with energy significantly below the analysis threshold (discussed
-in Section~\ref{XXX}) will have a $\tilde{n}_{100} \le 10$, and so the discrepant
+only events with energy significantly below the analysis threshold 
+will have a $\tilde{n}_{100} \le 10$, and so the discrepant
 estimates of the trigger
 efficiency do not have any effect on the solar analysis for the second trigger period.
-For the first trigger period the trigger was not 100\% efficient till
+For the first trigger period the trigger was not 100\% efficient until
 $\tilde{n}_{100} \approx 23$, which is much closer to the analysis energy
 threshold, and therefore uncertainties cannot be neglected.
+Section~\ref{sec:systematics} discusses how the observed trigger efficiecy 
+uncertainties were handled in the solar analysis.
