@@ -1,4 +1,3 @@
-%: ----------------------- sigex file header -----------------------
 \chapter{Vacuum Enhanced Mixing}
 \label{sec:chameleons}
 
@@ -607,6 +606,8 @@ To mitigate the problem of large sampling uncertainty for important regions in
 solar neutrino energy, energies were sampled according to a flat distribution
 and according to the PDFs for each solar neutrino flux. These two methods of sampling
 were performed in equal proportions for each flux type.
+Figure~\ref{fig:nonadiabatic_example} shows an example survival probability
+from the vacuum enhanced neutrino state simulation.
 
 This method for calculating a modified vacuum survival probability has the
 distinct drawback of being computationally expensive, to the point
@@ -617,6 +618,17 @@ Non-adiabatic effects are important because the neutrino is neither produced nor
 detected in a vacuum, so for modified vacuum potential to have an effect
 that can be detected with a terrestrial detector there must be some
 non-adiabatic transition.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.79\textwidth]{non_adiabatic_example}
+    \caption[Example Non-adiabatic Vacuum Enhance Neutrino Survival Probability]{
+        Survival probability with vacuum enhanced mixing parameters
+        $A_{e}=0.9973\Delta m^{2}_{21}$, $A_{\mu}=A_{\tau}=0$
+    from non-adiabatic simulation. Also shown are the survival probabilities
+    for the best fit solar only and KamLAND only values for $\Delta m^{2}_{21}$}
+    \label{fig:nonadiabatic_example}
+\end{figure}
 
 \subsection{Mass State Simulation} %TODO better subsection titles
 For the mass state simulation instead of simulating individiual neutrino
