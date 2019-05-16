@@ -161,7 +161,7 @@ spectrum and best fit.
     \centering
     \includegraphics[width=0.78\textwidth]{labelled_survival_probability}
     \caption[Labelled Solar Survival Probability]{Day (gold) and night (black) solar survival probability
-    with approximate value for vacuum and matter dominated regions.
+    with approximate value for vacuum and matter dominated regions.}
     \label{fig:labelled_pee}
 \end{figure}
 
@@ -185,7 +185,7 @@ as many neutrinos that never experience significant matter effects as neutrinos
 that did.
 For experiments, this means sensitivity to $\Delta m^{2}_{21}$ comes
 primarily from their ability to measure the survival probability in the
-transition region compared to in the vacuum or matter dominate regions.
+transition region compared to the vacuum or matter dominated regions.
 
 In principal this means solar neutrino experiments should be very sensitive
 to $\Delta m^{2}_{21}$, a good measurement of neutrino oscillation probability
@@ -211,8 +211,8 @@ degree than a water detector, which mitigates
 background contamination somewhat.
 However, scintillator detectors cannot in general reconstruct the direction
 of the neutrino, and so solar neutrinos cannot be identified against backgrounds.
-And so even with higher radio-purity, at energies below approximately $3\,MeV$,
-the $^{8}B$ solar neutrino flux is extremely difficult to measure for scintillator detectors..
+And so even with higher radio-purity, at energies below approximately $3$\,MeV,
+the $^{8}B$ solar neutrino flux is extremely difficult to measure for scintillator detectors.
 
 Beyond the difficulty of measuring solar neutrinos at energies in the transition
 region, is the fact that the most common way to measure solar neutrinos for
@@ -263,7 +263,7 @@ and the combined SNO + Super-K  measurement
     (b) (red) Measured ratio of oscillated solar nuetrino spectrum to
     unoscillated and best fit. The green and blue lines are respectively the
     best fit survival probability for the SK only and the solar+KamLAND
-    values of \Delta m^{2}_{21}. The orange and black lines are respectively the best
+    values of $\Delta m^{2}_{21}$. The orange and black lines are respectively the best
     fit quadratic and cubic functions. Figures from Ref~\citep{sno_combined} (a)
     and~\citep{superk4}(b).}
     \label{fig:es_b8_measurement}
@@ -322,7 +322,7 @@ defined as,
     A_{ee}(E_\nu) = \frac{P_{\text{ee, day}}(E_\nu) - P_{\text{ee, night}}(E_\nu)}{P_{\text{ee, day}}(E_\nu) + P_{\text{ee, night}}(E_\nu)}\text{.}
 \end{equation}
 The SNO measurement of this asymmetry is shown in the bottom panel of~\ref{fig:sno_pee},
-they're result is consistent with no asymmetry.
+their result is consistent with no asymmetry.
 The Super-K measured value for the asymmetry in the observed interaction rate (as opposed to
 the survival probability) is
 \begin{equation*}
@@ -426,7 +426,7 @@ effects of the modified vacuum mixing potential.
 The first
 does a full simulation of the neutrino state as it propagates from the
 Sun, through the vacuum of space, to a detector at Earth.
-Then second calculates the evolution
+The second calculates the evolution
 of the mixing eigenstates for solar neutrinos, and does not simulate individual
 neutrinos.
 These simulations will respectively be referred to as the ``neutrino'' simulation
@@ -517,9 +517,9 @@ were explored for ensuring this simulation could be performed in a reasonable
 amount of time. The method that was used for nearly all of the results here was
 to perform the Runge-Kutta integration on a GPU, which each thread corresponding
 to a single sample in energy and production radius.
-Even still the production of all the simulated solar states requires approximately
+Still, the production of all the simulated solar states requires approximately
 2 GPU-months of processing.
-By construction though, the solar simulation is not effected by modified
+By construction though, the solar simulation is not affected by modified
 vacuum potential; the main inputs to the solar simulation are the standard model
 mixing parameters and the solar density profile. So, standard model mixing parameters
 taken from KamLAND and other non-solar neutrino experiments can be used for
@@ -536,7 +536,7 @@ the solar simulation.
 
 The modified vacuum portion of the simulation is done by first monte-carlo sampling
 neutrino energies and production radii, and looking up the simulated
-neutrino state that corresponds to the sampled energy \& production radius.
+neutrino state that corresponds to the sampled energy and production radius.
 The radial production PDFs for each neutrino type from the BS050P standard
 solar model are used for sampling production radii.
 The neutrino energy PDFs are also sampled
@@ -545,7 +545,7 @@ spectra, the other half are drawn from a uniform distribution across the
 relevant energy region.
 The motivation for this sampling method is discussed further at the end of
 this section.
-%This sampling method gurantees that no energy is so poorly sampled 
+%This sampling method guarantees that no energy is so poorly sampled 
 %that the simulation results are not useful, but also ensure that the most
 %well sampled energies are those most typically produced in the Sun.
 
@@ -572,7 +572,7 @@ Eqn.~\eqref{eqn:mixing_schrodinger} can be evaluated using
 a combination of analytic and numerical techniques instead of numerical
 integration.
 
-The modified vacuume state evolution done by first evaluating the mixing
+The modified vacuum state evolution done by first evaluating the mixing
 Hamiltonian and diagonalizing the resulting matrix.
 Diagonalization is done using the GNU Scientific Library~\cite{gsl_ref}
 linear algebra routines.
