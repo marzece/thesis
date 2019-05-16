@@ -196,25 +196,15 @@ A more complete overview of neutrino interactions is available in Ref.~\citep{ne
 \begin{figure}[htbp]
 \centering
 \begin{subfigure}[b]{0.48\textwidth}
-\begin{feynman}
-\fermion[label=$e^{-}$]{0.00, 0.00}{1.00, 1.00}
-\fermion[label=$\nu_{e}$]{1.00, 1.00}{0.00, 2.00}
-\electroweak[label=$W^{+}$]{1.00, 1.00}{2.0, 1.00}
-\fermion[label=$n$]{3.00, 0.00}{2.0, 1.00}
-\fermion[label=$p$, showArrow=true]{2.0, 1.00}{3.00, 2.00}
-\end{feynman}
+    \centering
+    \includegraphics[width=\textwidth]{cc_nuc}
 \caption[]{}
 \label{fig:nuclear_cc}
 \end{subfigure}
 \hfill
 \begin{subfigure}[b]{0.48\textwidth}
-\begin{feynman}
-\fermion[label=$e^{-}$]{0.00, 0.00}{1.00, 1.00}
-\fermion[label=$\nu_{e}$]{1.00, 1.00}{0.00, 2.00}
-\electroweak[label=$Z$]{1.00, 1.00}{2.0, 1.00}
-    \fermion[label=$p\mathrm{,}n$]{3.00, 0.00}{2.0, 1.00}
-    \fermion[label=$p\mathrm{,}n$, showArrow=true]{2.0, 1.00}{3.00, 2.00}
-\end{feynman}
+    \centering
+    \includegraphics[width=\textwidth]{nc_nuc}
 \caption[]{}
 \label{fig:nuclear_nc}
 \end{subfigure}
@@ -238,27 +228,15 @@ SNO and its measurements will be discussed in greater detail in Sec~\ref{sec:sno
 \centering
 \begin{subfigure}[t]{0.48\textwidth}
 \centering
-\begin{feynman}
-\fermion[label=$e^{-}$]{0.00, 0.00}{0.80, 0.80}
-\fermion[label=$\nu_{e}$]{0.80, 0.80}{0.00, 1.60}
-\electroweak[label=$W^{+}$]{0.80, 0.80}{2.0, 0.80}
-\fermion[label=$\nu_{e}$]{2.80, 0.00}{2.0, 0.80}
-\fermion[label=$e^{-}$, showArrow=true]{2.0, 0.80}{2.80, 1.60}
-\end{feynman}
-\caption[Charged Current Elastic Scattering Feynman Diagram]{
+    \includegraphics[width=\textwidth]{cc_es}
+    \caption[Charged Current Elastic Scattering Feynman Diagram]{
 Charged-current elastic scattering interaction}
 \label{fig:ES_CC}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.48\textwidth}
 \centering
-\begin{feynman}
-\fermion[label=$\nu_{x}$]{0.00, 0.00}{0.80, 0.80}
-\fermion[label=$\nu_{x}$]{0.80, 0.80}{0.00, 1.60}
-\electroweak[label=$Z$]{0.80, 0.80}{2.0, 0.80}
-\fermion[label=$e^{-}$, flip=true]{2.00, 0.80}{2.8, 0.00}
-\fermion[label=$e^{-}$, showArrow=true ]{2.0, 0.80}{2.80, 1.60}
-\end{feynman}
+    \includegraphics[width=\textwidth]{nc_es}
 \caption[Neutral Current Elastic Scattering Feynman Diagram]{
 Neutral-current elastic scattering interaction}
 \label{fig:ES_NC}
@@ -548,10 +526,14 @@ All this gives
 For the mixing parameters given in~\citep{PDG2016} the average survival probability
 for a electron neutrino is $P_{ee} = 55.8\%$.
 
-It's common to represent neutrino mixing in the following form
+It is common to represent neutrino mixing in the following form
 \begin{equation}
-i\frac{d}{dx}\ket{\Psi_{\alpha}} = H\ket{\Psi} = \frac{1}{2E}UM^{2}U^{\dagger}\ket{\Psi_{\alpha}}\text{.}
+i\frac{d}{dx}\ket{\Psi_{\alpha}} = H\ket{\Psi}\text{,}
 \label{eq:mixing_hamiltonian}
+\end{equation}
+where
+\begin{equation}
+    H = \frac{1}{2E}UM^{2}U^{\dagger}\ket{\Psi_{\alpha}}\text{.}
 \end{equation}
 Where $U$ is the PMNS matrix, $\Psi_{\alpha}$ is the neutrino state in the  flavor
 basis, and
@@ -675,8 +657,14 @@ neutrino propagates can modify the effective mass-splitting and mixing angle
 for the electron neutrino.
 That is to say, any matter-enhanced mixing can also be described as vacuum mixing
 with just a different set of mixing parameters.
-For a given neutrino energy $E_{\nu}$ there exists an electron density for which
-the effective mixing angle is maximal, this is known as the resonant density~\citep{wolfenstein_osc, ms_oscillation}.
+For a given neutrino energy, $E_{\nu}$, there exists an electron density for which
+the effective mixing angle is maximal, this is known as resonant density or
+an Mikheyev–Smirnov–Wolfenstein (MSW) resonance~\citep{wolfenstein_osc, ms_oscillation}.
+The resonance density is given by
+\begin{equation}
+    N_{e} = \frac{\Delta m^{2} \cos2\theta}{2\sqrt{2}EG_{F}}\text{.}
+    \label{eqn:msw_resonance}
+\end{equation}
 This resonance is important for solar neutrinos and will be discussed further in
 the next section.
 
@@ -838,20 +826,16 @@ them a valuable object for study.
 Chapter~\ref{sec:chameleons} discusses the study of mixing with
 solar neutrinos further.
 
-Neutrinos created in the solar core can experience significant matter enhanced mixing effects from local
-electron density.
-One of the most interesting aspects to neutrino mixing within the Sun is the MSW-effect,
-at a specific electron density a resonance occurs and neutrinos are maximally mixed.
-The condition for an MSW-resonance between any two matter states is given by
-\begin{equation}
-    N_{e} = \frac{\Delta m^{2} \cos2\theta}{2\sqrt{2}EG_{F}}\text{.}
-\end{equation}
+Neutrinos created in the solar core can experience significant matter enhanced
+mixing effects from local electron density, including an MSW resonance.
+The required electron density for the resonance is given in Eqn.~\ref{eqn:msw_resonance}.
 This condition is met for a 10\,MeV at an electron density
-of $\frac{N_{e}}{N_{A}} \approx 20$ which occurs a solar radius of $0.25R_{\odot}$, 
+of $\frac{N_{e}}{N_{A}} \approx 20$, $N_{A}$ being Avagadro's number.
+This condition occurs at a solar radius of $0.25R_{\odot}$, 
 for the mixing parameters given in~\citep{pdg_globalfit}.
 For neutrinos with energy below approximately 5\,MeV this condition is not met
 at any point within the sun, and so those neutrinos do not experience an MSW
-resonance.
+resonance. They can still experience significant matter effects however.
 Once a neutrino created in the core of the sun has travelled past a solar radius of
 approximately 0.5\,$\text{R}_{\odot}$ %TODO get a better number than this
 the solar electron density has dropped far enough that matter effects are no longer significant
@@ -888,13 +872,14 @@ The mantle, crust, and core of the Earth have sufficient electron density to pro
 a non-negligible change to the effective neutrino mixing Hamiltonian.
 Earth's atmosphere, however, is not dense enough to provide a significant
 matter enhancement.
-The relatively low density of the Earth's atmosphere, coupled with the fact that at higher energies neutrino mixing lengths
+The relatively low density of the Earth's atmosphere, coupled with the fact
+that at higher energies neutrino mixing lengths
 are $\mathcal(O)(100\mathrm{ km})$, means that neutrinos that travel a short
 distance ($<\sim100$\,km) through the Earth will be detected in an
 vacuum eigenstate.
 Neutrinos that travel a large distance in Earth's crust, mantle, or core,
 will experience significant, potentially non-adiabatic matter effects, and will
-be detected in a matter-enhanced mass eigenstate.
+be detected in a state effected by the matter effect.
 For solar neutrinos the result is that neutrinos detected during the day, when
 the Sun is directly above the detector, will not travel significantly through
 the Earth;

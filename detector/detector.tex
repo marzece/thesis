@@ -155,15 +155,9 @@ and so this may be possible for SNO+ in the future.
 
 The primary neutrino interaction that SNO+ is sensitive to is elastic scattering (ES)
 off electrons,
-$\nu_{x} + e^{-} \rightarrow \nu_{x} + e^{-}$
-where $x=e$, $\mu$, $\tau$.
-For $x=e$ there exists a neutral-current and a charged-current channel,
-for $x=\mu$ or $x=\tau$ there exists only the neutral-current channel.
-% TODO try and remember what actually I mean here
 Charged and neutral-current nuclear interactions occur as well with the oxygen in the water,
 however these are rare and cannot be uniquely to identified against radioactive
 backgrounds, and so are ignored.
-
 The cross-section for the ES interaction is discussed in~\ref{sec:esxsec}.
 The forward peaked angular cross-section means that information about the
 neutrino direction is maintained in the interaction.
@@ -384,14 +378,14 @@ SYNC and SYNC24 signal so it's synchronization can be ensured.
 The input voltage range for the CAEN is an adjustable 2\,V window.
 The voltage range for the trigger signals is 10\,V.
 The difference in ranges necessitates some way of reducing the range of the trigger signals
-before they're sent to the CAEN.
+before they're sent to the CAEN\@.
 The simplest way of reducing the voltage range is to use a voltage
-divider to attenuate the signal by a factor of 5.
+divider to attenuate the signal by a factor of five.
 Attenuation has a few undesirable effects though.
 The full range of the trigger signal is 10\,V, but the vast
 majority of events will only use a small fraction of that range.
 So for events that use a small amount of the available 10\,V a factor
-of 5 attenuation will make the signal much smaller than it needs to be,
+of five attenuation will make the signal much smaller than it needs to be,
 resulting in loss of information because the signal will be smaller than
 the analog noise, or from the noise digitization process itself.
 And for the purpose of most analyses that use the data from the CAEN
@@ -404,23 +398,25 @@ signal range was adopted.
 The trigger signal is clipped within the first 2\,V, thereby retaining full
 resolution for small signals, but losing resolution for signals that go over
 2\,V.
-The board that was created to perform this dynamic range reduction
-was designed to optionally clip the signal or attenuate it, but
-for the vast majority of data taking the signal was clipped.
+A board was designed to optionally clip or attenuate the trigger signals
+before digitization, for the vast majority of the data taking the signals
+were clipped.
+I designed the board that performs this analog signal processing,
+it's discussed in further in~\ref{sec:tubii}.
 
-The board that was designed, in part, for this purpose is the Trigger Utility
-Board Mark\,-\,II (TUBII).
-Beyond modifying the trigger signals for the CAEN TUBII plays a significant
-role as part of the trigger and data readout systems as well.
-It's significance comes primarily from the fact that it acts as an auxiliary
-digital trigger board. It can receive raw-trigger pulses from the MTCA+s and apply
-customizable trigger logic to them and emit it's own raw-trigger pulses which are
-sent to the MTCD\@.
-TUBII also receives the global trigger signal and produces its own trigger
-word based upon which raw trigger pulses it had received. The TUBII trigger
-word is synchronized with the rest of the data for each event through it's own
-global trigger counter and through the SYNC/SYNC24 signals. More information about
-TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
+%The board that was designed, in part, for this purpose is the Trigger Utility
+%Board Mark\,-\,II (TUBII).
+%Beyond modifying the trigger signals for the CAEN TUBII plays a significant
+%role as part of the trigger and data readout systems as well.
+%It's significance comes primarily from the fact that it acts as an auxiliary
+%digital trigger board. It can receive raw-trigger pulses from the MTCA+s and apply
+%customizable trigger logic to them and emit it's own raw-trigger pulses which are
+%sent to the MTCD\@.
+%TUBII also receives the global trigger signal and produces its own trigger
+%word based upon which raw trigger pulses it had received. The TUBII trigger
+%word is synchronized with the rest of the data for each event through it's own
+%global trigger counter and through the SYNC/SYNC24 signals. More information about
+%TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
 
 \section{Electronics Upgrades}
@@ -561,6 +557,20 @@ baseline restoration provides adequate correction for those sort of effects.
 
 \subsection{TUBII}
 \label{sec:tubii}
+I designed an auxillary trigger board for SNO+ called the Trigger
+Utility Board Mk.II (TUBII) the spritual sucessor to Trigger Utility Board
+from SNO\@. 
+TUBII has a number of different roles in the SNO+ DAQ, as already mentioned it
+provides the analog shaping for trigger signals sent to the CAEN\@.
+TUBII also has its own triggering functionality that supports the main
+trigger system. It can recieves raw-trigger signals from the MTCA+s and
+apply custom trigger logic to them and emit it's own raw-trigger pulses which are
+sent to the MTCD\@.
+TUBII also receives the global trigger signal and produces its own trigger
+word based upon which raw trigger pulses it had received. The TUBII trigger
+word is synchronized with the rest of the data for each event through it's own
+global trigger counter and through the SYNC/SYNC24 signal.
+
 TUBII is used as interface board for some of the detector calibration systems.
 These systems emit light into the detector and usually need to be
 synchronized with the trigger system. This synchronization requires
