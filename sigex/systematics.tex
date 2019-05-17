@@ -83,7 +83,7 @@ between the best fit value extracted with the modified PDFs and the best fit
 value from the standard PDFs is taken to be the systematic uncertainty.
 \subsection{Angular Resolution}
 \label{sec:angular_systematics}
-The angular resolution uncertainty is treated differently from other
+The angular resolution uncertainty is treated differently from the other
 uncertainties because the distribution of events in $\cos\theta_{sun}$ is
 directly related to the direction resolution.  To minimize the impact the
 angular resolution has on the result it is used as one of the parameters in the
@@ -99,9 +99,9 @@ The angular resolution systematic is applied using the formula given in
 Where $\theta$ is the angle between the true event direction and the reconstructed
 event direction, and $delta$ is the angular resolution systematic uncertainty.
 Using~\eqref{eqn:angular_syst_map} has the unfortunate downside producing
-unphysical values for $\cos\theta^{\prime}$ for values of $\cos\theta$ near
-$-1$. For values of $\cos\theta^{\prime}$ below $-1$ the value is instead replaced
-with a random value drawn from a uniform distribution $\left[-1\text{, }1\right]1$.
+unphysical values for $\cos\theta^{\prime}$ for values of $\cos\theta\approx-1$.
+For values of $\cos\theta^{\prime}$ below $-1$ the value is instead replaced
+with a random value drawn from a uniform distribution $\left[-1\text{, }1\right]$.
 The logic behind this choice is that when an event reconstructs with a direction
 that's nearly $180^{\circ}$ from the correct value, then the reconstruction
 has likely failed to such a degree that the reconstructed values are uncorrelated
@@ -113,9 +113,9 @@ needs to be transformed into a corresponding direction vector for the particle.
 To do this first a vector that is normal to the plane spanned by the reconstructed
 and true direction vector is found by taking the cross-product between those vectors,
 \begin{equation}
-    \vec{v}_{\mathrm{norm}} = \vec{d}_{\mathrm{true}} \cross \vec{d}_{\mathrm{recon}}\text{.}
+    \vec{d}_{\mathrm{norm}} = \vec{d}_{\mathrm{true}} \cross \vec{d}_{\mathrm{recon}}\text{.}
 \end{equation}
-Then $\vec{d}_{\mathrm{recon}}$ is rotated around $\vec{v}_{\mathrm{norm}}$
+Then $\vec{d}_{\mathrm{recon}}$ is rotated around $\vec{d}_{\mathrm{norm}}$
 such that the rotated vector $\vec{d}^{\prime}_{\mathrm{recon}}$ now has an angle
 of $\theta^{\prime}$.
 The direction $\vec{d}^{\prime}_{\mathrm{recon}}$ is then used in the
