@@ -26,14 +26,14 @@
 \section{Data Selection}
 \label{sec:data_selection}
 Events are included or removed from the dataset across three stages of selection.
-First entire runs are either included or removed based upon if they meet
+First entire runs are either included or removed based upon whether they meet
 certain criteria for data quality.
 The events within selected runs are then rejected or approved by a set
 of low-level cuts that attempt to remove events caused by instrumental
 backgrounds and other sources of unwanted events.
 Within events that pass the low-level cuts, hits can be rejected from consideration
 if they're deemed unlikely to have originated from light within the detector.
-Following that analysis level cuts are applied to the reconstructed quantities
+Following that, analysis level cuts are applied to the reconstructed quantities
 for each event.
 The analysis cuts are designed to maximize the signal efficiency for dataset and minimize the
 contamination from background sources.
@@ -41,7 +41,7 @@ Each of these steps are detailed below.
 
 \subsection{Dataset}
 \label{sec:dataset}
-Data for this analysis was taken in SNO+'s initial water-phase data taking
+Data for this analysis was taken in SNO+'s initial water-phase data-taking
 run.
 Data taking started May 05 2017 (exactly 4 years after I
 started my PhD) and ended December 25 the same year.
@@ -164,6 +164,26 @@ These checks all ensure that the data in a run is likely to be useful for
 a physics analysis, but are loose enough not to bias the dataset in a way that
 might influence results.
 
+\subsection{Livetime}
+While most event selection removes individual events based upon whether they
+pass or fail certain criteria, some cuts remove all events that occur for a
+period of time before or after some criteria is met.
+These cuts are said to introduce a deadtime into the dataset.
+The most significant example of this is the muon follower data cleaning cut, which
+cuts all events for 30\,seconds after every muon interaction in the detector.
+The livetime for each run is then defined as
+\begin{equation}
+    t_{\mathrm{live}} = t_{run} - t_{\mathrm{dead}}\text{,}
+\end{equation}
+where $t_{run}$ is the time between the first and last valid event within a run
+and $t_{\mathrm{dead}}$ is the sum of all deadtimes introduced into that run by cuts.
+The livetime is used to calculate the total exposure represented by the dataset.
+For simulated events many of the effects that necessitate deadtime are not simulated,
+so no deadtimes are added into the simulated runs.
+%Table XXX shows the sum of deadtimes across all runs within the dataset.
+The livetime represented by the dataset is 120.2 days, after subtracting the
+calculated deadtimes the effective livetime  114.7 days.
+
 \subsection{Data Cleaning}
 There are a number of instrumental effects that can cause an event
 to be recorded by the detector, these events typically have some
@@ -201,7 +221,7 @@ Within an event hits that are deemed unlikely to have come from a photon interac
 are removed from the analysis through hit cleaning.
 For this analysis the only sort of hits that were removed were those identified
 as coming from cross-talk between adjacent channels in the detector.
-Hit's from cross-talk arise from stray capacitative coupling between adjacent, or nearby, channels
+Hits from cross-talk arise from stray capacitative coupling between adjacent, or nearby, channels
 on a single daughter board.
 Typically the noise from cross-talk will only be large enough to cause a hit
 on adjacent channels if the original signal is relatively large.
@@ -371,8 +391,8 @@ correct for any overall slope across the digitized window.
 The CAEN window is $104$ samples long, the final 19 samples are not used because they often
 include a large noise pulse.
 The noise pulse comes from the GT pulse arriving at the front-end and generating electrical noise,
-it's typically called ``readout noise''.
-The readout noise makes the last $\approx20$ samples of the CAEN trace nearly
+it's typically called ``GT pickup''.
+The noise makes the last $\approx20$ samples of the CAEN trace nearly
 useless.
 
 The determined baseline is subtracted from the CAEN trace and the integral and maximum
@@ -503,7 +523,7 @@ non-solar interactions.
 
 Necessarily, the first of these cuts is the requirement that the reconstruction
 fits produce to a valid position, time and energy.
-The reconstruction algorithm's can fail to converge if an event occurs in an
+The reconstruction algorithms can fail to converge if an event occurs in an
 optically complicated region of the detector, \textit{e.g.} near the detector
 neck. The fitting algorithms rely on the assumption that the majority of
 the produced light will travel directly from the event vertex to PMT array.
@@ -606,22 +626,3 @@ signal could still be resolved.
 %\label{tbl:event_selection}
 %\end{table}
 
-\section{Livetime}
-While most event selection removes individual events based upon whether they
-pass or fail certain criteria, some cuts remove all events that occur for a
-period of time before or after some criteria is met.
-These cuts are said to introduce a deadtime into the dataset.
-The most significant example of this is the muon follower data cleaning cut, which
-cuts all events for 30\,seconds after every muon interaction in the detector.
-The livetime for each run is then defined as
-\begin{equation}
-    t_{\mathrm{live}} = t_{run} - t_{\mathrm{dead}}\text{,}
-\end{equation}
-where $t_{run}$ is the time between the first and last valid event within a run
-and $t_{\mathrm{dead}}$ is the sum of all deadtimes introduced into that run by cuts.
-The livetime is used to calculate the total exposure represented by the dataset.
-For simulated events many of the effects that necessitate deadtime are not simulated,
-so no deadtimes are added into the simulated runs.
-%Table XXX shows the sum of deadtimes across all runs within the dataset.
-The livetime represented by the dataset is 120.2 days, after subtracting the
-calculated deadtimes the effective livetime  114.7 days.

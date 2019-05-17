@@ -18,12 +18,12 @@ are described in greater detail by~\citep{snop_water_unidoc}.
 to an excited state of $\ce{^{16}O}$. Figure from~\citep{sno_n16}.}
 \label{fig:n16_br}
 \end{figure}
-The $\ce{^{16}N}$ source was developed by SNO, it uses a commercial
+The $\ce{^{16}N}$ source uses a commercial
 deuterium and tritium generator (DT-generator) to produce gaseous $\ce{^{16}N}$.
 The gas is pumped into the deployed source where it can undergo $\beta$-decay
 to an excited state of $\ce{^{16}O}$, the $\ce{^{16}O}$ will then de-excite
 and typically emit a $6.1$\,MeV gamma particle. Higher or lower energy gammas are emitted
-at a lower rate, the branching ratios for the de-excitation gammas are shown in
+at a lower rate, the primary branching ratios for the de-excitation gammas are shown in
 Fig~\ref{fig:n16_br}.
 
 A small block of plastic scintillator, observed by a PMT, is embedded within the
@@ -39,16 +39,16 @@ systematics and a position dependent correction to the reconstructed energy.
 
 \subsection{Energy Calibration}
 The detector resolution $\sigma_{E}$ and relative energy scale $\delta_{E}$ are determined
-from the $\ce{^{16}N}$ energy spectrum.
-The energy spectrum is modeled by $P(T_\mathrm{e})$, the energy spectrum in
-electron equivalent kinetic energy, and is given by $P_{\mathrm{source}}(T_{\mathrm{e}})$
-convolved with a normalized Gaussian distribution,
+from the $\ce{^{16}N}$ detected energy spectrum.
+The detected energy spectrum is modeled by $P(T_\mathrm{e})$ in electron equivalent
+energy, and is given by $P_{\mathrm{source}}(T_{\mathrm{e}})$
+convolved with a normalized Gaussian distribution.
 \begin{equation}
     P(T_\mathrm{e}) = N \int P_\mathrm{source}(T^{\prime}_{e})\frac{1}{\sqrt{2\pi}\sigma_{E}}e^-{\frac{\left((1+\delta_E)T_\mathrm{e}-T^{\prime}_{e}\right)^{2}}{2\sigma^{2}_{E}}}dT^{\prime}_{e}\text{.}%-\Delta E
 \label{eq:convolution}
 \end{equation}
 $P_\mathrm{source}(T_{\mathrm{e}})$ represents the distribution of deposited energy in
-the detector from the $\ce{^{16}N}$ source, in electron equivalent energy.
+the detector from the $\ce{^{16}N}$ source.
 Since the $\ce{^{16}N}$ emits gammas into the detector the mapping between
 gamma energy and electron equivalent energy is done by finding the electron
 energy that can produce the same number of Cherenkov photons
@@ -336,7 +336,7 @@ can only be applied to MC simulation by applying addition smearing.
 
 
 The final position systematic considered is the position scale uncertainty,
-which represents any position depended shift in $\mu$ between simulation
+which represents any position dependent shift in $\mu$ between simulation
 and data. Unlike the previous two uncertainties this systematic can effect the
 number of events that would be predicted to fall within a volume if the
 events are distributed uniformly throughout space. For this reason the position

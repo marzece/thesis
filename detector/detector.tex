@@ -98,7 +98,7 @@ an effective coverage of approximately $50\%$.
 Figure~\ref{fig:sno_pmt_casette} shows a schematic diagram of the PMT and
 its housing.
 
-For the scintillator and tellurium loaded phases the AV volume will have
+For the scintillator and tellurium-loaded phases the AV volume will have
 a lower density than the surrounding water volume, resulting in significant buoyant
 forces on the AV\@.
 To counteract the buoyancy a hold-down rope-net was installed across the top
@@ -141,7 +141,7 @@ the position, time, energy, and direction of all interacting particles in the
 detector.
 The methods used for deducing each value is detailed in Sec~\ref{sec:reconstruction}.
 
-For the scintillator and tellurium loaded phases scintillation processes will be
+For the scintillator and tellurium-loaded phases scintillation processes will be
 the dominant photon production mechanism.
 The Cherenkov light production is approximately the same in scintillator as it is in
 water, however the ratio of light produced by scintillation processes to Cherenkov
@@ -421,14 +421,14 @@ it's discussed in further in~\ref{sec:tubii}.
 
 \section{Electronics Upgrades}
 \label{sec:upgrades}
-As previously mentioned, in SNO+'s scintillator and tellurium loaded phases the
+As previously mentioned, in SNO+'s scintillator and tellurium-loaded phases the
 amount of light produced by any interaction is expected to be roughly a factor
-of $100$ greater than the light that would be produced by water target.
+of $100$ greater than the light that would be produced by a water target.
 This increase in photon production translates to an equivalent increase in the
-current in the trigger system and the necessary data readout rate.
-Additionally, since 1990's, when the SNO DAQ system was designed, the availability
-and sophistication of commercial computing and DAQ hardware has increased
-dramatically.
+current in the trigger system and the necessary data read out rate.
+Between the time when the original SNO DAQ electronics was designed and now,
+the availability and sophistication of commercial computing and DAQ hardware
+has increased dramatically.
 To accommodate the increased current and data volume and to take advantage of modern
 hardware a few key pieces of the SNO DAQ was upgraded as part of the change from
 SNO to SNO+.
@@ -454,14 +454,14 @@ age or other unknown factors.
 These factors lead to the baseline for any trigger signal varying
 by up to a few hits over the course of a few hours.
 A common source of baseline variation is known as ``dropout'';
-dropout is single nhit shits in the  baseline that persist over an indefinite
+dropout is single nhit shifts in the  baseline that persist over an indefinite
 time period with no clear signature in the readout.
 Dropout will be discussed in detail in~\ref{sec:dropout}.
 
 \subsection{XL3}
 \label{sec:xl3}
 The SNO DAQ used a centralized serial readout system, where each crate of
-electronics was readout in one after the other.
+electronics was read out in one after the other.
 As part of the electronics upgrade from SNO to SNO+ this system was changed to
 an asynchronous, parallel readout system, allowing for a significant increase in
 the data readout speed.
@@ -485,7 +485,7 @@ The XL3 reads data from the FECs across the backplane, and buffers that data
 in on-board memory before reading it out to a central DAQ computer over Ethernet.
 The maximum data rate each XL3 is capable of is approximately
 14\,MB/s, yielding a detector-wide rate of 250\,MB/s.
-This translates to being able to readout out roughly one-hundred thousand
+This translates to being able to read out out roughly one-hundred thousand
 hits per crate per second.
 Figure~\ref{fig:xl3_daq_diagram} shows schematically how the XL3 is
 incorporated into the SNO+ DAQ\@.
@@ -522,7 +522,7 @@ readout rate.
 
 The MTCA+ provides two ways to mitigate baseline variations.
 The first is that the MTCA+ provides a relay to dynamically enable or disable each
-crates participation in the trigger sum.
+crate's participation in the trigger sum.
 This is useful if a CTC fails, its trigger sums can be disabled to prevent it from
 pulling up/down the entire trigger sum to the point that stable triggering is no
 longer possible.
@@ -571,7 +571,7 @@ word based upon which raw trigger pulses it had received. The TUBII trigger
 word is synchronized with the rest of the data for each event through it's own
 global trigger counter and through the SYNC/SYNC24 signal.
 
-TUBII is used as interface board for some of the detector calibration systems.
+TUBII is used as an interface board for some of the detector calibration systems.
 These systems emit light into the detector and usually need to be
 synchronized with the trigger system. This synchronization requires
 a variety of pulses and delays to be tuned to account for the time it
@@ -586,7 +586,7 @@ The MicroZed allows for nearly any logical combination of trigger signals includ
 using recent trigger signals to inform the current trigger logic.
 
 Something like this is desirable for identifying and ensuring the detector will
-be sensitive to time correlated events. An example of this would be that
+be sensitive to time-correlated events. An example of this would be that
 the decay chain of $\ce{^{214}Bi}$ $\rightarrow$ $\ce{^{214}Po}$ $\rightarrow$ $\ce{^{210}Pb}$,
 this decay chain is referred to as BiPo214. %XXXTODO This chain is wrong, look it up idiot
 The signature of this decay is an electron from $\beta$ decay, followed, with a half
@@ -707,7 +707,7 @@ by a single hit.
 So dropout effects our ability to predict which events will or will not
 trigger our detector.
 
-Since dropout is the result of a design error in the trigger system, the readout system
+Since dropout is the result of a design error in the front-end system, the readout system
 is not sensitive to it, so there is no straight forward way of measuring how many
 or which channels are dropped out at any time.
 Using the data recorded by the CAEN I was able to develop a method for determining

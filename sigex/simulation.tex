@@ -8,16 +8,15 @@ normalized to the solar reaction rate predicted by BS05-0P~\citep{bs_ssm}}
 \label{fig:b8_flux}
 \end{figure}
 
-RAT, A monte-carlo simulation of particle interactions in the detector is used
+RAT, a Monte Carlo simulation of particle interactions in the detector is used
 for predicting detector observables for solar neutrino and background events.
-RAT is a Geant4~\citep{geant4} based simulation that
+RAT is a Geant4-based~\citep{geant4} simulation that
 contains a detector and DAQ simulation in addition to simulation of particle
 interactions and photon propagation.
 
 The first step in the monte-carlo event simulation process is to generate
 event vertex information, including the interaction location, and the neutrino
 and recoil electron energy and direction.
-For this step standard solar model input are used.
 The distribution for the $\ce{^{8}B}$ neutrino energy from Winters~\textit{et.\ al.}~\citep{winterspectrum}
 was used, normalized to a nominal flux of
 $\Phi_{\nu_{\mathrm{e}}} = 9.67\times10^{9}\mathrm{cm}^{-2}\mathrm{s}^{-1}$
@@ -93,11 +92,11 @@ to simulate the detection efficiency for that photon, which includes the photo-c
 PMT collection efficiency.
 These efficiencies are determined from \textit{ex-situ} PMT measurements and
 taken to be uniform across the detector. %TODO Citation?
-If the photon passes that check a PMT signal is created in the DAQ simulation is created.
+If the photon passes that check a PMT signal is created in the DAQ simulation.
 Once all the photons in an event have been simulated and have either exited the detector,
-been detected, or been absorbed, the DAQ simulation is ran on the detected photon signals.
+been detected, or been absorbed, the DAQ simulation is run on the detected photon signals.
 
-The goal of the DAQ simulation is transform simulated PMT hits to detector observables,
+The goal of the DAQ simulation is to transform simulated PMT hits to detector observables,
 \textit{e.g.} QHS, hit times, trigger information etc.
 The DAQ simulation accomplishes this by replicating the trigger system of the real SNO+ detector.
 It starts by creating waveforms for every simulated PMT signal, the size
@@ -106,15 +105,14 @@ by the PCA calibration.
 Electronics noise is added to each simulated waveform, then each waveform is compared to a discriminator
 threshold, the value for which is matched to detector settings.
 For signals that pass the discriminator threshold a PMT hit is created
-and N100, N20, ESUMH and ESUML trigger signals are created.
+and N100, N20, ESUMH and ESUML trigger signals are produced.
 The waveforms for the trigger signals are simulated with electronic noise and dropout, both
 of which match detector measurements.
-The trigger signals are then summed detector wide and compared to ``MTCA+'' thresholds,
-if the one or more signals cross threshold.
+The trigger signals are then summed detector wide and compared to ``MTCA+'' thresholds.
 If any of the threshold crossing signals are included in the simulated trigger mask
 each hit's  QHS, QHL, QLX, and threshold crossing time, are calculated from the original PMT waveform.
 The trigger waveforms are also digitized in a simulated 12-bit digitizer with sampling rate matched
-to that of the detector.
+to that of the CAEN v1720 digitizer.
 
 \begin{figure}[htbp]
   \centering
@@ -125,10 +123,10 @@ to that of the detector.
   \label{fig:energy_comparison}
 \end{figure}
 
-Once the DAQ results is a dataset that can be used in exactly the same way the
+The result of the DAQ simulation is a dataset that can be used in exactly the same way the
 detector data can be used.
-Reconstruction is performed on the simulated detector observables in exactly the same
-way it is performed on detected events, and the reconstructed quantities can be compared
+Reconstruction is performed on the simulated detector observables 
+ and the reconstructed quantities can be compared
 to the corresponding MC truth values to assess expected detector performance.
 The comparison between true energy and reconstructed energy is shown in
 Fig.~\ref{fig:energy_comparison} for the simulated $\ce{^{8}B}$ $\nu_{e}$
@@ -141,7 +139,7 @@ only 10\% of events with fewer than 15 PMT hits are reconstructed because
 those events are generally not useful for analysis.
 
 RAT is used to generate two MC datasets, a solar $\nu_{e}$ dataset
-and a solar $\nu_{mu}$ dataset.
+and a solar $\nu_{\mu}$ dataset.
 No $\nu_{\tau}$ dataset is generated because the SNO+ detector has
 no way to discriminate between $\nu_{\mu}$ and $\nu_{\tau}$ elastic scatters.
 So the $\nu_{\mu}$ dataset can be considered to represent both the $\nu_{\mu}$
@@ -152,21 +150,21 @@ volume between the AV and PSUP\@.
 These external datasets contribute negligibly to the final dataset after all
 analysis cuts are performed, and so they are in general not considered.
 
-Also generated a number of datasets for the expected backgrounds from
-radioactivity isotopes in the detector components.
+Also generated are a number of datasets for the expected backgrounds from
+radioactivite isotopes in various detector components.
 These datasets are not directly used in this analysis, they were used however
 for assessing the effectiveness of the analysis cuts that are used.
 
 This analysis uses what is referred to as ``run-by-run'' simulation.
-This means every detector data run used in the analysis has simulated run that uses
+This means every detector data run used in the analysis has a simulated run that uses
 the detector and electronic calibration settings from the run as input to the DAQ simulation, and simulates
 a length of time and time of day equal to the detector run.
 The purpose of this is to remove the possibility that changes in detector settings
 or circumstances will bias any result.
-Of course this method is not perfect, there exists features of the real detector
+This method is not perfect, there exists features of the real detector
 that are not simulated.
-For example if an increased amount of noise exists in the SNO+ DAQ due to
-temperature fluctuations, this is not an effect that will be reflected in
+For example, if an increased amount of noise exists in the SNO+ DAQ due to
+temperature fluctuations, this is not an affect that will be reflected in
 simulated data.
 For this reason detector runs that have difficult to simulate conditions 
 are typically not included in the analysis, this is discussed further
