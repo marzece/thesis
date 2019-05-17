@@ -536,7 +536,7 @@ the solar simulation.
 %Figure~{XXX} shows the standard $\ce{^{8}B}$ survival probability simulated
 %this way.
 
-The modified vacuum portion of the simulation is done by first monte-carlo sampling
+The modified vacuum portion of the simulation is done by first Monte Carlo sampling
 neutrino energies and production radii, and looking up the simulated
 neutrino state that corresponds to the sampled energy and production radius.
 The radial production PDFs for each neutrino type from the BS050P standard
@@ -561,7 +561,7 @@ This process is repeated for $1000000$ simulated neutrinos for each solar
 neutrino type, \textit{e.g.} $\ce{^{8}B}$, $pep$, etc.
 
 % TODO need typical radii/energy sample counts
-Once  monte-carlo samples of solar neutrino states are calculated, the
+Once  Monte Carlo samples of solar neutrino states are calculated, the
 states are used as inputs to a simulation of the modified vacuum potential.
 This simulation is in principle the same as the solar simulation,
 it simply involve evaluating Eqn.~\eqref{eqn:mixing_schrodinger}, where 
@@ -591,7 +591,7 @@ the states from the solar simulation are transformed to the eigen-basis
 and used for $\ket{\Psi_{k}(t=0)}$.
 Equation~\eqref{eqn:chameleon_evolution} is evaluated for $x=1$AU
 and the new state is transformed back into the flavor basis.
-Performing this series of steps for each monte-carlo sampled neutrino
+Performing this series of steps for each Monte Carlo sampled neutrino
 state provides the expected distribution of states as they arrive at Earth
 having travelled through a modified vacuum mixing potential.
 
@@ -606,7 +606,7 @@ travelling through the Earth, including the high density core.
 The one-dimensional earth density profile is from Ref.~\citep{PREM} is used.
 %This results in an simulation of the day-night effect for neutrino oscillation.
 
-The result of this chain of simulation steps is monte-carlo samples
+The result of this chain of simulation steps is Monte Carlo samples
 of neutrino flavor states. The survival probability is calculated as,
 \begin{equation}
 P_{ee}(\ket{\Psi}) = |\braket{\nu_{e}}{\Psi_{nu}}|^2
@@ -615,7 +615,7 @@ for each neutrino state.
 Performing an average of survival probabilities binned in neutrino energy 
 gives the survival probability as a function of energy $P_{ee}(E_{\nu})$.
 
-Since neutrino states are monte-carlo sampled to calculate $P_{ee}(E_{\nu})$
+Since neutrino states are Monte Carlo sampled to calculate $P_{ee}(E_{\nu})$
 each value has statistical uncertainty from the number of samples used.
 This problem was somewhat exacerbated by the distributions of some of the
 solar neutrino energy PDFs having small values in areas that are important for
