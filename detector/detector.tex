@@ -208,7 +208,7 @@ to a PMT cable. The PMT base is housed within a water-tight cassette.
 The PMT cables pass through penetrations in the cavity ceiling where they then connect
 to the rest of the electronics. The PMT cable connects first to a PMT interface
 board (PMTIC). The physical connection occurs on a daughter card, called a ``paddle card'',
-that accomadates up to eight PMT cables; Each PMTIC hosts four paddle cards.
+that accommodates up to eight PMT cables; Each PMTIC hosts four paddle cards.
 The PMTIC is responsible for fanning out the PMT high voltage
 to each PMT and providing channel level adjustment to the voltage
 each PMT receives; the voltage adjustment is done with a series of
@@ -227,7 +227,7 @@ a 100\,ns long fixed-height square pulse is created (N100), a 20\,ns fixed heigh
 a high gain copy of the signal is created (ESUMH), a low gain copy of the signal
 is created (ESUML), a linear voltage ramp begins (TAC ramp), the signal is integrated for
 50\,ns with high gain (QHS), the signal is integrated for up to 400\,ns with high gain (QHL),
-and the singal is integrated for 50\,ns with a low gain (QLX).
+and the signal is integrated for 50\,ns with a low gain (QLX).
 These signals and values are created on a few different custom ASICs on the
 daughter boards.
 The trigger system uses the first of those 4 signals (N100, N20, ESUMH, and ESUML).
@@ -244,7 +244,7 @@ trigger card (CTC) sums the signals from the sixteen
 FECs that are in each electronics crate.
 The signals from each of the nineteen CTCs are all summed on the
 Master Trigger Card - Analog (MTCA+). The SNO+ MTCA+ is an upgraded
-version of the SNO MTCAr; more information about the MTCA+ is available in
+version of the SNO MTCA\@; more information about the MTCA+ is available in
 Sec.\,\ref{sec:mtcap}.
 
 Separate, but identical, MTCA+s are used for each of the four trigger signals.
@@ -317,8 +317,8 @@ indicates when the hit occurred relative to the GT signal.
 
 The FEC stores those values and adds information to identify which
 channel's data is stored, it also records the value of its own GTID\@.
-Each FEC keeps a counter that is incremented every time it recieves a global
-trigger signal, in princible the value of this counter will always be the same
+Each FEC keeps a counter that is incremented every time it receives a global
+trigger signal, in principle the value of this counter will always be the same
 as the MTCD GTID, and the same as the counter in every other FEC in the detector.
 The GTID counter is our only way of associating recorded hit data with each other
 and with the trigger word.
@@ -363,7 +363,7 @@ There are a few ancillary systems within the DAQ electronics, all
 of which are new to SNO+.
 The first is the CAEN v1720, commonly
 referred to as just ``CAEN'', which is a 12-bit digitizer board.
-It's role follows from the Analog Measurment Board (AMB) used in
+It's role follows from the Analog Measurement Board (AMB) used in
 SNO.
 The CAEN is used to digitize and readout the trigger signals.
 It has eight available input channels that it can digitize, however,
@@ -452,7 +452,7 @@ There are also a number of factors that effect that are more difficult
 to identify, such as transistors on the CTC performing malfunctioning due to
 age or other unknown factors.
 These factors lead to the baseline for any trigger signal varying
-by upto a few hits over the course of a few hours.
+by up to a few hits over the course of a few hours.
 A common source of baseline variation is known as ``dropout'';
 dropout is single nhit shits in the  baseline that persist over an indefinite
 time period with no clear signature in the readout.
@@ -557,13 +557,13 @@ baseline restoration provides adequate correction for those sort of effects.
 
 \subsection{TUBII}
 \label{sec:tubii}
-I designed an auxillary trigger board for SNO+ called the Trigger
-Utility Board Mk.II (TUBII) the spritual sucessor to Trigger Utility Board
+I designed an auxiliary trigger board for SNO+ called the Trigger
+Utility Board Mk.II (TUBII) the spiritual successor to Trigger Utility Board
 from SNO\@. 
 TUBII has a number of different roles in the SNO+ DAQ, as already mentioned it
 provides the analog shaping for trigger signals sent to the CAEN\@.
 TUBII also has its own triggering functionality that supports the main
-trigger system. It can recieves raw-trigger signals from the MTCA+s and
+trigger system. It can receives raw-trigger signals from the MTCA+s and
 apply custom trigger logic to them and emit it's own raw-trigger pulses which are
 sent to the MTCD\@.
 TUBII also receives the global trigger signal and produces its own trigger
@@ -587,7 +587,7 @@ using recent trigger signals to inform the current trigger logic.
 
 Something like this is desirable for identifying and ensuring the detector will
 be sensitive to time correlated events. An example of this would be that
-the decay chain of $\ce{^{214}Bi}$ $\rightarrow$ $\ce{^{214}Po}$ $\rightarrow$ $\ce{^{212}Pb}$,
+the decay chain of $\ce{^{214}Bi}$ $\rightarrow$ $\ce{^{214}Po}$ $\rightarrow$ $\ce{^{210}Pb}$,
 this decay chain is referred to as BiPo214. %XXXTODO This chain is wrong, look it up idiot
 The signature of this decay is an electron from $\beta$ decay, followed, with a half
 life of 4\,$\mu$s, by an $\alpha$ decay.

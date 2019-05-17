@@ -1,6 +1,6 @@
 \section{Systematics}
 \label{sec:systematics}
-Systematics associated with event reconstruction, livetime, mixing parameters,
+Systematics associated with event reconstruction, the mixing parameters,
 and trigger efficiency are considered for this analysis.
 The event reconstruction systematics are uncertainties on the energy reconstruction
 scale and resolution, position reconstruction resolution and scale, and the
@@ -10,14 +10,14 @@ discussed in Sec~\ref{sec:calib}.
 
 Each systematics is treated in the same, or a similar, way, to propagate
 their effect to the flux result.
-First, the relevant reconstructe monte-carlo quantity (\textit{e.g.} enrgy, position etc.)
-is modifed according to the one-sigma systematic uncertainty.
+First, the relevant reconstructed monte-carlo quantity (\textit{e.g.} energy, position etc.)
+is modified according to the one-sigma systematic uncertainty.
 From this A 2D histogram in energy and $\cos\theta_{sun}$ is produced using the
-modified event quantites, applying the standard cuts.
-Finally the flux result is found by performing a fit to dat using the systmatically
+modified event quantities, applying the standard cuts.
+Finally the flux result is found by performing a fit to data using the systematically
 adjusted histogram as input.
 The difference between the best fit value found using unmodified event quantities
-and using the modified quantites is taken to be the one-sigma systematic uncertainty.
+and using the modified quantities is taken to be the one-sigma systematic uncertainty.
 How each variable is modified, and any deviations from this process of
 propagating systematics is detailed below.
 All systematics are treated as uncorrelated; variables are modified according to
@@ -106,7 +106,7 @@ The logic behind this choice is that when an event reconstructs with a direction
 that's nearly $180^{\circ}$ from the correct value, then the reconstruction
 has likely failed to such a degree that the reconstructed values are uncorrelated
 with the true values, and so drawing from a uniform random distribution preserves
-that uncorrleated nature without adding any additional bias.
+that uncorrelated nature without adding any additional bias.
 
 Once the systematically varied value for $\cos\theta$ is determined, the new angle
 needs to be transformed into a corresponding direction vector for the particle.
@@ -119,13 +119,13 @@ Then $\vec{d}_{\mathrm{recon}}$ is rotated around $\vec{v}_{\mathrm{norm}}$
 such that the rotated vector $\vec{d}^{\prime}_{\mathrm{recon}}$ now has an angle
 of $\theta^{\prime}$.
 The direction $\vec{d}^{\prime}_{\mathrm{recon}}$ is then used in the
-analysis to generate event distrubtions in $\cos\theta_{sun}$.
+analysis to generate event distributions in $\cos\theta_{sun}$.
 
-Following this procedure PDFs for $\cos\theta_{sun}$ are generated for many differnt
+Following this procedure PDFs for $\cos\theta_{sun}$ are generated for many different
 values of $\delta_{\theta}$, producing $P(\cos\theta_{sun}, \delta_{\theta})$.
 The constraint on $\delta_{\theta}$ produced by the $\ce{^{16}N}$ analysis
 are included in this two-dimension PDF\@.
-$P(\cos\theta_{sun}, \delta_{\theta})$ is used in the remaineder of the analysis
+$P(\cos\theta_{sun}, \delta_{\theta})$ is used in the remainder of the analysis
 treating $\delta_{\theta}$ as a nuisance parameter.
 
 \subsection{Mixing Parameters}
@@ -150,21 +150,21 @@ are summarized in Table~\ref{tbl:mixing_values}.
 A survival probability curve is generated for each of the mixing parameters
 shifted by their positive and negative one-sigma uncertainty.
 These systematically adjusted PDFs are used in the analysis replacing the
-standard survial probability curve to propagate the uncertainties to the
+standard survival probability curve to propagate the uncertainties to the
 flux result.
 \subsection{Trigger Efficiency}
-The uncertainty on the trigger efficiecy is described in Sec~\ref{sec:trigeff}.
+The uncertainty on the trigger efficiency is described in Sec~\ref{sec:trigeff}.
 PDFs for $\cos\theta_{sun}$ are generated using the more pessimistic
-trigger efficiecy curves measured by the laserball and TELLIE\@.
+trigger efficiency curves measured by the laserball and TELLIE\@.
 Simulated events that have an in-time nhit that is predicted by the nhit-monitor
-to be 100\% efficient are de-weighted to match the laserball/TELLIE efficiecy
+to be 100\% efficient are de-weighted to match the laserball/TELLIE efficiency
 measurement..
 The PDFs that result from the de-weighted events are used as the systematically
-adjusted PDFs to account propagate the trigger efficiecy uncertainty to the
+adjusted PDFs to account propagate the trigger efficiency uncertainty to the
 flux result.
 %\subsection{Livetime}
 %Uncertainty on the livetime comes primarily from orphaned events in the detector.
-%Orphaned detector events are disucssed in~Sec.~\ref{TODOXXX}.
-%When an orphaned event ocurrs all information about that event is lost including
-%the time it ocurred and\ldots%TODO! Find documentation from Aobo.
+%Orphaned detector events are discussed in~Sec.~\ref{TODOXXX}.
+%When an orphaned event occurs all information about that event is lost including
+%the time it occurred and\ldots%TODO! Find documentation from Aobo.
 
