@@ -4,17 +4,18 @@ A series of reconstruction algorithms are run over all events that pass data cle
 These algorithms estimate the position, time, direction, and energy of the event.
 All events are reconstructed under the hypothesis that the PMT hits are from Cherenkov radiation
 produced by a single electron.
-Additionally, the reconstruction algorithms use only the hits in the prompt time window to ensure only light
-that travelled directly from the event origin is used.
-The reconstruction algorithms used in this analysis are all algorithms
-that were developed for SNO\@.
-Since having a light-water vs heavy-water target has small and easily accounted for
-effects on the emission of Cherenkov radiation inside the AV, these algorithms
-perform effectively for the SNO+ water phase as they did for SNO\@.
+Additionally, the reconstruction algorithms use only the hits in a prompt time window to ensure only light
+that travelled directly from the event origin is used,
+though each algorithm defines differently window is used.
+Only hits that are from well calibrated, online PMTs and detector channels are used.
+%The reconstruction algorithms used in this analysis are all algorithms that were developed for SNO\@.
+%Since having a light-water vs heavy-water target has small and easily accounted for effects on the emission of Cherenkov radiation inside the AV, these algorithms perform effectively for the SNO+ water phase as they did for SNO\@.
 The same reconstruction algorithms are used on both simulated and detected events.
 
 The direction ($\vec{d}$), time ($t_{0}$), and position ($\vec{p}$) are determined by performing a likelihood
 fit to the time and position of PMT hits.
+Only hits within a $100$\,ns window centered around the mode of the raw hit time
+distribution are used.
 The algorithm evaluates the likelihood of a hypothesized event position and time by
 calculating the time residual for each hit PMT,
 \begin{equation}
@@ -47,11 +48,21 @@ The position and time that minimize the quantity
 \sum_{i=0}^{N_{PMT}} P(t_{res}) % TODO need to refactor this to include the index i
 \end{equation}
 is used as the event position and time.
+
 The direction is determined by evaluating $\theta_{\mathrm{PMT}}$ for each hit where
 $\theta_{\mathrm{PMT}}$ is defined by,
 \begin{equation}
     \cos\theta_{\mathrm{PMT}} = \vec{d}\cdot\left(\vec{p}_{PMT} - \vec{p}\right)\text{.}
 \end{equation}
+The likelihood, $P(\theta_{\mathrm{PMT}})$, is determined from a prior simulation of
+6\,MeV electrons at the center of the detector, Fig~\ref{fig:rat_angle_pdf} shows
+this PDF\@.
+The direction that minimizes
+\begin{equation}
+\sum_{i=0}^{N_{PMT}} P(\theta_{\mathrm{PMT}})
+\end{equation}
+is used as the reconstructed event direction.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.78\textwidth]{rat_angle_pdf}
@@ -60,15 +71,6 @@ likelihood of a hypothesized direction.  The peak at approximately $40^{\circ}$
 corresponds to the Cherenkov cone opening angle.}
 \label{fig:rat_angle_pdf}
 \end{figure}
-
-The likelihood, $P(\theta_{\mathrm{PMT, i}})$, is determined from a prior simulation of
-6\,MeV electrons at the center of the detector, Fig~\ref{fig:rat_angle_pdf} shows
-this PDF\@.
-The direction that minimizes
-\begin{equation}
-\sum_{i=0}^{N_{PMT}} P(\theta_{\mathrm{PMT}})
-\end{equation}
-is used as the reconstructed event direction.
 
 The kinetic energy of the event is determined after
 the event position, time and direction are determined.
