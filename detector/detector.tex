@@ -501,8 +501,8 @@ incorporated into the SNO+ DAQ\@.
 \label{fig:mtcap_analog_diagram}
 \end{figure}
 
-The SNO MTCA was not expected to be able to operate stably at the expected
-hit rate and occupancy of SNO+.
+The SNO MTCA was not expected to be able to operate at the expected
+hit rate and occupancy of SNO+ in its scintillator or tellurium-loaded phases.
 So the primary goal for the MTCA+ is to simply replace the analog summing
 and discriminating capabilities of the SNO MTCA, and perform stably
 at the higher rates expected in SNO+.
@@ -512,7 +512,7 @@ of high-current voltage feedback operational amplifiers.
 
 One of the most transformative changes that the MTCA+ introduces into
 the SNO+ trigger system is its baseline restoration circuitry.
-In SNO baseline variations could be tolerated because
+In SNO typical baseline variations could be tolerated because
 the threshold was far from the baseline, so variations of a few hits
 did not typically have a very large effect.
 In SNO+, due to many of the upgrades, a significantly lower threshold was achieved,
@@ -526,6 +526,8 @@ crate's participation in the trigger sum.
 This is useful if a CTC fails, its trigger sums can be disabled to prevent it from
 pulling up/down the entire trigger sum to the point that stable triggering is no
 longer possible.
+This situation is rare, but the ability to disable indivdual
+crates in those situations is useful for diagnosing and isolating issues.
 
 The second is baseline restoration circuit on the MTCA+. At the final
 stage of each analog sum the output sum is fed through a long-pass
@@ -695,18 +697,35 @@ similar role to the laserball for a PCA\@.
 \subsection{Dropout}
 \label{sec:dropout}
 Dropout comes from a error in the design of one of the
-ASICs on the DB; the error results in the N100 and N20 trigger pulses from
+ASICs on the DB\@;
+the error results in the N100 and N20 trigger pulses from
 a channel being much longer than they should be, \textit{e.g.} 1\,ms wide
 instead of 100\,ns.
-Since the width of the pulse is then $\approx10^-3$ if the rate of dropout is
-less than $\approx 1$\,kHz, then dropout will not effect the applied baseline
-correction significantly.
-But for almost any non-zero rate of dropout  the trigger itself will be effected;
-a single channel dropping out can be thought of as lowering effective threshold
-by a single hit.
-So dropout effects our ability to predict which events will or will not
-trigger our detector.
+The nominal effect of dropout is to lower the effective threshold for the period
+of time that the channel is dropped out.
+Since the typical length of a single dropout pulse is short compared to the
+baseline correction time constant, individual channels being dropped out
+are not corrected for.
 
+Dropout does have a somewhat indirect effect on the baseline correction though.
+The baseline correction will move the ``zero'' of each trigger signal to
+its most common value.
+So if there exists, on average, two channels dropped out
+in the detector at any time, then that average will be shifted by approximately
+two nhit.
+If the threshold for the detector is set to 10 nhit,
+the effect of dropout and baseline correction will leave the effective threshold
+at 10 nhit, but for short periods when there is fewer or greater than two dropped out
+channels there will be an effectively higher or lower threshold, respectively.
+Because of baseline correction, dropout can cause the effective threshold to move
+in both directions, higher or lower.
+In SNO, without baseline correction, dropout would only ever lower the effective threshold.
+
+
+For physics analyses that have a signal near threshold, it's important that
+the threshold for the detector be as well modeled as possible.
+So a method for accurately modelling dropout is desirable to avoid large
+systematic uncertainties associated with the trigger system.
 Since dropout is the result of a design error in the front-end system, the readout system
 is not sensitive to it, so there is no straight forward way of measuring how many
 or which channels are dropped out at any time.
@@ -731,8 +750,13 @@ is fit to the histogram. Eqn.~\ref{dropout_model} describes a series of Gaussian
 distributions each with width $\sigma$ and separation $S$, and an overall shift $C$.
 The normalization of the $k^{\text{th}}$ Gaussian is given by the value of the Poisson
 distribution for an average rate $\lambda$.
-The parameter $\lambda$ corresponds the average dropout for the detector, all
-other parameters are treated as nuisance parameters.
+The parameter $S$ gives the separation in ADC counts
+between the baseline shifts from each dropped out channel, $C$ gives the baseline
+value when there are no dropped out channels.
+The width of each Gaussian $\sigma$ corresponds to the noise on the baseline
+measurement, i.e how much the baseline varies at a fixed amount of dropout.
+The parameter $\lambda$ corresponds the average dropout for the detector.
+All parameters are determined from a fit.
 
 \begin{figure}[htbp]
     \centering
@@ -743,6 +767,41 @@ other parameters are treated as nuisance parameters.
 \label{fig:dropoutexample}
 \end{figure}
 
+
+Figure~\ref{fig:dropoutexample} shows the measured dropout for run 101357.
+The best fit extracts an average dropout of $\lambda=2.7$ channels.
+For each run a similar dropout measurement is performed, the resulting dropout
+rate is later used in simulation as part of the DAQ simulation.
+
+\subsection{Nhit-Monitor}
+During standard data taking a calibration, called the nhit-monitor, is performed to measure the effective
+threshold of the trigger N100 and N20 triggers.
+The goal is to estimate the function $P_{\mathrm{trig}}(N)$,
+called the trigger efficiency curve,
+it's the probability of triggering at any given number of hits $N$.
+The process for estimating that curve is to steadily increase the number of
+PEDESTAL hits occurring at a single time and observe at which number of hits
+the detector triggers, and how frequently it triggers.
+For the entirety of the data taking only channels in
+crate 4 of the detector were pedestalled for the nhit-monitor.
+This introduces the possibility of bias into the nhit-monitor estimate
+for the trigger efficiency curve.
+Although all channels in the detector are designed to function identically, this
+is not something that is closely monitored or tested, so it could be the case
+that the channels on crate 4 are not representative of the detector as a whole.
+For this reason the estimates of the trigger efficiency from the nhit-monitor
+are usually compared to other estimates from laserball data.
+
+A value related to the number of hits in an event, called the ``in-time hits'' or
+$\tilde{n}$,
+is typically used for estimating the trigger efficiency.
+The in-times hits is an estimate of the maximum height of the trigger pulse in
+units of nhit, it includes effects from the pulse width of each trigger
+and the average pulse rise-time.
+Each event has two in-time nhit estimates one for the N100, $\tilde{n}_{100}$
+and one for the N20, $\tilde{n}_{20}$.
+Figure~\ref{fig:trigeff} shows the trigger efficiency from nhit-monitor data
+compared to data from simulation for the N100 trigger.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.73\textwidth]{trigger_efficiecy}
@@ -750,12 +809,4 @@ other parameters are treated as nuisance parameters.
     and simulated trigger efficiency for run 107640. Plot from~\citep{tanner_triggeff}.}
 \label{fig:trigeff}
 \end{figure}
-
-Figure~\ref{fig:dropoutexample} shows the measured dropout for run 101357.
-The best fit extracts an average dropout of $\lambda=2.7$ channels.
-For each run a similar dropout measurement is performed, the resulting dropout
-rate is later used in simulation as part of the DAQ simulation.
-As shown in Fig~\ref{fig:trigeff}, the  simulated trigger efficiency, using the
-\textit{in-situ} measurement of dropout, agrees well with the measured trigger
-efficiency.
 
