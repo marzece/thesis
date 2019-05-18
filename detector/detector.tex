@@ -773,9 +773,11 @@ The best fit extracts an average dropout of $\lambda=2.7$ channels.
 For each run a similar dropout measurement is performed, the resulting dropout
 rate is later used in simulation as part of the DAQ simulation.
 
-\subsection{Nhit-Monitor}
-During standard data taking a calibration, called the nhit-monitor, is performed to measure the effective
-threshold of the trigger N100 and N20 triggers.
+\subsection{Nhit Monitor}
+\label{sec:nhit_monitor}
+During standard data taking a calibration, called the nhit monitor, is
+performed to measure the effective threshold of the trigger N100 and N20
+triggers.
 The goal is to estimate the function $P_{\mathrm{trig}}(N)$,
 called the trigger efficiency curve,
 it's the probability of triggering at any given number of hits $N$.
@@ -783,13 +785,13 @@ The process for estimating that curve is to steadily increase the number of
 PEDESTAL hits occurring at a single time and observe at which number of hits
 the detector triggers, and how frequently it triggers.
 For the entirety of the data taking only channels in
-crate 4 of the detector were pedestalled for the nhit-monitor.
-This introduces the possibility of bias into the nhit-monitor estimate
+crate 4 of the detector were pedestalled for the nhit monitor.
+This introduces the possibility of bias into the nhit monitor estimate
 for the trigger efficiency curve.
 Although all channels in the detector are designed to function identically, this
 is not something that is closely monitored or tested, so it could be the case
 that the channels on crate 4 are not representative of the detector as a whole.
-For this reason the estimates of the trigger efficiency from the nhit-monitor
+For this reason the estimates of the trigger efficiency from the nhit monitor
 are usually compared to other estimates from laserball data.
 
 A value related to the number of hits in an event, called the ``in-time hits'' or
@@ -800,7 +802,7 @@ units of nhit, it includes effects from the pulse width of each trigger
 and the average pulse rise-time.
 Each event has two in-time nhit estimates one for the N100, $\tilde{n}_{100}$
 and one for the N20, $\tilde{n}_{20}$.
-Figure~\ref{fig:trigeff} shows the trigger efficiency from nhit-monitor data
+Figure~\ref{fig:trigeff} shows the trigger efficiency from nhit monitor data
 compared to data from simulation for the N100 trigger.
 \begin{figure}[htbp]
     \centering
