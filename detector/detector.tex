@@ -405,18 +405,18 @@ I designed the board that performs this analog signal processing,
 it's discussed in further in~\ref{sec:tubii}.
 
 %The board that was designed, in part, for this purpose is the Trigger Utility
-%Board Mark\,-\,II (TUBII).
-%Beyond modifying the trigger signals for the CAEN TUBII plays a significant
+%Board Mark\,-\,II (TUBii).
+%Beyond modifying the trigger signals for the CAEN TUBii plays a significant
 %role as part of the trigger and data readout systems as well.
 %It's significance comes primarily from the fact that it acts as an auxiliary
 %digital trigger board. It can receive raw-trigger pulses from the MTCA+s and apply
 %customizable trigger logic to them and emit it's own raw-trigger pulses which are
 %sent to the MTCD\@.
-%TUBII also receives the global trigger signal and produces its own trigger
-%word based upon which raw trigger pulses it had received. The TUBII trigger
+%TUBii also receives the global trigger signal and produces its own trigger
+%word based upon which raw trigger pulses it had received. The TUBii trigger
 %word is synchronized with the rest of the data for each event through it's own
 %global trigger counter and through the SYNC/SYNC24 signals. More information about
-%TUBII's role in the DAQ can be found in Sec.~\ref{sec:tubii}
+%TUBii's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
 
 \section{Electronics Upgrades}
@@ -526,7 +526,7 @@ crate's participation in the trigger sum.
 This is useful if a CTC fails, its trigger sums can be disabled to prevent it from
 pulling up/down the entire trigger sum to the point that stable triggering is no
 longer possible.
-This situation is rare, but the ability to disable indivdual
+This situation is rare, but the ability to disable individual
 crates in those situations is useful for diagnosing and isolating issues.
 
 The second is baseline restoration circuit on the MTCA+. At the final
@@ -556,31 +556,93 @@ Since typical variations in the baseline from thermal and other environmental
 effects occur on the $\approx1$\,hour timescale the 1\,s time scale for the
 baseline restoration provides adequate correction for those sort of effects.
 
+%Part way through the water-phase data-taking I developed a
+%set of modifications that could be done to the  MTCA+ circuitry to
+%increase its effective band-width.
+%The MTCA+s use op-amps to perform the sum of each trigger signal
+%from each crate.
+%I was able to identify a more optimal combination
+%of gains across each stage of summation than what was in the first iteration
+%of the MTCA+.
+%The result was a significant decrease in rise time observed on the MTCA+s,
+%shown in Fig.~\ref{fig:mtcap_risetime}.
 
-\subsection{TUBII}
+\subsection{TUBii}
 \label{sec:tubii}
 I designed an auxiliary trigger board for SNO+ called the Trigger
-Utility Board Mk.II (TUBII) the spiritual successor to Trigger Utility Board
+Utility Board Mk.II (TUBii) the spiritual successor to Trigger Utility Board
 from SNO\@. 
-TUBII has a number of different roles in the SNO+ DAQ, as already mentioned it
-provides the analog shaping for trigger signals sent to the CAEN\@.
-TUBII also has its own triggering functionality that supports the main
-trigger system. It can receives raw-trigger signals from the MTCA+s and
+TUBii has a number of different roles in the SNO+ DAQ, as already mentioned it
+provides the analog shaping for trigger signals sent to the CAEN, but
+it also provides digital signaling to allow different DAQ \& calibration subsystems
+to communicate, and it has its own triggering functionality as well.
+TUBii has approximately 90 inputs and outputs, most of which are
+transmitted through BNCs on its front or back panel, Fig~\ref{fig:tubii_front_panel}
+shows a picture of TUBii's front panel.
+Figure~\ref{fig:tubii_full} shows the board in its box, with connections
+between the board and box.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+    \includegraphics[width=\textwidth]{tubii_front_panel}
+    \caption[]{}
+    \label{fig:tubii_front_panel}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+    \includegraphics[width=\textwidth]{tubii_full}
+    \caption[]{}
+        \label{fig:tubii_full}
+    \end{subfigure}
+    \caption[TUBii Board and Box]{The front panel (a) for
+    TUBii show its main inputs and outputs and (b) the box interior 
+    showing the board itself and the connections between the board and box.}
+    \label{fig:tubii_pictures}
+\end{figure}
+
+The CAEN analog buffer operates
+by taking the MTCA+ trigger signals and splitting
+the signal along two different paths.
+The first path simply removes the $-5$\,V baseline from the signal
+through a unity-gain op-amp.
+That signal is meant to go to a monitoring oscilloscope for detector
+operators.
+The second signal also goes to a similar op-amp that removes the
+$-5$\,V baseline, but the series of input resistors to that op-amp
+is controlled by a reed relay.
+For one set of resistors the op-amp has unity gain, for the other set
+of resistors the signal is attenuated by a factor of five.
+That signal, attenuated or not, is clipped by a series of diodes to fit
+within an approximate $4$\,V range.
+
+TUBii also has its own triggering functionality that supports the main
+trigger system.
+It can receive raw-trigger signals from the MTCA+s 
+or any other source and
 apply custom trigger logic to them and emit it's own raw-trigger pulses which are
 sent to the MTCD\@.
-TUBII also receives the global trigger signal and produces its own trigger
-word based upon which raw trigger pulses it had received. The TUBII trigger
+TUBii also receives the global trigger signal and produces its own trigger
+word based upon which raw trigger pulses it had received. The TUBii trigger
 word is synchronized with the rest of the data for each event through it's own
 global trigger counter and through the SYNC/SYNC24 signal.
+Beyond triggering on input digital signals TUBii has two inputs for analog
+signals.
+TUBii has a analog discriminator that can produce its own raw-trigger signal
+and that signal is sent through re-trigger logic that mimics the re-trigger
+logic on the MTCA+ CPLD\@.
+This analog discrimination and re-trigger logic is referred to as the ``MTCA
+Mimic'' functionality because it provides a ``plug-and-play'' 
+way to trigger the detector off an arbitrary analog signal.
 
-TUBII is used as an interface board for some of the detector calibration systems.
+TUBii is used as an interface board for some of the detector calibration systems.
 These systems emit light into the detector and usually need to be
 synchronized with the trigger system. This synchronization requires
 a variety of pulses and delays to be tuned to account for the time it
 takes for signals and light propagate throughout the detector and DAQ
-system; TUBII provides those pulses and delays.
+system; TUBii provides those pulses and delays.
 
-TUBII's customizable complex trigger logic
+TUBii's customizable complex trigger logic
 allows it to create trigger pulses from its inputs.
 The input trigger signals are fed into a Xilinx MicroZed, which is an FPGA and
 micro-controller.
@@ -590,28 +652,26 @@ using recent trigger signals to inform the current trigger logic.
 Something like this is desirable for identifying and ensuring the detector will
 be sensitive to time-correlated events. An example of this would be that
 the decay chain of $\ce{^{214}Bi}$ $\rightarrow$ $\ce{^{214}Po}$ $\rightarrow$ $\ce{^{210}Pb}$,
-this decay chain is referred to as BiPo214. %XXXTODO This chain is wrong, look it up idiot
+this decay chain is referred to as BiPo214.
 The signature of this decay is an electron from $\beta$ decay, followed, with a half
 life of 4\,$\mu$s, by an $\alpha$ decay.
 It's very important that the $\alpha$ decay is detected so that the $\beta$-$\alpha$
 decays can be identified as likely from a BiPo. If the $\alpha$ is not observed
 the $\beta$ can be mis-identified and potentially leak into a signal region.
-TUBII is able to mitigate this risk by having a trigger that is particularly
+TUBii is able to mitigate this risk by having a trigger that is particularly
 sensitive to the initial $\beta$ decay and can trigger off a lower
 threshold input for a short time after the $\beta$ trigger; ensuring that
 the $\alpha$ is detected.
 
-TUBII also provides general purpose and ``glue'' functionality,
+TUBii also provides general purpose and ``glue'' functionality,
 facilitating different circuits from different boards in the DAQ to communicate.
 An example of this is that the CAEN requires the global trigger and
 other synchronization pulses be sent to it using Low-Voltage Differential
 Signaling (LVDS), but the global trigger is created using Emitter Coupled
 Logic (ECL).
-And so TUBII provides translation between these two digital signaling protocols,
+And so TUBii provides translation between these two digital signaling protocols,
 allowing the CAEN to remain synchronized.
-TUBII also accepts analog signal and can apply an MTCA\,-\,like threshold
-discrimination and it contains logic for creating raw-trigger pulses the
-same as the MTCA+.
+
 
 \section{Electronics Calibration}
 There are three primary calibrations performed for electronics to ensure that the

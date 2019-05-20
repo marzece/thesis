@@ -62,6 +62,8 @@ A_{\mathrm{vac}}^{\prime} =
 This makes no difference because neutrino mixing is only affected by differences
 between the neutrino states, so an identity-like matrix can always be subtracted
 from the mixing Hamiltonian without affecting the result.
+Given this the matrix $A^{\prime}$ and the parameters $A_{e}^{\prime}$ and $A_{\mu}^{\prime}$
+ will be used for all discussion after this and the prime will be removed.
 
 In this model mixing is described by standard MSW-LMA mixing in areas of
 non-negligible matter density, and by the modified vacuum mixing potential
@@ -367,7 +369,10 @@ the solar only values for $\Delta m^{2}_{21}$.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.78\textwidth]{nufit_dm21_tension}
-    \caption[]{Figure from~\citep{nu_fit4}}
+    \caption[Nu-Fit Solar Vs. KamLAND Mixing Parameters]{
+        Likelihood contours for solar and KamLAND fit to mixing parameters.
+        Contours are one-sigma, 90\%, two-sigma, 99\%, and three-sigma for two
+        degrees of freedom. Figure from~\citep{nu_fit4}}
     \label{fig:nufit_dm21_tension}
 \end{figure}
 A global fit for solar neutrino parameters done by Esteban \textit{et. al.}~\citep{nu_fit4},
@@ -670,7 +675,7 @@ A neutrino produced in an electron flavor state, is given by
 The neutrino state is then evolved adiabatically into a modified
 vacuum potential given by
 \begin{equation}
-    H = U M U^{\dagger} + A^{\prime}_{\mathrm{vac}}\text{.}
+    H = U M U^{\dagger} + A_{\mathrm{vac}}\text{.}
 \end{equation}
 The eigenstates from the modified vacuum Hamiltonian gives the neutrino mass
 states $\ket{\nu^{\mathrm{vac}}_{1}}$, $\ket{\nu^{\mathrm{vac}}_{2}}$, $\ket{\nu^{\mathrm{vac}}_{3}}$.
@@ -821,12 +826,79 @@ each of the 5 $pp$-chain solar neutrino fluxes, the combined flux of the
 CNO neutrinos, and the two modified vacuum mixing potentials $A_{\mathrm{e}}$
 and $A_{\mathrm{\mu}}$.
 A full fit to 11 free parameters is however too computationally
-expensive given the speed of the modified vacuum simulation.
-Instead a 3 parameter fit is done, allowing $\Delta m^{2}_{21}$ and the
-two parameters of the modified vacuum mixing potential to vary.
-%For future results it's likely the simulation could be sped up to allow for a higher dimensionality search of the likelihood space.
+expensive given the speed of the modified vacuum simulation, and
+of the time required to evaluate the likelihood.
+Instead only the solar mixing parameters, $\Delta m^2_{21}$ and $\theta_{12}$,
+and the two enhanced vacuum mixing parameters, $A_{e}$ and $A_{\mu}$, are
+used in the fit. For this the adiabatic neutrino mass state simulation is used,
+using the non-adiabatic neutrino simulation would be too slow to be completed
+in reasonable amount of time.
 
-Fitting was performed in a few different manners
+First a profile likelihood search is done over the two standard model parameters,
+finding the values for $A_{e}$ and $A_{\mu}$ that minimize the likelihood
+function at each sampled value for $\Delta m^{2}_{12}$ and $\theta_{12}$.
+This method of search is used in part because the simulation can generate
+a survival probability for new values of $A_{e}$ and $A_{\mu}$ much
+faster than it can if $\Delta m^{2}_{21}$ and $\theta_{12}$ are modified,
+so it's best to fix the two standard mixing parameters for as many samples
+as possible.
+The reason it is faster to generate a survival probability this way is because
+the modified vacuum parameters do not
+change the neutrino's propagation in the Sun, so that portion of the simulation
+does not need to be redone for new enhanced vacuum mixing parameters.
+Even with this scheme for search a single standard model single for $\Delta m^{2}_{21}$ and
+$\theta_{12}$ requires approximately 200 iterations, roughly 10 minutes, of search in $A_{e}$ and
+$A_{\mu}$ to find a local minimum.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.79\textwidth]{dm21_compare}
+\caption[Modified Vacuum Mixing $\chi^{2}$ Profile]{
+Comparison of $\chi^{2}$ between a fit to solar data
+using a vacuum enhanced model and the standard MSW-LMA
+model, and the KamLAND reactor neutrino measurement.}
+\label{fig:chi2_comparison}
+\end{figure}
+
+This search is first done using only data from Solar experiments for the
+likelihood.
+The idea is that if the solar best fit value for $\Delta m^{2}_{21}$ was much closer
+to the KamLAND value while allowing for an arbitrary modified vacuum potential,
+that would be a compelling reason to believe a modified vacuum model is a
+good description for solar neutrino mixing.
+Performing the fit this way yielded a best fit value
+of $\Delta m^{2}_{21}=4.2^{+}_{-}$, profiling over values for $\theta_{12}$.
+Figure~\ref{fig:chi2_coparison} shows the likelihood space and the profile in $\Delta m^{2}_{21}$.
+The bumps in the one-dimensional profile comes from the relative paucity
+of samples in $\theta_{12}$.
+
+It should also be noted that the KamLAND best fit value is excluded at nearly
+$3\sigma$;
+a significantly larger disagreement than is determined by other global fits~\cite{nu_fit}.
+This to be due to the fact that the fit is restricted in so
+many dimensions, if the solar fluxes were allowed to vary then the disagreement
+would not be so large.
+It's therefore useful to compare the likelihood determined this way to the
+likelihood constraining modified vacuum parameters to be zero.
+This shows that in general the likelihood is worse when the modified
+vacuum parameters are constrained to zero;
+the KamLAND value is excluded by more than $3\sigma$.
+For future work a full fit, allowing all relevant parameter to vary will be done.
+
+Figure~\ref{fig:fit_data} shows a  comparison between the best-fit values
+for solar only experiments, with the vacuum-enhanced mixing and without.
+Figure~\ref{fig:fit_data2} shows the same comparison with the
+best fit standard model mixing parameters including the KamLAND constraints,
+and the best fit with the vacuum-enhanced mixing model and KamLAND constraints.
+
+
+At the minimum value for $\Delta m^{2}_{21}$ and $\theta_{12}$ a search
+is done in the $A_{e}$ and $A_{\mu}$ space to evaluate what
+sort of preference exists for non-zero value.
+Again, it would be preferable to perform this likelihood search without
+constraining $\Delta m^{2}_{21}$ and $\theta_{12}$, however.
+
+
 
 %Move this shit to an appendix
 %\subsection{Simplified Modified Vacuum Mixing}
