@@ -886,21 +886,83 @@ likelihood constraining modified vacuum parameters to be zero.
 This shows that in general the likelihood is worse when the modified
 vacuum parameters are constrained to zero;
 the KamLAND value is excluded by more than $3\sigma$.
-For future work a full fit, allowing all relevant parameter to vary will be done.
-
-Figure~\ref{fig:fit_data} shows a  comparison between the best-fit values
-for solar only experiments, with the vacuum-enhanced mixing and without.
-Figure~\ref{fig:fit_data2} shows the same comparison with the
-best fit standard model mixing parameters including the KamLAND constraints,
-and the best fit with the vacuum-enhanced mixing model and KamLAND constraints.
 
 
 Following this a gradient descent fit was done in four different manner,
 first using a solar only dataset and allowing the modified vacuum parameters
 to vary, then using solar only and constraining modified vacuum parameters
-to zero. Then the fits are redone using the KamLAND constraints, allow 
+to zero.
+Then the fits are redone using the KamLAND constraints, allow 
 the vacuum-enhanced mixing parameters to vary and fixing them to zero.
-The results of each fit is summarized in Tbl.~\ref{tbl:cham_fit_results}.
+Fitting is done using the ROOT Minuit algorithm~\cite{minuit}.
+
+It was noted that depending on the starting parameters the gradient
+descent would often converge at significantly different values.
+This suggests that gradient descent cannot provide an accurate
+picture of the likelihood space.  
+A full scan of the likelihood space is necessary to
+get a complete picture of the most likely values for
+each parameter.
+
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{l|c|c}
+        & Solar Only, Vacuum-Enhanced& Solar Only, MSW-LMA\\
+        \hline
+        $\Delta \chi^{2}$ & 0 & 0.35\\
+        $\Delta m^{2}_{21} [10^{-5}\mathrm{eV}^{2}]$ & $6.49\pm 2.2$ & $4.30\pm0.13$\\
+        $\sin^{2}\theta_{12}$& $0.30\pm0.17$ & $0.31\pm 0.13$\\
+        $A_{e}[\mathrm{eV}^{2}]$ & $(-1.19\pm 0.77)\times 10^{-11}$ & ---\\
+        $A_{\mu}[\mathrm{eV}^{2}]$ & $(-2.06\pm 1.18)\times10^{-11}$ & --- \\
+\end{tabular}
+    \caption[Solar Only Gradient Descent Fit Results]{Fit results from
+    an 11-parameter gradient descent fit to solar neutrino experimental
+    measurements. Errors provided by the Minuit fitting algorithm and
+    commented on in text.}
+\label{tbl:cham_fit_results2}
+\end{table}
+\begin{table}
+    \centering
+    \begin{tabular}{l|c|c}
+        & Solar + KamLAND, Vacuum-Enhanced & Solar + KamLAND, MSW-LMA\\
+        \hline
+        $\Delta \chi^{2}$ & 0 &3.75\\
+        $\Delta m^{2}_{21} [10^{-5}\mathrm{eV}^{2}]$ & $7.46\pm0.18$ & $7.44\pm0.04$\\
+        $\theta_{12}$ & $0.30 \pm 0.12$ & $0.30\pm 0.01$\\
+        $A_{e}[\mathrm{eV}^{2}]$ & $(-0.75\pm 0.27)\times 10^{-11}$ & ---\\
+        $A_{\mu}[\mathrm{eV}^{2}]$ & $(-1.32\pm 0.52)\times10^{-11}$ & --- \\
+\end{tabular}
+    \caption[Solar + KamLAND Gradient Descent Fit Results]{Fit results from
+    an 11-parameter gradient descent fit to solar neutrino experimental
+    measurements and the KamLAND reactor neutrino measurement.
+    Errors provided by the Minuit fitting algorithm and
+    commented on in text.}
+\label{tbl:cham_fit_results2}
+\end{table}
+
+The results of each fit is summarized in Tbl.~\ref{tbl:cham_fit_results1}
+and~\ref{tbl:cham_fit_results2}, not shown are the best fit neutrino flux values.
+The reported error on at least some of the fit results are unbelievably
+small.
+I believe this is a result of the non-Gaussian nature of the likelihood
+space causing the Minuit algorithm to poorly estimate errors.
+A more thorough fit that does not rely so heavily on assumptions about the
+likelihood space  will be done in the future to estimate the errors.
+I believe the errors reported from the fit should be taken as a likely
+lower bound on the true 1-sigma error.
+
+Nonetheless, these results show that the vacuum-enhanced mixing model
+can signficantly reduce the tension between the KamLAND and solar measurements values
+for $\Delta m^{2}_{21}$.
+For the solar only fit a non-zero value for the vacuum-enhanced mixing parameters
+is preferred at small significance.
+For the solar+KamLAND fit the $\Delta \chi^{2}$ between the best fit vacuum-enhanced
+model and the standard MSW-LMA model is $3.75$, or $\Delta \chi^{2}/\mathrm{d.o.f}1.87$.
+This corresponds to p-value of approximately $15\%$.
+
+
 
 
 
