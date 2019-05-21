@@ -23,7 +23,7 @@
 %un-calibrated energy, so it has little bearing on the results of the full
 %analysis.
 
-\section{Data Selection}
+\chapter{Data Selection}
 \label{sec:data_selection}
 Events are included or removed from the dataset across three stages of selection.
 First entire runs are either included or removed based upon whether they meet
@@ -39,7 +39,7 @@ The analysis cuts are designed to maximize the signal efficiency for dataset and
 contamination from background sources.
 Each of these steps are detailed below.
 
-\subsection{Dataset}
+\section{Dataset}
 \label{sec:dataset}
 Data for this analysis was taken in SNO+'s initial water-phase data-taking
 run.
@@ -115,7 +115,7 @@ down, and an overall increase the detector's efficiency.
 %It's not known if the in dropout is a side-effect of the noise reduction in
 %the system, or the cause of it.
 
-\subsection{Run Selection}
+\section{Run Selection}
 \label{sec:run_selection}
 Runs are rejected from the dataset if they fail to meet certain criteria
 for data quality and detector stability.
@@ -165,7 +165,7 @@ These checks all ensure that the data in a run is likely to be useful for
 a physics analysis, but are loose enough not to bias the dataset in a way that
 might influence results.
 
-\subsection{Livetime}
+\section{Livetime}
 While most event selection removes individual events based upon whether they
 pass or fail certain criteria, some cuts remove all events that occur for a
 period of time before or after some criteria is met.
@@ -185,7 +185,7 @@ so no deadtimes are added into the simulated runs.
 The livetime represented by the dataset is 120.2 days, after subtracting the
 calculated deadtimes the effective livetime  114.7 days.
 
-\subsection{Data Cleaning}
+\section{Data Cleaning}
 There are a number of instrumental effects that can cause an event
 to be recorded by the detector, these events typically have some
 sort of distinguishing feature or features that set them apart
@@ -236,15 +236,17 @@ $10$ and $-30$ and are between 9 and 25\,ns after the high charge hit,
 then the hit is flagged a cross-talk hit and removed from the analysis.
 
 Events of instrumental origin are not well modeled within our simulation,
-so simulation is not used for evaluating the efficiencies and sacrifices of
+so simulation is not used for evaluating the efficiencies and or false-positive
+rates of
 data cleaning cuts.
 Instead a data-driven approach is used that relies primarily on calibration
 data from the $\ce{^{16}N}$ source, that analysis is detailed in~\citep{dc_document}.%Teals data cleaning stuff
 The basic approach is to use tagged $\ce{^{16}N}$ events as a source of known
 non-instrumental events, and evaluate what fraction of the time those events
 are identified as instrumentals, this provides an estimate of the data-cleaning
-sacrifice. The results of this analysis estimated a $1.2$\% percent signal
-sacrifice from data cleaning.
+false-positve rate.
+The results of this analysis estimated a $1.2$\% of signal events
+would be cut by data-cleaning.
 
 An estimate of the signal contamination was performed using a method developed
 by SNO~\citep{neil_thesis} and applied to the dataset~\citep{dc_document};
@@ -282,6 +284,7 @@ This cut ensures the dataset occupies a region where the detector trigger
 efficiency is well understood and near 100\%.
 This cut ensures the analysis is minimally effected by uncertainties
 associated with the detector's trigger.
+
 As mentioned in Sec.~\ref{sec:dataset}, the detector trigger threshold were adjusted
 part way through data-taking. The in-time nhit cut was adjusted to
 account for this.
@@ -314,7 +317,7 @@ The fraction of hits that satisfy
 \begin{equation}
     -2.5 < t_{res} < 5
 \end{equation}
-is known as the ``In-time ratio'' (ITR).
+is known as the ``in-time ratio'' (ITR).
 %The expected distribution in ITR for electrons is shown in figure XXX.
 
 The quantity $\beta_{14}$ is used to quantify how isotropic the hits

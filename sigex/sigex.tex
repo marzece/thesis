@@ -1,6 +1,4 @@
 %: ----------------------- sigex file header -----------------------
-\chapter{$\ce{^{8}B}$ Flux Measurement}
-\label{sec:sigex}
 
 % the code below specifies where the figures are stored
 \ifpdf
@@ -12,80 +10,6 @@
 % ----------------------------------------------------------------------
 % ----------------------- sigex content -------------------------
 % ----------------------------------------------------------------------
-
- Described here is the analysis used for extracting the $\ce{^{8}B}$ solar
- neutrino flux and interaction rate in the SNO+ detector during its initial
- water-phase data taking run.
-This first section provides a broad overview of the data, simulation and analysis methods
-used for this result.
-A more detailed description of these topics is provided in the following sections.
-A report of these results is also published in Anderson~\textit{et.\ al.}~\cite{snop_solar}.
-
-Neutrinos interact in the SNO+ detector by elastic scattering off
-electrons in the detector volume.
-Depending on the energy transferred in the interaction
-the scattered electron will produce Cherenkov radiation, which is detected by the PMT array.
-The direction of the Cherenkov cone is expected to be pointing directly away
-from the Sun at the time of the event for solar neutrino interactions.
-The principle of this analysis is to search for the rate of events that exhibit
-this solar direction correlation, and interpret that rate as a solar neutrino flux.
-This analysis is similar to solar neutrino measurements done by SuperK~\cite{superk4} and, SNO~\cite{sno_combined}.
-
-Data for this analysis was taken from May 2017 to January 2018, with pauses
-for maintenance, calibration, and commissioning of detector components.
-The majority of data taken was blinded for an eventual search for invisible
-nucleon decay~\cite{snop_nd}.
-A two week period of time at the start of data taking was left un-blinded to
-allow for analysis methods to be evaluated, this period of time is referred
-to as the open dataset.
-%Approximately half-way through the data taking period the detector trigger thresholds
-%were adjusted, allowing for a significant reduction in the detector energy
-%threshold.
-%And finally, during the commissioning of the external water circulation system
-%a significant increase in radioactive backgrounds was observed in the upper
-%portion of the external water.
-%These background rates eventually returned to normal levels; the period of time
-%during which the rate of external backgrounds were elevated is referred to
-%as the ``hot-spot'' time period, as the backgrounds were clustered around
-%a small area of the detector.
-
-Simulation is used to determine expected event rates and distributions of
-detector observables for SNO+.
-The simulation software used is ``RAT'', which performs Monte Carlo
-simulation of events within the SNO+ detector.
-Beyond simulation RAT also provides methods for reconstructing event
-observables, \textit{e.g.} energy, direction etc.
-And so RAT is also used for processing detector data in addition
-to simulated data.
-There exists a open-source version of this software called
-RAT-PAC~\cite{ratpac} that is largely the same as the SNO+ version of RAT,
-the most significant difference is the implementations of a detector model
-and event reconstruction methods.
-RAT was originally developed largely by Stan Siebert at University of Texas as part of
-the Braidwood Collaboration, and later developed further for SNO+ here at Penn.
-RAT-PAC was adapted for more general use and open-sourced by Andy Mastbaum while at Penn.
-
-The $\ce{^{8}B}$ solar neutrino signal is extracted from the detector dataset
-using a number of cuts to isolate likely solar neutrino events, and remove
-background events.
-Two broad categories of cuts exist, data cleaning and analysis cuts.
-Data cleaning aims to remove events that originate from instrumental effects using
-low-level criteria, such as the distribution of charge across the hit PMTS\@.
-Analysis cuts are designed to select the events originating from the physics of
-interest, in this case $\ce{^{8}B}$ solar neutrino events.
-The analysis cuts make use of reconstructed information, such as event energy
-or position.
-
-A fit is performed to the dataset after cuts, searching for the rate above background of events
-that are directed away from the Sun as the time of the event.
-The source of these events is assumed to be $\ce{^{8}B}$ solar neutrinos, and
-so the flux $\ce{^{8}B}$ events is estimated from the observed event rate.
-Simulation is used to produce the PDFs used in the fit and provide a map observed
-event rate to neutrino flux.
-Since simulation plays a significant role in this analysis, data taken using
-a deployed $\ce{^{16}N}$ source is used to evaluate the accuracy of the
-simulation, assign systematic uncertainties to distributions of simulated observables
-and similarly provide empirical corrections to those observables.
 
 \input{sigex/simulation}
 \input{sigex/reconstruction}

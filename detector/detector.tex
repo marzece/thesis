@@ -615,6 +615,11 @@ For one set of resistors the op-amp has unity gain, for the other set
 of resistors the signal is attenuated by a factor of five.
 That signal, attenuated or not, is clipped by a series of diodes to fit
 within an approximate $4$\,V range.
+Without this analog buffer the CAEN digitizer would not have been
+useful for digitizing trigger signals.
+Data from the digitizer was used in a detector monitoring and modeling
+tool that I developed, described in Sec~\ref{sec:dropout}, and in
+a cut to remove instrumental backgrounds that I developed, described in Appendix~\ref{sec:dc_appen}.
 
 TUBii also has its own triggering functionality that supports the main
 trigger system.

@@ -1,5 +1,6 @@
-\section{Simulation}
+\chapter{Simulation}
 \label{sec:simulation}
+\section{RAT}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.75\textwidth]{b8_flux}
@@ -153,7 +154,7 @@ These external datasets contribute negligibly to the final dataset after all
 analysis cuts are performed, and so they are in general not considered.
 
 Also generated are a number of datasets for the expected backgrounds from
-radioactivite isotopes in various detector components.
+radioactive isotopes in various detector components.
 These datasets are not directly used in this analysis, they were used however
 for assessing the effectiveness of the analysis cuts that are used.
 
@@ -165,14 +166,14 @@ The purpose of this is to remove the possibility that changes in detector settin
 or circumstances will bias any result.
 This method is not perfect, there exists features of the real detector
 that are not simulated.
-For example, if an increased amount of electronic noise exists in the SNO+ DAQ due to
-temperature fluctuations, this is not an affect that will be reflected in
-simulated data.
+For example, it's known that human activity around the DAQ electronics can generate
+noise on the front end, this sort of noise source can be difficult to directly observe
+in the detector data and cannot be simulated.
 For this reason detector runs that have difficult to simulate conditions
 are typically not included in the analysis, this is discussed further
 in Sec.~\ref{sec:data_selection}.
 
-\subsection{Survival Probability Simulation}
+\section{Survival Probability Simulation}
 \label{sec:survival_prob}
 \begin{figure}[htbp]
 \centering
