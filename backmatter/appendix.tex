@@ -270,5 +270,80 @@ in the two calibration datasets and for standard physics data taking.
 %%\subsection{Flasher Geometry Cut}
 %%\subsection{ITC Timespread Cut}
 
-%\chapter{Another Appendix}
+\chapter{Initial Vacuum-Enhanced Mixing Fit}
+\label{app:vac_mixing}
+This appendix describes the initial attempt to profile the likelihood
+spaced for $\Delta m^{2}_{21}$ using vacuum-enhanced mixing model.
+A full scan of the  11 free parameters of the vaccum-enhanced neutrino mixing
+model is too computationally
+expensive given the speed of mixing simulation, and
+of the time required to evaluate the likelihood at each point.
+Instead only the solar mixing parameters, $\Delta m^2_{21}$ and $\theta_{12}$,
+and the two enhanced vacuum mixing parameters, $A_{e}$ and $A_{\mu}$, are
+used in the fit. 
+For this the adiabatic neutrino mass state simulation is used,
+using the non-adiabatic neutrino simulation would be too slow to be completed
+in reasonable amount of time.
+
+First a profile likelihood search is done over the two standard model parameters,
+finding the values for $A_{e}$ and $A_{\mu}$ that minimize the likelihood
+function at each sampled value for $\Delta m^{2}_{12}$ and $\theta_{12}$.
+This method of search is used in part because the simulation can generate
+a survival probability for new values of $A_{e}$ and $A_{\mu}$ much
+faster than it can if $\Delta m^{2}_{21}$ and $\theta_{12}$ are modified,
+so it's best to fix the two standard mixing parameters for as many samples
+as possible.
+The reason it is faster to generate a survival probability this way is because
+the modified vacuum parameters do not
+change the neutrino's propagation in the Sun, so that portion of the simulation
+does not need to be redone for new enhanced vacuum mixing parameters.
+Even with this scheme for search a single standard model single for $\Delta m^{2}_{21}$ and
+$\theta_{12}$ requires approximately 200 iterations, roughly 10 minutes, of search in $A_{e}$ and
+$A_{\mu}$ to find a local minimum.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.79\textwidth]{dm21_compare}
+\caption[Modified Vacuum Mixing $\chi^{2}$ Profile]{
+Comparison of $\chi^{2}$ between a fit to solar data
+using a vacuum enhanced model and the standard MSW-LMA
+model, and the KamLAND reactor neutrino measurement.}
+\label{fig:chi2_comparison}
+\end{figure}
+
+This search is first done using only data from Solar experiments for the
+likelihood.
+The idea is that if the solar best fit value for $\Delta m^{2}_{21}$ was much closer
+to the KamLAND value while allowing for an arbitrary modified vacuum potential,
+that would be a compelling reason to believe a modified vacuum model is a
+good description for solar neutrino mixing.
+Performing the fit this way yielded a best fit value
+of $\Delta m^{2}_{21}=4.20^{+1.124}_{-0.907}$, profiling over values for $\theta_{12}$.
+Figure~\ref{fig:chi2_comparison} shows the likelihood space and the profile in $\Delta m^{2}_{21}$.
+The bumps in the one-dimensional profile comes from the relative paucity
+of samples in $\theta_{12}$.
+
+It should also be noted that the KamLAND best fit value is excluded at nearly
+$3\sigma$;
+a significantly larger disagreement than is determined by other global fits~\cite{nu_fit}.
+This to be due to the fact that the fit is restricted in so
+many dimensions, if the solar fluxes were allowed to vary then the disagreement
+would not be so large.
+It's therefore useful to compare the likelihood determined this way to the
+likelihood constraining modified vacuum parameters to be zero.
+This shows that in general the likelihood is worse when the modified
+vacuum parameters are constrained to zero;
+the KamLAND value is excluded by more than $3\sigma$.
+
+This scan of the likelihood space shows that even in a vacuum-enhanced mixing
+model, lower values for $\Delta m^{2}_{21}$ are preferred by solar neutrino
+measurements.
+The vacuum-enhanced parameters do however allow for a better fit to data,
+and do relieve the tension between the KamLAND and solar measurements for
+$\Delta m^{2}_{21}$ significantly, but not entirely.
+The exact level of the disagreement between the KamLAND and solar can't
+be well estimated using this method, because many of the parameters that
+are correlated with $\Delta m^{2}_{21}$ are artificially fixed and not
+allowed to vary.
+
 \end{appendices}

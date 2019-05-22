@@ -729,7 +729,7 @@ neutrino does not fully transition from being best described
 by a modified vacuum state by the time it's detected.
 This is plausible because the oscillation length for higher
 energy neutrinos is approximately 200\,km, the earth's atmosphere
-is approximately the same size~\citep{atmosphere_profile}.
+is approximately the same size.
 So it could be the case that solar neutrinos, especially at higher
 energies, would not oscillate quickly enough to have a average
 survival probability best described by the standard oscillation
@@ -822,89 +822,31 @@ experiments measured value with uncertainty to extract a likelihood.
 
 \chapter{Fit And Results}
 \label{sec:cham_results}
-Taken together these experimental models can be used to constrain
+Taken together the solar neutrino experimental results can be used to constrain
 to the modified vacuum solar survival probability allowing up to
 11 free parameters: $\Delta m^{2}_{21}$, $\theta_{12}$, $\theta_{13}$,
 each of the 5 $pp$-chain solar neutrino fluxes, the combined flux of the
 CNO neutrinos, and the two modified vacuum mixing potentials $A_{\mathrm{e}}$
 and $A_{\mathrm{\mu}}$.
-A full fit to 11 free parameters is however too computationally
-expensive given the speed of the modified vacuum simulation, and
-of the time required to evaluate the likelihood.
-Instead only the solar mixing parameters, $\Delta m^2_{21}$ and $\theta_{12}$,
-and the two enhanced vacuum mixing parameters, $A_{e}$ and $A_{\mu}$, are
-used in the fit. For this the adiabatic neutrino mass state simulation is used,
-using the non-adiabatic neutrino simulation would be too slow to be completed
-in reasonable amount of time.
+A gradient descent fit was done to evaluate the likelihood of the vacuum enhanced
+model, and to what degree the tension between solar measurements and KamLAND measurements
+for $\Delta m^{2}_{21}$ can be reduced.
 
-First a profile likelihood search is done over the two standard model parameters,
-finding the values for $A_{e}$ and $A_{\mu}$ that minimize the likelihood
-function at each sampled value for $\Delta m^{2}_{12}$ and $\theta_{12}$.
-This method of search is used in part because the simulation can generate
-a survival probability for new values of $A_{e}$ and $A_{\mu}$ much
-faster than it can if $\Delta m^{2}_{21}$ and $\theta_{12}$ are modified,
-so it's best to fix the two standard mixing parameters for as many samples
-as possible.
-The reason it is faster to generate a survival probability this way is because
-the modified vacuum parameters do not
-change the neutrino's propagation in the Sun, so that portion of the simulation
-does not need to be redone for new enhanced vacuum mixing parameters.
-Even with this scheme for search a single standard model single for $\Delta m^{2}_{21}$ and
-$\theta_{12}$ requires approximately 200 iterations, roughly 10 minutes, of search in $A_{e}$ and
-$A_{\mu}$ to find a local minimum.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.79\textwidth]{dm21_compare}
-\caption[Modified Vacuum Mixing $\chi^{2}$ Profile]{
-Comparison of $\chi^{2}$ between a fit to solar data
-using a vacuum enhanced model and the standard MSW-LMA
-model, and the KamLAND reactor neutrino measurement.}
-\label{fig:chi2_comparison}
-\end{figure}
-
-This search is first done using only data from Solar experiments for the
-likelihood.
-The idea is that if the solar best fit value for $\Delta m^{2}_{21}$ was much closer
-to the KamLAND value while allowing for an arbitrary modified vacuum potential,
-that would be a compelling reason to believe a modified vacuum model is a
-good description for solar neutrino mixing.
-Performing the fit this way yielded a best fit value
-of $\Delta m^{2}_{21}=4.2^{+}_{-}$, profiling over values for $\theta_{12}$.
-Figure~\ref{fig:chi2_coparison} shows the likelihood space and the profile in $\Delta m^{2}_{21}$.
-The bumps in the one-dimensional profile comes from the relative paucity
-of samples in $\theta_{12}$.
-
-It should also be noted that the KamLAND best fit value is excluded at nearly
-$3\sigma$;
-a significantly larger disagreement than is determined by other global fits~\cite{nu_fit}.
-This to be due to the fact that the fit is restricted in so
-many dimensions, if the solar fluxes were allowed to vary then the disagreement
-would not be so large.
-It's therefore useful to compare the likelihood determined this way to the
-likelihood constraining modified vacuum parameters to be zero.
-This shows that in general the likelihood is worse when the modified
-vacuum parameters are constrained to zero;
-the KamLAND value is excluded by more than $3\sigma$.
-
-
-Following this a gradient descent fit was done in four different manner,
+The fit was done in four different manner,
 first using a solar only dataset and allowing the modified vacuum parameters
 to vary, then using solar only and constraining modified vacuum parameters
 to zero.
 Then the fits are redone using the KamLAND constraints, allow 
 the vacuum-enhanced mixing parameters to vary and fixing them to zero.
-Fitting is done using the ROOT Minuit algorithm~\cite{minuit}.
+Fitting is done using the ROOT minuit algorithm~\cite{minuit}.
 
 It was noted that depending on the starting parameters the gradient
 descent would often converge at significantly different values.
 This suggests that gradient descent cannot provide an accurate
-picture of the likelihood space.  
+picture of the likelihood space.
 A full scan of the likelihood space is necessary to
 get a complete picture of the most likely values for
 each parameter.
-
-
 
 \begin{table}
     \centering
@@ -919,9 +861,9 @@ each parameter.
 \end{tabular}
     \caption[Solar Only Gradient Descent Fit Results]{Fit results from
     an 11-parameter gradient descent fit to solar neutrino experimental
-    measurements. Errors provided by the Minuit fitting algorithm and
+    measurements. Errors provided by the minuit fitting algorithm and
     commented on in text.}
-\label{tbl:cham_fit_results2}
+\label{tbl:cham_fit_results1}
 \end{table}
 \begin{table}
     \centering
@@ -937,7 +879,7 @@ each parameter.
     \caption[Solar + KamLAND Gradient Descent Fit Results]{Fit results from
     an 11-parameter gradient descent fit to solar neutrino experimental
     measurements and the KamLAND reactor neutrino measurement.
-    Errors provided by the Minuit fitting algorithm and
+    Errors provided by the minuit fitting algorithm and
     commented on in text.}
 \label{tbl:cham_fit_results2}
 \end{table}
@@ -947,77 +889,204 @@ and~\ref{tbl:cham_fit_results2}, not shown are the best fit neutrino flux values
 The reported error on at least some of the fit results are unbelievably
 small.
 I believe this is a result of the non-Gaussian nature of the likelihood
-space causing the Minuit algorithm to poorly estimate errors.
+space causing the minuit algorithm to poorly estimate errors.
 A more thorough fit that does not rely so heavily on assumptions about the
 likelihood space  will be done in the future to estimate the errors.
 I believe the errors reported from the fit should be taken as a likely
 lower bound on the true 1-sigma error.
+However, these errors are not necessary for evaluating
+the consistency of the model with data.
 
-Nonetheless, these results show that the vacuum-enhanced mixing model
-can signficantly reduce the tension between the KamLAND and solar measurements values
+These results show that the vacuum-enhanced mixing model
+can significantly reduce the tension between the KamLAND and solar measurements values
 for $\Delta m^{2}_{21}$.
 For the solar only fit a non-zero value for the vacuum-enhanced mixing parameters
 is preferred at small significance.
 For the solar+KamLAND fit the $\Delta \chi^{2}$ between the best fit vacuum-enhanced
-model and the standard MSW-LMA model is $3.75$, or $\Delta \chi^{2}/\mathrm{d.o.f}1.87$.
-This corresponds to p-value of approximately $15\%$.
+model and the standard MSW-LMA model is $3.75$.
+The solar+KamLAND best fit has a $\Delta \chi^{2} = 0.85$ to the solar only best fit value,
+evaluated using only solar neutrino measurements.
+This can be compared to the likelihood of the solar+KamLAND best fit parameters with
+only standard MSW-LMA mixing compared to the solar only best fit, this gives $\Delta \chi^{2} = 4.18$.
+So the tension between the solar and KamLAND measurements is reduced from just over two-sigma to
+$0.92$-sigma by allowing for vacuum enhanced mixing.
+%This corresponds to p-value of approximately $15\%$.
+
+Figure~\ref{fig:solar_only_sp_compare} shows a comparison between the best fit
+survival probability from the solar only fit for the vacuum-enhanced mixing model and
+the standard MSW-LMA model.
+Similarly Fig.~\ref{fig:solar_only_sno}, and Fig.~\ref{fig:solar_only_sk} respectively show
+the comparison of the same survival probabilities to SNO and Super-K data.
+Using instead the best fit values from the solar and KamLAND constraints
+gives the comparisons shown in Figures~\ref{fig:solar_kamland_sp_compare},~\ref{fig:solar_kamland_sno},
+and~\ref{fig:solar_kamland_sk}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.64\textwidth]{sp_compare}
+  \caption[Solar Only Best Fit Survival Probability  for MSW-LMA and Vacuum-Enhanced Mixing]{
+  Best fit survival probability for the vacuum-enhanced model and the standard MSW-LMA model
+  using only solar neutrino data.}
+  \label{fig:solar_only_sp_compare}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.64\textwidth]{sno_solar_only_bf}
+  \caption[SNO Fit Comparison for Solar Only Best Fit Vacuum-Enhanced Mixing and MSW-LMA Mixing]{
+  Comparison of SNO parabolic fit to the solar only best fit vacuum-enhanced survival probability
+and the solar only best fit MSW-LMA survival probability.}
+  \label{fig:solar_only_sno}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{superk1_bf_solar_only}
+    \caption[]{}
+  \end{subfigure}
+  \hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{superk2_bf_solar_only}
+    \caption[]{}
+  \end{subfigure}
+
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{superk3_bf_solar_only}
+    \caption[]{}
+  \end{subfigure}
+  \hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{superk4_bf_solar_only}
+    \caption[]{}
+  \end{subfigure}
+  \caption[Super-K Fit Comparison for Solar Only Best Fit Vacuum-Enhanced Mixing and MSW-LMA Mixing]{
+  Comparison of Super-K data to the predicted elastic scattering rate from the
+  solar only best fit vacuum-enhanced survival probability
+and the solar only best fit MSW-LMA survival probability.
+Top-left is the Super-K-I dataset, top-right is Super-K-II, bottom-left is Super-K-III,
+bottom-right is Super-K-IV.}
+  \label{fig:solar_only_sk}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.64\textwidth]{kamland_sp_compare}
+  \caption[Solar + KamLAND Best Fit Survival Probability for MSW-LMA and Vacuum-Enhanced Mixing]{
+  Best fit survival probability for the vacuum-enhanced model and the standard MSW-LMA model
+  using solar and KamLAND neutrino data.}
+  \label{fig:solar_kamland_sp_compare}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.64\textwidth]{sno_solar_kamland_bf}
+  \caption[SNO Fit Comparison for Solar + KamLAND Vacuum-Enhanced Mixing and MSW-LMA Mixing]{
+  Comparison of SNO parabolic fit to the solar + KamLAND best fit vacuum-enhanced survival probability
+and the solar + KamLAND  best fit MSW-LMA survival probability.}
+  \label{fig:solar_kamland_sno}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{kamland_superk_1}
+    \caption[]{}
+  \end{subfigure}
+  \hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{kamland_superk_2}
+    \caption[]{}
+  \end{subfigure}
+
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{kamland_superk_3}
+    \caption[]{}
+  \end{subfigure}
+  \hfill
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{kamland_superk_4}
+    \caption[]{}
+  \end{subfigure}
+  \caption[Super-K Fit Comparison for Solar + KamLAND Best Fit Vacuum-Enhanced Mixing and MSW-LMA Mixing]{
+  Comparison of Super-K data to the predicted elastic scattering rate from the
+  solar + KamLAND best fit vacuum-enhanced survival probability
+and the solar + KamLAND best fit MSW-LMA survival probability.
+Top-left is the Super-K-I dataset, top-right is Super-K-II, bottom-left is Super-K-III,
+bottom-right is Super-K-IV.}
+  \label{fig:solar_kamland_sk}
+\end{figure}
+
+\section{Conclusions and Future Work}
+The vacuum-enhanced mixing model is able to improve the fit to data when
+considering the KamLAND and solar neutrino measurements of $\Delta m^{2}_{21}$;
+the tension is less than one-sigma when allowing for vacuum-enhanced mixing compared
+to approximately two-sigma for standard mixing.
+This reduction is relatively weak considering the model adds two new degrees
+of freedom into the mixing calculations.
+And so I do not consider this to be strong evidence in favor of the vacuum-enhanced
+mixing model that I developed here.
+
+As mentioned before the fitting routine used here was observed to produce different results
+depending on the starting point for the gradient descent.
+In the future a more thorough search of the parameter space will be done, allowing
+for a full profile of the likelihood for different values of $\Delta m^{2}_{21}$ and
+a more exhaustive search of the best fit vacuum-enhanced mixing parameters and better
+error estimation.
+This sort of scan for the likelihood space was done, fixing all parameters
+except $\Delta m^{2}_{21}$, $\theta_{12}$ and the vacuum-enhanced mixing parameters.
+The results did not prove significantly useful for evaluating
+the vacuum-enhanced mixing model though, but are described in appendix~\ref{app:vac_mixing}.
+There are a number of ways the simulation of vacuum-enhanced survival
+probabilities and the evaluation of experimental likelihood can be made more 
+computationally tractable, including by offloading more of the computation
+to a GPU.
+For future works this will allow the likelihood space to be searched more thoroughly.
+
+For the solar only best fit survival probability an up-turn exists at
+higher energies.
+The up-turn would be a relatively unique observable signature for this model as opposed to
+standard MSW-LMA mixing which does not allow for that sort of behavior.
+So future experiments that can measure the survival probability with extreme
+sensitivity at higher energies could allow for this model to be separated unambiguously
+from the standard mixing hypothesis.
+However, for the best fit survival probability when considering the KamLAND constraints
+on $\Delta m^{2}_{21}$ this high energy up-turn nearly disappears, or is much more subtle.
+So even with extremely good sensitivity at higher energies this model may not be able
+to be uniquely identified using standard solar neutrino measurements.
+
+The results found here were produced entirely using adiabatic neutrino mass state simulation,
+this choice was necessary to provide results in a reasonable amount of time.
+For future works it may be possible to use the non-adiabatic neutrino simulation to
+verify the results of the adiabatic simulation.
+Also not considered here is any sort of annual variation that might be
+present in a vacuum-enhanced mixing scenario.
+As the Earth moves closer or further from the Sun throughout the year neutrinos
+will move through more or less vacuum.
+If there exists significant non-adiabatic effects it might be possible to observe
+some annual modulation to the neutrino signal.
+
+Finally, the parameterization used here only considered a potential that couples to neutrino flavor,
+this was done as an arbitrary choice to limit the parameter space.
+For future work this choice should be reconsidered, allowing for an arbitrary coupling
+potential to see what provides the best fit to data, and what sort of experimental
+signature a model like that might have.
+The motivation for this would be that there's no reason to expect a new vacuum
+potential to couple to Weak flavor states, and so you might expect them to couple
+to some other, arbitrarily mixed, combination of mass or flavor states.
+Adopting a model like this would require a significant amount of computation power
+to fully evaluate.
+So it's hoped that a simulation of vacuum-enhanced mixing that relies more heavily
+on analytic calculation can be developed.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-%Move this shit to an appendix
-%\subsection{Simplified Modified Vacuum Mixing}
-%Probing the idea of modified vacuum mixing with the simulation detailed in
-%section XXX proved computationally difficult.
-%So I explored simplified method for evaluating the likelihood of a modified
-%vacuum mixing potential. The simplification was to restrict the modified mixing
-%to be equivalent to a change in the effective value for $\Delta m^{2}_{21}$.
-%The motivation being that the observed discrepancy between solar neutrino
-%experiments and KamLAND was only in $\Delta m^{2}_{21}$, and not in $\theta_{12}$.
-%
-%To explore this idea one simply can use standard methods for calculating the
-%survival probability, but modify them such that all terms are effected by the
-%local electron density ($n_{e}$) use a different value for $\Delta m^{2}_{21}$ than the
-%terms that are not effected by $n_{e}$.
-%This introduces a new parameter into the theory, $\Delta m^{2}_{21}\prime$, the
-%effective mass-squared splitting the neutrino experiences in vacuum.
-%
-%With this modification a fit to solar neutrino data was performed, allowing
-%all mixing parameters to vary. If this version of modified vacuum mixing describes
-%reality then the best fit value for the matter mass-splitting ($\Delta m^{2}_{21}$) should be
-%consistent with the value determined by KamLAND.\@ The value for the vacuum mass
-%splitting ($\Delta m^{2}_{21}\prime$) has no-apriori preferred value but it would
-%be sensible for it to be near the standard best fit value for $\Delta m^{2}_{21}$
-%as determined by solar neutrino only measurements.
-%
-%The fit to data was performed using a Markov-chain Monte-Carlo method to sample
-%the likelihood space of mixing parameters as well as solar neutrino fluxes.
-%Figure XXX shows the results of the MCMC sampling. Marginalizing over all
-%the mixing parameters, including $\Delta m^{2}_{21}\prime$, gives the best fit
-%value for $\Delta m^{2}_{21}$ in matter and the error on it.
-%The marginalized result is shown in Figure XXX, the preferred value
-%for $\Delta m^{2}_{21}$ from solar experiments is $XXX\pm XXX$, only slightly higher than
-%the preferred value in a standard mixing formulation, $XXX$, but still significantly
-%lower than the best fit KamLAND value, $XXX$.
-%The tension between the solar and KamLAND values of $\Delta m^{2}_{21}$ is at
-%the $XXX\sigma$ level in the standard formulation, this version of modified
-%vacuum mixing reduces that to $XXX\sigma$, at the cost of introducing a new
-%parameter into the theory.
-%
-%The improvement in agreement between solar neutrino experiments and KamLAND on
-%the value of $\Delta m^{2}_{21}$ is not large enough to constitue compelling evidence
-%that this simple version of modified vacuum mixing describes reality much better
-%than standard mixing. And so this motivates going back to a fuller description
-%of modified vacuum mixing, that allows for a fuller description of how
-%neutrinos might oscillate between the Sun and Earth.
