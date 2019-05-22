@@ -91,7 +91,7 @@ of neutrinos that are sensitive to this model.
 
 \section{Motivation}
 \label{sec:motivations}
-There are broadly two motivating factors behind a modified vacuum mixing model.
+There are broadly two motivating factors behind a  vacuum-enhanced mixing model.
 The first is the tension in between solar neutrino measurements and 
 the KamLAND reactor neutrino measurement of $\Delta m^{2}_{21}$.
 This tension is discussed in detail in Sec.~\ref{sec:dm21_tension}.
@@ -119,7 +119,7 @@ The chameleon theory for dark energy could also provide a neutrino flavor depend
 potential that affects the oscillation of neutrinos in areas of very low matter
 density.
 The chameleon theory for dark energy here only provides a phenomenological basis
-for considering modified vacuum neutrino mixing. The model proposed here is
+for considering vacuum-enhanced neutrino mixing. The model proposed here is
 not necessarily dependent on the chameleon dark energy theory, or vice versa.
 This relationship is similar to how Mass Varying Neutrino (MaVaN) models
 for neutrino oscillation are motivated by acceleron theories for dark energy,
@@ -430,7 +430,7 @@ roughly a $3\%$ chance of being the result of a statistical fluctuation.
 \chapter{Simulation}
 \label{sec:cham_sim}
 Two different simulations of neutrino oscillations were developed to explore the
-effects of the modified vacuum mixing potential.
+effects of the vacuum-enhanced mixing potential.
 The first
 does a full simulation of the neutrino state as it propagates from the
 Sun, through the vacuum of space, to a detector at Earth.
@@ -440,7 +440,7 @@ neutrinos.
 These simulations will respectively be referred to as the ``neutrino'' simulation
 and as the ``mass-state'' simulation.
 The goal of both simulations is to produce a solar neutrino survival probability
-for any given set of standard model mixing parameters and modified vacuum
+for any given set of standard model mixing parameters and vacuum-enhanced
 mixing parameters.
 The reason for the two different methods is to allow for different
 trade-offs between simulation precision and computational speed.
@@ -518,7 +518,7 @@ solar radii to 0.6 solar radii were simulated.
 The result of the simulation is approximately 10 billion neutrino states
 to provide a representation of all possible neutrino states the sun can produce.
 This ``library'' of possible solar neutrino states
-is used as input to the modified vacuum potential simulation.
+is used as input to the vacuum-enhanced potential simulation.
 
 The simulation of neutrinos this way is computationally expensive. A few methods
 were explored for ensuring this simulation could be performed in a reasonable
@@ -568,7 +568,7 @@ neutrino type, \textit{e.g.} $\ce{^{8}B}$, $pep$, etc.
 
 % TODO need typical radii/energy sample counts
 Once  Monte Carlo samples of solar neutrino states are calculated, the
-states are used as inputs to a simulation of the modified vacuum potential.
+states are used as inputs to a simulation of the vacuum-enhanced potential.
 This simulation is in principle the same as the solar simulation,
 it simply involve evaluating Eqn.~\eqref{eqn:mixing_schrodinger}, where 
 $A_{\mathrm{CC}}$ is replaced by $A_{\mathrm{vac}}$.
@@ -580,7 +580,7 @@ Eqn.~\eqref{eqn:mixing_schrodinger} can be evaluated using
 a combination of analytic and numerical techniques instead of numerical
 integration.
 
-The modified vacuum state evolution done by first evaluating the mixing
+The vacuum state evolution done by first evaluating the mixing
 Hamiltonian and diagonalizing the resulting matrix.
 Diagonalization is done using the GNU Scientific Library~\cite{gsl_ref}
 linear algebra routines.
@@ -635,7 +635,7 @@ were performed in equal proportions for each flux type.
 Figure~\ref{fig:nonadiabatic_example} shows an example survival probability
 from the vacuum-enhanced neutrino state simulation.
 
-This method for calculating a modified vacuum survival probability has the
+This method for calculating a vacuum-enhanced survival probability has the
 distinct drawback of being computationally expensive, to the point
 where it cannot be used in a fit to data.
 It does, however, have the benefit of simulating effects from a non-adiabatic
@@ -812,7 +812,7 @@ The best fit values are compared to the best fit values reported by SNO to
 determine a likelihood.
 
 For evaluating the likelihood of the KamLAND result for a set of
-mixing parameters and modified vacuum parameters a simple lookup
+mixing parameters and vacuum-enhanced parameters a simple lookup
 is done to their published $\Delta \chi^{2}$ map~\cite{kamland_data_release}.
 A similar approach is used to evaluate the likelihood the Daya Bay and
 RENO reactor neutrino results. 
@@ -823,22 +823,25 @@ experiments measured value with uncertainty to extract a likelihood.
 \chapter{Fit And Results}
 \label{sec:cham_results}
 Taken together the solar neutrino experimental results can be used to constrain
-to the modified vacuum solar survival probability allowing up to
+to the  vacuum-enhanced solar survival probability allowing up to
 11 free parameters: $\Delta m^{2}_{21}$, $\theta_{12}$, $\theta_{13}$,
 each of the 5 $pp$-chain solar neutrino fluxes, the combined flux of the
 CNO neutrinos, and the two modified vacuum mixing potentials $A_{\mathrm{e}}$
 and $A_{\mathrm{\mu}}$.
-A gradient descent fit was done to evaluate the likelihood of the vacuum enhanced
+A gradient descent fit was done for these parameters to evaluate the likelihood of the vacuum enhanced
 model, and to what degree the tension between solar measurements and KamLAND measurements
 for $\Delta m^{2}_{21}$ can be reduced.
+The fit allowed all values to vary except $\theta_{13}$, which does not strongly effect
+the solar survival probability; $\theta_{13}$ was fixed to $8.5^{\deg}$, a value
+preferred by other global fits to neutrino data~\cite{nu_fit4}.
 
 The fit was done in four different manner,
-first using a solar only dataset and allowing the modified vacuum parameters
-to vary, then using solar only and constraining modified vacuum parameters
+first using a solar only dataset and allowing the  vacuum-enhanced mixing parameters
+to vary, then using solar only data and fixing vacuum-enhanced mixing parameters
 to zero.
 Then the fits are redone using the KamLAND constraints, allow 
 the vacuum-enhanced mixing parameters to vary and fixing them to zero.
-Fitting is done using the ROOT minuit algorithm~\cite{minuit}.
+Fitting is done using the ROOT Minuit algorithm~\cite{minuit}.
 
 It was noted that depending on the starting parameters the gradient
 descent would often converge at significantly different values.
@@ -847,6 +850,8 @@ picture of the likelihood space.
 A full scan of the likelihood space is necessary to
 get a complete picture of the most likely values for
 each parameter.
+However, a thorough scan is too computation expensive for
+this result and so it is discussed more in the following section.
 
 \begin{table}
     \centering
@@ -861,7 +866,7 @@ each parameter.
 \end{tabular}
     \caption[Solar Only Gradient Descent Fit Results]{Fit results from
     an 11-parameter gradient descent fit to solar neutrino experimental
-    measurements. Errors provided by the minuit fitting algorithm and
+    measurements. Errors provided by the Minuit fitting algorithm and
     commented on in text.}
 \label{tbl:cham_fit_results1}
 \end{table}
@@ -879,17 +884,18 @@ each parameter.
     \caption[Solar + KamLAND Gradient Descent Fit Results]{Fit results from
     an 11-parameter gradient descent fit to solar neutrino experimental
     measurements and the KamLAND reactor neutrino measurement.
-    Errors provided by the minuit fitting algorithm and
+    Errors provided by the Minuit fitting algorithm and
     commented on in text.}
 \label{tbl:cham_fit_results2}
 \end{table}
 
 The results of each fit is summarized in Tbl.~\ref{tbl:cham_fit_results1}
 and~\ref{tbl:cham_fit_results2}, not shown are the best fit neutrino flux values.
-The reported error on at least some of the fit results are unbelievably
+The reported error on at least some of the fit results is unbelievably
 small.
 I believe this is a result of the non-Gaussian nature of the likelihood
-space causing the minuit algorithm to poorly estimate errors.
+space causing the Minuit algorithm to poorly estimate errors and
+not an accurate estimate of the true errors.
 A more thorough fit that does not rely so heavily on assumptions about the
 likelihood space  will be done in the future to estimate the errors.
 I believe the errors reported from the fit should be taken as a likely
@@ -918,7 +924,7 @@ the standard MSW-LMA model.
 Similarly Fig.~\ref{fig:solar_only_sno}, and Fig.~\ref{fig:solar_only_sk} respectively show
 the comparison of the same survival probabilities to SNO and Super-K data.
 Using instead the best fit values from the solar and KamLAND constraints
-gives the comparisons shown in Figures~\ref{fig:solar_kamland_sp_compare},~\ref{fig:solar_kamland_sno},
+gives the similar comparisons shown in Figures~\ref{fig:solar_kamland_sp_compare},~\ref{fig:solar_kamland_sno},
 and~\ref{fig:solar_kamland_sk}.
 
 \begin{figure}[htbp]
@@ -1067,6 +1073,8 @@ The results found here were produced entirely using adiabatic neutrino mass stat
 this choice was necessary to provide results in a reasonable amount of time.
 For future works it may be possible to use the non-adiabatic neutrino simulation to
 verify the results of the adiabatic simulation.
+This will allow for the portion of time the neutrino spends in Earth's
+atmosphere to be simulated more accurately.
 Also not considered here is any sort of annual variation that might be
 present in a vacuum-enhanced mixing scenario.
 As the Earth moves closer or further from the Sun throughout the year neutrinos
@@ -1086,7 +1094,3 @@ Adopting a model like this would require a significant amount of computation pow
 to fully evaluate.
 So it's hoped that a simulation of vacuum-enhanced mixing that relies more heavily
 on analytic calculation can be developed.
-
-
-
-
