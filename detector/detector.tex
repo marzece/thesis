@@ -23,7 +23,7 @@ target material that is deep underground and is observed by a large array of
 photomultiplier tubes (PMTs).
 The target material dictates the physical processes
 observable with the detector.
-The SNO detector was originally designed for a heavy-water
+SNO  was originally designed for a heavy-water
 target, the benefits of a heavy-water target are discussed in Sec~\ref{sec:sno}.
 For SNO+ the detector will operate in three separate phases, each with a different
 target medium.
@@ -85,7 +85,7 @@ these are referred to as NECK tubes.
 \end{figure}
 
 SNO+ has 9385 inward looking PMTs all mounted in the PSUP at an average radius
-of 8.4\,m from the center of the detector..
+of 8.4\,m from the center of the detector.
 All PMTs are Hammatsu R1408 8-inch PMTs.
 The inward looking PMTs are all housed within a plastic cassette,
 and each PMT is also surrounded by an array of reflective
@@ -123,17 +123,17 @@ Cherenkov radiation is produced by any charged particle moving with
 velocity ($\vec{v}$) such that $\abs{\vec{v}} > \frac{c}{n}$, where $c$ is the speed
 of light and $n$ is the index of refraction in the target medium~\citep{cherenkov}.
 
-The produced Cherenkov light has a few properties that make it a desirable
+Cherenkov light has a few properties that make it a desirable
 method for particle detection.
-The first is that the number of photons produced scales nearly linearly
+The first property is that the number of photons produced scales nearly linearly
 with the energy of the particle propagating, therefore the energy of the particle
 can be estimated by simply counting the number of detected photons.
 The second desirable property is that the produced photons will be
 emitted in a cone, with an opening angle of approximately $42^{\circ}$ with
 respect to the particle's direction of travel.
-Meaning by detecting Cherenkov light the particles direction of travel
+Meaning by detecting Cherenkov light the particle's direction of travel
 can be inferred.
-And finally, if the time of each detected photon is well known then
+And finally, if the time of each detected photon is well-known then
 the requirement that all photons travel from the same point at the same speed
 allows the position of the particle to be deduced.
 SNO+ takes advantage of each of these aspects of Cherenkov radiation to reconstruct
@@ -150,11 +150,11 @@ With SNO+ it's not expected to be possible to infer which detected photons are
 from scintillation processes and which are Cherenkov radiation, so it can be treated
 as though all light is from scintillation.
 Many people are developing methods to separate Cherenkov light from scintillation
-light~\citep{tanners_paper,javi_chess, winslow_directionality},
+light~\citep{tanners_paper, javi_chess, winslow_directionality},
 and so this may be possible for SNO+ in the future.
 
 The primary neutrino interaction that SNO+ is sensitive to is elastic scattering (ES)
-off electrons,
+off electrons.
 Charged and neutral-current nuclear interactions occur as well with the oxygen in the water,
 however these are rare and cannot be uniquely to identified against radioactive
 backgrounds, and so are ignored.
@@ -180,7 +180,7 @@ is preserved by the interaction.
 %a distance $\ell \dfrac{c}{v}$ from B.
 
 
-%The photons can the be detected by the SNO+ PMT array, and the pattern
+%The photons can then be detected by the SNO+ PMT array, and the pattern
 %of hits analyzed to determine the electron direction, energy, and position.
 
 
@@ -222,7 +222,7 @@ the readout and trigger system.
 That signal is compared to a threshold, if the signal is over threshold a ``hit''
 has occurred --- this threshold is often called the ``channel threshold''.
 At the time of the channel threshold crossing the following processes occur, the name for each is given
-in parenthesis:
+in parentheses:
 a 100\,ns long fixed-height square pulse is created (N100), a 20\,ns fixed height square pulse is created (N20),
 a high gain copy of the signal is created (ESUMH), a low gain copy of the signal
 is created (ESUML), a linear voltage ramp begins (TAC ramp), the signal is integrated for
@@ -251,7 +251,7 @@ Separate, but identical, MTCA+s are used for each of the four trigger signals.
 Each MTCA+ performs the analog summation with three different gains,
 resulting in a total of twelve signals spread across four different boards.
 Each of the twelve signals are separately compared to a threshold;
-each of the twelve thresholds are independent from each other.
+each of the twelve thresholds are independent of each other.
 These thresholds are called ``trigger thresholds''.
 
 The different gains are in place due to the practical difficulty of maintaining
@@ -288,7 +288,7 @@ if a raw-trigger is masked out, nothing happens when it fires,
 if it is masked in, then the raw trigger creates a ``global-trigger'' (GT) signal.
 That global trigger signal is fanned out to all the data crates which
 in turn sends the GT to all front end cards and daughter boards.
-As the GT signal is created the MTCD also generates a signal
+When the GT signal is created the MTCD also generates a signal
 called Lockout (LO). Lockout is typically a 420\,ns long pulse and while
 the signal is high the MTCD will not create any more global triggers.
 
@@ -296,7 +296,7 @@ Once the global trigger is created the trigger cycle is complete and
 the readout process begins.
 The raw-trigger signal that caused the global trigger, as well as any other
 raw-trigger signals that were high within a 20\,ns window of the global trigger,
-are recorded and readout, this is know as the ``trigger word''.
+are recorded and readout, this is known as the ``trigger word''.
 When the GT is created a counter, called the global trigger identifier (GTID) is incremented
 and readout along with the trigger word.
 
@@ -312,7 +312,7 @@ values in the memory cells are digitized and readout to a memory buffer
 on the FEC\@.
 The TAC ramp starts when the PMT signal crosses channel threshold
 and stops when the GT signal arrives at the channel.
-Since the TAC voltage ramp is linear over time the value of the TAC
+Since the TAC voltage increases linearly with time, the value of the TAC
 indicates when the hit occurred relative to the GT signal.
 
 The FEC stores those values and adds information to identify which
@@ -323,7 +323,7 @@ as the MTCD GTID, and the same as the counter in every other FEC in the detector
 The GTID counter is our only way of associating recorded hit data with each other
 and with the trigger word.
 
-In practice it's possible for a channel's GTID to become out of sync with the GTIDs of
+In practice, it is possible for a channel's GTID to become out of sync with the GTIDs of
 all other channels.
 This can result in the hits on a particular channel being associated with
 the wrong event.
@@ -336,12 +336,12 @@ by a flag to indicate that it was out of sync.
 This system ensures a channel is never out of sync for more than $65536$ events.
 
 A short while after the data and the associated identifying information and status flags are buffered
-in FEC memory, the data is readout by a create level readout card,
+in FEC memory, the data is readout by a crate level readout card,
 the ``XL3''.
 The XL3 is new to SNO+; it replaces the XL1 and XL2 from SNO, more will be said about the
 XL3 in Sec.\,\ref{sec:xl3}.
 
-Each data crate has its own XL3, all XL3s read out and serve data asynchronously.
+Each crate has its own XL3, all XL3s read out and serve data asynchronously.
 The data-server process receives data from each XL3 and relays that data to
 any clients that have subscribed to the PMT data feed.
 A similar process is done for the trigger word data. The MTCD sends trigger data
@@ -354,7 +354,7 @@ uses GTID information to associate trigger words and hits with each other.
 Once all the hits for an event have been associated with their trigger word the event
 has been ``built'' it is written to disk and the read out process for that event is complete.
 Data is typically taken in hour long chunks referred to as a ``run'';
-every run has an unique number associated with it and a ``run type'' number that
+every run has a unique number associated with it and a ``run type'' number that
 gives basic context to the detector circumstances and settings in which the data was taken.
 The Builder, in addition to building events, is responsible for associating
 events with their run number and run type.
@@ -371,7 +371,7 @@ typically only three signals are actually used, those channels digitize ESUMH, N
 N100L. The CAEN's digitization window and sampling rate can be varied,
 most commonly the digitization window is 420\,ns and the sample width
 is 4\,ns. The CAEN receives a copy of the global trigger allowing and
-it keeps it's own GTID counter so its data can later be associated
+it keeps its own GTID counter so its data can later be associated
 with the appropriate hit and trigger data. It also receives a copy of the
 SYNC and SYNC24 signal so it's synchronization can be ensured.
 
@@ -410,11 +410,11 @@ it's discussed in further in~\ref{sec:tubii}.
 %role as part of the trigger and data readout systems as well.
 %It's significance comes primarily from the fact that it acts as an auxiliary
 %digital trigger board. It can receive raw-trigger pulses from the MTCA+s and apply
-%customizable trigger logic to them and emit it's own raw-trigger pulses which are
+%customizable trigger logic to them and emit its own raw-trigger pulses which are
 %sent to the MTCD\@.
 %TUBii also receives the global trigger signal and produces its own trigger
 %word based upon which raw trigger pulses it had received. The TUBii trigger
-%word is synchronized with the rest of the data for each event through it's own
+%word is synchronized with the rest of the data for each event through its own
 %global trigger counter and through the SYNC/SYNC24 signals. More information about
 %TUBii's role in the DAQ can be found in Sec.~\ref{sec:tubii}
 
@@ -433,12 +433,12 @@ To accommodate the increased current and data volume and to take advantage of mo
 hardware a few key pieces of the SNO DAQ was upgraded as part of the change from
 SNO to SNO+.
 
-Beyond the need to increase the improve the DAQ for the higher expected light
+Beyond the need to improve the DAQ for the higher expected light
 yield there were a few aspects of the SNO electronics that motivated several
 features in the upgraded electronics.
 Most notable of these is the unstable analog trigger baseline.
 The voltage of any trigger signal's baseline can vary.
-The baseline of the each trigger signal is the voltage observed
+The baseline of each trigger signal is the voltage observed
 when there are zero hits in the analog sum,
 As the baseline moves closer to or further from the trigger threshold
 the number of PMT hits required to trigger the detector changes.
@@ -485,7 +485,7 @@ The XL3 reads data from the FECs across the backplane, and buffers that data
 in on-board memory before reading it out to a central DAQ computer over Ethernet.
 The maximum data rate each XL3 is capable of is approximately
 14\,MB/s, yielding a detector-wide rate of 250\,MB/s.
-This translates to being able to read out out roughly one-hundred thousand
+This translates to being able to read out roughly one-hundred thousand
 hits per crate per second.
 Figure~\ref{fig:xl3_daq_diagram} shows schematically how the XL3 is
 incorporated into the SNO+ DAQ\@.
@@ -508,7 +508,7 @@ and discriminating capabilities of the SNO MTCA, and perform stably
 at the higher rates expected in SNO+.
 For this reason the MTCA+ performs the analog multiplicity sum using a series
 of high-current voltage feedback operational amplifiers.
-%The gain of the three different analog is 1:1, 1:3.6 and 1:10. XXX include this?
+%The gain of the three different analog is 1:1, 1:3.6 and 1:10. XXX includes this?
 
 One of the most transformative changes that the MTCA+ introduces into
 the SNO+ trigger system is its baseline restoration circuitry.
@@ -533,8 +533,7 @@ The second is baseline restoration circuit on the MTCA+. At the final
 stage of each analog sum the output sum is fed through a long-pass
 filter to extract the average voltage over an $\approx$1\,s period.
 That voltage is buffered and fed back into the non-inverting input
-of the operational amplifier used for the final stage of the
-of the analog sum.
+of the operational amplifier used for the final stage of the analog sum.
 The effect of this feedback loop is to subtract any long term
 voltage offsets from the trigger sum.
 
@@ -554,7 +553,7 @@ a water target, it's suspected, but not known, that this will still be true for
 a scintillator target as well.
 Since typical variations in the baseline from thermal and other environmental
 effects occur on the $\approx1$\,hour timescale the 1\,s time scale for the
-baseline restoration provides adequate correction for those sort of effects.
+baseline restoration provides adequate correction for those sorts of effects.
 
 %Part way through the water-phase data-taking I developed a
 %set of modifications that could be done to the  MTCA+ circuitry to
@@ -625,25 +624,25 @@ TUBii also has its own triggering functionality that supports the main
 trigger system.
 It can receive raw-trigger signals from the MTCA+s 
 or any other source and
-apply custom trigger logic to them and emit it's own raw-trigger pulses which are
+apply custom trigger logic to them and emit its own raw-trigger pulses which are
 sent to the MTCD\@.
 TUBii also receives the global trigger signal and produces its own trigger
 word based upon which raw trigger pulses it had received. The TUBii trigger
-word is synchronized with the rest of the data for each event through it's own
+word is synchronized with the rest of the data for each event through its own
 global trigger counter and through the SYNC/SYNC24 signal.
 Beyond triggering on input digital signals TUBii has two inputs for analog
 signals.
-TUBii has a analog discriminator that can produce its own raw-trigger signal
+TUBii has an analog discriminator that can produce its own raw-trigger signal
 and that signal is sent through re-trigger logic that mimics the re-trigger
 logic on the MTCA+ CPLD\@.
 This analog discrimination and re-trigger logic is referred to as the ``MTCA
 Mimic'' functionality because it provides a ``plug-and-play'' 
 way to trigger the detector off an arbitrary analog signal.
 
-TUBii is used as an interface board for some of the detector calibration systems.
+TUBii is used as an interface board for some detector calibration systems.
 These systems emit light into the detector and usually need to be
 synchronized with the trigger system. This synchronization requires
-a variety of pulses and delays to be tuned to account for the time it
+a variety of pulses and delays tuned to account for the time it
 takes for signals and light propagate throughout the detector and DAQ
 system; TUBii provides those pulses and delays.
 
@@ -658,8 +657,8 @@ Something like this is desirable for identifying and ensuring the detector will
 be sensitive to time-correlated events. An example of this would be that
 the decay chain of $\ce{^{214}Bi}$ $\rightarrow$ $\ce{^{214}Po}$ $\rightarrow$ $\ce{^{210}Pb}$,
 this decay chain is referred to as BiPo214.
-The signature of this decay is an electron from $\beta$ decay, followed, with a half
-life of 4\,$\mu$s, by an $\alpha$ decay.
+The signature of this decay is an electron from $\beta$ decay, followed, with a half-life
+of 4\,$\mu$s, by an $\alpha$ decay.
 It's very important that the $\alpha$ decay is detected so that the $\beta$-$\alpha$
 decays can be identified as likely from a BiPo. If the $\alpha$ is not observed
 the $\beta$ can be mis-identified and potentially leak into a signal region.
@@ -680,7 +679,7 @@ allowing the CAEN to remain synchronized.
 
 \section{Electronics Calibration}
 There are three primary calibrations performed for electronics to ensure that the
-detector behaves in a predictable way and that readout values can be interpreted
+detector behaves predictably and that readout values can be interpreted
 for a physics analysis. The first calibration is the ECAL (Electronics Calibration),
 the next is the ECA (also Electronics Calibration), and the final one is the PCA (PMT
 Calibration).
@@ -688,7 +687,7 @@ Calibration).
 Both the ECA and ECAL use the PEDESTAL and PULSE\_GT signals. Both signals
 are produced on the MTCD by a pulser.
 The PULSE\_GT simply produces GT signals at a fixed rate.
-The PEDESTAL signal is sent to the FECs and they fake a PMT hit occurring,
+The PEDESTAL signal is sent to the FECs, and they fake a PMT hit occurring,
 \textit{i.e.} a hit occurs in the electronics regardless of if the PMT has
 produced a signal or not.
 The channels that do or do not receive the PEDESTAL can be arbitrarily chosen.
@@ -730,7 +729,7 @@ and which are not capable of producing useful data.
 Channels that cannot produce useful data are removed in later analysis but are
 typically not modified within the electronics, except in the case where they
 can be repaired or replaced.
-Both varieties of ECA are ran on an approximately weekly basis to account for
+Both varieties of ECA are run on an approximately weekly basis to account for
 variations that may occur with time in the read out values and to quickly
 identify when a channel becomes unreliable.
 
@@ -746,7 +745,7 @@ The laserball is typically placed within the center of the
 detector and emits light isotropically. For a typical laserball PCA the amount of light emitted
 is very small, such that only a few PMTs detect anything in a single event;
 this ensures that no PMT is likely to observe more than a single photon.
-Data are taken this way for a long period of time so that every PMT is hit many times over
+Data are taken this way for a long time so that every PMT is hit many times over
 many events. The data is later analyzed to extract how much charge corresponds to a single
 photon for each channel.
 
@@ -767,7 +766,7 @@ the error results in the N100 and N20 trigger pulses from
 a channel being much longer than they should be, \textit{e.g.} 1\,ms wide
 instead of 100\,ns.
 The nominal effect of dropout is to lower the effective threshold for the period
-of time that the channel is dropped out.
+that the channel is dropped out.
 Since the typical length of a single dropout pulse is short compared to the
 baseline correction time constant, individual channels being dropped out
 are not corrected for.
@@ -787,7 +786,7 @@ in both directions, higher or lower.
 In SNO, without baseline correction, dropout would only ever lower the effective threshold.
 
 
-For physics analyses that have a signal near threshold, it's important that
+For physics analyses with a signal near threshold, it's important that
 the threshold for the detector be as well modeled as possible.
 So a method for accurately modelling dropout is desirable to avoid large
 systematic uncertainties associated with the trigger system.
@@ -817,7 +816,7 @@ The normalization of the $k^{\text{th}}$ Gaussian is given by the value of the P
 distribution for an average rate $\lambda$.
 The parameter $S$ gives the separation in ADC counts
 between the baseline shifts from each dropped out channel, $C$ gives the baseline
-value when there are no dropped out channels.
+value when there are zero dropped out channels.
 The width of each Gaussian $\sigma$ corresponds to the noise on the baseline
 measurement, i.e how much the baseline varies at a fixed amount of dropout.
 The parameter $\lambda$ corresponds the average dropout for the detector.
