@@ -13,8 +13,7 @@ of events with respect to the solar direction, it's important that the
 detector's angular resolution be well constrained.
 The uncertainties for these reconstructed quantities are determined from
 analysis of $\ce{^{16}N}$ data.
-
-Each systematics is treated in the same, or a similar, way, to propagate
+All systematics are treated in the same, or a similar, way, to propagate
 their effect to the flux result.
 First the systematic uncertainty on a reconstructed quantity (\textit{e.g.} energy, position etc.)
 is determined from an analysis of the $\ce{^{16}N}$ data.
@@ -22,7 +21,7 @@ Then, the relevant reconstructed Monte Carlo quantity
 is modified according to the one-sigma systematic uncertainty.
 From this A 2D histogram in energy and $\cos\theta_{sun}$ is produced using the
 modified event quantities, applying the standard cuts.
-Finally the flux result is found by performing a fit to data using the systematically
+Finally, the flux result is found by performing a fit to data using the systematically
 adjusted histogram as input.
 The difference between the best fit value found using unmodified event quantities
 and using the modified quantities is taken to be the one-sigma systematic uncertainty.
@@ -240,7 +239,7 @@ Monte Carlo simulation could have a systematically smaller energy resolution
 than occurs in real data.
 So by applying a smearing the Monte Carlo energy resolution is artificially
 deteriorated, and the uncertainty on the resolution is accounted for.
-A similar process does not exists to account for the possibility that the
+A similar process does not exist to account for the possibility that the
 MC simulation has a poorer energy resolution than data taken from the
 real detector; there's no way to ``un-smear'' the reconstructed MC event
 energy.
@@ -294,7 +293,7 @@ the relative strength of the exponential~vs.~the Gaussian;
 $P_{\gamma}(x)$ is distribution of distance travelled by an $\ce{^{16}N}$
 gamma before it's first interaction, it is determined from a separate MC
 simulation.
-Finally $A$ is an overall normalization to account for the number of events
+Finally, $A$ is an overall normalization to account for the number of events
 included in the distribution.
 The Gaussian and exponential portion of
 \eqref{eqn:n16_position_model} represents the spread introduced by the detector
@@ -567,7 +566,7 @@ of $\theta^{\prime}$.
 The direction $\vec{d}^{\prime}_{\mathrm{recon}}$ is then used in the
 analysis to generate event distributions in $\cos\theta_{sun}$.
 
-Following this procedure PDFs for $\cos\theta_{sun}$ are generated for many different
+Following this procedure PDFs for $\cos\theta_{sun}$ are generated for many
 values of $\delta_{\theta}$, producing $P(\cos\theta_{sun}, \delta_{\theta})$.
 The constraint on $\delta_{\theta}$ produced by the $\ce{^{16}N}$ analysis
 are included in this two-dimension PDF\@.
@@ -588,7 +587,7 @@ m^{2}_{21}$, $\theta_{12}$ and $\theta_{13}$ is taken from Ref.~\citep{pdg_globa
         $\Delta m^{2}_{31}$ & $2.5\times10^{-3}\mathrm{MeV}/\mathrm{c}^{2}$ & -- \\
     \end{tabular}
     \caption{A summary of the mixing parameters and their uncertainties as used in 
-    propagation of systematic uncertainties. Values from from Ref~\citep{pdg_globalfit}.}
+    propagation of systematic uncertainties. Values from Ref~\citep{pdg_globalfit}.}
 \label{tbl:mixing_values}
 \end{table}
 The values and uncertainties for the mixing parameters

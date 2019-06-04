@@ -1,5 +1,5 @@
 %\section{Blindenss}
-%The majority of this analyses was designed with the data blinded in the
+%The majority of these analyses was designed with the data blinded in the
 %relevant energy region.
 %The data blinding was done primarily for a nucleon decay analysis~\citep{snop_nd}
 %that was performed using the same dataset as this analyses, but was done
@@ -7,7 +7,7 @@
 %
 %%TODO check these numbers
 %The scheme for blinding the data was to remove all events from the dataset that
-%had an nhit between $30$ and $100$, this correspond to an approximate electron energy
+%had a nhit between $30$ and $100$, this corresponds to an approximate electron energy
 %range of \numrange{4.0}{15.0}\,MeV.
 %The analyses was designed primarily using simulation and a two-week open
 %data period, on which no blindness restrictions were imposed.
@@ -43,7 +43,7 @@ Each of these steps are detailed below.
 \label{sec:dataset}
 Data for this analysis was taken in SNO+'s initial water-phase data-taking
 run.
-Data taking started May 05 2017 (exactly 4 years after I
+Data taking started May 05, 2017 (exactly 4 years after I
 started my PhD) and ended December 25 the same year.
 The data taking started with run $100000$ and concluded with run
 $108416$, with each run being typically 1 hour long, though not
@@ -62,11 +62,11 @@ The first is the hot-spot period of runs;
 an external water circulation pipe was observed to have
 introduced backgrounds into the upper-portion of the detector, between the
 PSUP and AV\@.
-For data taken during this period of time analysis cuts were adjusted, as
-will be discussed in Sec~\ref{sec:analysis_cuts}.
+Analysis cuts were adjusted for the data taken during this period,
+the cuts will be discussed in Sec~\ref{sec:analysis_cuts}.
 The elevated background levels lasted from run $100400$ to $102048$.
 
-The other period of time that requires special treatment within the analysis
+The other period that requires special treatment within the analysis
 is due to significant adjustments to the detector trigger settings done approximately
 half-way through the dataset.
 So the dataset is split into a high and low trigger period, the high trigger
@@ -128,13 +128,13 @@ used for a physics analysis.
 It's further necessary that all meta-info be available so that the run
 can be simulated.
 It's very rare for the meta-info for a run not to be generated and stored
-properly, so this check has a almost no effect on the dataset.
+properly, so this check has almost no effect on the dataset.
 
 It's required that the run type of the run be ``PHYSICS'', this indicates
 that the DAQ settings were not changed at any point in the run and no external
 sources of events were present, and that the thresholds for triggering were set
 at a level deemed sufficient for most physics analyses.
-Following this checks are done
+Further checks are done
 that require all electronics crates have high voltage on their PMTs throughout
 the run.
 It's also required that all channels that are at high voltage are capable of
@@ -151,10 +151,10 @@ that the total trigger rate be less than 7kHz.
 These checks ensure that the data taken during the run triggered the detector
 at a rate consistent with standard running, during which the typical trigger
 rate is near 1kHz.
-Similarly it's required that fewer than 15\% of all events be retrigger events
+Similarly, it's required that fewer than 15\% of all events be retrigger events
 (events that fall within 420\,ns of the previous event).
-At a nominal rate of 1kHz it's very unlikely for two event to be within $420$\,ns
-by chance, so a high rate of retrigger events might indicate a abnormally
+At a nominal rate of 1kHz it's very unlikely for two events to be within $420$\,ns
+by chance, so a high rate of retrigger events might indicate an abnormally
 high level of noise in the trigger system or light in the detector.
 There are however events that can occur
 in the detector, such as followers after a cosmic muon, that can produce
@@ -168,7 +168,7 @@ might influence results.
 \section{Livetime}
 While most event selection removes individual events based upon whether they
 pass or fail certain criteria, some cuts remove all events that occur for a
-period of time before or after some criteria is met.
+period before or after some criteria is met.
 These cuts are said to introduce a deadtime into the dataset.
 The most significant example of this is the muon follower data cleaning cut, which
 cuts all events for 30\,seconds after every muon interaction in the detector.
@@ -194,7 +194,7 @@ detector.
 A number of algorithms and cuts have been designed to identify and remove
 these events from the dataset.
 These algorithms are said to ``clean'' the data by removing events
-of instrumental origin. These definition is extended to include removing
+of instrumental origin. This definition is extended to include removing
 hits within an event that are likely of instrumental origin as well.
 
 The primary type of instrumental event that must be removed is ``flashers'' and
@@ -224,7 +224,7 @@ For this analysis the only sort of hits that were removed were those identified
 as coming from cross-talk between adjacent channels in the detector.
 Hits from cross-talk arise from stray capacitative coupling between adjacent, or nearby, channels
 on a single daughter board.
-Typically the noise from cross-talk will only be large enough to cause a hit
+Typically, the noise from cross-talk will only be large enough to cause a hit
 on adjacent channels if the original signal is relatively large.
 The cross-talk hits will usually be especially low in charge because they're
 the result of bi-polar noise, rather than a PMT signal, and the cross-talk
@@ -239,7 +239,7 @@ Events of instrumental origin are not well modeled within our simulation,
 so simulation is not used for evaluating the efficiencies and or false-positive
 rates of
 data cleaning cuts.
-Instead a data-driven approach is used that relies primarily on calibration
+Instead, a data-driven approach is used that relies primarily on calibration
 data from the $\ce{^{16}N}$ source, that analysis is detailed in~\citep{dc_document}.%Teals data cleaning stuff
 The basic approach is to use tagged $\ce{^{16}N}$ events as a source of known
 non-instrumental events, and evaluate what fraction of the time those events
@@ -254,7 +254,7 @@ the number of instrumental events leaked into the signal region was estimated
 to be roughly $0.5$ events over the entire dataset.
 However, a contamination estimate is not an input to the solar analysis,
 so that value is not used beyond a check that the instrumental background
-is reduced to a acceptable level.
+is reduced to an acceptable level.
 
 The data cleaning cuts that were used in this analysis are given in Appendix~\ref{sec:dc_appen}.
 I also detail there the cuts used that I developed.
