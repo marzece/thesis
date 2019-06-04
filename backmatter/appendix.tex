@@ -48,7 +48,7 @@ quality of the trigger response.
 It's very important that these events are clearly identified and removed from the
 dataset so that the fake PEDESTAL hits are not confused for a real signal.
 Additionally, the trigger calibration processes usually include changing settings
-related to the PEDESTAL signal on the FEC, there's reason to believe these sort
+related to the PEDESTAL signal on the FEC, there's reason to believe these sorts
 of changes can introduce noise to the front-end.
 So an aggressive approach of cutting all events that are within one second of
 a pedestal event is used.
@@ -80,7 +80,7 @@ To evaluate the cut optimal cut criteria for $N_{1}$, $N_{2}$ and $\Delta_{t}$
 two different values are considered.
 The first is the probability that an event of nhit greater than $N_{2}$ will occur within a time
 window $\Delta t$ after an event of nhit greater than $N_{1}$.
-This values is called the follower probability, $P_{F}(N_{1}, N_{2}, \Delta t)$.
+This value is called the follower probability, $P_{F}(N_{1}, N_{2}, \Delta t)$.
 The second values is the probability that an event of nhit $N$ will occur
 within a time window $\Delta t$ that is chosen randomly, this value
 is called accidental probability or random coincidence probability, $P_{R}(N, \Delta t)$.
@@ -123,7 +123,7 @@ likely to follow highly energetic events or events that can produce cosmogenic
 isotopes, and the nhit threshold for these processes is not effected significantly
 by the changes from SNO to SNO+.
 The threshold value for $N_{2}$ was selected based upon what nhit of event
-could possibly serve as a background to the solar or nucleon decay analysis,
+could serve as a background to the solar or nucleon decay analysis,
 a conservative value of $20$ was selected, which corresponds to an electron kinetic energy
 of approximately $3$\,MeV.
 With the two nhit constraints selected the $\delta t$ window was selected to
@@ -154,7 +154,7 @@ useless.
 The determined baseline is subtracted from the CAEN trace and the integral and maximum
 peak height are calculated from the samples between the two baseline windows.
 To pass the CAEN Cut the peak and integral must fall between an upper and lower, nhit dependent,
-cut cut value.
+cut value.
 The cut values are given by
 \begin{equation}
     f(n) = C\left(1-\sigma(n)\right) + \sigma(n)\left(mn+b\right)\text{.}
@@ -189,7 +189,7 @@ so that there is not discontinuity between the two cut regions.
 \end{table}
 The values for these parameters are given in Table~\ref{tbl:caen_cut}.
 
-The reason for the two cut regions is because at lower nhit the signal
+The reason for the two cut regions is that at lower nhit the signal
 peak is smaller than the noise one the ESUMH signal, so the only requirement
 is that the peak and integral be consistent with a noise only trigger sum.
 At higher nhit the ESUMH signal scales linearly with nhit, each new hit
@@ -242,34 +242,6 @@ cleaning cuts.
 Figure~\ref{fig:caen_inclusion} shows how the ESUMH CAEN trace integral is distributed
 in the two calibration datasets and for standard physics data taking.
 
-
-
-%TODO move this shit to an appendix
-%\subsection{ZeroZero Cut}
-%The GTID for the FEC is stored in a ripple counter, it's often the case that
-%when the bottom two bits of the counter rollover the event that gets recorded in
-%the FEC memory gets corrupted.
-%When this happens the builder cannot put the corrupted hits into the event correctly,
-%and the hits will effectively be discarded.
-%This means that event the detectors effective photon detection efficiency is lower
-%for events that have a GTID with $00$ in the bottom two bits.
-%Rather than correct for this inefficiecy in reconstruction, events with GTID
-%ending in $00$ are discarded. This corresponds to a random pre-scale
-%on our by a factor of $\frac{1}{256}$.
-%\subsection{Crate Isotropy Cut}
-%The Crate Isotropy Cut is designed to remove events that are isolated
-%in one or a few electronics crates.
-%Events originating from light within the detector are unlikely to have any
-%preference in electronics space.
-%However hits caused by electrical noise that was created near the electronics
-%can show a very distinct preference for one crate.
-%The criteria for this cut is that fraction of hits in any single
-%is greater that $70\%$ and that the fractions of hits within
-%that crate are either $80\%$ within adjacent FECs or $70\%$ within
-%adjacent channels.
-%%\subsection{Flasher Geometry Cut}
-%%\subsection{ITC Timespread Cut}
-
 \chapter{Initial Vacuum-Enhanced Mixing Fit}
 \label{app:vac_mixing}
 This appendix describes the initial attempt to profile the likelihood
@@ -278,7 +250,7 @@ A full scan of the  11 free parameters of the vaccum-enhanced neutrino mixing
 model is too computationally
 expensive given the speed of mixing simulation, and
 of the time required to evaluate the likelihood at each point.
-Instead only the solar mixing parameters, $\Delta m^2_{21}$ and $\theta_{12}$,
+Instead, only the solar mixing parameters, $\Delta m^2_{21}$ and $\theta_{12}$,
 and the two enhanced vacuum mixing parameters, $A_{e}$ and $A_{\mu}$, are
 used in the fit. 
 For this the adiabatic neutrino mass state simulation is used,
@@ -311,13 +283,13 @@ model, and the KamLAND reactor neutrino measurement.}
 \label{fig:chi2_comparison}
 \end{figure}
 
-This search is first done using only data from Solar experiments for the
+This search uses only data from Solar experiments for the
 likelihood.
 The idea is that if the solar best fit value for $\Delta m^{2}_{21}$ was much closer
 to the KamLAND value while allowing for an arbitrary modified vacuum potential,
 that would be a compelling reason to believe a modified vacuum model is a
 good description for solar neutrino mixing.
-Performing the fit this way yielded a best fit value
+Performing the fit this way yielded the best fit value
 of $\Delta m^{2}_{21}=4.20^{+1.124}_{-0.907}$, profiling over values for $\theta_{12}$.
 Figure~\ref{fig:chi2_comparison} shows the likelihood space and the profile in $\Delta m^{2}_{21}$.
 The bumps in the one-dimensional profile comes from the relative paucity
