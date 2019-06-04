@@ -81,7 +81,7 @@ The exception to this is supernova neutrinos observed by from SN1987A~\citep{kam
 and neutrinos detected by the IceCube experiment from a blazar~\citep{icecube_blazar}.
 Neither of these datasets are sufficient to make statements
 about neutrino mixing though.
-Ultra-high energy neutrinos from the GZK production process~\citep{gzk} would be an useful
+Ultra-high energy neutrinos from the GZK production process~\citep{gzk} would be a useful
 source for constraining this model, as GZK neutrinos not only travel through
 significant distances in vacuum, they're also produced in vacuum.
 However, neutrinos from the GZK process have not yet been detected by
@@ -99,10 +99,10 @@ While the tension could be the result of statistical fluctuations or un-modelled
 systematic effects, the flatness of observed solar survival probability and
 unexpectedly large day-night asymmetry both independently prefer lower values
 for $\Delta m^{2}_{21}$.
-This motivates considerations of what physics might effect the solar survival
+This motivates considerations of what physics might affect the solar survival
 probability and not the KamLAND result.
 Unexpected effects from the high density long baseline solar environment provide a neat answer.
-Similarly unexpected effects from a near zero matter density environment
+Similarly, unexpected effects from a near zero matter density environment
 provides an explanation for the observed tension between the KamLAND and solar
 results.
 %Some of the existing ideas for non-standard interactions in the Sun are discussed in Sec.~\ref{sec:nsi}
@@ -188,10 +188,10 @@ For experiments, this means sensitivity to $\Delta m^{2}_{21}$ comes
 primarily from their ability to measure the survival probability in the
 transition region compared to the vacuum or matter dominated regions.
 
-In principal this means for solar neutrino experiments to be sensitive
+In principle this means for solar neutrino experiments to be sensitive
 to $\Delta m^{2}_{21}$, a good measurement of neutrino oscillation probability
 in the transition region is all that is required.
-However, the Sun does not provide a optimal source of neutrinos at energies
+However, the Sun does not provide an optimal source of neutrinos at energies
 in the transition region.
 The $\ce{^{8}B}$ and $hep$ reactions provide neutrinos at energies across the
 entirety of the transition region, but the flux of each of those sources is
@@ -243,7 +243,7 @@ flavor sensitive ``elastic-scattering'' flux.
 So far these experiments have not seen strong evidence for any
 upward transition in the survival probability.
 Figure~\ref{fig:es_b8_measurement} shows the SNO measurement
-and the combined SNO + Super-K  measurement
+and the combined SNO + Super-K  measurement.
 
 \begin{figure}[htbp]
     \centering
@@ -281,14 +281,14 @@ $\Delta m^{2}_{21}$ is
 \end{equation*}
 
 
-In principal, the transition region could be probed as well by a precise
+In principle, the transition region could be probed as well by a precise
 measurement of the survival probability from $pep$ or $\ce{^{7}Be}$ neutrinos.
 $pep$ neutrinos are mono-energetic at $E_{\nu}$ = 1.4\,MeV,
 this means they should have a survival probability of $53\%$ instead of the
 vacuum survival probability of about $56\%$.
 $\ce{^{7}Be}$ neutrinos are also mono-energetic at $0.861$\,MeV, providing
 them with an expected survival probability of $54\%$.
-A measured deviations of these survival probabilities from the expected
+A measured deviation of these survival probabilities from the expected
 vacuum mixing value would provide a measurement of $\Delta m^{2}_{21}$.
 But so far measuring these fluxes to that level of precision has not been
 possible.
@@ -522,7 +522,7 @@ is used as input to the vacuum-enhanced potential simulation.
 
 The simulation of neutrinos this way is computationally expensive. A few methods
 were explored for ensuring this simulation could be performed in a reasonable
-amount of time. The method that was used for nearly all of the results here was
+amount of time. The method that was used for nearly all the results here was
 to perform the Runge-Kutta integration on a GPU, which each thread corresponding
 to a single sample in energy and production radius.
 Still, the production of all the simulated solar states requires approximately
@@ -610,7 +610,7 @@ and a ``night'' path. The ``day'' path simulates the neutrino only travelling
 through the crust of the Earth. The ``night'' path simulates the neutrino
 travelling through the Earth, including the high density core.
 The one-dimensional earth density profile is from Ref.~\citep{PREM} is used.
-%This results in an simulation of the day-night effect for neutrino oscillation.
+%This results in a simulation of the day-night effect for neutrino oscillation.
 
 The result of this chain of simulation steps is Monte Carlo samples
 of neutrino flavor states. The survival probability is calculated as,
@@ -621,9 +621,9 @@ for each neutrino state.
 Performing an average of survival probabilities binned in neutrino energy 
 gives the survival probability as a function of energy $P_{ee}(E_{\nu})$.
 
-Since neutrino states are Monte Carlo sampled to calculate $P_{ee}(E_{\nu})$
+Since neutrino states are Monte Carlo sampled to calculate $P_{ee}(E_{\nu})$,
 each value has statistical uncertainty from the number of samples used.
-This problem was somewhat exacerbated by the distributions of some of the
+This problem was somewhat exacerbated by the distributions of some
 solar neutrino energy PDFs having small values in areas that are important for
 comparing to solar neutrino data. For example the low energy portion of the
 $\ce{^{8}B}$ solar neutrino flux is very important for solar neutrino experiments,
@@ -659,7 +659,7 @@ non-adiabatic transition.
 \section{Mass State Simulation} %TODO better subsection titles
 For the mass state simulation instead of simulating individiual neutrino
 states, only the eigen-states are simulated.
-For each production radius and production energy within the sun the
+For each production radius and production energy within the sun
 the mixing Hamiltonian is diagonalized,
 \begin{equation}
     H = U M U^{\dagger} + A_{\mathrm{CC}} = P D P^{\dagger}\text{.}
@@ -731,7 +731,7 @@ This is plausible because the oscillation length for higher
 energy neutrinos is approximately 200\,km, the earth's atmosphere
 is approximately the same size.
 So it could be the case that solar neutrinos, especially at higher
-energies, would not oscillate quickly enough to have a average
+energies, would not oscillate quickly enough to have an average
 survival probability best described by the standard oscillation
 probability.
 For any set of mixing parameters this assumption can be checked using the
@@ -781,9 +781,9 @@ are used.
 For the gallium experiments cross-sections for $\ce{^{71}Ge}$ is given by
 the SAGE collaboration in Ref.~\citep{sage_xs} and Bahcall~\citep{bahcall_gallium}.
 
-Each experiment provides their own own measurement of detector
+Each experiment provides its own measurement of detector
 related systematic uncertainties, these uncertainties are all treated as independent,
-with the exception of the four Super-K datasets.
+except for the four Super-K datasets.
  Each Super-K dataset has its own associated systematic uncertainty,
 but each uncertainty is treated as fully correlated across datasets.
 Systematic uncertainties are treated as Gaussian, or a bifurcated
@@ -817,7 +817,7 @@ is done to their published $\Delta \chi^{2}$ map~\cite{kamland_data_release}.
 A similar approach is used to evaluate the likelihood the Daya Bay and
 RENO reactor neutrino results. 
 The hypothesized value for $\theta_{13}$ is compared to each
-experiments measured value with uncertainty to extract a likelihood.
+experiment's measured value with uncertainty to extract a likelihood.
 
 
 \chapter{Fit And Results}
@@ -831,7 +831,7 @@ and $A_{\mathrm{\mu}}$.
 A gradient descent fit was done for these parameters to evaluate the likelihood of the vacuum enhanced
 model, and to what degree the tension between solar measurements and KamLAND measurements
 for $\Delta m^{2}_{21}$ can be reduced.
-The fit allowed all values to vary except $\theta_{13}$, which does not strongly effect
+The fit allowed all values to vary except $\theta_{13}$, which does not strongly affect
 the solar survival probability; $\theta_{13}$ was fixed to $8.5^{\deg}$, a value
 preferred by other global fits to neutrino data~\cite{nu_fit4}.
 
@@ -891,7 +891,7 @@ this result and so it is discussed more in the following section.
 
 The results of each fit is summarized in Tbl.~\ref{tbl:cham_fit_results1}
 and~\ref{tbl:cham_fit_results2}, not shown are the best fit neutrino flux values.
-The reported error on at least some of the fit results is unbelievably
+The reported error on at least some fit results is unbelievably
 small.
 I believe this is a result of the non-Gaussian nature of the likelihood
 space causing the Minuit algorithm to poorly estimate errors and
@@ -921,7 +921,7 @@ $0.92$-sigma by allowing for vacuum enhanced mixing.
 Figure~\ref{fig:solar_only_sp_compare} shows a comparison between the best fit
 survival probability from the solar only fit for the vacuum-enhanced mixing model and
 the standard MSW-LMA model.
-Similarly Fig.~\ref{fig:solar_only_sno}, and Fig.~\ref{fig:solar_only_sk} respectively show
+Similarly, Fig.~\ref{fig:solar_only_sno}, and Fig.~\ref{fig:solar_only_sk} respectively show
 the comparison of the same survival probabilities to SNO and Super-K data.
 Using instead the best fit values from the solar and KamLAND constraints
 gives the similar comparisons shown in Figures~\ref{fig:solar_kamland_sp_compare},~\ref{fig:solar_kamland_sno},
@@ -1038,7 +1038,7 @@ the tension is less than one-sigma when allowing for vacuum-enhanced mixing comp
 to approximately two-sigma for standard mixing.
 This reduction is relatively weak considering the model adds two new degrees
 of freedom into the mixing calculations.
-And so I do not consider this to be strong evidence in favor of the vacuum-enhanced
+I therefore do not consider this to be strong evidence in favor of the vacuum-enhanced
 mixing model that I developed here.
 
 As mentioned before the fitting routine used here was observed to produce different results
@@ -1066,7 +1066,7 @@ sensitivity at higher energies could allow for this model to be separated unambi
 from the standard mixing hypothesis.
 However, for the best fit survival probability when considering the KamLAND constraints
 on $\Delta m^{2}_{21}$ this high energy up-turn nearly disappears, or is much more subtle.
-So even with extremely good sensitivity at higher energies this model may not be able
+So even with good sensitivity at higher energies this model may not be able
 to be uniquely identified using standard solar neutrino measurements.
 
 The results found here were produced entirely using adiabatic neutrino mass state simulation,
@@ -1075,11 +1075,11 @@ For future works it may be possible to use the non-adiabatic neutrino simulation
 verify the results of the adiabatic simulation.
 This will allow for the portion of time the neutrino spends in Earth's
 atmosphere to be simulated more accurately.
-Also not considered here is any sort of annual variation that might be
+Also, not considered here is any sort of annual variation that might be
 present in a vacuum-enhanced mixing scenario.
 As the Earth moves closer or further from the Sun throughout the year neutrinos
 will move through more or less vacuum.
-If there exists significant non-adiabatic effects it might be possible to observe
+If there exists significant non-adiabatic effects, it might be possible to observe
 some annual modulation to the neutrino signal.
 
 Finally, the parameterization used here only considered a potential that couples to neutrino flavor,
